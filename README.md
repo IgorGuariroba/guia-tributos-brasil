@@ -1,5 +1,10 @@
 # Guia de Tributos, Contribuições, Taxas e Encargos do Brasil
 
+[![Gates de qualidade](https://github.com/IgorGuariroba/guia-tributos-brasil/actions/workflows/ci.yml/badge.svg)](https://github.com/IgorGuariroba/guia-tributos-brasil/actions/workflows/ci.yml)
+![Lighthouse 100](https://img.shields.io/badge/Lighthouse-100%2F100%2F100%2F100-006630)
+![axe-core 0 violações](https://img.shields.io/badge/axe--core-0%20viola%C3%A7%C3%B5es-006630)
+![Semantic HTML Score 100](https://img.shields.io/badge/Semantic%20HTML-100%2F100-006630)
+
 Página estática, sem dependências de runtime, que reúne **78 siglas** do sistema tributário,
 trabalhista, regulatório e financeiro brasileiro — com busca, filtros por tipo/esfera/contexto/status,
 ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
@@ -19,6 +24,9 @@ ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
 | Testes funcionais | **12/12** |
 | Requisições a terceiros | **0** (fontes auto-hospedadas) |
 | Peso total | ~78 KB |
+
+Medido **na URL de produção** (`--preset=desktop`): LCP **0.3 s**, CLS **0**, TBT **0 ms**,
+5 requisições, nenhuma externa.
 
 ## Como rodar localmente
 
