@@ -71,21 +71,61 @@ await checar('reset do form restaura tudo', async () => {
   igual(await contador(), `${TOTAL_ESPERADO} de ${TOTAL_ESPERADO} itens exibidos`, 'contador');
 });
 
-await checar('select filtra por tipo', async () => {
+await checar('combobox pesquisável permite múltiplos tipos', async () => {
   try {
-    await page.selectOption('#tipo', 'Imposto');
+    await page.click('#tipo');
+    await page.fill('#tipo-search', 'imposto');
+    await page.getByRole('option', { name: 'Imposto', exact: true }).click();
+    await page.fill('#tipo-search', 'taxa');
+    await page.getByRole('option', { name: 'Taxa', exact: true }).click();
     await page.waitForFunction(t => document.querySelectorAll('tbody tr').length < t, TOTAL_ESPERADO);
-    // textContent (não innerText) para ignorar o text-transform:uppercase do badge
-    const tipos = await page
-      .locator('tbody tr td:nth-child(3)')
-      .evaluateAll(tds => tds.map(td => td.textContent.trim()));
-    const vazados = [...new Set(tipos.filter(t => t !== 'Imposto'))];
-    if (vazados.length) throw new Error(`filtro de tipo vazou: ${vazados.join(', ')}`);
+    const tipos = await page.locator('tbody tr td:nth-child(3)').evaluateAll(tds =>
+      tds.map(td => td.textContent.trim())
+    );
+    const vazados = [...new Set(tipos.filter(t => !['Imposto', 'Taxa'].includes(t)))];
+    if (vazados.length) throw new Error(`filtro multisseleção vazou: ${vazados.join(', ')}`);
+    if (!tipos.includes('Imposto') || !tipos.includes('Taxa'))
+      throw new Error('combinação não retornou as duas categorias selecionadas');
+    igual(await page.locator('#tipo').getAttribute('aria-expanded'), 'true', 'combobox permanece aberto');
   } finally {
-    // sempre restaura o estado, para não contaminar os testes seguintes
+    await page.keyboard.press('Escape');
     await page.click('#reset');
     await page.waitForFunction(t => document.querySelectorAll('tbody tr').length === t, TOTAL_ESPERADO);
   }
+});
+
+await checar('contexto usa categorias atômicas e chips removíveis', async () => {
+  try {
+    await page.click('#contexto');
+    await page.fill('#contexto-search', 'empresa');
+    await page.getByRole('option', { name: 'Empresa', exact: true }).click();
+    await page.waitForFunction(t => document.querySelectorAll('tbody tr').length < t, TOTAL_ESPERADO);
+    const contextos = await page.locator('tbody tr td:nth-child(5)').allTextContents();
+    if (!contextos.every(c => c.split(/\s*\/\s*/).includes('Empresa')))
+      throw new Error('filtro Empresa retornou contexto sem a categoria atômica');
+    if (!contextos.some(c => c !== 'Empresa'))
+      throw new Error('filtro Empresa não incluiu contextos compostos');
+    const chip = page.getByRole('button', { name: 'Remover filtro Contexto: Empresa' });
+    igual(await chip.count(), 1, 'chip do filtro');
+    await page.keyboard.press('Escape');
+    await chip.click();
+    await page.waitForFunction(t => document.querySelectorAll('tbody tr').length === t, TOTAL_ESPERADO);
+  } finally {
+    await page.click('#reset');
+  }
+});
+
+await checar('busca e rótulos dos filtros aparecem na primeira tela', async () => {
+  const ux = await page.evaluate(() => ({
+    searchBottom: document.getElementById('search').getBoundingClientRect().bottom,
+    viewport: innerHeight,
+    labels: [...document.querySelectorAll('.field-label')].every(label => {
+      const style = getComputedStyle(label);
+      return style.display !== 'none' && label.getBoundingClientRect().height > 0;
+    }),
+  }));
+  if (ux.searchBottom > ux.viewport) throw new Error(`busca abaixo da primeira tela: ${ux.searchBottom}px`);
+  if (!ux.labels) throw new Error('há rótulo de filtro invisível');
 });
 
 await checar('ordenação acionável por teclado (Enter) e aria-sort correto', async () => {

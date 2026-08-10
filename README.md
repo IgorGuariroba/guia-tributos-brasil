@@ -21,11 +21,11 @@ ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
 | Lighthouse — SEO | **100** |
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
 | Semantic HTML Score | **100/100 (A)** |
-| Testes funcionais | **16/16** |
+| Testes funcionais | **18/18** |
 | Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
-| Nós no DOM | **894** (limite 1200) |
+| Nós no DOM | **996** (limite 1200) |
 | Requisições a terceiros | **0** (fontes auto-hospedadas) |
-| Peso total | ~78 KB |
+| Peso total | ~85 KB |
 
 Medido **na URL de produção** (`--preset=desktop`): LCP **0.3 s**, CLS **0**, TBT **0 ms**,
 5 requisições, nenhuma externa.
@@ -54,9 +54,10 @@ npm run gate:lighthouse    # somente Lighthouse CI
 
 ### Gate 1 · Funcional (`audit/functional-gate.mjs`)
 
-16 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
+18 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
 carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
-reset do formulário, filtro por `<select>`, **ordenação acionável por teclado** com `aria-sort`
+reset do formulário, combobox pesquisável com multisseleção, contextos atômicos, chips removíveis,
+rótulos visíveis, busca na primeira tela, **ordenação acionável por teclado** com `aria-sort`
 exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas),
 `<abbr title>` em todas as siglas, zero recursos externos, console sem erros e quatro
 asserções sobre os ícones (renderização real de pixels, mapeamento completo, natureza
@@ -72,10 +73,10 @@ Audita **8 larguras** e falha se qualquer uma tiver problema:
 | 375px | iPhone | cards 1col, filtros 1col |
 | 390px | celular moderno | cards 1col, filtros 1col |
 | 768px | tablet | cards 2col, filtros 2col |
-| 1024px | tablet/desktop pequeno | cards 4col, filtros 5col |
-| 1280px | desktop | cards 4col, filtros 5col |
-| 1440px | desktop | cards 4col, filtros 5col |
-| 1920px | monitor grande | cards 4col, filtros 5col |
+| 1024px | tablet/desktop pequeno | cards 4col, filtros 4col |
+| 1280px | desktop | cards 4col, filtros 4col |
+| 1440px | desktop | cards 4col, filtros 4col |
+| 1920px | monitor grande | cards 4col, filtros 4col |
 
 Mais **3 dispositivos reais** emulados (iPhone 14, Pixel 7, iPad Mini) com `isMobile` e DPR corretos.
 
@@ -86,7 +87,7 @@ Verificações por largura:
 3. **alvos de toque ≥ 44×44 px** em viewports touch (≤ 768px) — WCAG 2.5.5
 4. **sem sobreposição** entre controles de filtro
 5. **legibilidade**: corpo ≥ 14px, textos ≥ 12px
-6. tabela rolável sem vazar do container
+6. tabela operável no desktop e resultados em cards no celular, sem rolagem horizontal
 7. barra sticky com folga de scroll e **ocupando ≤ 40% da viewport** (se não couber, deve deixar de ser sticky)
 8. **filtro e reset funcionam** naquela largura (comportamento, não só layout)
 
@@ -132,8 +133,8 @@ Mediana de **3 execuções**, preset desktop, servindo `./public` via `staticDis
 | `cumulative-layout-shift` | ≤ 0.02 | 0.000 |
 | `speed-index` | ≤ 1500 ms | ~1353 ms |
 | `interactive` | ≤ 1800 ms | ~1353 ms |
-| `total-byte-weight` | ≤ 400 KB | ~78 KB |
-| `dom-size` | ≤ 1200 nós | 972 |
+| `total-byte-weight` | ≤ 400 KB | ~85 KB |
+| `dom-size` | ≤ 1200 nós | 996 |
 | `color-contrast`, `heading-order`, `label`, `th-has-data-cells`, `errors-in-console`, `render-blocking-resources` | = 100 | 100 |
 
 \* Valores medidos com `lighthouse` CLI direto; sob `staticDistDir` do LHCI as métricas ficam
@@ -167,10 +168,9 @@ ser reconhecível por bandeira/mapa/prédio e o Status por ícone + cor, sem pre
 | Herda cor do texto | sim | não | **sim** (`background-color`) |
 | Ruído em leitor de tela | precisa `aria-hidden` | precisa `alt=""` | **impossível** (pseudo-elemento) |
 
-O ponto decisivo foi o DOM: a tabela de 78×7 já usava **972 dos 1200 nós** permitidos pelo
-gate de Lighthouse. Com `<svg>` inline em cada linha o limite seria estourado. Com esta
-abordagem o DOM até **diminuiu para 894** — os `<span class="badge">` da coluna Tipo
-viraram desnecessários.
+O ponto decisivo foi o DOM: a tabela de 78×7 e os comboboxes usam **996 dos 1200 nós**
+permitidos pelo gate de Lighthouse. Com `<svg>` inline em cada linha o limite seria estourado.
+Os ícones por CSS não acrescentam nós e mantêm espaço para os controles pesquisáveis.
 
 ### Regeneração
 
@@ -202,7 +202,7 @@ nem `<svg>` sem rótulo**, e que **toda célula mantém texto próprio**. axe-co
   "CONTRIBUIÇÕES," estourava 79px em 320px e propagava 38px de scroll horizontal ao documento.
 - **Filtros deixam de ser sticky até 1000px**: empilhados, a barra chegava a 503px de altura —
   56% de uma viewport de 900px. Acima desse limite ela volta a ser sticky.
-- **`min-height: 44px`** em `input`, `select`, `button` e `.th-btn`: os cabeçalhos de ordenação
+- **`min-height: 44px`** em `input`, `button` e `.th-btn`: os cabeçalhos de ordenação
   tinham 38px, abaixo do mínimo de alvo de toque da WCAG 2.5.5.
 
 ## Estrutura

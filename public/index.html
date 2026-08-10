@@ -69,11 +69,32 @@ h1{font-family:var(--display);font-size:clamp(22px,5vw,62px);margin:0 0 12px;let
 .card h2[data-icone="contribuicao"]{background:var(--success);color:#fff}
 .card h2[data-icone="encargo-trabalhista"]{background:var(--critical);color:#fff}
 .card p{margin:0;color:#1a1a1a;font-size:13px}
-.filters{position:sticky;top:0;z-index:5;background:var(--bg);border:var(--b);box-shadow:var(--shadow-sm);padding:14px;margin:24px 0 0}
-.filter-grid{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px}
-input,select,button{width:100%;padding:11px 12px;min-height:44px;border:var(--b);border-radius:0;background:#fff;font:inherit;font-size:13px;color:var(--text);text-transform:uppercase}
+.filters{position:sticky;top:0;z-index:5;background:var(--bg);border:var(--b);box-shadow:var(--shadow-sm);padding:14px;margin:0 0 20px}
+.filter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:start}
+.field-busca{grid-column:1/-1}
+.field-label{display:block;margin:0 0 5px;font-family:var(--display);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+input,button{width:100%;padding:11px 12px;min-height:44px;border:var(--b);border-radius:0;background:#fff;font:inherit;font-size:13px;color:var(--text);text-transform:uppercase}
 input::placeholder{color:#666;text-transform:none}
-input:focus,select:focus,button:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+input:focus,button:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+.multi-combobox{position:relative}
+.combo-trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;cursor:pointer;text-transform:none}
+.combo-trigger::after{content:"▾";font-size:16px;flex:none}
+.combo-trigger[aria-expanded="true"]::after{content:"▴"}
+.combo-summary{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.combo-popover{position:absolute;z-index:20;top:calc(100% + 5px);left:0;width:max(100%,260px);padding:8px;background:var(--bg);border:var(--b);box-shadow:var(--shadow-sm)}
+.combo-popover[hidden]{display:none}
+.combo-search{margin-bottom:7px;text-transform:none}
+.combo-options{list-style:none;margin:0;padding:0;max-height:260px;overflow:auto;background:#fff;border:2px solid #000}
+.combo-options li+li{border-top:2px solid #000}
+.combo-option{min-height:44px;border:0;text-align:left;cursor:pointer;text-transform:none;box-shadow:none}
+.combo-option[aria-selected="true"]{background:var(--accent);font-weight:700}
+.combo-option[aria-selected="true"]::before{content:"✓ ";font-weight:700}
+.combo-empty{margin:8px;padding:8px;font-size:12px}
+.filter-help{display:block;margin-top:4px;color:var(--muted);font-size:11px}
+.filter-chips{display:flex;gap:8px;flex-wrap:wrap;list-style:none;margin:12px 0 0;padding:0}
+.filter-chip{display:flex;align-items:stretch;background:var(--accent);border:2px solid #000}
+.filter-chip span{padding:6px 8px;font-size:11px;font-weight:700}
+.filter-chip button{width:44px;min-height:36px;padding:4px;border:0;border-left:2px solid #000;background:#fff;cursor:pointer}
 .actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
 .actions button{width:auto;cursor:pointer;font-weight:700;box-shadow:var(--shadow-sm);transition:transform .08s linear,box-shadow .08s linear}
 .actions button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
@@ -82,8 +103,19 @@ input:focus,select:focus,button:focus-visible{outline:3px solid var(--accent2);o
 .stats{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
 #count{background:var(--ink);color:#fff;padding:2px 8px}
 .badge{display:inline-block;padding:2px 7px;border:2px solid #000;background:var(--accent);font-size:11px;white-space:nowrap;text-transform:uppercase;font-weight:600}
-.table-wrap{overflow:auto;background:#fff;border:var(--b);box-shadow:var(--shadow);max-height:68vh;margin-top:20px;scroll-margin-top:190px}
-.table-wrap:focus-visible{outline:4px solid var(--accent2);outline-offset:3px}
+.results{scroll-margin-top:340px}
+.table-wrap{overflow:auto;background:#fff;border:var(--b);box-shadow:var(--shadow);max-height:68vh}
+.results:focus-visible{outline:4px solid var(--accent2);outline-offset:3px}
+.result-cards{display:none}
+.result-card{background:#fff;border:var(--b);box-shadow:var(--shadow-sm);padding:14px}
+.result-card h3{margin:0 0 4px;font-family:var(--display);font-size:18px;text-transform:uppercase}
+.result-card .result-name{margin:0 0 12px;font-weight:700}
+.result-card dl{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;margin:0;font-size:12px}
+.result-card dt{font-weight:700;text-transform:uppercase}
+.result-card dd{margin:0}
+.result-card details{grid-column:1/-1;margin-top:7px;border-top:2px solid #000;padding-top:8px}
+.result-card summary{min-height:44px;display:flex;align-items:center;font-weight:700;cursor:pointer;text-transform:uppercase}
+.result-card details p{margin:7px 0 0}
 table{border-collapse:collapse;width:100%;min-width:1220px}
 th,td{padding:11px 12px;border-bottom:2px solid #000;border-right:2px solid #000;text-align:left;vertical-align:top;font-size:12.5px}
 th:last-child,td:last-child{border-right:0}
@@ -105,6 +137,9 @@ tr:hover td{background:var(--accent)}
 .status-active{color:var(--success-text);font-weight:700}
 .empty{padding:32px;text-align:center;color:#000;font-family:var(--display);text-transform:uppercase}
 .empty:empty{display:none;padding:0}
+.guide{margin-top:28px}
+.guide>summary{min-height:52px;display:flex;align-items:center;padding:10px 14px;background:var(--ink);color:var(--accent);border:var(--b);box-shadow:var(--shadow-sm);font-family:var(--display);text-transform:uppercase;cursor:pointer}
+.guide[open]>summary{margin-bottom:18px}
 .legend{margin-top:24px;background:#fff;border:var(--b);box-shadow:var(--shadow-sm);padding:18px}
 .legend h2{font-family:var(--display);margin:0 0 12px;font-size:18px;text-transform:uppercase;border-bottom:var(--b);padding-bottom:8px}
 .legend ul{columns:2;gap:32px;padding-left:20px;font-size:13px}
@@ -112,11 +147,14 @@ tr:hover td{background:var(--accent)}
 .legend strong,.notice strong,footer strong{background:var(--accent);padding:0 3px}
 footer{margin:24px 0 10px;border:var(--b);border-top:12px solid #000;background:#fff;padding:16px;font-size:12px}
 footer p{margin:0 0 10px}footer p:last-child{margin:0}
-@media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}.filter-grid{grid-template-columns:1fr 1fr}.search{grid-column:1/-1}.legend ul{columns:1}}
-/* Em telas estreitas os filtros empilham e a barra passaria de 500px de altura,
-   cobrindo mais da metade da viewport. Nesses casos ela deixa de ser sticky. */
-@media(max-width:1000px){.filters{position:static}.table-wrap{scroll-margin-top:12px;max-height:none}}
-@media(max-width:600px){.container{padding:14px}.cards{grid-template-columns:1fr}.filter-grid{grid-template-columns:1fr}.actions button{width:100%}}
+@media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}.filter-grid{grid-template-columns:1fr 1fr}.field-busca{grid-column:1/-1}.legend ul{columns:1}}
+/* Em telas estreitas os filtros empilham e a barra deixaria pouco conteúdo visível. */
+@media(max-width:1000px){.filters{position:static}.results{scroll-margin-top:12px}.table-wrap{max-height:none}}
+@media(max-width:600px){
+  .container{padding:14px}.cards{grid-template-columns:1fr}.filter-grid{grid-template-columns:1fr}.actions button{width:100%}
+  .combo-popover{position:static;width:100%;margin-top:5px;box-shadow:none}
+  .table-wrap{display:none}.result-cards{display:grid;gap:14px}.stats .sort-help{display:none}
+}
 @media(max-width:360px){.container{padding:10px}header{padding:16px 14px}.notice{border-left-width:8px}}
 /* Ícones: Lucide v1.31.0 (ISC) — embutidos como mask-image em ::before.
    Zero nós no DOM, zero requisições, cor herdada via background-color.
@@ -263,75 +301,79 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#resultados" data-icone="atalho">Ir para a tabela de resultados</a>
+<a class="skip-link" href="#resultados" data-icone="atalho">Ir para os resultados</a>
 <main class="container">
   <header>
     <h1>Tributos, contribuições, taxas e encargos no Brasil</h1>
     <p class="subtitle">Guia pesquisável de siglas e nomes usados no sistema tributário, trabalhista, regulatório e financeiro brasileiro. Use os filtros para localizar rapidamente um item por contexto, esfera, natureza ou status.</p>
   </header>
 
-  <div class="notice" data-icone="aviso"><strong>Importante:</strong> “encargo” é uma categoria prática, não uma espécie tributária constitucional equivalente a “imposto” ou “taxa”. Também incluí guias, regimes e mecanismos muito confundidos com tributos — eles estão identificados corretamente na coluna <strong>Tipo/Natureza</strong>.</div>
-
-  <section class="cards">
-    <article class="card"><h2 data-icone="imposto">Imposto</h2><p>Tributo cuja cobrança não depende de uma contraprestação estatal específica diretamente ligada ao contribuinte. Exemplos: IRPF, ICMS, IPTU e IPVA.</p></article>
-    <article class="card"><h2 data-icone="taxa">Taxa</h2><p>Tributo ligado ao exercício do poder de polícia ou à utilização, efetiva ou potencial, de serviço público específico e divisível prestado ou colocado à disposição do contribuinte.</p></article>
-    <article class="card"><h2 data-icone="contribuicao">Contribuição</h2><p>Tributo normalmente vinculado a uma finalidade constitucional específica, como seguridade social, intervenção no domínio econômico ou interesse de categorias, além da iluminação pública.</p></article>
-    <article class="card"><h2 data-icone="encargo-trabalhista">Encargo</h2><p>Expressão ampla de uso contábil/trabalhista para obrigações que aumentam o custo de uma relação ou atividade. Pode incluir valores que não são tributos, como o FGTS.</p></article>
-  </section>
-
-  <section class="legend">
-    <h2 data-icone="lista">Outras categorias importantes</h2>
-    <ul>
-      <li data-icone="compensacao"><strong>Contribuição de melhoria:</strong> tributo que pode decorrer de obra pública que valorize imóvel.</li>
-      <li data-icone="imposto"><strong>Empréstimo compulsório:</strong> tributo excepcional que somente a União pode instituir nas hipóteses constitucionais.</li>
-      <li data-icone="compensacao"><strong>Compensação financeira:</strong> receita como CFEM/CFURH; não deve ser chamada automaticamente de imposto.</li>
-      <li data-icone="regime"><strong>Regime tributário:</strong> conjunto de regras de apuração/recolhimento, como Simples Nacional e RET.</li>
-      <li data-icone="documento"><strong>Documento de arrecadação:</strong> guia usada para pagar obrigações, como DARF e DAS; não é tributo.</li>
-      <li data-icone="mecanismo"><strong>Mecanismo de tributação:</strong> forma de recolher/apurar tributo, como o “come-cotas”.</li>
-    </ul>
-  </section>
-
   <search class="filters">
-    <form id="filtros" role="search" aria-label="Filtrar tributos" onsubmit="return false">
+    <form id="filtros" role="search" aria-label="Pesquisar e filtrar tributos" onsubmit="return false">
       <fieldset>
         <legend class="visually-hidden">Filtros de pesquisa</legend>
         <div class="filter-grid">
-          <p class="field field-busca"><label class="visually-hidden" for="search">Pesquisar sigla, nome, descrição ou contexto</label>
-          <input id="search" class="search" type="search" placeholder="Pesquisar sigla, nome, descrição ou contexto…"></p>
-          <p class="field"><label class="visually-hidden" for="tipo">Filtrar por tipo ou natureza</label>
-          <select id="tipo"><option value="">Todos os tipos</option></select></p>
-          <p class="field"><label class="visually-hidden" for="esfera">Filtrar por esfera</label>
-          <select id="esfera"><option value="">Todas as esferas</option></select></p>
-          <p class="field"><label class="visually-hidden" for="contexto">Filtrar por contexto</label>
-          <select id="contexto"><option value="">Todos os contextos</option></select></p>
-          <p class="field"><label class="visually-hidden" for="status">Filtrar por status</label>
-          <select id="status"><option value="">Todos os status</option></select></p>
+          <p class="field field-busca"><label class="field-label" for="search">Pesquisar em todos os dados</label>
+          <input id="search" class="search" type="search" autocomplete="off" placeholder="Digite uma sigla, nome, descrição ou contexto…"></p>
+          <div class="field"><span class="field-label" id="tipo-label">Tipo / natureza</span><div class="multi-combobox" data-filter="tipo"></div><small class="filter-help">Aceita várias opções</small></div>
+          <div class="field"><span class="field-label" id="esfera-label">Esfera</span><div class="multi-combobox" data-filter="esfera"></div><small class="filter-help">Aceita várias opções</small></div>
+          <div class="field"><span class="field-label" id="contexto-label">Contexto</span><div class="multi-combobox" data-filter="contexto"></div><small class="filter-help">Categorias independentes; aceita várias</small></div>
+          <div class="field"><span class="field-label" id="status-label">Status</span><div class="multi-combobox" data-filter="status"></div><small class="filter-help">Aceita várias opções</small></div>
         </div>
+        <ul id="active-filters" class="filter-chips" aria-label="Filtros aplicados"></ul>
       </fieldset>
       <div class="actions">
         <button id="reset" type="reset" data-icone="limpar">Limpar filtros</button>
         <button id="csv" type="button" class="primary" data-icone="csv">Exportar resultado para CSV</button>
       </div>
     </form>
-    <p class="stats"><output id="count" for="search tipo esfera contexto status" aria-live="polite"></output><span aria-hidden="true">•</span><span>Use os botões nos títulos das colunas para ordenar.</span></p>
+    <p class="stats"><output id="count" for="search" aria-live="polite"></output><span class="sort-help" aria-hidden="true">•</span><span class="sort-help">Use os botões nos títulos das colunas para ordenar.</span></p>
   </search>
 
-  <div class="table-wrap" id="resultados" tabindex="-1">
-    <table aria-describedby="count">
-      <caption>Tributos, contribuições, taxas e encargos — resultado dos filtros</caption>
-      <thead><tr>
-        <th scope="col" data-key="sigla" aria-sort="ascending"><button type="button" class="th-btn">Sigla <span class="sort-ind" aria-hidden="true"></span></button></th>
-        <th scope="col" data-key="nome" aria-sort="none"><button type="button" class="th-btn">Nome <span class="sort-ind" aria-hidden="true"></span></button></th>
-        <th scope="col" data-key="tipo" aria-sort="none"><button type="button" class="th-btn">Tipo / Natureza <span class="sort-ind" aria-hidden="true"></span></button></th>
-        <th scope="col" data-key="esfera" aria-sort="none"><button type="button" class="th-btn">Esfera <span class="sort-ind" aria-hidden="true"></span></button></th>
-        <th scope="col" data-key="contexto" aria-sort="none"><button type="button" class="th-btn">Contexto <span class="sort-ind" aria-hidden="true"></span></button></th>
-        <th scope="col" data-key="descricao" aria-sort="none"><button type="button" class="th-btn">O que é / quando aparece <span class="sort-ind" aria-hidden="true"></span></button></th>
-        <th scope="col" data-key="status" aria-sort="none"><button type="button" class="th-btn">Status <span class="sort-ind" aria-hidden="true"></span></button></th>
-      </tr></thead>
-      <tbody id="tbody"></tbody>
-    </table>
+  <section class="results" id="resultados" tabindex="-1" aria-labelledby="results-title">
+    <h2 id="results-title" class="visually-hidden">Resultados da pesquisa</h2>
+    <div class="table-wrap">
+      <table aria-describedby="count">
+        <caption>Tributos, contribuições, taxas e encargos — resultado dos filtros</caption>
+        <thead><tr>
+          <th scope="col" data-key="sigla" aria-sort="ascending"><button type="button" class="th-btn">Sigla <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col" data-key="nome" aria-sort="none"><button type="button" class="th-btn">Nome <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col" data-key="tipo" aria-sort="none"><button type="button" class="th-btn">Tipo / Natureza <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col" data-key="esfera" aria-sort="none"><button type="button" class="th-btn">Esfera <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col" data-key="contexto" aria-sort="none"><button type="button" class="th-btn">Contexto <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col" data-key="descricao" aria-sort="none"><button type="button" class="th-btn">O que é / quando aparece <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col" data-key="status" aria-sort="none"><button type="button" class="th-btn">Status <span class="sort-ind" aria-hidden="true"></span></button></th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div id="card-results" class="result-cards"></div>
     <p id="empty" class="empty" role="status" data-icone="vazio"></p>
-  </div>
+  </section>
+
+  <details class="guide">
+    <summary>Entenda as categorias deste guia</summary>
+    <div class="notice" data-icone="aviso"><strong>Importante:</strong> “encargo” é uma categoria prática, não uma espécie tributária constitucional equivalente a “imposto” ou “taxa”. Também incluí guias, regimes e mecanismos muito confundidos com tributos — eles estão identificados corretamente na coluna <strong>Tipo/Natureza</strong>.</div>
+
+    <section class="cards">
+      <article class="card"><h2 data-icone="imposto">Imposto</h2><p>Tributo cuja cobrança não depende de uma contraprestação estatal específica diretamente ligada ao contribuinte. Exemplos: IRPF, ICMS, IPTU e IPVA.</p></article>
+      <article class="card"><h2 data-icone="taxa">Taxa</h2><p>Tributo ligado ao exercício do poder de polícia ou à utilização, efetiva ou potencial, de serviço público específico e divisível prestado ou colocado à disposição do contribuinte.</p></article>
+      <article class="card"><h2 data-icone="contribuicao">Contribuição</h2><p>Tributo normalmente vinculado a uma finalidade constitucional específica, como seguridade social, intervenção no domínio econômico ou interesse de categorias, além da iluminação pública.</p></article>
+      <article class="card"><h2 data-icone="encargo-trabalhista">Encargo</h2><p>Expressão ampla de uso contábil/trabalhista para obrigações que aumentam o custo de uma relação ou atividade. Pode incluir valores que não são tributos, como o FGTS.</p></article>
+    </section>
+
+    <section class="legend">
+      <h2 data-icone="lista">Outras categorias importantes</h2>
+      <ul>
+        <li data-icone="compensacao"><strong>Contribuição de melhoria:</strong> tributo que pode decorrer de obra pública que valorize imóvel.</li>
+        <li data-icone="imposto"><strong>Empréstimo compulsório:</strong> tributo excepcional que somente a União pode instituir nas hipóteses constitucionais.</li>
+        <li data-icone="compensacao"><strong>Compensação financeira:</strong> receita como CFEM/CFURH; não deve ser chamada automaticamente de imposto.</li>
+        <li data-icone="regime"><strong>Regime tributário:</strong> conjunto de regras de apuração/recolhimento, como Simples Nacional e RET.</li>
+        <li data-icone="documento"><strong>Documento de arrecadação:</strong> guia usada para pagar obrigações, como DARF e DAS; não é tributo.</li>
+        <li data-icone="mecanismo"><strong>Mecanismo de tributação:</strong> forma de recolher/apurar tributo, como o “come-cotas”.</li>
+      </ul>
+    </section>
+  </details>
 
   <footer>
     <p data-icone="atualizacao"><strong>Atualização:</strong> <time datetime="2026-08">agosto de 2026</time>. A lista reúne os principais tributos e siglas de uso nacional e várias denominações setoriais/locais conhecidas. Não existe uma lista única e finita de todas as siglas de taxas municipais e estaduais: nomes e siglas podem variar por ente federativo.</p>
@@ -383,30 +425,116 @@ const iconePara = (mapa, valor) => (mapa.find(([re]) => re.test(valor ?? "")) ||
 const $ = id => document.getElementById(id);
 const normalize = s => (s ?? "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 
-function uniqueValues(key){
-  return [...new Set(DATA.map(x=>x[key]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
-}
-function populateSelect(id,key){
-  const sel=$(id);
-  uniqueValues(key).forEach(v=>{
-    const o=document.createElement("option"); o.value=v; o.textContent=v; sel.appendChild(o);
-  });
-}
-["tipo","esfera","contexto","status"].forEach(id=>populateSelect(id,id));
+const FILTERS = {
+  tipo:{label:"Tipo / natureza",all:"Todos os tipos"},
+  esfera:{label:"Esfera",all:"Todas as esferas"},
+  contexto:{label:"Contexto",all:"Todos os contextos",atomic:true},
+  status:{label:"Status",all:"Todos os status"},
+};
+const selectedFilters=Object.fromEntries(Object.keys(FILTERS).map(key=>[key,new Set()]));
+const contextTokens=value=>String(value??"").split(/\s*\/\s*/).map(v=>v.trim()).filter(Boolean);
 
+function uniqueValues(key){
+  const values=FILTERS[key].atomic ? DATA.flatMap(x=>contextTokens(x[key])) : DATA.map(x=>x[key]);
+  return [...new Set(values.filter(Boolean))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+}
 function esc(s){
   return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 }
+function filterSummary(key){
+  const values=[...selectedFilters[key]];
+  if(!values.length) return FILTERS[key].all;
+  if(values.length===1) return values[0];
+  return `${values.length} opções selecionadas`;
+}
+function renderComboOptions(key,query=""){
+  const list=$(`${key}-options`);
+  if(!list) return;
+  const matches=uniqueValues(key).filter(value=>normalize(value).includes(normalize(query)));
+  list.innerHTML=matches.map((value,index)=>`<li><button type="button" class="combo-option" role="option" id="${key}-option-${index}" aria-selected="${selectedFilters[key].has(value)}" data-value="${esc(value)}">${esc(value)}</button></li>`).join("");
+  $(`${key}-empty`).hidden=matches.length>0;
+  list.querySelectorAll(".combo-option").forEach(option=>option.addEventListener("click",()=>{
+    const value=option.dataset.value;
+    if(selectedFilters[key].has(value)) selectedFilters[key].delete(value); else selectedFilters[key].add(value);
+    renderComboOptions(key,$(`${key}-search`).value);
+    updateComboSummary(key);
+    render();
+  }));
+}
+function updateComboSummary(key){
+  $(`${key}-summary`).textContent=filterSummary(key);
+}
+function closeCombos(except){
+  document.querySelectorAll(".multi-combobox").forEach(combo=>{
+    if(combo===except) return;
+    combo.querySelector(".combo-trigger").setAttribute("aria-expanded","false");
+    combo.querySelector(".combo-popover").hidden=true;
+  });
+}
+function createCombobox(key){
+  const root=document.querySelector(`.multi-combobox[data-filter="${key}"]`);
+  root.innerHTML=`<button type="button" class="combo-trigger" id="${key}" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="${key}-popover" aria-labelledby="${key}-label ${key}-summary"><span class="combo-summary" id="${key}-summary">${FILTERS[key].all}</span></button>
+    <div class="combo-popover" id="${key}-popover" hidden>
+      <input class="combo-search" id="${key}-search" type="search" role="searchbox" autocomplete="off" aria-label="Buscar opções de ${FILTERS[key].label.toLowerCase()}" placeholder="Buscar opções…">
+      <ul class="combo-options" id="${key}-options" role="listbox" aria-multiselectable="true" aria-labelledby="${key}-label"></ul>
+      <p class="combo-empty" id="${key}-empty" role="status" hidden>Nenhuma opção encontrada.</p>
+    </div>`;
+  const trigger=$(key), popover=$(`${key}-popover`), search=$(`${key}-search`);
+  root.addEventListener("click",event=>event.stopPropagation());
+  trigger.addEventListener("click",()=>{
+    const opening=trigger.getAttribute("aria-expanded")!=="true";
+    closeCombos(opening?root:null);
+    trigger.setAttribute("aria-expanded",String(opening));
+    popover.hidden=!opening;
+    if(opening){renderComboOptions(key);search.focus();}
+  });
+  search.addEventListener("input",()=>renderComboOptions(key,search.value));
+  root.addEventListener("keydown",event=>{
+    if(event.key==="Escape"){
+      trigger.setAttribute("aria-expanded","false");popover.hidden=true;trigger.focus();
+    }
+  });
+  renderComboOptions(key);
+}
+Object.keys(FILTERS).forEach(createCombobox);
+document.addEventListener("click",event=>{
+  if(!event.target.closest(".multi-combobox")) closeCombos();
+});
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape") closeCombos();
+});
+
+function renderChips(){
+  const chips=[];
+  Object.entries(selectedFilters).forEach(([key,values])=>values.forEach(value=>chips.push({key,value})));
+  $("active-filters").innerHTML=chips.map(({key,value})=>`<li class="filter-chip"><span>${esc(FILTERS[key].label)}: ${esc(value)}</span><button type="button" data-key="${key}" data-value="${esc(value)}" aria-label="Remover filtro ${esc(FILTERS[key].label)}: ${esc(value)}">×</button></li>`).join("");
+  $("active-filters").hidden=chips.length===0;
+  $("active-filters").querySelectorAll("button").forEach(button=>button.addEventListener("click",()=>{
+    selectedFilters[button.dataset.key].delete(button.dataset.value);
+    updateComboSummary(button.dataset.key);
+    renderComboOptions(button.dataset.key,$(`${button.dataset.key}-search`).value);
+    render();
+  }));
+}
+function matchesFilter(item,key){
+  const selected=selectedFilters[key];
+  if(!selected.size) return true;
+  const itemValues=FILTERS[key].atomic?contextTokens(item[key]):[item[key]];
+  return itemValues.some(value=>selected.has(value));
+}
+function renderCards(){
+  if(!matchMedia("(max-width:600px)").matches){$("card-results").innerHTML="";return;}
+  $("card-results").innerHTML=filtered.map(x=>`<article class="result-card">
+    <h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><p class="result-name">${esc(x.nome)}</p>
+    <dl><dt>Tipo</dt><dd>${esc(x.tipo)}</dd><dt>Esfera</dt><dd>${esc(x.esfera)}</dd><dt>Contexto</dt><dd>${esc(x.contexto)}</dd><dt>Status</dt><dd>${esc(x.status)}</dd>
+    <details><summary>O que é / quando aparece</summary><p>${esc(x.descricao)}</p></details></dl>
+  </article>`).join("");
+}
 function render(){
   const q=normalize($("search").value);
-  const filters={tipo:$("tipo").value,esfera:$("esfera").value,contexto:$("contexto").value,status:$("status").value};
   filtered=DATA.filter(x=>{
     const hay=normalize([x.sigla,x.nome,x.tipo,x.esfera,x.contexto,x.descricao,x.status].join(" "));
-    return (!q || hay.includes(q))
-      && (!filters.tipo || x.tipo===filters.tipo)
-      && (!filters.esfera || x.esfera===filters.esfera)
-      && (!filters.contexto || x.contexto===filters.contexto)
-      && (!filters.status || x.status===filters.status);
+    return (!q || hay.includes(q)) && Object.keys(FILTERS).every(key=>matchesFilter(x,key));
   });
   filtered.sort((a,b)=>{
     const A=(a[sortKey]??"").toString(), B=(b[sortKey]??"").toString();
@@ -421,19 +549,26 @@ function render(){
     <td>${esc(x.descricao)}</td>
     <td data-icone="${iconePara(ICONE_STATUS,x.status)}" class="${/transi|implement/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}</td>
   </tr>`).join("");
+  renderCards();
+  renderChips();
   $("count").textContent=`${filtered.length} de ${DATA.length} itens exibidos`;
   $("empty").textContent=filtered.length?"":"Nenhum item corresponde aos filtros selecionados.";
   document.querySelectorAll("th[data-key]").forEach(th=>{
     th.setAttribute("aria-sort", th.dataset.key===sortKey ? (sortAsc?"ascending":"descending") : "none");
   });
 }
-["search","tipo","esfera","contexto","status"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
+$("search").addEventListener("input",render);
 document.querySelectorAll("th[data-key] .th-btn").forEach(btn=>btn.addEventListener("click",()=>{
   const k=btn.closest("th").dataset.key;
   if(sortKey===k) sortAsc=!sortAsc; else {sortKey=k;sortAsc=true;}
   render();
 }));
-$("filtros").addEventListener("reset",()=>{ setTimeout(render,0); });
+$("filtros").addEventListener("reset",()=>{setTimeout(()=>{
+  Object.values(selectedFilters).forEach(values=>values.clear());
+  Object.keys(FILTERS).forEach(key=>{updateComboSummary(key);$(`${key}-search`).value="";renderComboOptions(key);});
+  closeCombos();render();
+},0);});
+addEventListener("resize",renderCards);
 $("csv").addEventListener("click",()=>{
   const cols=["sigla","nome","tipo","esfera","contexto","descricao","status"];
   const header=["Sigla","Nome","Tipo/Natureza","Esfera","Contexto","Descrição","Status"];

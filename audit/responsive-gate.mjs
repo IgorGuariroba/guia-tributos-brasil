@@ -13,7 +13,7 @@
  *   3. alvos de toque >= 44x44 CSS px em viewports touch (<= 768px) — WCAG 2.5.5 / 2.5.8
  *   4. sem sobreposição entre controles de filtro
  *   5. texto legível (>= 12px) e corpo >= 14px
- *   6. tabela permanece operável via scroller, sem vazar do container
+ *   6. tabela permanece operável no desktop e vira cards no celular
  *   7. a barra de filtros sticky não cobre o conteúdo ao usar o skip-link
  *   8. conteúdo essencial visível e funcional (filtro aplica em qualquer largura)
  */
@@ -118,8 +118,14 @@ for (const bp of BREAKPOINTS) {
         if (fs < FONTE_MIN) ps.push(`texto pequeno em ${sel}: ${fs}px < ${FONTE_MIN}px`);
       }
 
-      // 6. tabela não vaza do container e segue rolável
-      if (scroller) {
+      // 6. desktop usa tabela; celular usa cards sem rolagem horizontal
+      const cardResults = document.querySelector('.result-cards');
+      if (largura <= 600) {
+        if (getComputedStyle(scroller).display !== 'none') ps.push('tabela deveria estar oculta no celular');
+        if (!cardResults || getComputedStyle(cardResults).display === 'none') ps.push('cards de resultado ausentes no celular');
+        if (document.querySelectorAll('.result-card').length !== 78)
+          ps.push(`quantidade incorreta de cards: ${document.querySelectorAll('.result-card').length}`);
+      } else if (scroller) {
         const sb = scroller.getBoundingClientRect();
         if (sb.right > vw + 1) ps.push(`.table-wrap vaza da viewport: right=${Math.round(sb.right)} > ${vw}`);
         const tabela = scroller.querySelector('table');
@@ -151,7 +157,10 @@ for (const bp of BREAKPOINTS) {
       }
 
       // 8. conteúdo essencial presente
-      for (const sel of ['h1', '#search', '#count', 'table thead th', 'tbody tr']) {
+      const essenciais = ['h1', '#search', '#count'];
+      if (largura <= 600) essenciais.push('.result-card');
+      else essenciais.push('table thead th', 'tbody tr');
+      for (const sel of essenciais) {
         if (!document.querySelector(sel)) ps.push(`elemento essencial ausente: ${sel}`);
       }
 
@@ -173,10 +182,11 @@ for (const bp of BREAKPOINTS) {
   // 8b. o filtro precisa funcionar nesta largura (teste de comportamento, não só de layout)
   const ps = [...problemas.problemas];
   try {
+    const resultSelector = bp.w <= 600 ? '.result-card' : 'tbody tr';
     await page.fill('#search', 'ICMS');
-    await page.waitForFunction(() => document.querySelectorAll('tbody tr').length === 1, { timeout: 5000 });
+    await page.waitForFunction(sel => document.querySelectorAll(sel).length === 1, resultSelector, { timeout: 5000 });
     await page.click('#reset');
-    await page.waitForFunction(() => document.querySelectorAll('tbody tr').length === 78, { timeout: 5000 });
+    await page.waitForFunction(sel => document.querySelectorAll(sel).length === 78, resultSelector, { timeout: 5000 });
   } catch {
     ps.push('filtro/reset não funcionou nesta largura');
   }
