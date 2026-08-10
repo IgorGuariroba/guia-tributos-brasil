@@ -141,13 +141,101 @@ await checar('todas as siglas têm nome completo via <abbr title>', async () => 
 });
 
 await checar('zero requisições a domínios externos', async () => {
+  // data: URIs não são requisições de rede; o que importa é não haver origem externa.
   const externos = await page.evaluate(() =>
     performance
       .getEntriesByType('resource')
       .map(r => r.name)
-      .filter(u => !u.startsWith(location.origin))
+      .filter(u => /^https?:\/\//.test(u) && !u.startsWith(location.origin))
   );
   if (externos.length) throw new Error(`recursos externos: ${externos.join(', ')}`);
+});
+
+await checar('ícones renderizam em todos os elementos [data-icone]', async () => {
+  const r = await page.evaluate(() => {
+    const els = [...document.querySelectorAll('[data-icone]')];
+    const semMascara = els.filter(e => {
+      const m = getComputedStyle(e, '::before').maskImage;
+      return !m || m === 'none';
+    });
+    const tdSemChave = document.querySelectorAll('td[data-icone=""]').length;
+    const indicadores = [...document.querySelectorAll('.sort-ind')].filter(
+      e => getComputedStyle(e).maskImage !== 'none'
+    ).length;
+    return {
+      total: els.length,
+      semMascara: semMascara.map(e => e.tagName + '[' + e.dataset.icone + ']').slice(0, 5),
+      tdSemChave,
+      indicadores,
+      totalTh: document.querySelectorAll('th[data-key]').length,
+    };
+  });
+  if (r.total === 0) throw new Error('nenhum elemento com [data-icone] encontrado');
+  if (r.semMascara.length)
+    throw new Error(`ícones sem mask-image (data-URI inválido?): ${r.semMascara.join(', ')}`);
+  igual(r.tdSemChave, 0, 'células com data-icone vazio (mapeamento incompleto)');
+  igual(r.indicadores, r.totalTh, 'indicadores de ordenação com ícone');
+});
+
+await checar('ícones desenham pixels de verdade (data-URI válido)', async () => {
+  // Um data-URI corrompido (ex.: '#' com duplo-encode) ainda reporta maskImage != none,
+  // mas não pinta nada. A única verificação honesta é comparar pixels renderizados.
+  const amostras = [
+    { sel: '.card h2[data-icone]', nome: 'card' },
+    { sel: 'td[data-icone="federal"]', nome: 'esfera na tabela' },
+    { sel: '.actions button[data-icone="csv"]', nome: 'botão CSV' },
+  ];
+  for (const { sel, nome } of amostras) {
+    const el = page.locator(sel).first();
+    if ((await el.count()) === 0) throw new Error(`amostra ausente: ${sel}`);
+    await el.scrollIntoViewIfNeeded();
+    const box = await el.boundingBox();
+    if (!box) throw new Error(`sem bounding box: ${sel}`);
+    // recorta apenas a faixa à esquerda, onde o ::before é desenhado
+    const recorte = await page.screenshot({
+      clip: { x: box.x, y: box.y, width: 20, height: Math.min(box.height, 24) },
+    });
+    const cores = await page.evaluate(async b64 => {
+      const img = new Image();
+      img.src = 'data:image/png;base64,' + b64;
+      await img.decode();
+      const c = document.createElement('canvas');
+      c.width = img.width;
+      c.height = img.height;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(0, 0, c.width, c.height).data;
+      const set = new Set();
+      for (let i = 0; i < d.length; i += 4) set.add(`${d[i]},${d[i + 1]},${d[i + 2]}`);
+      return set.size;
+    }, recorte.toString('base64'));
+    // fundo uniforme => 1 ou 2 cores. Um ícone desenhado gera bem mais (antialiasing).
+    if (cores < 3)
+      throw new Error(`ícone não desenhou pixels em ${nome} (${sel}): apenas ${cores} cor(es) no recorte`);
+  }
+});
+
+await checar('ícones são decorativos (invisíveis para leitores de tela)', async () => {
+  // Pseudo-elementos não entram na árvore de acessibilidade. Garantimos que ninguém
+  // trocou por <img>/<svg> sem texto alternativo, o que criaria ruído ou perda de info.
+  const r = await page.evaluate(() => ({
+    imgs: document.querySelectorAll('img').length,
+    svgSemTitulo: [...document.querySelectorAll('svg')].filter(
+      s => !s.getAttribute('aria-label') && !s.querySelector('title') && s.getAttribute('aria-hidden') !== 'true'
+    ).length,
+  }));
+  igual(r.imgs, 0, '<img> na página (ícones devem ser CSS)');
+  igual(r.svgSemTitulo, 0, '<svg> sem rótulo nem aria-hidden');
+});
+
+await checar('texto permanece legível sem os ícones (não há dependência visual)', async () => {
+  // Se um ícone fosse a única fonte de informação, remover as máscaras perderia dados.
+  const r = await page.evaluate(() => {
+    const linha = document.querySelector('tbody tr');
+    const celulas = [...linha.querySelectorAll('th,td')].map(c => c.textContent.trim());
+    return { celulas, vazias: celulas.filter(t => t.length === 0).length };
+  });
+  igual(r.vazias, 0, `células sem texto próprio (${JSON.stringify(r.celulas)})`);
 });
 
 await checar('console sem erros', async () => {

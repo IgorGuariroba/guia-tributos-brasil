@@ -21,7 +21,7 @@ fi
 
 # Valida que o HTML tem os landmarks essenciais (falha barata e instantânea).
 if [ -f public/index.html ]; then
-  for tag in "<main" "<caption" 'role="search"' 'aria-live'; do
+  for tag in "<main" "<caption" 'role="search"' 'aria-live' 'data-icone'; do
     if ! grep -q "$tag" public/index.html; then
       echo "✗ public/index.html perdeu marcação essencial: $tag"
       exit 1

@@ -21,8 +21,9 @@ ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
 | Lighthouse — SEO | **100** |
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
 | Semantic HTML Score | **100/100 (A)** |
-| Testes funcionais | **12/12** |
+| Testes funcionais | **16/16** |
 | Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
+| Nós no DOM | **894** (limite 1200) |
 | Requisições a terceiros | **0** (fontes auto-hospedadas) |
 | Peso total | ~78 KB |
 
@@ -53,11 +54,13 @@ npm run gate:lighthouse    # somente Lighthouse CI
 
 ### Gate 1 · Funcional (`audit/functional-gate.mjs`)
 
-12 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
+16 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
 carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
 reset do formulário, filtro por `<select>`, **ordenação acionável por teclado** com `aria-sort`
 exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas),
-`<abbr title>` em todas as siglas, zero recursos externos e console sem erros.
+`<abbr title>` em todas as siglas, zero recursos externos, console sem erros e quatro
+asserções sobre os ícones (renderização real de pixels, mapeamento completo, natureza
+decorativa e independência do texto em relação a eles).
 
 ### Gate 2 · Responsividade (`audit/responsive-gate.mjs`)
 
@@ -149,6 +152,40 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
 - **pre-push** — executa os 5 gates. Escape de emergência: `SKIP_GATES=1 git push`
   (deve ser justificado no PR).
 
+## Sistema de ícones
+
+**Lucide** (ISC) — 37 ícones escolhidos por conceito do domínio, embutidos como CSS
+por `audit/gen-icons.mjs`. O objetivo é reduzir carga cognitiva: a coluna Esfera passa a
+ser reconhecível por bandeira/mapa/prédio e o Status por ícone + cor, sem precisar ler o texto.
+
+### Por que `mask-image` em `::before` e não `<svg>` inline ou `<img>`
+
+| Critério | `<svg>` inline | `<img>` | **`mask-image` em `::before`** |
+|---|---|---|---|
+| Nós no DOM | +5 a +8 por ícone (~1.500 total) | +1 por ícone (+253) | **0** |
+| Requisições | 0 | +37 | **0** |
+| Herda cor do texto | sim | não | **sim** (`background-color`) |
+| Ruído em leitor de tela | precisa `aria-hidden` | precisa `alt=""` | **impossível** (pseudo-elemento) |
+
+O ponto decisivo foi o DOM: a tabela de 78×7 já usava **972 dos 1200 nós** permitidos pelo
+gate de Lighthouse. Com `<svg>` inline em cada linha o limite seria estourado. Com esta
+abordagem o DOM até **diminuiu para 894** — os `<span class="badge">` da coluna Tipo
+viraram desnecessários.
+
+### Regeneração
+
+```bash
+node audit/gen-icons.mjs > /tmp/icons.css   # ajuste o mapa ICONES no script
+```
+
+### Acessibilidade dos ícones
+
+São **estritamente redundantes** com o texto: nenhum ícone é a única fonte de informação.
+Três testes do gate funcional garantem isso — que todo ícone **desenha pixels de verdade**
+(comparando cores num recorte da tela, o que pega data-URI corrompido), que **não há `<img>`
+nem `<svg>` sem rótulo**, e que **toda célula mantém texto próprio**. axe-core continua com
+0 violações e o Semantic Score em 100.
+
 ## Decisões de implementação
 
 - **Fontes auto-hospedadas** (`public/fonts/`, 168 KB, subsets latin + latin-ext): elimina
@@ -177,6 +214,7 @@ public/              # o que vai para o GitHub Pages
   fonts/             # 10 arquivos woff2 auto-hospedados
 audit/
   run-gates.mjs      # orquestrador: sobe servidor e roda os 5 gates
+  gen-icons.mjs      # gera o CSS de ícones a partir do lucide-static
   functional-gate.mjs
   responsive-gate.mjs
   axe-gate.mjs

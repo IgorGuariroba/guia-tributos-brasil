@@ -103,34 +103,146 @@ footer p{margin:0 0 10px}footer p:last-child{margin:0}
 @media(max-width:1000px){.filters{position:static}.table-wrap{scroll-margin-top:12px;max-height:none}}
 @media(max-width:600px){.container{padding:14px}.cards{grid-template-columns:1fr}.filter-grid{grid-template-columns:1fr}.actions button{width:100%}}
 @media(max-width:360px){.container{padding:10px}header{padding:16px 14px}.notice{border-left-width:8px}}
+/* Ícones: Lucide v1.31.0 (ISC) — embutidos como mask-image em ::before.
+   Zero nós no DOM, zero requisições, cor herdada via background-color.
+   Gerado por audit/gen-icons.mjs — não edite à mão. */
+[data-icone="imposto"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M10%2018v-7%22%2F%3E%3Cpath%20d%3D%22M11.119%202.205a2%202%200%200%201%201.762%200l7.84%203.846A.5.5%200%200%201%2020.5%207h-17a.5.5%200%200%201-.22-.949z%22%2F%3E%3Cpath%20d%3D%22M14%2018v-7%22%2F%3E%3Cpath%20d%3D%22M18%2018v-7%22%2F%3E%3Cpath%20d%3D%22M3%2022h18%22%2F%3E%3Cpath%20d%3D%22M6%2018v-7%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="taxa"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M14%2013V8.5C14%207%2015%207%2015%205a3%203%200%200%200-6%200c0%202%201%202%201%203.5V13%22%2F%3E%3Cpath%20d%3D%22M20%2015.5a2.5%202.5%200%200%200-2.5-2.5h-11A2.5%202.5%200%200%200%204%2015.5V17a1%201%200%200%200%201%201h14a1%201%200%200%200%201-1z%22%2F%3E%3Cpath%20d%3D%22M5%2022h14%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="contribuicao"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M16%2021v-2a4%204%200%200%200-4-4H6a4%204%200%200%200-4%204v2%22%2F%3E%3Cpath%20d%3D%22M16%203.128a4%204%200%200%201%200%207.744%22%2F%3E%3Cpath%20d%3D%22M22%2021v-2a4%204%200%200%200-3-3.87%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%227%22%20r%3D%224%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="contribuicao-terceiros"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M21.42%2010.922a1%201%200%200%200-.019-1.838L12.83%205.18a2%202%200%200%200-1.66%200L2.6%209.08a1%201%200%200%200%200%201.832l8.57%203.908a2%202%200%200%200%201.66%200z%22%2F%3E%3Cpath%20d%3D%22M22%2010v6%22%2F%3E%3Cpath%20d%3D%22M6%2012.5V16a6%203%200%200%200%2012%200v-3.5%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="compensacao"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%203v18%22%2F%3E%3Cpath%20d%3D%22m19%208%203%208a5%205%200%200%201-6%200zV7%22%2F%3E%3Cpath%20d%3D%22M3%207h1a17%2017%200%200%200%208-2%2017%2017%200%200%200%208%202h1%22%2F%3E%3Cpath%20d%3D%22m5%208%203%208a5%205%200%200%201-6%200zV7%22%2F%3E%3Cpath%20d%3D%22M7%2021h10%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="regime"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M14%2017H5%22%2F%3E%3Cpath%20d%3D%22M19%207h-9%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2217%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%227%22%20cy%3D%227%22%20r%3D%223%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="documento"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%2017V7%22%2F%3E%3Cpath%20d%3D%22M16%208h-6a2%202%200%200%200%200%204h4a2%202%200%200%201%200%204H8%22%2F%3E%3Cpath%20d%3D%22M4%203a1%201%200%200%201%201-1%201.3%201.3%200%200%201%20.7.2l.933.6a1.3%201.3%200%200%200%201.4%200l.934-.6a1.3%201.3%200%200%201%201.4%200l.933.6a1.3%201.3%200%200%200%201.4%200l.933-.6a1.3%201.3%200%200%201%201.4%200l.934.6a1.3%201.3%200%200%200%201.4%200l.933-.6A1.3%201.3%200%200%201%2019%202a1%201%200%200%201%201%201v18a1%201%200%200%201-1%201%201.3%201.3%200%200%201-.7-.2l-.933-.6a1.3%201.3%200%200%200-1.4%200l-.934.6a1.3%201.3%200%200%201-1.4%200l-.933-.6a1.3%201.3%200%200%200-1.4%200l-.933.6a1.3%201.3%200%200%201-1.4%200l-.934-.6a1.3%201.3%200%200%200-1.4%200l-.933.6a1.3%201.3%200%200%201-.7.2%201%201%200%200%201-1-1z%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="fundo"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M11%2017h3v2a1%201%200%200%200%201%201h2a1%201%200%200%200%201-1v-3a3.16%203.16%200%200%200%202-2h1a1%201%200%200%200%201-1v-2a1%201%200%200%200-1-1h-1a5%205%200%200%200-2-4V3a4%204%200%200%200-3.2%201.6l-.3.4H11a6%206%200%200%200-6%206v1a5%205%200%200%200%202%204v3a1%201%200%200%200%201%201h2a1%201%200%200%200%201-1z%22%2F%3E%3Cpath%20d%3D%22M16%2010h.01%22%2F%3E%3Cpath%20d%3D%22M2%208v1a2%202%200%200%200%202%202h1%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="encargo-trabalhista"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M16%2020V4a2%202%200%200%200-2-2h-4a2%202%200%200%200-2%202v16%22%2F%3E%3Crect%20width%3D%2220%22%20height%3D%2214%22%20x%3D%222%22%20y%3D%226%22%20rx%3D%222%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="fator"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Crect%20width%3D%2216%22%20height%3D%2220%22%20x%3D%224%22%20y%3D%222%22%20rx%3D%222%22%2F%3E%3Cline%20x1%3D%228%22%20x2%3D%2216%22%20y1%3D%226%22%20y2%3D%226%22%2F%3E%3Cline%20x1%3D%2216%22%20x2%3D%2216%22%20y1%3D%2214%22%20y2%3D%2218%22%2F%3E%3Cpath%20d%3D%22M16%2010h.01%22%2F%3E%3Cpath%20d%3D%22M12%2010h.01%22%2F%3E%3Cpath%20d%3D%22M8%2010h.01%22%2F%3E%3Cpath%20d%3D%22M12%2014h.01%22%2F%3E%3Cpath%20d%3D%22M8%2014h.01%22%2F%3E%3Cpath%20d%3D%22M12%2018h.01%22%2F%3E%3Cpath%20d%3D%22M8%2018h.01%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="ferramenta"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M14.7%206.3a1%201%200%200%200%200%201.4l1.6%201.6a1%201%200%200%200%201.4%200l3.106-3.105c.32-.322.863-.22.983.218a6%206%200%200%201-8.259%207.057l-7.91%207.91a1%201%200%200%201-2.999-3l7.91-7.91a6%206%200%200%201%207.057-8.259c.438.12.54.662.219.984z%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="mecanismo"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m17%202%204%204-4%204%22%2F%3E%3Cpath%20d%3D%22M3%2011v-1a4%204%200%200%201%204-4h14%22%2F%3E%3Cpath%20d%3D%22m7%2022-4-4%204-4%22%2F%3E%3Cpath%20d%3D%22M21%2013v1a4%204%200%200%201-4%204H3%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="federal"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M4%2022V4a1%201%200%200%201%20.4-.8A6%206%200%200%201%208%202c3%200%205%202%207.333%202q2%200%203.067-.8A1%201%200%200%201%2020%204v10a1%201%200%200%201-.4.8A6%206%200%200%201%2016%2016c-3%200-5-2-8-2a6%206%200%200%200-4%201.528%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="estadual"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M14.106%205.553a2%202%200%200%200%201.788%200l3.659-1.83A1%201%200%200%201%2021%204.619v12.764a1%201%200%200%201-.553.894l-4.553%202.277a2%202%200%200%201-1.788%200l-4.212-2.106a2%202%200%200%200-1.788%200l-3.659%201.83A1%201%200%200%201%203%2019.381V6.618a1%201%200%200%201%20.553-.894l4.553-2.277a2%202%200%200%201%201.788%200z%22%2F%3E%3Cpath%20d%3D%22M15%205.764v15%22%2F%3E%3Cpath%20d%3D%22M9%203.236v15%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="municipal"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M10%2012h4%22%2F%3E%3Cpath%20d%3D%22M10%208h4%22%2F%3E%3Cpath%20d%3D%22M14%2021v-3a2%202%200%200%200-4%200v3%22%2F%3E%3Cpath%20d%3D%22M6%2010H4a2%202%200%200%200-2%202v7a2%202%200%200%200%202%202h16a2%202%200%200%200%202-2V9a2%202%200%200%200-2-2h-2%22%2F%3E%3Cpath%20d%3D%22M6%2021V5a2%202%200%200%201%202-2h8a2%202%200%200%201%202%202v16%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="compartilhado"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Crect%20x%3D%2216%22%20y%3D%2216%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%2216%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%222%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22%2F%3E%3Cpath%20d%3D%22M5%2016v-3a1%201%200%200%201%201-1h12a1%201%200%200%201%201%201v3%22%2F%3E%3Cpath%20d%3D%22M12%2012V8%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="vigente"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%3Cpath%20d%3D%22m9%2012%202%202%204-4%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="transicao"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m16%203%204%204-4%204%22%2F%3E%3Cpath%20d%3D%22M20%207H4%22%2F%3E%3Cpath%20d%3D%22m8%2021-4-4%204-4%22%2F%3E%3Cpath%20d%3D%22M4%2017h16%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="implementacao"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%2015v5s3.03-.55%204-2c1.08-1.62%200-5%200-5%22%2F%3E%3Cpath%20d%3D%22M4.5%2016.5c-1.5%201.26-2%205-2%205s3.74-.5%205-2c.71-.84.7-2.13-.09-2.91a2.18%202.18%200%200%200-2.91-.09%22%2F%3E%3Cpath%20d%3D%22M9%2012a22%2022%200%200%201%202-3.95A12.88%2012.88%200%200%201%2022%202c0%202.72-.78%207.5-6%2011a22.4%2022.4%200%200%201-4%202z%22%2F%3E%3Cpath%20d%3D%22M9%2012H4s.55-3.03%202-4c1.62-1.08%205%20.05%205%20.05%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="nao-instituido"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m2%202%2020%2020%22%2F%3E%3Cpath%20d%3D%22M8.35%202.69A10%2010%200%200%201%2021.3%2015.65%22%2F%3E%3Cpath%20d%3D%22M19.08%2019.08A10%2010%200%201%201%204.92%204.92%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="varia"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M20%2010c0%204.993-5.539%2010.193-7.399%2011.799a1%201%200%200%201-1.202%200C9.539%2020.193%204%2014.993%204%2010a8%208%200%200%201%2016%200%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%223%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="historico"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M3%2012a9%209%200%201%200%209-9%209.75%209.75%200%200%200-6.74%202.74L3%208%22%2F%3E%3Cpath%20d%3D%22M3%203v5h5%22%2F%3E%3Cpath%20d%3D%22M12%207v5l4%202%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="busca"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m21%2021-4.34-4.34%22%2F%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="limpar"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M21%2021H8a2%202%200%200%201-1.42-.587l-3.994-3.999a2%202%200%200%201%200-2.828l10-10a2%202%200%200%201%202.829%200l5.999%206a2%202%200%200%201%200%202.828L12.834%2021%22%2F%3E%3Cpath%20d%3D%22m5.082%2011.09%208.828%208.828%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="csv"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%2015V3%22%2F%3E%3Cpath%20d%3D%22M21%2015v4a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2v-4%22%2F%3E%3Cpath%20d%3D%22m7%2010%205%205%205-5%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="aviso"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m21.73%2018-8-14a2%202%200%200%200-3.48%200l-8%2014A2%202%200%200%200%204%2021h16a2%202%200%200%200%201.73-3%22%2F%3E%3Cpath%20d%3D%22M12%209v4%22%2F%3E%3Cpath%20d%3D%22M12%2017h.01%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="info"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%3Cpath%20d%3D%22M12%2016v-4%22%2F%3E%3Cpath%20d%3D%22M12%208h.01%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="lista"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M3%205h.01%22%2F%3E%3Cpath%20d%3D%22M3%2012h.01%22%2F%3E%3Cpath%20d%3D%22M3%2019h.01%22%2F%3E%3Cpath%20d%3D%22M8%205h13%22%2F%3E%3Cpath%20d%3D%22M8%2012h13%22%2F%3E%3Cpath%20d%3D%22M8%2019h13%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="ordenar"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m7%2015%205%205%205-5%22%2F%3E%3Cpath%20d%3D%22m7%209%205-5%205%205%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="ordenar-asc"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m5%2012%207-7%207%207%22%2F%3E%3Cpath%20d%3D%22M12%2019V5%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="ordenar-desc"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%205v14%22%2F%3E%3Cpath%20d%3D%22m19%2012-7%207-7-7%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="vazio"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m13.5%208.5-5%205%22%2F%3E%3Cpath%20d%3D%22m8.5%208.5%205%205%22%2F%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%2F%3E%3Cpath%20d%3D%22m21%2021-4.3-4.3%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="atalho"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M21%204v16%22%2F%3E%3Cpath%20d%3D%22M6.029%204.285A2%202%200%200%200%203%206v12a2%202%200%200%200%203.029%201.715l9.997-5.998a2%202%200%200%200%20.003-3.432z%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="atualizacao"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M16%2014v2.2l1.6%201%22%2F%3E%3Cpath%20d%3D%22M16%202v3%22%2F%3E%3Cpath%20d%3D%22M21%207.338V5a2%202%200%2000-2-2H5a2%202%200%2000-2%202v14a2%202%200%20002%202h2.338%22%2F%3E%3Cpath%20d%3D%22M3%209h5.859%22%2F%3E%3Cpath%20d%3D%22M8%202v3%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%226%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="reforma"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M15%2012h-5%22%2F%3E%3Cpath%20d%3D%22M15%208h-5%22%2F%3E%3Cpath%20d%3D%22M19%2017V5a2%202%200%200%200-2-2H4%22%2F%3E%3Cpath%20d%3D%22M8%2021h12a2%202%200%200%200%202-2v-1a1%201%200%200%200-1-1H11a1%201%200%200%200-1%201v1a2%202%200%201%201-4%200V5a2%202%200%201%200-4%200v2a1%201%200%200%200%201%201h3%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="fonte"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%205v16%22%2F%3E%3Cpath%20d%3D%22M20.001%2019A2%202%200%200022%2017V5a2%202%200%2000-1.999-2L16%203.002A5%205%200%200012%205a5%205%200%2000-4-2H4a2%202%200%2000-2%202v12a2%202%200%20001.999%202H8a5%205%200%20014%202%205%205%200%20014-2z%22%2F%3E%3C%2Fsvg%3E")}
+[data-icone="contador"]::before{--icone:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cline%20x1%3D%224%22%20x2%3D%2220%22%20y1%3D%229%22%20y2%3D%229%22%2F%3E%3Cline%20x1%3D%224%22%20x2%3D%2220%22%20y1%3D%2215%22%20y2%3D%2215%22%2F%3E%3Cline%20x1%3D%2210%22%20x2%3D%228%22%20y1%3D%223%22%20y2%3D%2221%22%2F%3E%3Cline%20x1%3D%2216%22%20x2%3D%2214%22%20y1%3D%223%22%20y2%3D%2221%22%2F%3E%3C%2Fsvg%3E")}
+/* ===== Sistema de ícones =====
+   Aplicados via [data-icone] em ::before. Decorativos por definição:
+   pseudo-elementos não entram na árvore de acessibilidade, então o texto
+   adjacente continua sendo a única fonte de informação para leitores de tela. */
+[data-icone]::before{
+  content:"";display:inline-block;flex:none;
+  width:var(--icone-tam,1em);height:var(--icone-tam,1em);
+  background-color:currentColor;
+  -webkit-mask:var(--icone) center/contain no-repeat;
+  mask:var(--icone) center/contain no-repeat;
+  vertical-align:-.125em;
+}
+/* Alinhamento por contexto */
+.card h2[data-icone],.legend h2[data-icone],
+.stats [data-icone],.actions button[data-icone],.th-btn[data-icone],
+footer p[data-icone],.legend li[data-icone],.empty[data-icone],.skip-link[data-icone]{
+  display:flex;align-items:center;gap:.5em;
+}
+.legend li[data-icone]{display:list-item}
+.legend li[data-icone]::before{margin-right:.4em;vertical-align:-.15em}
+/* O aviso mantém fluxo de texto inline (o conteúdo é um parágrafo com <strong>),
+   então o ícone é inline em vez de item flex — flex/grid quebrariam o texto em colunas. */
+.notice[data-icone]{display:block}
+.notice[data-icone]::before{--icone-tam:1.2em;margin-right:.5em;vertical-align:-.2em;background-color:var(--danger-text)}
+.card h2[data-icone]::before{--icone-tam:1.15em}
+footer p[data-icone]{display:block}
+footer p[data-icone]::before{margin-right:.45em;vertical-align:-.15em}
+
+/* Ícone de tipo na célula da tabela: substitui a leitura do texto por reconhecimento visual */
+td[data-icone]{white-space:nowrap}
+td[data-icone]::before{--icone-tam:1.05em;margin-right:.5em;vertical-align:-.18em;opacity:.9}
+/* Esfera e status ganham marcador próprio */
+td[data-icone-esfera]::before,td[data-icone-status]::before{
+  content:"";display:inline-block;width:1em;height:1em;background-color:currentColor;
+  margin-right:.4em;vertical-align:-.15em;
+  -webkit-mask:var(--icone) center/contain no-repeat;mask:var(--icone) center/contain no-repeat;
+}
+.status-active::before{color:var(--ok-text)}
+.status-transition::before{color:var(--danger-text)}
+
+/* Indicador de ordenação: ícone em vez de caracteres ▲▼ */
+.sort-ind{display:inline-block;width:1em;height:1em;background-color:currentColor;opacity:.55;
+  -webkit-mask:var(--icone-ordenar) center/contain no-repeat;mask:var(--icone-ordenar) center/contain no-repeat}
+th[aria-sort=ascending] .sort-ind{opacity:1;--icone-ordenar:var(--icone-asc)}
+th[aria-sort=descending] .sort-ind{opacity:1;--icone-ordenar:var(--icone-desc)}
+th[aria-sort=none] .sort-ind,th:not([aria-sort]) .sort-ind{--icone-ordenar:var(--icone-neutro)}
+th[aria-sort=ascending] .sort-ind::after,th[aria-sort=descending] .sort-ind::after,
+th[aria-sort=none] .sort-ind::after{content:none}
+
+
+/* Variáveis globais para ícones usados fora do padrão [data-icone] */
+:root{
+  --icone-busca:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m21%2021-4.34-4.34%22%2F%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%2F%3E%3C%2Fsvg%3E");
+  --icone-neutro:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m7%2015%205%205%205-5%22%2F%3E%3Cpath%20d%3D%22m7%209%205-5%205%205%22%2F%3E%3C%2Fsvg%3E");
+  --icone-asc:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m5%2012%207-7%207%207%22%2F%3E%3Cpath%20d%3D%22M12%2019V5%22%2F%3E%3C%2Fsvg%3E");
+  --icone-desc:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%205v14%22%2F%3E%3Cpath%20d%3D%22m19%2012-7%207-7-7%22%2F%3E%3C%2Fsvg%3E");
+}
+/* Coluna Tipo: badge com ícone, mantendo a tarja brutalista */
+td[data-icone]{white-space:normal}
+td[data-icone]::before{--icone-tam:1em}
+
+/* Campo de busca com ícone */
+.field-busca{position:relative;display:block}
+.field-busca::before{
+  content:"";position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  width:1.05em;height:1.05em;background-color:#444;pointer-events:none;z-index:1;
+  -webkit-mask:var(--icone-busca) center/contain no-repeat;mask:var(--icone-busca) center/contain no-repeat;
+}
+.field-busca input{padding-left:2.9em}
+.empty[data-icone]{justify-content:center}
+.empty[data-icone]::before{--icone-tam:1.4em}
+.empty:empty::before{display:none}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#resultados">Ir para a tabela de resultados</a>
+<a class="skip-link" href="#resultados" data-icone="atalho">Ir para a tabela de resultados</a>
 <main class="container">
   <header>
     <h1>Tributos, contribuições, taxas e encargos no Brasil</h1>
     <p class="subtitle">Guia pesquisável de siglas e nomes usados no sistema tributário, trabalhista, regulatório e financeiro brasileiro. Use os filtros para localizar rapidamente um item por contexto, esfera, natureza ou status.</p>
   </header>
 
-  <div class="notice"><strong>Importante:</strong> “encargo” é uma categoria prática, não uma espécie tributária constitucional equivalente a “imposto” ou “taxa”. Também incluí guias, regimes e mecanismos muito confundidos com tributos — eles estão identificados corretamente na coluna <strong>Tipo/Natureza</strong>.</div>
+  <div class="notice" data-icone="aviso"><strong>Importante:</strong> “encargo” é uma categoria prática, não uma espécie tributária constitucional equivalente a “imposto” ou “taxa”. Também incluí guias, regimes e mecanismos muito confundidos com tributos — eles estão identificados corretamente na coluna <strong>Tipo/Natureza</strong>.</div>
 
   <section class="cards">
-    <article class="card"><h2>Imposto</h2><p>Tributo cuja cobrança não depende de uma contraprestação estatal específica diretamente ligada ao contribuinte. Exemplos: IRPF, ICMS, IPTU e IPVA.</p></article>
-    <article class="card"><h2>Taxa</h2><p>Tributo ligado ao exercício do poder de polícia ou à utilização, efetiva ou potencial, de serviço público específico e divisível prestado ou colocado à disposição do contribuinte.</p></article>
-    <article class="card"><h2>Contribuição</h2><p>Tributo normalmente vinculado a uma finalidade constitucional específica, como seguridade social, intervenção no domínio econômico ou interesse de categorias, além da iluminação pública.</p></article>
-    <article class="card"><h2>Encargo</h2><p>Expressão ampla de uso contábil/trabalhista para obrigações que aumentam o custo de uma relação ou atividade. Pode incluir valores que não são tributos, como o FGTS.</p></article>
+    <article class="card"><h2 data-icone="imposto">Imposto</h2><p>Tributo cuja cobrança não depende de uma contraprestação estatal específica diretamente ligada ao contribuinte. Exemplos: IRPF, ICMS, IPTU e IPVA.</p></article>
+    <article class="card"><h2 data-icone="taxa">Taxa</h2><p>Tributo ligado ao exercício do poder de polícia ou à utilização, efetiva ou potencial, de serviço público específico e divisível prestado ou colocado à disposição do contribuinte.</p></article>
+    <article class="card"><h2 data-icone="contribuicao">Contribuição</h2><p>Tributo normalmente vinculado a uma finalidade constitucional específica, como seguridade social, intervenção no domínio econômico ou interesse de categorias, além da iluminação pública.</p></article>
+    <article class="card"><h2 data-icone="encargo-trabalhista">Encargo</h2><p>Expressão ampla de uso contábil/trabalhista para obrigações que aumentam o custo de uma relação ou atividade. Pode incluir valores que não são tributos, como o FGTS.</p></article>
   </section>
 
   <section class="legend">
-    <h2>Outras categorias importantes</h2>
+    <h2 data-icone="lista">Outras categorias importantes</h2>
     <ul>
-      <li><strong>Contribuição de melhoria:</strong> tributo que pode decorrer de obra pública que valorize imóvel.</li>
-      <li><strong>Empréstimo compulsório:</strong> tributo excepcional que somente a União pode instituir nas hipóteses constitucionais.</li>
-      <li><strong>Compensação financeira:</strong> receita como CFEM/CFURH; não deve ser chamada automaticamente de imposto.</li>
-      <li><strong>Regime tributário:</strong> conjunto de regras de apuração/recolhimento, como Simples Nacional e RET.</li>
-      <li><strong>Documento de arrecadação:</strong> guia usada para pagar obrigações, como DARF e DAS; não é tributo.</li>
-      <li><strong>Mecanismo de tributação:</strong> forma de recolher/apurar tributo, como o “come-cotas”.</li>
+      <li data-icone="compensacao"><strong>Contribuição de melhoria:</strong> tributo que pode decorrer de obra pública que valorize imóvel.</li>
+      <li data-icone="imposto"><strong>Empréstimo compulsório:</strong> tributo excepcional que somente a União pode instituir nas hipóteses constitucionais.</li>
+      <li data-icone="compensacao"><strong>Compensação financeira:</strong> receita como CFEM/CFURH; não deve ser chamada automaticamente de imposto.</li>
+      <li data-icone="regime"><strong>Regime tributário:</strong> conjunto de regras de apuração/recolhimento, como Simples Nacional e RET.</li>
+      <li data-icone="documento"><strong>Documento de arrecadação:</strong> guia usada para pagar obrigações, como DARF e DAS; não é tributo.</li>
+      <li data-icone="mecanismo"><strong>Mecanismo de tributação:</strong> forma de recolher/apurar tributo, como o “come-cotas”.</li>
     </ul>
   </section>
 
@@ -139,7 +251,7 @@ footer p{margin:0 0 10px}footer p:last-child{margin:0}
       <fieldset>
         <legend class="visually-hidden">Filtros de pesquisa</legend>
         <div class="filter-grid">
-          <p class="field"><label class="visually-hidden" for="search">Pesquisar sigla, nome, descrição ou contexto</label>
+          <p class="field field-busca"><label class="visually-hidden" for="search">Pesquisar sigla, nome, descrição ou contexto</label>
           <input id="search" class="search" type="search" placeholder="Pesquisar sigla, nome, descrição ou contexto…"></p>
           <p class="field"><label class="visually-hidden" for="tipo">Filtrar por tipo ou natureza</label>
           <select id="tipo"><option value="">Todos os tipos</option></select></p>
@@ -152,8 +264,8 @@ footer p{margin:0 0 10px}footer p:last-child{margin:0}
         </div>
       </fieldset>
       <div class="actions">
-        <button id="reset" type="reset">Limpar filtros</button>
-        <button id="csv" type="button" class="primary">Exportar resultado para CSV</button>
+        <button id="reset" type="reset" data-icone="limpar">Limpar filtros</button>
+        <button id="csv" type="button" class="primary" data-icone="csv">Exportar resultado para CSV</button>
       </div>
     </form>
     <p class="stats"><output id="count" for="search tipo esfera contexto status" aria-live="polite"></output><span aria-hidden="true">•</span><span>Use os botões nos títulos das colunas para ordenar.</span></p>
@@ -173,13 +285,13 @@ footer p{margin:0 0 10px}footer p:last-child{margin:0}
       </tr></thead>
       <tbody id="tbody"></tbody>
     </table>
-    <p id="empty" class="empty" role="status"></p>
+    <p id="empty" class="empty" role="status" data-icone="vazio"></p>
   </div>
 
   <footer>
-    <p><strong>Atualização:</strong> <time datetime="2026-08">agosto de 2026</time>. A lista reúne os principais tributos e siglas de uso nacional e várias denominações setoriais/locais conhecidas. Não existe uma lista única e finita de todas as siglas de taxas municipais e estaduais: nomes e siglas podem variar por ente federativo.</p>
-    <p><strong>Reforma Tributária:</strong> CBS, IBS e IS foram instituídos pela LC 214/2025. Em 2026 começou a implementação operacional da CBS e do IBS; ICMS, ISS, PIS/Pasep e Cofins estão sujeitos ao cronograma de transição definido pela Reforma Tributária.</p>
-    <p><strong>Fontes normativas e institucionais:</strong> Constituição Federal (arts. 145, 148, 149 e 149-A), Código Tributário Nacional — Lei 5.172/1966, EC 132/2023, LC 214/2025, LC 227/2026 e Receita Federal — páginas “Tributos” e “Reforma Tributária do Consumo”. Este material é informativo e não substitui análise da legislação específica do ente ou da operação.</p>
+    <p data-icone="atualizacao"><strong>Atualização:</strong> <time datetime="2026-08">agosto de 2026</time>. A lista reúne os principais tributos e siglas de uso nacional e várias denominações setoriais/locais conhecidas. Não existe uma lista única e finita de todas as siglas de taxas municipais e estaduais: nomes e siglas podem variar por ente federativo.</p>
+    <p data-icone="reforma"><strong>Reforma Tributária:</strong> CBS, IBS e IS foram instituídos pela LC 214/2025. Em 2026 começou a implementação operacional da CBS e do IBS; ICMS, ISS, PIS/Pasep e Cofins estão sujeitos ao cronograma de transição definido pela Reforma Tributária.</p>
+    <p data-icone="fonte"><strong>Fontes normativas e institucionais:</strong> Constituição Federal (arts. 145, 148, 149 e 149-A), Código Tributário Nacional — Lei 5.172/1966, EC 132/2023, LC 214/2025, LC 227/2026 e Receita Federal — páginas “Tributos” e “Reforma Tributária do Consumo”. Este material é informativo e não substitui análise da legislação específica do ente ou da operação.</p>
   </footer>
 </main>
 
@@ -188,6 +300,40 @@ const DATA = [{"sigla": "IRPF", "nome": "Imposto sobre a Renda da Pessoa Física
 let filtered = [...DATA];
 let sortKey = "sigla";
 let sortAsc = true;
+
+/* Mapeia valores do domínio para chaves de ícone (definidas no CSS via [data-icone]).
+   Os ícones são redundantes com o texto: reduzem a carga de leitura sem substituir
+   a informação, mantendo a página compreensível sem CSS ou em alto contraste. */
+const ICONE_TIPO = [
+  [/contribuição para terceiros|sistema s/i, "contribuicao-terceiros"],
+  [/^imposto/i, "imposto"],
+  [/^taxa/i, "taxa"],
+  [/^contribuição/i, "contribuicao"],
+  [/compensação/i, "compensacao"],
+  [/regime/i, "regime"],
+  [/documento/i, "documento"],
+  [/fundo/i, "fundo"],
+  [/encargo trabalhista/i, "encargo-trabalhista"],
+  [/encargo/i, "contribuicao-terceiros"],
+  [/fator/i, "fator"],
+  [/ferramenta/i, "ferramenta"],
+  [/mecanismo/i, "mecanismo"],
+];
+const ICONE_ESFERA = [
+  [/estadual \+ municipal|compartilhado/i, "compartilhado"],
+  [/municipal/i, "municipal"],
+  [/estadual/i, "estadual"],
+  [/federal/i, "federal"],
+];
+const ICONE_STATUS = [
+  [/transição/i, "transicao"],
+  [/implementação/i, "implementacao"],
+  [/não instalado|não instituído/i, "nao-instituido"],
+  [/varia por/i, "varia"],
+  [/histórica|histórico/i, "historico"],
+  [/vigente/i, "vigente"],
+];
+const iconePara = (mapa, valor) => (mapa.find(([re]) => re.test(valor ?? "")) || [, ""])[1];
 
 const $ = id => document.getElementById(id);
 const normalize = s => (s ?? "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
@@ -224,11 +370,11 @@ function render(){
   $("tbody").innerHTML=filtered.map(x=>`<tr>
     <th scope="row" class="sigla"><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></th>
     <td>${esc(x.nome)}</td>
-    <td><span class="badge tipo">${esc(x.tipo)}</span></td>
-    <td>${esc(x.esfera)}</td>
+    <td data-icone="${iconePara(ICONE_TIPO,x.tipo)}">${esc(x.tipo)}</td>
+    <td data-icone="${iconePara(ICONE_ESFERA,x.esfera)}">${esc(x.esfera)}</td>
     <td>${esc(x.contexto)}</td>
     <td>${esc(x.descricao)}</td>
-    <td class="${/transi|implement/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}</td>
+    <td data-icone="${iconePara(ICONE_STATUS,x.status)}" class="${/transi|implement/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}</td>
   </tr>`).join("");
   $("count").textContent=`${filtered.length} de ${DATA.length} itens exibidos`;
   $("empty").textContent=filtered.length?"":"Nenhum item corresponde aos filtros selecionados.";
