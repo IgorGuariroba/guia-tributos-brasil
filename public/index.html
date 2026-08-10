@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guia pesquisável de tributos, contribuições, taxas e encargos do Brasil: 78 siglas com tipo, esfera, contexto e status na Reforma Tributária.">
+<title>Guia de Tributos, Contribuições, Taxas e Encargos do Brasil</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/ArchivoBlack-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/IBMPlexMono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Fontes auto-hospedadas: elimina render-blocking de fonts.googleapis.com */
+@font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ArchivoBlack-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ArchivoBlack-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/IBMPlexMono-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/IBMPlexMono-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/IBMPlexMono-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/IBMPlexMono-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/IBMPlexMono-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/IBMPlexMono-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/IBMPlexMono-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/IBMPlexMono-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+</style>
+<style>
+:root{
+  --bg:#f2efe4;--card:#fff;--ink:#000;--text:#000;--muted:#3d3d3d;
+  --accent:#ffe100;--accent2:#0037ff;--danger:#ff3b00;
+  /* tokens de TEXTO: contraste >=4.5:1 sobre branco, zebra (#faf8f0) e hover amarelo (#ffe100) */
+  --ok-text:#006630;--danger-text:#b02500;
+  --b:3px solid #000;--shadow:6px 6px 0 #000;--shadow-sm:4px 4px 0 #000;
+  --display:"Archivo Black","Arial Black",Impact,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scrollbar-color:#000 var(--bg)}
+body{
+  margin:0;font-family:var(--mono);background:var(--bg);color:var(--text);line-height:1.45;
+  background-image:linear-gradient(#00000010 1px,transparent 1px),linear-gradient(90deg,#00000010 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.container{max-width:1500px;margin:auto;padding:28px}
+.visually-hidden{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:99;background:var(--ink);color:var(--accent);font-family:var(--display);text-transform:uppercase;padding:12px 18px;border:var(--b);text-decoration:none}
+.skip-link:focus{left:8px;top:8px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+header{border:var(--b);background:var(--accent);box-shadow:var(--shadow);padding:22px 24px;margin-bottom:22px}
+h1{font-family:var(--display);font-size:clamp(30px,5vw,62px);margin:0 0 12px;letter-spacing:-.02em;line-height:1.02;text-transform:uppercase}
+.subtitle{color:#000;max-width:1000px;margin:0;font-size:14px;border-top:var(--b);padding-top:12px}
+.notice{background:#fff;border:var(--b);border-left:12px solid var(--danger);box-shadow:var(--shadow-sm);padding:14px 16px;margin:18px 0;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}
+.card{background:var(--card);border:var(--b);box-shadow:var(--shadow-sm);padding:16px;transition:transform .08s linear,box-shadow .08s linear}
+.card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #000}
+.card h2{font-family:var(--display);font-size:15px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.02em;background:var(--ink);color:var(--accent);display:inline-block;padding:3px 8px}
+.card p{margin:0;color:#1a1a1a;font-size:13px}
+.filters{position:sticky;top:0;z-index:5;background:var(--bg);border:var(--b);box-shadow:var(--shadow-sm);padding:14px;margin:24px 0 0}
+.filter-grid{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px}
+input,select,button{width:100%;padding:11px 12px;border:var(--b);border-radius:0;background:#fff;font:inherit;font-size:13px;color:var(--text);text-transform:uppercase}
+input::placeholder{color:#666;text-transform:none}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+.actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.actions button{width:auto;cursor:pointer;font-weight:700;box-shadow:var(--shadow-sm);transition:transform .08s linear,box-shadow .08s linear}
+.actions button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
+.actions button:active{transform:translate(2px,2px);box-shadow:0 0 0 #000}
+.primary{background:var(--accent2);color:#fff}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+#count{background:var(--ink);color:#fff;padding:2px 8px}
+.badge{display:inline-block;padding:2px 7px;border:2px solid #000;background:var(--accent);font-size:11px;white-space:nowrap;text-transform:uppercase;font-weight:600}
+.table-wrap{overflow:auto;background:#fff;border:var(--b);box-shadow:var(--shadow);max-height:68vh;margin-top:20px;scroll-margin-top:190px}
+.table-wrap:focus-visible{outline:4px solid var(--accent2);outline-offset:3px}
+table{border-collapse:collapse;width:100%;min-width:1220px}
+th,td{padding:11px 12px;border-bottom:2px solid #000;border-right:2px solid #000;text-align:left;vertical-align:top;font-size:12.5px}
+th:last-child,td:last-child{border-right:0}
+thead th{position:sticky;top:0;background:var(--ink);color:#fff;z-index:2;padding:0;white-space:nowrap;border-bottom:var(--b)}
+thead th:hover{background:var(--accent2)}
+tbody th{font-weight:400}
+.th-btn{width:100%;display:block;text-align:left;background:none;border:0;color:inherit;cursor:pointer;padding:11px 12px;font-family:var(--display);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.th-btn:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
+th[aria-sort=ascending] .sort-ind::after{content:"▲"}
+th[aria-sort=descending] .sort-ind::after{content:"▼"}
+th[aria-sort=none] .sort-ind::after{content:"△▽";opacity:.45}
+caption{caption-side:top;text-align:left;background:var(--ink);color:var(--accent);font-family:var(--display);text-transform:uppercase;font-size:12px;letter-spacing:.05em;padding:10px 12px;border-bottom:var(--b)}
+abbr[title]{text-decoration:none;cursor:help}
+tr:nth-child(even) td{background:#faf8f0}
+tr:hover td{background:var(--accent)}
+.sigla{font-family:var(--display);font-size:13px;text-transform:uppercase}
+.field{margin:0}
+.status-transition{color:var(--danger-text);font-weight:700}
+.status-active{color:var(--ok-text);font-weight:700}
+.empty{padding:32px;text-align:center;color:#000;font-family:var(--display);text-transform:uppercase}
+.empty:empty{display:none;padding:0}
+.legend{margin-top:24px;background:#fff;border:var(--b);box-shadow:var(--shadow-sm);padding:18px}
+.legend h2{font-family:var(--display);margin:0 0 12px;font-size:18px;text-transform:uppercase;border-bottom:var(--b);padding-bottom:8px}
+.legend ul{columns:2;gap:32px;padding-left:20px;font-size:13px}
+.legend li{margin:7px 0}
+.legend strong,.notice strong,footer strong{background:var(--accent);padding:0 3px}
+footer{margin:24px 0 10px;border:var(--b);border-top:12px solid #000;background:#fff;padding:16px;font-size:12px}
+footer p{margin:0 0 10px}footer p:last-child{margin:0}
+@media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}.filter-grid{grid-template-columns:1fr 1fr}.search{grid-column:1/-1}.legend ul{columns:1}}
+@media(max-width:600px){.container{padding:14px}.cards{grid-template-columns:1fr}.filter-grid{grid-template-columns:1fr}.actions button{width:100%}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#resultados">Ir para a tabela de resultados</a>
+<main class="container">
+  <header>
+    <h1>Tributos, contribuições, taxas e encargos no Brasil</h1>
+    <p class="subtitle">Guia pesquisável de siglas e nomes usados no sistema tributário, trabalhista, regulatório e financeiro brasileiro. Use os filtros para localizar rapidamente um item por contexto, esfera, natureza ou status.</p>
+  </header>
+
+  <div class="notice"><strong>Importante:</strong> “encargo” é uma categoria prática, não uma espécie tributária constitucional equivalente a “imposto” ou “taxa”. Também incluí guias, regimes e mecanismos muito confundidos com tributos — eles estão identificados corretamente na coluna <strong>Tipo/Natureza</strong>.</div>
+
+  <section class="cards">
+    <article class="card"><h2>Imposto</h2><p>Tributo cuja cobrança não depende de uma contraprestação estatal específica diretamente ligada ao contribuinte. Exemplos: IRPF, ICMS, IPTU e IPVA.</p></article>
+    <article class="card"><h2>Taxa</h2><p>Tributo ligado ao exercício do poder de polícia ou à utilização, efetiva ou potencial, de serviço público específico e divisível prestado ou colocado à disposição do contribuinte.</p></article>
+    <article class="card"><h2>Contribuição</h2><p>Tributo normalmente vinculado a uma finalidade constitucional específica, como seguridade social, intervenção no domínio econômico ou interesse de categorias, além da iluminação pública.</p></article>
+    <article class="card"><h2>Encargo</h2><p>Expressão ampla de uso contábil/trabalhista para obrigações que aumentam o custo de uma relação ou atividade. Pode incluir valores que não são tributos, como o FGTS.</p></article>
+  </section>
+
+  <section class="legend">
+    <h2>Outras categorias importantes</h2>
+    <ul>
+      <li><strong>Contribuição de melhoria:</strong> tributo que pode decorrer de obra pública que valorize imóvel.</li>
+      <li><strong>Empréstimo compulsório:</strong> tributo excepcional que somente a União pode instituir nas hipóteses constitucionais.</li>
+      <li><strong>Compensação financeira:</strong> receita como CFEM/CFURH; não deve ser chamada automaticamente de imposto.</li>
+      <li><strong>Regime tributário:</strong> conjunto de regras de apuração/recolhimento, como Simples Nacional e RET.</li>
+      <li><strong>Documento de arrecadação:</strong> guia usada para pagar obrigações, como DARF e DAS; não é tributo.</li>
+      <li><strong>Mecanismo de tributação:</strong> forma de recolher/apurar tributo, como o “come-cotas”.</li>
+    </ul>
+  </section>
+
+  <search class="filters">
+    <form id="filtros" role="search" aria-label="Filtrar tributos" onsubmit="return false">
+      <fieldset>
+        <legend class="visually-hidden">Filtros de pesquisa</legend>
+        <div class="filter-grid">
+          <p class="field"><label class="visually-hidden" for="search">Pesquisar sigla, nome, descrição ou contexto</label>
+          <input id="search" class="search" type="search" placeholder="Pesquisar sigla, nome, descrição ou contexto…"></p>
+          <p class="field"><label class="visually-hidden" for="tipo">Filtrar por tipo ou natureza</label>
+          <select id="tipo"><option value="">Todos os tipos</option></select></p>
+          <p class="field"><label class="visually-hidden" for="esfera">Filtrar por esfera</label>
+          <select id="esfera"><option value="">Todas as esferas</option></select></p>
+          <p class="field"><label class="visually-hidden" for="contexto">Filtrar por contexto</label>
+          <select id="contexto"><option value="">Todos os contextos</option></select></p>
+          <p class="field"><label class="visually-hidden" for="status">Filtrar por status</label>
+          <select id="status"><option value="">Todos os status</option></select></p>
+        </div>
+      </fieldset>
+      <div class="actions">
+        <button id="reset" type="reset">Limpar filtros</button>
+        <button id="csv" type="button" class="primary">Exportar resultado para CSV</button>
+      </div>
+    </form>
+    <p class="stats"><output id="count" for="search tipo esfera contexto status" aria-live="polite"></output><span aria-hidden="true">•</span><span>Use os botões nos títulos das colunas para ordenar.</span></p>
+  </search>
+
+  <div class="table-wrap" id="resultados" tabindex="-1">
+    <table aria-describedby="count">
+      <caption>Tributos, contribuições, taxas e encargos — resultado dos filtros</caption>
+      <thead><tr>
+        <th scope="col" data-key="sigla" aria-sort="ascending"><button type="button" class="th-btn">Sigla <span class="sort-ind" aria-hidden="true"></span></button></th>
+        <th scope="col" data-key="nome" aria-sort="none"><button type="button" class="th-btn">Nome <span class="sort-ind" aria-hidden="true"></span></button></th>
+        <th scope="col" data-key="tipo" aria-sort="none"><button type="button" class="th-btn">Tipo / Natureza <span class="sort-ind" aria-hidden="true"></span></button></th>
+        <th scope="col" data-key="esfera" aria-sort="none"><button type="button" class="th-btn">Esfera <span class="sort-ind" aria-hidden="true"></span></button></th>
+        <th scope="col" data-key="contexto" aria-sort="none"><button type="button" class="th-btn">Contexto <span class="sort-ind" aria-hidden="true"></span></button></th>
+        <th scope="col" data-key="descricao" aria-sort="none"><button type="button" class="th-btn">O que é / quando aparece <span class="sort-ind" aria-hidden="true"></span></button></th>
+        <th scope="col" data-key="status" aria-sort="none"><button type="button" class="th-btn">Status <span class="sort-ind" aria-hidden="true"></span></button></th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <p id="empty" class="empty" role="status"></p>
+  </div>
+
+  <footer>
+    <p><strong>Atualização:</strong> <time datetime="2026-08">agosto de 2026</time>. A lista reúne os principais tributos e siglas de uso nacional e várias denominações setoriais/locais conhecidas. Não existe uma lista única e finita de todas as siglas de taxas municipais e estaduais: nomes e siglas podem variar por ente federativo.</p>
+    <p><strong>Reforma Tributária:</strong> CBS, IBS e IS foram instituídos pela LC 214/2025. Em 2026 começou a implementação operacional da CBS e do IBS; ICMS, ISS, PIS/Pasep e Cofins estão sujeitos ao cronograma de transição definido pela Reforma Tributária.</p>
+    <p><strong>Fontes normativas e institucionais:</strong> Constituição Federal (arts. 145, 148, 149 e 149-A), Código Tributário Nacional — Lei 5.172/1966, EC 132/2023, LC 214/2025, LC 227/2026 e Receita Federal — páginas “Tributos” e “Reforma Tributária do Consumo”. Este material é informativo e não substitui análise da legislação específica do ente ou da operação.</p>
+  </footer>
+</main>
+
+<script>
+const DATA = [{"sigla": "IRPF", "nome": "Imposto sobre a Renda da Pessoa Física", "tipo": "Imposto", "esfera": "Federal", "contexto": "Pessoa física", "descricao": "Incide sobre renda e proventos tributáveis de pessoas físicas, conforme as regras do Imposto de Renda.", "status": "Vigente"}, {"sigla": "IRPJ", "nome": "Imposto sobre a Renda da Pessoa Jurídica", "tipo": "Imposto", "esfera": "Federal", "contexto": "Empresa", "descricao": "Incide sobre a renda/lucro tributável das pessoas jurídicas.", "status": "Vigente"}, {"sigla": "IRRF", "nome": "Imposto sobre a Renda Retido na Fonte", "tipo": "Imposto", "esfera": "Federal", "contexto": "Pessoa física / Empresa / Financeiro", "descricao": "Forma de arrecadação do Imposto de Renda em que o pagador retém o valor na fonte em diversas hipóteses.", "status": "Vigente"}, {"sigla": "IPI", "nome": "Imposto sobre Produtos Industrializados", "tipo": "Imposto", "esfera": "Federal", "contexto": "Indústria / Comércio exterior", "descricao": "Incide sobre produtos industrializados e, em determinadas hipóteses, na importação. Sofre mudanças relevantes com a Reforma Tributária.", "status": "Em transição"}, {"sigla": "IOF", "nome": "Imposto sobre Operações de Crédito, Câmbio e Seguro, ou relativas a Títulos ou Valores Mobiliários", "tipo": "Imposto", "esfera": "Federal", "contexto": "Financeiro", "descricao": "Incide sobre operações de crédito, câmbio, seguro e operações relativas a títulos ou valores mobiliários.", "status": "Vigente"}, {"sigla": "II", "nome": "Imposto de Importação", "tipo": "Imposto", "esfera": "Federal", "contexto": "Comércio exterior", "descricao": "Incide sobre a importação de produtos estrangeiros.", "status": "Vigente"}, {"sigla": "IE", "nome": "Imposto de Exportação", "tipo": "Imposto", "esfera": "Federal", "contexto": "Comércio exterior", "descricao": "Pode incidir sobre a exportação de produtos nacionais ou nacionalizados nas hipóteses previstas em lei.", "status": "Vigente"}, {"sigla": "ITR", "nome": "Imposto sobre a Propriedade Territorial Rural", "tipo": "Imposto", "esfera": "Federal", "contexto": "Imobiliário / Rural", "descricao": "Incide sobre propriedade territorial rural.", "status": "Vigente"}, {"sigla": "IGF", "nome": "Imposto sobre Grandes Fortunas", "tipo": "Imposto", "esfera": "Federal", "contexto": "Patrimônio", "descricao": "Previsto constitucionalmente, mas depende de lei complementar para ser instituído.", "status": "Não instituído"}, {"sigla": "ICMS", "nome": "Imposto sobre Operações relativas à Circulação de Mercadorias e sobre Prestações de Serviços de Transporte Interestadual e Intermunicipal e de Comunicação", "tipo": "Imposto", "esfera": "Estadual", "contexto": "Comércio / Consumo / Transporte / Telecom", "descricao": "Tributa principalmente circulação de mercadorias, transporte intermunicipal/interestadual e comunicação. Será substituído gradualmente pelo IBS.", "status": "Em transição"}, {"sigla": "IPVA", "nome": "Imposto sobre a Propriedade de Veículos Automotores", "tipo": "Imposto", "esfera": "Estadual", "contexto": "Veículos", "descricao": "Incide sobre a propriedade de veículos automotores, conforme legislação estadual.", "status": "Vigente"}, {"sigla": "ITCMD", "nome": "Imposto sobre Transmissão Causa Mortis e Doação", "tipo": "Imposto", "esfera": "Estadual", "contexto": "Herança / Doação / Patrimônio", "descricao": "Incide sobre transmissão gratuita de bens ou direitos por herança ou doação.", "status": "Vigente"}, {"sigla": "ISS", "nome": "Imposto sobre Serviços de Qualquer Natureza", "tipo": "Imposto", "esfera": "Municipal", "contexto": "Serviços", "descricao": "Incide sobre prestações de serviços definidas em lei complementar. Será substituído gradualmente pelo IBS.", "status": "Em transição"}, {"sigla": "ISSQN", "nome": "Imposto sobre Serviços de Qualquer Natureza", "tipo": "Imposto", "esfera": "Municipal", "contexto": "Serviços", "descricao": "Outra sigla amplamente utilizada para o ISS.", "status": "Em transição"}, {"sigla": "IPTU", "nome": "Imposto sobre a Propriedade Predial e Territorial Urbana", "tipo": "Imposto", "esfera": "Municipal", "contexto": "Imobiliário", "descricao": "Incide sobre propriedade predial e territorial urbana.", "status": "Vigente"}, {"sigla": "ITBI", "nome": "Imposto sobre Transmissão de Bens Imóveis", "tipo": "Imposto", "esfera": "Municipal", "contexto": "Imobiliário", "descricao": "Incide, em linhas gerais, sobre transmissão onerosa inter vivos de bens imóveis e direitos imobiliários abrangidos pela legislação.", "status": "Vigente"}, {"sigla": "IBS", "nome": "Imposto sobre Bens e Serviços", "tipo": "Imposto", "esfera": "Estadual + Municipal", "contexto": "Consumo / Empresa", "descricao": "Novo imposto sobre consumo de competência compartilhada entre estados, DF e municípios. Está em implementação na Reforma Tributária.", "status": "Implementação 2026"}, {"sigla": "IS", "nome": "Imposto Seletivo", "tipo": "Imposto", "esfera": "Federal", "contexto": "Consumo / Indústria", "descricao": "Novo imposto federal seletivo sobre bens e serviços definidos em lei, voltado especialmente a externalidades negativas à saúde ou ao meio ambiente.", "status": "Implementação"}, {"sigla": "PIS/PASEP", "nome": "Contribuição para os Programas de Integração Social e de Formação do Patrimônio do Servidor Público", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Folha / Receita", "descricao": "Contribuições sociais associadas ao financiamento de finalidades sociais. Integram o sistema que será substituído pela CBS.", "status": "Em transição"}, {"sigla": "PIS", "nome": "Programa de Integração Social — contribuição ao PIS", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Receita", "descricao": "Contribuição incidente segundo regimes e hipóteses previstos na legislação, com forte presença na tributação da receita/faturamento.", "status": "Em transição"}, {"sigla": "PASEP", "nome": "Programa de Formação do Patrimônio do Servidor Público", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Setor público", "descricao": "Componente do PIS/Pasep ligado historicamente ao setor público.", "status": "Em transição"}, {"sigla": "COFINS", "nome": "Contribuição para o Financiamento da Seguridade Social", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Receita", "descricao": "Contribuição social incidente, em diversas hipóteses, sobre receita/faturamento. Será substituída pela CBS.", "status": "Em transição"}, {"sigla": "CSLL", "nome": "Contribuição Social sobre o Lucro Líquido", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa", "descricao": "Contribuição social calculada sobre o resultado ajustado das pessoas jurídicas, conforme regime aplicável.", "status": "Vigente"}, {"sigla": "AdCSLL", "nome": "Adicional da Contribuição Social sobre o Lucro Líquido", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Financeiro", "descricao": "Adicional de CSLL aplicável a hipóteses e setores definidos em legislação específica.", "status": "Vigente"}, {"sigla": "CBS", "nome": "Contribuição Social sobre Bens e Serviços", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Consumo / Empresa", "descricao": "Novo tributo federal sobre consumo, criado no âmbito da Reforma Tributária, em implementação a partir de 2026.", "status": "Implementação 2026"}, {"sigla": "CIDE", "nome": "Contribuição de Intervenção no Domínio Econômico", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Setorial / Economia", "descricao": "Classe de contribuições federais usadas para intervenção em determinados setores econômicos.", "status": "Vigente"}, {"sigla": "CIDE-Combustíveis", "nome": "Contribuição de Intervenção no Domínio Econômico incidente sobre combustíveis", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Combustíveis", "descricao": "Contribuição incidente nas hipóteses legais relacionadas a combustíveis.", "status": "Vigente"}, {"sigla": "CIDE-Royalties", "nome": "CIDE sobre remessas/royalties e tecnologia", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Tecnologia / Internacional", "descricao": "Nome de uso comum para a CIDE incidente em determinadas remessas e contratos envolvendo tecnologia, royalties e serviços técnicos.", "status": "Vigente"}, {"sigla": "INSS", "nome": "Contribuição Previdenciária", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Folha / Pessoa física / Empresa", "descricao": "No uso cotidiano, INSS identifica contribuições destinadas à Previdência Social recolhidas por segurados e empresas. INSS é também o nome da autarquia.", "status": "Vigente"}, {"sigla": "CPP", "nome": "Contribuição Patronal Previdenciária", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Folha", "descricao": "Contribuição previdenciária de responsabilidade patronal sobre bases previstas na legislação.", "status": "Vigente"}, {"sigla": "CPRB", "nome": "Contribuição Previdenciária sobre a Receita Bruta", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Folha / Receita", "descricao": "Regime de contribuição previdenciária calculada sobre receita bruta em hipóteses legais específicas.", "status": "Vigente / regras específicas"}, {"sigla": "RAT", "nome": "Riscos Ambientais do Trabalho", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Folha", "descricao": "Contribuição destinada ao financiamento dos benefícios decorrentes dos riscos ambientais do trabalho, com alíquotas vinculadas ao risco da atividade.", "status": "Vigente"}, {"sigla": "SAT", "nome": "Seguro de Acidente do Trabalho", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Folha", "descricao": "Denominação tradicional frequentemente associada à contribuição atualmente tratada no contexto do RAT.", "status": "Denominação histórica/comum"}, {"sigla": "Salário-Educação", "nome": "Contribuição Social do Salário-Educação", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Empresa / Folha / Educação", "descricao": "Contribuição social destinada ao financiamento da educação básica pública.", "status": "Vigente"}, {"sigla": "FUST", "nome": "Fundo de Universalização dos Serviços de Telecomunicações", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Telecom", "descricao": "Contribuição setorial voltada à universalização dos serviços de telecomunicações.", "status": "Vigente"}, {"sigla": "FUNTTEL", "nome": "Fundo para o Desenvolvimento Tecnológico das Telecomunicações", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Telecom / Tecnologia", "descricao": "Contribuição destinada ao desenvolvimento tecnológico das telecomunicações.", "status": "Vigente"}, {"sigla": "CONDECINE", "nome": "Contribuição para o Desenvolvimento da Indústria Cinematográfica Nacional", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Audiovisual", "descricao": "Contribuição de intervenção no domínio econômico ligada ao setor audiovisual.", "status": "Vigente"}, {"sigla": "AFRMM", "nome": "Adicional ao Frete para Renovação da Marinha Mercante", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Comércio exterior / Marítimo", "descricao": "Adicional incidente sobre frete aquaviário em hipóteses legais e destinado à Marinha Mercante.", "status": "Vigente"}, {"sigla": "CFEM", "nome": "Compensação Financeira pela Exploração Mineral", "tipo": "Compensação", "esfera": "Federal / repartida", "contexto": "Mineração", "descricao": "Compensação financeira devida pela exploração de recursos minerais; não é imposto.", "status": "Vigente"}, {"sigla": "CFURH", "nome": "Compensação Financeira pela Utilização de Recursos Hídricos", "tipo": "Compensação", "esfera": "Federal / repartida", "contexto": "Energia / Recursos hídricos", "descricao": "Compensação financeira vinculada ao aproveitamento de recursos hídricos para geração de energia em hipóteses legais.", "status": "Vigente"}, {"sigla": "FUNRURAL", "nome": "Contribuição previdenciária rural (denominação usual)", "tipo": "Contribuição", "esfera": "Federal", "contexto": "Agronegócio / Rural", "descricao": "Denominação usual para contribuições previdenciárias incidentes em operações do produtor rural segundo as regras aplicáveis.", "status": "Vigente"}, {"sigla": "SENAI", "nome": "Contribuição para o Serviço Nacional de Aprendizagem Industrial", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Empresa / Folha / Sistema S", "descricao": "Contribuição destinada ao SENAI, integrante das contribuições arrecadadas para terceiros em hipóteses aplicáveis.", "status": "Vigente"}, {"sigla": "SESI", "nome": "Contribuição para o Serviço Social da Indústria", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Empresa / Folha / Sistema S", "descricao": "Contribuição destinada ao SESI.", "status": "Vigente"}, {"sigla": "SENAC", "nome": "Contribuição para o Serviço Nacional de Aprendizagem Comercial", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Empresa / Folha / Sistema S", "descricao": "Contribuição destinada ao SENAC.", "status": "Vigente"}, {"sigla": "SESC", "nome": "Contribuição para o Serviço Social do Comércio", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Empresa / Folha / Sistema S", "descricao": "Contribuição destinada ao SESC.", "status": "Vigente"}, {"sigla": "SEBRAE", "nome": "Contribuição destinada ao SEBRAE", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Empresa / Sistema S", "descricao": "Contribuição destinada ao apoio às micro e pequenas empresas, conforme enquadramento legal.", "status": "Vigente"}, {"sigla": "SENAR", "nome": "Contribuição destinada ao Serviço Nacional de Aprendizagem Rural", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Agronegócio / Sistema S", "descricao": "Contribuição destinada ao SENAR.", "status": "Vigente"}, {"sigla": "SEST", "nome": "Contribuição destinada ao Serviço Social do Transporte", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Transporte / Sistema S", "descricao": "Contribuição destinada ao SEST.", "status": "Vigente"}, {"sigla": "SENAT", "nome": "Contribuição destinada ao Serviço Nacional de Aprendizagem do Transporte", "tipo": "Contribuição para terceiros", "esfera": "Federal", "contexto": "Transporte / Sistema S", "descricao": "Contribuição destinada ao SENAT.", "status": "Vigente"}, {"sigla": "COSIP", "nome": "Contribuição para o Custeio do Serviço de Iluminação Pública", "tipo": "Contribuição", "esfera": "Municipal / DF", "contexto": "Imóvel / Serviços públicos", "descricao": "Contribuição destinada ao custeio, expansão e melhoria do serviço de iluminação pública.", "status": "Vigente"}, {"sigla": "CIP", "nome": "Contribuição de Iluminação Pública", "tipo": "Contribuição", "esfera": "Municipal / DF", "contexto": "Imóvel / Serviços públicos", "descricao": "Sigla usada por diversos municípios para a contribuição de iluminação pública (COSIP).", "status": "Vigente / nome local"}, {"sigla": "TFE", "nome": "Taxa de Fiscalização de Estabelecimentos", "tipo": "Taxa", "esfera": "Municipal", "contexto": "Empresa / Licenciamento", "descricao": "Taxa municipal encontrada em diversos municípios para fiscalização de estabelecimentos; nome e regras variam localmente.", "status": "Varia por município"}, {"sigla": "TFA", "nome": "Taxa de Fiscalização de Anúncios", "tipo": "Taxa", "esfera": "Municipal", "contexto": "Empresa / Publicidade", "descricao": "Taxa municipal relacionada à fiscalização de anúncios; nomenclatura e regras variam conforme o município.", "status": "Varia por município"}, {"sigla": "TRSS", "nome": "Taxa de Resíduos Sólidos de Serviços de Saúde", "tipo": "Taxa", "esfera": "Municipal", "contexto": "Saúde / Resíduos", "descricao": "Taxa municipal associada a serviços públicos específicos de coleta/destinação de resíduos de serviços de saúde, conforme legislação local.", "status": "Varia por município"}, {"sigla": "TFF", "nome": "Taxa de Fiscalização de Funcionamento", "tipo": "Taxa", "esfera": "Municipal", "contexto": "Empresa / Licenciamento", "descricao": "Sigla adotada por alguns municípios para fiscalização de funcionamento de estabelecimentos.", "status": "Varia por município"}, {"sigla": "TFLF", "nome": "Taxa de Fiscalização de Localização e Funcionamento", "tipo": "Taxa", "esfera": "Municipal", "contexto": "Empresa / Licenciamento", "descricao": "Taxa municipal de fiscalização de localização e funcionamento, com nomenclatura variável.", "status": "Varia por município"}, {"sigla": "TLP", "nome": "Taxa de Limpeza Pública", "tipo": "Taxa", "esfera": "Municipal", "contexto": "Imobiliário / Serviços públicos", "descricao": "Denominação utilizada em algumas legislações locais; a validade e a configuração dependem do serviço específico e divisível e da legislação do ente.", "status": "Varia por município"}, {"sigla": "TCR", "nome": "Taxa de Coleta de Resíduos", "tipo": "Taxa", "esfera": "Municipal", "contexto": "Imobiliário / Resíduos", "descricao": "Denominação genérica/local para taxa ligada à coleta de resíduos; sigla e regras variam por município.", "status": "Varia por município"}, {"sigla": "TFRM", "nome": "Taxa de Controle, Monitoramento e Fiscalização das Atividades de Pesquisa, Lavra, Exploração e Aproveitamento de Recursos Minerários", "tipo": "Taxa", "esfera": "Estadual", "contexto": "Mineração", "descricao": "Taxa estadual existente em alguns estados para fiscalização de atividades minerárias, conforme legislação local.", "status": "Varia por estado"}, {"sigla": "TFA-ANVISA", "nome": "Taxa de Fiscalização de Vigilância Sanitária", "tipo": "Taxa", "esfera": "Federal", "contexto": "Saúde / Regulação", "descricao": "Taxa de fiscalização vinculada à atuação regulatória da Anvisa em hipóteses previstas em lei.", "status": "Vigente"}, {"sigla": "TFVS", "nome": "Taxa de Fiscalização de Vigilância Sanitária", "tipo": "Taxa", "esfera": "Federal", "contexto": "Saúde / Regulação", "descricao": "Sigla empregada no contexto de fiscalização sanitária; verificar a denominação usada no ato normativo específico.", "status": "Vigente / uso específico"}, {"sigla": "TFF", "nome": "Taxa de Fiscalização de Funcionamento (telecom)", "tipo": "Taxa", "esfera": "Federal", "contexto": "Telecom / Regulação", "descricao": "Taxa integrante do FISTEL associada à fiscalização do funcionamento de estações de telecomunicações.", "status": "Vigente"}, {"sigla": "TFI", "nome": "Taxa de Fiscalização de Instalação", "tipo": "Taxa", "esfera": "Federal", "contexto": "Telecom / Regulação", "descricao": "Taxa integrante do FISTEL ligada à fiscalização da instalação de estações de telecomunicações.", "status": "Vigente"}, {"sigla": "FISTEL", "nome": "Fundo de Fiscalização das Telecomunicações", "tipo": "Fundo / taxas", "esfera": "Federal", "contexto": "Telecom / Regulação", "descricao": "Fundo associado, entre outras receitas, às taxas de fiscalização de instalação e funcionamento. Não é um imposto.", "status": "Vigente"}, {"sigla": "TAF", "nome": "Taxa de Fiscalização da Aviação Civil", "tipo": "Taxa", "esfera": "Federal", "contexto": "Aviação / Regulação", "descricao": "Taxa regulatória relacionada à fiscalização da aviação civil, conforme hipóteses legais.", "status": "Vigente / específica"}, {"sigla": "TFFA", "nome": "Taxa de Fiscalização Federal Agropecuária", "tipo": "Taxa", "esfera": "Federal", "contexto": "Agronegócio / Regulação", "descricao": "Taxa federal ligada a serviços e atos de fiscalização agropecuária nas hipóteses previstas em lei.", "status": "Vigente"}, {"sigla": "FGTS", "nome": "Fundo de Garantia do Tempo de Serviço", "tipo": "Encargo trabalhista", "esfera": "Federal", "contexto": "Empresa / Folha / Trabalho", "descricao": "Depósito obrigatório do empregador em favor do trabalhador nas hipóteses legais. Não é imposto nem contribuição tributária comum.", "status": "Vigente"}, {"sigla": "FAP", "nome": "Fator Acidentário de Prevenção", "tipo": "Fator de cálculo", "esfera": "Federal", "contexto": "Empresa / Folha", "descricao": "Multiplicador usado para ajustar a contribuição relacionada aos riscos ambientais do trabalho. Não é tributo autônomo.", "status": "Vigente"}, {"sigla": "Sistema S", "nome": "Conjunto de entidades e contribuições para terceiros", "tipo": "Encargo / contribuições para terceiros", "esfera": "Federal", "contexto": "Empresa / Folha", "descricao": "Expressão prática para contribuições destinadas a entidades como SENAI, SESI, SENAC, SESC, SEBRAE, SENAR, SEST e SENAT.", "status": "Vigente"}, {"sigla": "RET", "nome": "Regime Especial de Tributação", "tipo": "Regime tributário", "esfera": "Federal", "contexto": "Imobiliário / Construção", "descricao": "Regime especial aplicável, entre outras hipóteses, a incorporações imobiliárias. Não é um imposto isolado.", "status": "Vigente"}, {"sigla": "SIMPLES", "nome": "Simples Nacional", "tipo": "Regime tributário", "esfera": "Compartilhado", "contexto": "Empresa", "descricao": "Regime tributário simplificado para microempresas e empresas de pequeno porte, que reúne diversos tributos em documento único.", "status": "Vigente"}, {"sigla": "DAS", "nome": "Documento de Arrecadação do Simples Nacional", "tipo": "Documento de arrecadação", "esfera": "Compartilhado", "contexto": "Empresa", "descricao": "Documento usado para recolher tributos abrangidos pelo Simples Nacional. Não é tributo.", "status": "Vigente"}, {"sigla": "DAS-MEI", "nome": "Documento de Arrecadação do Simples Nacional do MEI", "tipo": "Documento de arrecadação", "esfera": "Compartilhado", "contexto": "MEI / Empresa", "descricao": "Documento mensal utilizado pelo MEI para recolhimentos previstos no regime. Não é tributo autônomo.", "status": "Vigente"}, {"sigla": "DARF", "nome": "Documento de Arrecadação de Receitas Federais", "tipo": "Documento de arrecadação", "esfera": "Federal", "contexto": "Pessoa física / Empresa", "descricao": "Documento utilizado para recolher diversas receitas e tributos federais. Não é imposto.", "status": "Vigente"}, {"sigla": "DAE", "nome": "Documento de Arrecadação do eSocial", "tipo": "Documento de arrecadação", "esfera": "Federal", "contexto": "Doméstico / Folha", "descricao": "Guia que reúne recolhimentos do empregador doméstico no eSocial. Não é tributo autônomo.", "status": "Vigente"}, {"sigla": "GPS", "nome": "Guia da Previdência Social", "tipo": "Documento de arrecadação", "esfera": "Federal", "contexto": "Previdência", "descricao": "Guia historicamente utilizada para recolhimentos previdenciários em diversas situações. Não é tributo.", "status": "Vigente / uso conforme caso"}, {"sigla": "GCAP", "nome": "Programa de Apuração dos Ganhos de Capital", "tipo": "Ferramenta / apuração", "esfera": "Federal", "contexto": "Pessoa física / Patrimônio", "descricao": "Programa/forma de apuração de ganho de capital de pessoa física. Não é um imposto chamado GCAP.", "status": "Vigente"}, {"sigla": "Come-cotas", "nome": "Antecipação periódica do Imposto de Renda em determinados fundos", "tipo": "Mecanismo de tributação", "esfera": "Federal", "contexto": "Financeiro / Investimentos", "descricao": "Mecanismo de antecipação de IR em determinados fundos de investimento; não é tributo autônomo.", "status": "Vigente conforme fundo"}];
+let filtered = [...DATA];
+let sortKey = "sigla";
+let sortAsc = true;
+
+const $ = id => document.getElementById(id);
+const normalize = s => (s ?? "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+
+function uniqueValues(key){
+  return [...new Set(DATA.map(x=>x[key]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+}
+function populateSelect(id,key){
+  const sel=$(id);
+  uniqueValues(key).forEach(v=>{
+    const o=document.createElement("option"); o.value=v; o.textContent=v; sel.appendChild(o);
+  });
+}
+["tipo","esfera","contexto","status"].forEach(id=>populateSelect(id,id));
+
+function esc(s){
+  return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+function render(){
+  const q=normalize($("search").value);
+  const filters={tipo:$("tipo").value,esfera:$("esfera").value,contexto:$("contexto").value,status:$("status").value};
+  filtered=DATA.filter(x=>{
+    const hay=normalize([x.sigla,x.nome,x.tipo,x.esfera,x.contexto,x.descricao,x.status].join(" "));
+    return (!q || hay.includes(q))
+      && (!filters.tipo || x.tipo===filters.tipo)
+      && (!filters.esfera || x.esfera===filters.esfera)
+      && (!filters.contexto || x.contexto===filters.contexto)
+      && (!filters.status || x.status===filters.status);
+  });
+  filtered.sort((a,b)=>{
+    const A=(a[sortKey]??"").toString(), B=(b[sortKey]??"").toString();
+    return A.localeCompare(B,"pt-BR",{numeric:true})*(sortAsc?1:-1);
+  });
+  $("tbody").innerHTML=filtered.map(x=>`<tr>
+    <th scope="row" class="sigla"><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></th>
+    <td>${esc(x.nome)}</td>
+    <td><span class="badge tipo">${esc(x.tipo)}</span></td>
+    <td>${esc(x.esfera)}</td>
+    <td>${esc(x.contexto)}</td>
+    <td>${esc(x.descricao)}</td>
+    <td class="${/transi|implement/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}</td>
+  </tr>`).join("");
+  $("count").textContent=`${filtered.length} de ${DATA.length} itens exibidos`;
+  $("empty").textContent=filtered.length?"":"Nenhum item corresponde aos filtros selecionados.";
+  document.querySelectorAll("th[data-key]").forEach(th=>{
+    th.setAttribute("aria-sort", th.dataset.key===sortKey ? (sortAsc?"ascending":"descending") : "none");
+  });
+}
+["search","tipo","esfera","contexto","status"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
+document.querySelectorAll("th[data-key] .th-btn").forEach(btn=>btn.addEventListener("click",()=>{
+  const k=btn.closest("th").dataset.key;
+  if(sortKey===k) sortAsc=!sortAsc; else {sortKey=k;sortAsc=true;}
+  render();
+}));
+$("filtros").addEventListener("reset",()=>{ setTimeout(render,0); });
+$("csv").addEventListener("click",()=>{
+  const cols=["sigla","nome","tipo","esfera","contexto","descricao","status"];
+  const header=["Sigla","Nome","Tipo/Natureza","Esfera","Contexto","Descrição","Status"];
+  const quote=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+  const rows=[header.map(quote).join(";"),...filtered.map(x=>cols.map(c=>quote(x[c])).join(";"))];
+  const blob=new Blob(["\uFEFF"+rows.join("\n")],{type:"text/csv;charset=utf-8"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="tributos-brasil-filtrado.csv"; a.click(); URL.revokeObjectURL(a.href);
+});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+node_modules/
+audit/reports/
+.lighthouseci/
+evidencias-e2e/
+*.log
+.DS_Store

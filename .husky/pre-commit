@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+# Verificações rápidas no commit (os gates pesados ficam no pre-push).
+set -e
+
+# Bloqueia commit de artefatos de auditoria e relatórios.
+if git diff --cached --name-only | grep -Eq '^audit/reports/|^\.lighthouseci/|^evidencias-e2e/'; then
+  echo "✗ Não faça commit de relatórios/evidências (audit/reports, .lighthouseci, evidencias-e2e)."
+  echo "  Use: git restore --staged <arquivo>"
+  exit 1
+fi
+
+# Impede reintrodução de dependência externa de fontes (regressão de performance/privacidade).
+# Detecta apenas USO efetivo (href/src/@import/url), não menção em comentário.
+if git diff --cached -- public/ \
+  | grep -E '^\+' \
+  | grep -Eq '(href|src)="https?://(fonts\.googleapis\.com|fonts\.gstatic\.com)|@import[^;]*fonts\.(googleapis|gstatic)\.com|url\(https?://fonts\.(googleapis|gstatic)\.com'; then
+  echo "✗ Fontes externas detectadas. As fontes são auto-hospedadas em public/fonts/ para"
+  echo "  manter render-blocking zero. Não reintroduza fonts.googleapis.com."
+  exit 1
+fi
+
+# Valida que o HTML tem os landmarks essenciais (falha barata e instantânea).
+if [ -f public/index.html ]; then
+  for tag in "<main" "<caption" 'role="search"' 'aria-live'; do
+    if ! grep -q "$tag" public/index.html; then
+      echo "✗ public/index.html perdeu marcação essencial: $tag"
+      exit 1
+    fi
+  done
+fi
+
+echo "✓ Verificações de pre-commit aprovadas."

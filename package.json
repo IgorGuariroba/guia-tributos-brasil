@@ -1,0 +1,31 @@
+{
+  "name": "guia-tributos-brasil",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Guia pesquisável de tributos, contribuições, taxas e encargos do Brasil — página estática com gates de acessibilidade e performance.",
+  "scripts": {
+    "serve": "npx http-server public -p 8080 -c-1 -o",
+    "gates": "node audit/run-gates.mjs",
+    "gate:funcional": "node audit/run-gates.mjs funcional",
+    "gate:a11y": "node audit/run-gates.mjs acessibilidade",
+    "gate:semantica": "node audit/run-gates.mjs semântico",
+    "gate:lighthouse": "node audit/run-gates.mjs lighthouse",
+    "lhci": "lhci autorun",
+    "axe:cli": "axe http://localhost:8080/ --tags wcag2a,wcag2aa,wcag21a,wcag21aa,wcag22aa,best-practice --exit",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@axe-core/cli": "^4.12.1",
+    "@lhci/cli": "^0.15.1",
+    "axe-core": "^4.13.0",
+    "http-server": "^14.1.1",
+    "husky": "^9.1.7",
+    "lighthouse": "^13.4.1",
+    "playwright": "^1.57.0",
+    "wait-on": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

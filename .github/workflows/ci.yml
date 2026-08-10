@@ -1,0 +1,72 @@
+name: Gates de qualidade e deploy no Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: Gates (funcional · axe-core · semântica · Lighthouse)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar Chromium do Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Executar todos os gates
+        run: npm run gates
+
+      - name: Gate extra · axe-core CLI (verificação independente)
+        run: |
+          npx http-server public -p 8080 -s &
+          npx wait-on http://localhost:8080 --timeout 30000
+          npx axe http://localhost:8080/ \
+            --tags wcag2a,wcag2aa,wcag21a,wcag21aa,wcag22aa,best-practice \
+            --exit
+
+      - name: Publicar relatórios como artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-de-auditoria
+          path: audit/reports/
+          retention-days: 30
+
+  deploy:
+    name: Deploy no GitHub Pages
+    needs: gates
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+      - id: deployment
+        uses: actions/deploy-pages@v4

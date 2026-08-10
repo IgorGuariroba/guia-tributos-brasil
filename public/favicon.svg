@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Guia de Tributos do Brasil">
+  <rect width="64" height="64" fill="#ffe100"/>
+  <rect x="3" y="3" width="58" height="58" fill="none" stroke="#000" stroke-width="6"/>
+  <text x="32" y="46" font-family="Arial Black, Impact, sans-serif" font-size="38" font-weight="900" text-anchor="middle" fill="#000">T</text>
+</svg>
