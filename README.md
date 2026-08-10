@@ -22,6 +22,7 @@ ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
 | Semantic HTML Score | **100/100 (A)** |
 | Testes funcionais | **12/12** |
+| Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
 | Requisições a terceiros | **0** (fontes auto-hospedadas) |
 | Peso total | ~78 KB |
 
@@ -42,8 +43,9 @@ Os gates rodam automaticamente no **pre-push** (husky) e no **CI** (GitHub Actio
 São propositalmente exigentes: qualquer regressão bloqueia o push.
 
 ```bash
-npm run gates              # todos os 4 gates
+npm run gates              # todos os 5 gates
 npm run gate:funcional     # somente Playwright
+npm run gate:responsivo    # somente responsividade (320→1920px)
 npm run gate:a11y          # somente axe-core
 npm run gate:semantica     # somente Semantic HTML Score
 npm run gate:lighthouse    # somente Lighthouse CI
@@ -57,7 +59,35 @@ reset do formulário, filtro por `<select>`, **ordenação acionável por teclad
 exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas),
 `<abbr title>` em todas as siglas, zero recursos externos e console sem erros.
 
-### Gate 2 · Acessibilidade (`audit/axe-gate.mjs`)
+### Gate 2 · Responsividade (`audit/responsive-gate.mjs`)
+
+Audita **8 larguras** e falha se qualquer uma tiver problema:
+
+| Largura | Alvo | Layout esperado |
+|---:|---|---|
+| 320px | celular pequeno | cards 1col, filtros 1col |
+| 375px | iPhone | cards 1col, filtros 1col |
+| 390px | celular moderno | cards 1col, filtros 1col |
+| 768px | tablet | cards 2col, filtros 2col |
+| 1024px | tablet/desktop pequeno | cards 4col, filtros 5col |
+| 1280px | desktop | cards 4col, filtros 5col |
+| 1440px | desktop | cards 4col, filtros 5col |
+| 1920px | monitor grande | cards 4col, filtros 5col |
+
+Mais **3 dispositivos reais** emulados (iPhone 14, Pixel 7, iPad Mini) com `isMobile` e DPR corretos.
+
+Verificações por largura:
+
+1. **zero scroll horizontal** no documento
+2. **nenhum elemento estourando** a viewport (o scroller da tabela é exceção intencional)
+3. **alvos de toque ≥ 44×44 px** em viewports touch (≤ 768px) — WCAG 2.5.5
+4. **sem sobreposição** entre controles de filtro
+5. **legibilidade**: corpo ≥ 14px, textos ≥ 12px
+6. tabela rolável sem vazar do container
+7. barra sticky com folga de scroll e **ocupando ≤ 40% da viewport** (se não couber, deve deixar de ser sticky)
+8. **filtro e reset funcionam** naquela largura (comportamento, não só layout)
+
+### Gate 3 · Acessibilidade (`audit/axe-gate.mjs`)
 
 axe-core com as tags `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice`.
 **Exige 0 violações** e audita **3 estados** do DOM, já que a tabela é renderizada por JS:
@@ -68,7 +98,7 @@ axe-core com as tags `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practic
 
 O CI executa também o `@axe-core/cli` como verificação independente.
 
-### Gate 3 · HTML semântico (`audit/semantic-gate.mjs`)
+### Gate 4 · HTML semântico (`audit/semantic-gate.mjs`)
 
 Rubrica de 100 pontos em 7 categorias (`audit/semantic-core.mjs`), avaliada no DOM renderizado.
 **Mínimo exigido: 100.**
@@ -83,7 +113,7 @@ Rubrica de 100 pontos em 7 categorias (`audit/semantic-core.mjs`), avaliada no D
 | Texto | 8 | listas reais, `strong`/`em` (não `b`/`i`), `time`/`abbr` |
 | Dinâmico | 7 | contador em `aria-live`, estado vazio anunciável |
 
-### Gate 4 · Lighthouse CI (`lighthouserc.json`)
+### Gate 5 · Lighthouse CI (`lighthouserc.json`)
 
 Mediana de **3 execuções**, preset desktop, servindo `./public` via `staticDistDir`.
 
@@ -116,7 +146,7 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
 - **pre-commit** — barato e instantâneo: bloqueia commit de relatórios/evidências, impede
   reintrodução de `fonts.googleapis.com` e valida a presença de marcação essencial
   (`<main>`, `<caption>`, `role="search"`, `aria-live`).
-- **pre-push** — executa os 4 gates. Escape de emergência: `SKIP_GATES=1 git push`
+- **pre-push** — executa os 5 gates. Escape de emergência: `SKIP_GATES=1 git push`
   (deve ser justificado no PR).
 
 ## Decisões de implementação
@@ -131,6 +161,12 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
 - **Ordenação com `<button>` dentro do `<th>`**: antes o handler estava no `<th>`, o que
   tornava a ordenação inacessível por teclado.
 - **Coluna Sigla como `<th scope="row">`** com `<abbr title>` expandindo o nome completo.
+- **`h1` com `clamp(22px, 5vw, 62px)` + `overflow-wrap: break-word`**: a 34px fixos a palavra
+  "CONTRIBUIÇÕES," estourava 79px em 320px e propagava 38px de scroll horizontal ao documento.
+- **Filtros deixam de ser sticky até 1000px**: empilhados, a barra chegava a 503px de altura —
+  56% de uma viewport de 900px. Acima desse limite ela volta a ser sticky.
+- **`min-height: 44px`** em `input`, `select`, `button` e `.th-btn`: os cabeçalhos de ordenação
+  tinham 38px, abaixo do mínimo de alvo de toque da WCAG 2.5.5.
 
 ## Estrutura
 
@@ -140,8 +176,9 @@ public/              # o que vai para o GitHub Pages
   favicon.svg
   fonts/             # 10 arquivos woff2 auto-hospedados
 audit/
-  run-gates.mjs      # orquestrador: sobe servidor e roda os 4 gates
+  run-gates.mjs      # orquestrador: sobe servidor e roda os 5 gates
   functional-gate.mjs
+  responsive-gate.mjs
   axe-gate.mjs
   semantic-gate.mjs
   semantic-core.mjs  # rubrica de 100 pontos

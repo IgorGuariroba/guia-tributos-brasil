@@ -69,10 +69,11 @@ const executar = (rotulo, cmd, args, env = {}) =>
 
 const somente = process.argv[2];
 const todos = [
-  ['Gate 1/4 · Funcional (Playwright)', 'node', ['audit/functional-gate.mjs']],
-  ['Gate 2/4 · Acessibilidade (axe-core, 0 violações)', 'node', ['audit/axe-gate.mjs']],
-  ['Gate 3/4 · HTML semântico (score mínimo 100)', 'node', ['audit/semantic-gate.mjs']],
-  ['Gate 4/4 · Lighthouse CI (thresholds)', 'npx', ['--no-install', 'lhci', 'autorun']],
+  ['Gate 1/5 · Funcional (Playwright)', 'node', ['audit/functional-gate.mjs']],
+  ['Gate 2/5 · Responsividade (8 larguras, 320→1920px)', 'node', ['audit/responsive-gate.mjs']],
+  ['Gate 3/5 · Acessibilidade (axe-core, 0 violações)', 'node', ['audit/axe-gate.mjs']],
+  ['Gate 4/5 · HTML semântico (score mínimo 100)', 'node', ['audit/semantic-gate.mjs']],
+  ['Gate 5/5 · Lighthouse CI (thresholds)', 'npx', ['--no-install', 'lhci', 'autorun']],
 ];
 const selecionados = somente
   ? todos.filter(g => g[0].toLowerCase().includes(somente.toLowerCase()))

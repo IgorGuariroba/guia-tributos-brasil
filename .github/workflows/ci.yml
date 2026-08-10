@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   gates:
-    name: Gates (funcional · axe-core · semântica · Lighthouse)
+    name: Gates (funcional · responsivo · axe-core · semântica · Lighthouse)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
