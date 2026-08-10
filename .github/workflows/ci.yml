@@ -35,6 +35,11 @@ jobs:
       - name: Executar todos os gates
         run: npm run gates
 
+      # O @axe-core/cli usa ChromeDriver via selenium, que precisa casar com a versão
+      # do Chrome do runner. Sincronizamos as duas para evitar "session not created".
+      - name: Sincronizar Chrome e ChromeDriver
+        run: npx browser-driver-manager install chrome --verbose
+
       - name: Gate extra · axe-core CLI (verificação independente)
         run: |
           npx http-server public -p 8080 -s &
