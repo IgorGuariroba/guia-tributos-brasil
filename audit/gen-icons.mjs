@@ -5,7 +5,7 @@
  * Estratégia: cada ícone vira um data-URI em `mask-image` sobre um pseudo-elemento
  * `::before`. Vantagens sobre <svg> inline ou <img>:
  *   - ZERO nós adicionados ao DOM (pseudo-elementos não contam) — essencial porque
- *     a tabela de 78 linhas já usa 972 dos 1200 nós permitidos pelo gate.
+ *     a página fica próxima do limite de 1200 nós permitido pelo gate.
  *   - ZERO requisições de rede (data-URI embutido no <style>).
  *   - A cor vem de `background-color`, então o ícone herda o contraste já validado.
  *   - Ícones são puramente decorativos: não entram na árvore de acessibilidade,
@@ -30,6 +30,18 @@ const ICONES = {
   fator: 'calculator',
   ferramenta: 'wrench',
   mecanismo: 'repeat',
+
+  // Situações cotidianas que podem gerar impostos
+  veiculo: 'car-front',
+  imovel: 'house',
+  renda: 'banknote',
+  heranca: 'gift',
+  loja: 'store',
+  servico: 'wrench',
+  folha: 'hand-coins',
+  consumo: 'shopping-cart',
+  industria: 'factory',
+  empresa: 'briefcase-business',
 
   // Esferas
   federal: 'flag',

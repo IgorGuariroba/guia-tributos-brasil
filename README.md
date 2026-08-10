@@ -21,11 +21,11 @@ tipo/esfera/contexto/status, ordenação por coluna e exportação para CSV. Est
 | Lighthouse — SEO | **100** |
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
 | Semantic HTML Score | **100/100 (A)** |
-| Testes funcionais | **19/19** |
+| Testes funcionais | **20/20** |
 | Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
-| Nós no DOM | **996** (limite 1200) |
+| Nós no DOM | **1117** (limite 1200) |
 | Requisições a terceiros | **0** (fontes auto-hospedadas) |
-| Peso total | ~85 KB |
+| Peso total | ~90 KB |
 
 Medido **na URL de produção** (`--preset=desktop`): LCP **0.3 s**, CLS **0**, TBT **0 ms**,
 5 requisições, nenhuma externa.
@@ -54,8 +54,8 @@ npm run gate:lighthouse    # somente Lighthouse CI
 
 ### Gate 1 · Funcional (`audit/functional-gate.mjs`)
 
-19 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
-seleção e confirmação do perfil de interesse, carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
+20 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
+seleção e confirmação do perfil de interesse, associações visuais dinâmicas por perfil, carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
 reset do formulário, combobox pesquisável com multisseleção, contextos atômicos, chips removíveis,
 rótulos visíveis, busca na primeira tela, **ordenação acionável por teclado** com `aria-sort`
 exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas),
@@ -133,8 +133,8 @@ Mediana de **3 execuções**, preset desktop, servindo `./public` via `staticDis
 | `cumulative-layout-shift` | ≤ 0.02 | 0.000 |
 | `speed-index` | ≤ 1500 ms | ~1353 ms |
 | `interactive` | ≤ 1800 ms | ~1353 ms |
-| `total-byte-weight` | ≤ 400 KB | ~85 KB |
-| `dom-size` | ≤ 1200 nós | 996 |
+| `total-byte-weight` | ≤ 400 KB | ~90 KB |
+| `dom-size` | ≤ 1200 nós | 1117 |
 | `color-contrast`, `heading-order`, `label`, `th-has-data-cells`, `errors-in-console`, `render-blocking-resources` | = 100 | 100 |
 
 \* Valores medidos com `lighthouse` CLI direto; sob `staticDistDir` do LHCI as métricas ficam
@@ -155,7 +155,7 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
 
 ## Sistema de ícones
 
-**Lucide** (ISC) — 37 ícones escolhidos por conceito do domínio, embutidos como CSS
+**Lucide** (ISC) — 47 ícones escolhidos por conceito do domínio, embutidos como CSS
 por `audit/gen-icons.mjs`. O objetivo é reduzir carga cognitiva: a coluna Esfera passa a
 ser reconhecível por bandeira/mapa/prédio e o Status por ícone + cor, sem precisar ler o texto.
 
@@ -168,7 +168,7 @@ ser reconhecível por bandeira/mapa/prédio e o Status por ícone + cor, sem pre
 | Herda cor do texto | sim | não | **sim** (`background-color`) |
 | Ruído em leitor de tela | precisa `aria-hidden` | precisa `alt=""` | **impossível** (pseudo-elemento) |
 
-O ponto decisivo foi o DOM: a tabela de 78×7 e os comboboxes usam **996 dos 1200 nós**
+O ponto decisivo foi o DOM: a tabela de 78×7, os comboboxes e as associações visuais usam **1117 dos 1200 nós**
 permitidos pelo gate de Lighthouse. Com `<svg>` inline em cada linha o limite seria estourado.
 Os ícones por CSS não acrescentam nós e mantêm espaço para os controles pesquisáveis.
 
@@ -195,6 +195,7 @@ nem `<svg>` sem rótulo**, e que **toda célula mantém texto próprio**. axe-co
   as cores originais (`#00913f`, `#ff3b00`) reprovavam no `color-contrast` sobre o hover
   amarelo (3.13:1 e 2.73:1). Os tokens de texto garantem ≥ 4.5:1 nos três fundos
   (branco, zebra `#faf8f0` e hover `#ffe100`). O vermelho vibrante segue em uso decorativo.
+- **Associação visual em fórmula causal e dinâmica**: a seção “Do cotidiano às obrigações” começa pelo objeto ou acontecimento reconhecível e explicita `situação + hipótese observada = obrigação`. Os quatro exemplos mudam com o perfil selecionado (`Pessoa física`, `MEI`, `Empresa e empregador` ou `Reforma tributária`). Ícone, texto e sigla permanecem juntos para preservar precisão e acessibilidade; por exemplo, `ter um veículo + propriedade do veículo automotor = IPVA`.
 - **Ordenação com `<button>` dentro do `<th>`**: antes o handler estava no `<th>`, o que
   tornava a ordenação inacessível por teclado.
 - **Coluna Sigla como `<th scope="row">`** com `<abbr title>` expandindo o nome completo.

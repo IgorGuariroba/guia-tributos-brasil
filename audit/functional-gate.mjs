@@ -44,6 +44,20 @@ await checar('perfil de interesse personaliza a entrada do guia', async () => {
   igual(await page.getByRole('dialog').count(), 0, 'diálogo encerrado');
 });
 
+await checar('associações visuais mudam conforme o perfil', async () => {
+  const escolherPerfil = async perfil => {
+    await page.locator('[data-change-profile]').click();
+    await page.locator(`[data-profile="${perfil}"]`).click();
+    await page.locator('.profile-confirm').click();
+    return page.locator('.association-tax strong').allTextContents();
+  };
+  const pessoa = await escolherPerfil('pessoa');
+  igual(pessoa.join(','), 'IPVA,IPTU,IRPF,ITCMD', 'associações de pessoa física');
+  const reforma = await escolherPerfil('reforma');
+  await escolherPerfil('all');
+  igual(reforma.join(','), 'CBS,IBS,IS,ICMS / ISS', 'associações da reforma tributária');
+});
+
 await checar(`carga inicial renderiza ${TOTAL_ESPERADO} linhas`, async () => {
   igual(await linhas(), TOTAL_ESPERADO, 'linhas');
   igual(await contador(), `${TOTAL_ESPERADO} de ${TOTAL_ESPERADO} itens exibidos`, 'contador');
