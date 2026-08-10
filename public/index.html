@@ -25,8 +25,19 @@
 :root{
   --bg:#f2efe4;--card:#fff;--ink:#000;--text:#000;--muted:#3d3d3d;
   --accent:#ffe100;--accent2:#0037ff;--danger:#ff3b00;
+  /* Cores semânticas: cada par mantém contraste AA e nunca substitui texto/ícone. */
+  --info:#1d4ed8;--info-surface:#dbeafe;--info-text:#153e8a;
+  --success:#15803d;--success-surface:#dcfce7;--success-text:#14532d;
+  --warning:#b45309;--warning-surface:#fef3c7;--warning-text:#713f12;
+  --critical:#c2410c;--critical-surface:#ffedd5;--critical-text:#7c2d12;
+  --error:#b91c1c;--error-surface:#fee2e2;--error-text:#7f1d1d;
+  --purple:#7e22ce;--purple-surface:#f3e8ff;--purple-text:#581c87;
+  --teal:#0f766e;--teal-surface:#ccfbf1;--teal-text:#134e4a;
+  --cyan:#0e7490;--cyan-surface:#cffafe;--cyan-text:#164e63;
+  --pink:#be185d;--pink-surface:#fce7f3;--pink-text:#831843;
+  --neutral:#4b5563;--neutral-surface:#e5e7eb;--neutral-text:#1f2937;
   /* tokens de TEXTO: contraste >=4.5:1 sobre branco, zebra (#faf8f0) e hover amarelo (#ffe100) */
-  --ok-text:#006630;--danger-text:#b02500;
+  --ok-text:var(--success-text);--danger-text:#b02500;
   --b:3px solid #000;--shadow:6px 6px 0 #000;--shadow-sm:4px 4px 0 #000;
   --display:"Archivo Black","Arial Black",Impact,system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
@@ -48,11 +59,15 @@ h1{font-family:var(--display);font-size:clamp(22px,5vw,62px);margin:0 0 12px;let
   /* palavras longas ("CONTRIBUIÇÕES,") não podem estourar a viewport em 320px */
   overflow-wrap:break-word;hyphens:auto}
 .subtitle{color:#000;max-width:1000px;margin:0;font-size:14px;border-top:var(--b);padding-top:12px}
-.notice{background:#fff;border:var(--b);border-left:12px solid var(--danger);box-shadow:var(--shadow-sm);padding:14px 16px;margin:18px 0;font-size:14px}
+.notice{background:var(--warning-surface);color:var(--warning-text);border:var(--b);border-left:12px solid var(--warning);box-shadow:var(--shadow-sm);padding:14px 16px;margin:18px 0;font-size:14px}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}
 .card{background:var(--card);border:var(--b);box-shadow:var(--shadow-sm);padding:16px;transition:transform .08s linear,box-shadow .08s linear}
 .card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #000}
 .card h2{font-family:var(--display);font-size:15px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.02em;background:var(--ink);color:var(--accent);display:inline-block;padding:3px 8px}
+.card h2[data-icone="imposto"]{background:var(--info);color:#fff}
+.card h2[data-icone="taxa"]{background:var(--purple);color:#fff}
+.card h2[data-icone="contribuicao"]{background:var(--success);color:#fff}
+.card h2[data-icone="encargo-trabalhista"]{background:var(--critical);color:#fff}
 .card p{margin:0;color:#1a1a1a;font-size:13px}
 .filters{position:sticky;top:0;z-index:5;background:var(--bg);border:var(--b);box-shadow:var(--shadow-sm);padding:14px;margin:24px 0 0}
 .filter-grid{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px}
@@ -86,8 +101,8 @@ tr:nth-child(even) td{background:#faf8f0}
 tr:hover td{background:var(--accent)}
 .sigla{font-family:var(--display);font-size:13px;text-transform:uppercase}
 .field{margin:0}
-.status-transition{color:var(--danger-text);font-weight:700}
-.status-active{color:var(--ok-text);font-weight:700}
+.status-transition{color:var(--critical-text);font-weight:700}
+.status-active{color:var(--success-text);font-weight:700}
 .empty{padding:32px;text-align:center;color:#000;font-family:var(--display);text-transform:uppercase}
 .empty:empty{display:none;padding:0}
 .legend{margin-top:24px;background:#fff;border:var(--b);box-shadow:var(--shadow-sm);padding:18px}
@@ -166,7 +181,7 @@ footer p[data-icone],.legend li[data-icone],.empty[data-icone],.skip-link[data-i
 /* O aviso mantém fluxo de texto inline (o conteúdo é um parágrafo com <strong>),
    então o ícone é inline em vez de item flex — flex/grid quebrariam o texto em colunas. */
 .notice[data-icone]{display:block}
-.notice[data-icone]::before{--icone-tam:1.2em;margin-right:.5em;vertical-align:-.2em;background-color:var(--danger-text)}
+.notice[data-icone]::before{--icone-tam:1.2em;margin-right:.5em;vertical-align:-.2em;background-color:var(--warning-text)}
 .card h2[data-icone]::before{--icone-tam:1.15em}
 footer p[data-icone]{display:block}
 footer p[data-icone]::before{margin-right:.45em;vertical-align:-.15em}
@@ -212,6 +227,36 @@ td[data-icone]::before{--icone-tam:1em}
   -webkit-mask:var(--icone-busca) center/contain no-repeat;mask:var(--icone-busca) center/contain no-repeat;
 }
 .field-busca input{padding-left:2.9em}
+
+/* Codificação cromática por significado. A faixa, o ícone e o texto trabalham
+   juntos: cor é uma pista de varredura visual, nunca a única informação. */
+tbody td[data-icone]{
+  background:var(--semantic-surface,var(--neutral-surface));color:var(--semantic-text,var(--neutral-text));
+  box-shadow:inset 7px 0 0 var(--semantic,var(--neutral));font-weight:600;
+}
+/* Tipo / natureza */
+td[data-icone="imposto"]{--semantic:var(--info);--semantic-surface:var(--info-surface);--semantic-text:var(--info-text)}
+td[data-icone="taxa"]{--semantic:var(--purple);--semantic-surface:var(--purple-surface);--semantic-text:var(--purple-text)}
+td[data-icone="contribuicao"],td[data-icone="contribuicao-terceiros"]{--semantic:var(--success);--semantic-surface:var(--success-surface);--semantic-text:var(--success-text)}
+td[data-icone="compensacao"],td[data-icone="fator"]{--semantic:var(--cyan);--semantic-surface:var(--cyan-surface);--semantic-text:var(--cyan-text)}
+td[data-icone="encargo-trabalhista"]{--semantic:var(--critical);--semantic-surface:var(--critical-surface);--semantic-text:var(--critical-text)}
+td[data-icone="regime"],td[data-icone="mecanismo"]{--semantic:var(--teal);--semantic-surface:var(--teal-surface);--semantic-text:var(--teal-text)}
+td[data-icone="documento"],td[data-icone="ferramenta"],td[data-icone="fundo"]{--semantic:var(--pink);--semantic-surface:var(--pink-surface);--semantic-text:var(--pink-text)}
+/* Esfera */
+td[data-icone="federal"]{--semantic:var(--info);--semantic-surface:var(--info-surface);--semantic-text:var(--info-text)}
+td[data-icone="estadual"]{--semantic:var(--purple);--semantic-surface:var(--purple-surface);--semantic-text:var(--purple-text)}
+td[data-icone="municipal"]{--semantic:var(--critical);--semantic-surface:var(--critical-surface);--semantic-text:var(--critical-text)}
+td[data-icone="compartilhado"]{--semantic:var(--teal);--semantic-surface:var(--teal-surface);--semantic-text:var(--teal-text)}
+/* Status: convenções universais de sucesso, atenção, mudança e erro. */
+td[data-icone="vigente"]{--semantic:var(--success);--semantic-surface:var(--success-surface);--semantic-text:var(--success-text)}
+td[data-icone="transicao"]{--semantic:var(--warning);--semantic-surface:var(--warning-surface);--semantic-text:var(--warning-text)}
+td[data-icone="implementacao"]{--semantic:var(--info);--semantic-surface:var(--info-surface);--semantic-text:var(--info-text)}
+td[data-icone="nao-instituido"]{--semantic:var(--error);--semantic-surface:var(--error-surface);--semantic-text:var(--error-text)}
+td[data-icone="varia"]{--semantic:var(--warning);--semantic-surface:var(--warning-surface);--semantic-text:var(--warning-text)}
+td[data-icone="historico"]{--semantic:var(--neutral);--semantic-surface:var(--neutral-surface);--semantic-text:var(--neutral-text)}
+tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
+@media(forced-colors:active){tbody td[data-icone]{box-shadow:inset 7px 0 0 CanvasText}}
+
 .empty[data-icone]{justify-content:center}
 .empty[data-icone]::before{--icone-tam:1.4em}
 .empty:empty::before{display:none}
