@@ -49,6 +49,8 @@ for (const bp of BREAKPOINTS) {
     deviceScaleFactor: 1,
   });
   await page.goto(URL, { waitUntil: 'networkidle' });
+  await page.getByRole('button', { name: /Explorar tudo/ }).click();
+  await page.getByRole('button', { name: /Entrar no guia com 78 itens/ }).click();
   await page.waitForFunction(() => document.querySelectorAll('tbody tr').length > 0);
 
   const problemas = await page.evaluate(

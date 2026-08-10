@@ -43,6 +43,10 @@ let totalViolacoes = 0;
 for (const estado of estados) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await page.goto(URL, { waitUntil: 'networkidle' });
+  if (estado.nome !== 'carga-inicial') {
+    await page.getByRole('button', { name: /Explorar tudo/ }).click();
+    await page.getByRole('button', { name: /Entrar no guia com 78 itens/ }).click();
+  }
   await estado.setup(page);
   await page.addScriptTag({ content: axeSource });
 

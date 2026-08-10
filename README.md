@@ -6,8 +6,8 @@
 ![Semantic HTML Score 100](https://img.shields.io/badge/Semantic%20HTML-100%2F100-006630)
 
 Página estática, sem dependências de runtime, que reúne **78 siglas** do sistema tributário,
-trabalhista, regulatório e financeiro brasileiro — com busca, filtros por tipo/esfera/contexto/status,
-ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
+trabalhista, regulatório e financeiro brasileiro — com perfis de interesse, busca, filtros por
+tipo/esfera/contexto/status, ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
 
 🔗 **Publicado em:** https://igorguariroba.github.io/guia-tributos-brasil/
 
@@ -21,7 +21,7 @@ ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
 | Lighthouse — SEO | **100** |
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
 | Semantic HTML Score | **100/100 (A)** |
-| Testes funcionais | **18/18** |
+| Testes funcionais | **19/19** |
 | Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
 | Nós no DOM | **996** (limite 1200) |
 | Requisições a terceiros | **0** (fontes auto-hospedadas) |
@@ -54,8 +54,8 @@ npm run gate:lighthouse    # somente Lighthouse CI
 
 ### Gate 1 · Funcional (`audit/functional-gate.mjs`)
 
-18 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
-carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
+19 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
+seleção e confirmação do perfil de interesse, carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
 reset do formulário, combobox pesquisável com multisseleção, contextos atômicos, chips removíveis,
 rótulos visíveis, busca na primeira tela, **ordenação acionável por teclado** com `aria-sort`
 exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas),

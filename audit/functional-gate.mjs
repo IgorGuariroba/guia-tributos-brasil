@@ -36,6 +36,14 @@ const igual = (obtido, esperado, ctx) => {
 const linhas = () => page.locator('tbody tr').count();
 const contador = () => page.locator('#count').textContent();
 
+await checar('perfil de interesse personaliza a entrada do guia', async () => {
+  await page.getByRole('button', { name: /Pessoa física/ }).click();
+  igual(await page.locator('.profile-number').textContent(), '15', 'prévia do perfil');
+  await page.getByRole('button', { name: /Explorar tudo/ }).click();
+  await page.getByRole('button', { name: `Entrar no guia com ${TOTAL_ESPERADO} itens` }).click();
+  igual(await page.getByRole('dialog').count(), 0, 'diálogo encerrado');
+});
+
 await checar(`carga inicial renderiza ${TOTAL_ESPERADO} linhas`, async () => {
   igual(await linhas(), TOTAL_ESPERADO, 'linhas');
   igual(await contador(), `${TOTAL_ESPERADO} de ${TOTAL_ESPERADO} itens exibidos`, 'contador');
