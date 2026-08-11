@@ -7,15 +7,13 @@
  *   2. filtrada (1 item)
  *   3. estado vazio (0 itens, live region ativa)
  */
-import { chromium } from 'playwright';
 import { createRequire } from 'node:module';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { abrirNavegador, abrirPagina, entrarNoGuia, salvarRelatorio } from './browser.mjs';
 
 const require = createRequire(import.meta.url);
 const axePath = require.resolve('axe-core/axe.min.js');
 const axeSource = require('node:fs').readFileSync(axePath, 'utf8');
 
-const URL = process.env.AUDIT_URL || 'http://localhost:8080/';
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 
 const estados = [
@@ -36,17 +34,13 @@ const estados = [
   },
 ];
 
-const browser = await chromium.launch();
+const browser = await abrirNavegador();
 const relatorio = [];
 let totalViolacoes = 0;
 
 for (const estado of estados) {
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-  await page.goto(URL, { waitUntil: 'networkidle' });
-  if (estado.nome !== 'carga-inicial') {
-    await page.getByRole('button', { name: /Explorar tudo/ }).click();
-    await page.getByRole('button', { name: /Entrar no guia com 78 itens/ }).click();
-  }
+  const page = await abrirPagina(browser);
+  if (estado.nome !== 'carga-inicial') await entrarNoGuia(page);
   await estado.setup(page);
   await page.addScriptTag({ content: axeSource });
 
@@ -84,8 +78,7 @@ for (const estado of estados) {
 }
 
 await browser.close();
-mkdirSync('audit/reports', { recursive: true });
-writeFileSync('audit/reports/axe.json', JSON.stringify(relatorio, null, 2));
+salvarRelatorio('axe.json', relatorio);
 
 console.log(
   `\naxe-core ${require('axe-core').version} | tags: ${TAGS.join(', ')}\n` +

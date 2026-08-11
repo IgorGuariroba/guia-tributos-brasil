@@ -3,13 +3,17 @@
  * Gate de duplicação de código (reutilização).
  *
  * Mede clones copiar-e-colar com jscpd sobre public/ e audit/ e reprova se:
- *   1. o percentual de linhas duplicadas ultrapassar DUP_MAX_PERCENT (default 1.0%); ou
- *   2. existir qualquer clone com >= DUP_MAX_CLONE_LINES linhas (default 30).
+ *   1. o percentual de linhas duplicadas ultrapassar DUP_MAX_PERCENT (default 0.4%); ou
+ *   2. existir qualquer clone com >= DUP_MAX_CLONE_LINES linhas (default 12).
  *
  * O critério (1) trava a regressão global; o (2) impede que um único bloco grande
- * copiado passe despercebido só porque o arquivo é grande.
+ * copiado passe despercebido só porque o arquivo é grande. Em base pequena (~2,5k
+ * linhas) o percentual é ruidoso — um clone de 6 linhas já vale ~0,24% — então o
+ * limite POR CLONE é o sinal confiável; o percentual é só a rede de segurança.
  *
- * Baseline no momento da criação do gate: 0.25% de linhas, maior clone = 6 linhas.
+ * Sensibilidade 4 linhas / 30 tokens. Baseline: 0.16%, maior clone = 5 linhas
+ * (o par asc/desc do teste de ordenação — simetria legítima, não extraída de
+ * propósito para não piorar a legibilidade do teste).
  *
  * O jscpd é invocado por subprocesso (e não pela API) porque a build ESM 4.2.x
  * quebra ao importar 'colors/safe' em Node >= 22.
@@ -19,10 +23,10 @@
 import { spawn } from 'node:child_process';
 import { readFileSync, mkdirSync, rmSync } from 'node:fs';
 
-const MAX_PERCENT = Number(process.env.DUP_MAX_PERCENT ?? 1.0);
-const MAX_CLONE_LINES = Number(process.env.DUP_MAX_CLONE_LINES ?? 30);
-const MIN_LINES = Number(process.env.DUP_MIN_LINES ?? 5);
-const MIN_TOKENS = Number(process.env.DUP_MIN_TOKENS ?? 50);
+const MAX_PERCENT = Number(process.env.DUP_MAX_PERCENT ?? 0.4);
+const MAX_CLONE_LINES = Number(process.env.DUP_MAX_CLONE_LINES ?? 12);
+const MIN_LINES = Number(process.env.DUP_MIN_LINES ?? 4);
+const MIN_TOKENS = Number(process.env.DUP_MIN_TOKENS ?? 30);
 
 const SAIDA = 'audit/reports/jscpd';
 const RELATORIO = `${SAIDA}/jscpd-report.json`;

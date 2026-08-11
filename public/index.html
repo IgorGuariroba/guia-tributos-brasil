@@ -449,19 +449,17 @@ const PROFILES = {
   empregador:{name:"Empresa e empregador",short:"Folha e operação",description:"Tributos da empresa, folha, trabalho, contribuições patronais e Sistema S.",match:x=>/Empresa|Folha|Trabalho|Sistema S/.test(x.contexto)},
   reforma:{name:"Reforma tributária",short:"O que está mudando",description:"Tributos em implementação ou transição e os principais itens afetados pela reforma do consumo.",match:x=>/transição|implementação/i.test(x.status)||/^(IBS|CBS|IS|ICMS|ISS|ISSQN|IPI|PIS|PIS\/PASEP|COFINS)$/.test(x.sigla)},
 };
+/* Itens de patrimônio/renda/transmissão compartilhados por "all" e "pessoa":
+   os dois perfis mostram exatamente as mesmas associações, mudando só o intro. */
+const ASSOC_PATRIMONIO = [
+  {icon:"veiculo",action:"Tem um veículo",rule:"Propriedade do veículo automotor",detail:"Estados e DF",result:"IPVA"},
+  {icon:"imovel",action:"Tem um imóvel urbano",rule:"Propriedade predial ou territorial urbana",detail:"Municípios e DF",result:"IPTU"},
+  {icon:"renda",action:"Recebe renda",rule:"Renda ou provento tributável",detail:"União",result:"IRPF"},
+  {icon:"heranca",action:"Recebe herança ou doação",rule:"Transmissão gratuita de bens ou direitos",detail:"Estados e DF",result:"ITCMD"},
+];
 const ASSOCIATIONS = {
-  all:{intro:"Exemplos amplos de patrimônio, renda e transmissão de bens.",items:[
-    {icon:"veiculo",action:"Tem um veículo",rule:"Propriedade do veículo automotor",detail:"Estados e DF",result:"IPVA"},
-    {icon:"imovel",action:"Tem um imóvel urbano",rule:"Propriedade predial ou territorial urbana",detail:"Municípios e DF",result:"IPTU"},
-    {icon:"renda",action:"Recebe renda",rule:"Renda ou provento tributável",detail:"União",result:"IRPF"},
-    {icon:"heranca",action:"Recebe herança ou doação",rule:"Transmissão gratuita de bens ou direitos",detail:"Estados e DF",result:"ITCMD"},
-  ]},
-  pessoa:{intro:"Renda, patrimônio e transmissões comuns à vida da pessoa física.",items:[
-    {icon:"veiculo",action:"Tem um veículo",rule:"Propriedade do veículo automotor",detail:"Estados e DF",result:"IPVA"},
-    {icon:"imovel",action:"Tem um imóvel urbano",rule:"Propriedade predial ou territorial urbana",detail:"Municípios e DF",result:"IPTU"},
-    {icon:"renda",action:"Recebe renda",rule:"Renda ou provento tributável",detail:"União",result:"IRPF"},
-    {icon:"heranca",action:"Recebe herança ou doação",rule:"Transmissão gratuita de bens ou direitos",detail:"Estados e DF",result:"ITCMD"},
-  ]},
+  all:{intro:"Exemplos amplos de patrimônio, renda e transmissão de bens.",items:ASSOC_PATRIMONIO},
+  pessoa:{intro:"Renda, patrimônio e transmissões comuns à vida da pessoa física.",items:ASSOC_PATRIMONIO},
   mei:{intro:"Atividades e recolhimentos frequentes na rotina do MEI e do pequeno negócio.",items:[
     {icon:"servico",action:"Presta serviços",rule:"Serviço abrangido pela legislação municipal",detail:"Para o MEI, normalmente no DAS-MEI",result:"ISS"},
     {icon:"loja",action:"Vende mercadorias",rule:"Circulação de mercadorias",detail:"Para o MEI, normalmente no DAS-MEI",result:"ICMS"},

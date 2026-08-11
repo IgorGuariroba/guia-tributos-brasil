@@ -21,7 +21,7 @@ tipo/esfera/contexto/status, ordenação por coluna e exportação para CSV. Est
 | Lighthouse — SEO | **100** |
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
 | Semantic HTML Score | **100/100 (A)** |
-| Duplicação de código (jscpd) | **0,24%** (limite 1%) |
+| Duplicação de código (jscpd) | **0,16%** (limite 0,4%) |
 | Testes funcionais | **20/20** |
 | Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
 | Nós no DOM | **1117** (limite 1200) |
@@ -126,12 +126,19 @@ sobre `public/` e `audit/` (JS, CSS e markup, inclusive os blocos inline do `ind
 
 | Critério | Limite | Medido |
 |---|---|---|
-| Linhas duplicadas | ≤ 1% | **0,24%** |
-| Maior clone individual | < 30 linhas | **7 linhas** |
-| Clone mínimo detectável | 5 linhas / 50 tokens | — |
+| Linhas duplicadas | ≤ 0,4% | **0,16%** |
+| Maior clone individual | < 12 linhas | **5 linhas** |
+| Clone mínimo detectável | 4 linhas / 30 tokens | — |
 
 Dois critérios porque o percentual global sozinho esconde um bloco grande copiado dentro de
-um arquivo grande; o limite por clone pega esse caso.
+um arquivo grande; o limite por clone pega esse caso. Em base pequena (~2,5 mil linhas) o
+percentual é ruidoso — um clone de 6 linhas já vale ~0,24% — então **o limite por clone é o
+sinal confiável** e o percentual é apenas a rede de segurança.
+
+O único clone remanescente é o par ascendente/descendente do teste de ordenação em
+`functional-gate.mjs`: simetria legítima de teste, mantida de propósito porque extraí-la
+pioraria a legibilidade. O `@font-face` com `unicode-range` repetido por peso de fonte é o
+outro piso irredutuvel — por isso a meta não é 0%, que forçaria contorcer código correto.
 
 Ajustes por variável de ambiente: `DUP_MAX_PERCENT`, `DUP_MAX_CLONE_LINES`, `DUP_MIN_LINES`,
 `DUP_MIN_TOKENS`. Relatório em `audit/reports/jscpd/jscpd-report.json` (artefato do CI).
@@ -244,6 +251,7 @@ audit/
   semantic-gate.mjs
   semantic-core.mjs  # rubrica de 100 pontos
   duplication-gate.mjs # gate de duplicação (jscpd)
+  browser.mjs        # URL, viewport, entrada no guia e relatórios compartilhados
 lighthouserc.json
 .husky/              # pre-commit e pre-push
 .github/workflows/ci.yml

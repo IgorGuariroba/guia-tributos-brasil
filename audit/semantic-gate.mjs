@@ -3,21 +3,17 @@
  * Gate de HTML semântico. Falha se o score cair abaixo de SEMANTIC_MIN (default 100).
  * Rubrica completa em audit/semantic-core.mjs.
  */
-import { chromium } from 'playwright';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { abrirNavegador, abrirPagina, salvarRelatorio } from './browser.mjs';
 import { auditar } from './semantic-core.mjs';
 
-const URL = process.env.AUDIT_URL || 'http://localhost:8080/';
 const MIN = Number(process.env.SEMANTIC_MIN ?? 100);
 
-const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-await page.goto(URL, { waitUntil: 'networkidle' });
+const browser = await abrirNavegador();
+const page = await abrirPagina(browser);
 const relatorio = JSON.parse(await auditar(page));
 await browser.close();
 
-mkdirSync('audit/reports', { recursive: true });
-writeFileSync('audit/reports/semantic.json', JSON.stringify(relatorio, null, 2));
+salvarRelatorio('semantic.json', relatorio);
 
 console.log(`Semantic HTML Score: ${relatorio.score}/100 (nota ${relatorio.nota})`);
 for (const [cat, v] of Object.entries(relatorio.porCategoria)) {

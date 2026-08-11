@@ -17,10 +17,8 @@
  *   7. a barra de filtros sticky não cobre o conteúdo ao usar o skip-link
  *   8. conteúdo essencial visível e funcional (filtro aplica em qualquer largura)
  */
-import { chromium, devices } from 'playwright';
-import { writeFileSync, mkdirSync } from 'node:fs';
-
-const URL = process.env.AUDIT_URL || 'http://localhost:8080/';
+import { devices } from 'playwright';
+import { abrirNavegador, abrirPagina, entrarNoGuia, salvarRelatorio } from './browser.mjs';
 
 const BREAKPOINTS = [
   { w: 320, rotulo: 'celular pequeno', touch: true },
@@ -37,20 +35,18 @@ const ALVO_MIN = 44; // WCAG 2.5.5 Target Size (Enhanced)
 const FONTE_MIN = 12;
 const FONTE_CORPO_MIN = 14;
 
-const browser = await chromium.launch();
+const browser = await abrirNavegador();
 const relatorio = [];
 let totalProblemas = 0;
 
 for (const bp of BREAKPOINTS) {
-  const page = await browser.newPage({
+  const page = await abrirPagina(browser, {
     viewport: { width: bp.w, height: 900 },
     hasTouch: bp.touch,
     isMobile: false, // isMobile altera o layout viewport; queremos medir a largura pedida
     deviceScaleFactor: 1,
   });
-  await page.goto(URL, { waitUntil: 'networkidle' });
-  await page.getByRole('button', { name: /Explorar tudo/ }).click();
-  await page.getByRole('button', { name: /Entrar no guia com 78 itens/ }).click();
+  await entrarNoGuia(page);
   await page.waitForFunction(() => document.querySelectorAll('tbody tr').length > 0);
 
   const problemas = await page.evaluate(
@@ -216,8 +212,7 @@ for (const nome of ['iPhone 14', 'Pixel 7', 'iPad Mini']) {
   const d = devices[nome];
   if (!d) continue;
   const ctx = await browser.newContext({ ...d });
-  const page = await ctx.newPage();
-  await page.goto(URL, { waitUntil: 'networkidle' });
+  const page = await abrirPagina(browser, { contexto: ctx });
   const r = await page.evaluate(() => ({
     overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     vw: document.documentElement.clientWidth,
@@ -230,8 +225,7 @@ for (const nome of ['iPhone 14', 'Pixel 7', 'iPad Mini']) {
 }
 
 await browser.close();
-mkdirSync('audit/reports', { recursive: true });
-writeFileSync('audit/reports/responsive.json', JSON.stringify(relatorio, null, 2));
+salvarRelatorio('responsive.json', relatorio);
 
 console.log(`\nBreakpoints auditados: ${BREAKPOINTS.map(b => b.w + 'px').join(', ')}`);
 console.log(`TOTAL DE PROBLEMAS: ${totalProblemas}`);

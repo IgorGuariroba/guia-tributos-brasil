@@ -4,19 +4,20 @@
  * Cobre filtros, estado vazio, reset, ordenação por teclado, aria-sort, export CSV
  * e ausência de erros de console.
  */
-import { chromium } from 'playwright';
+import { abrirNavegador, abrirPagina, entrarNoGuia, TOTAL_ITENS } from './browser.mjs';
 
-const URL = process.env.AUDIT_URL || 'http://localhost:8080/';
-const TOTAL_ESPERADO = 78;
-
-const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+const TOTAL_ESPERADO = TOTAL_ITENS;
 
 const errosConsole = [];
-page.on('console', m => m.type() === 'error' && errosConsole.push(m.text()));
-page.on('pageerror', e => errosConsole.push(String(e)));
-
-await page.goto(URL, { waitUntil: 'networkidle' });
+const browser = await abrirNavegador();
+// Os listeners entram por antesDeAbrir: registrados depois do goto, perderiam
+// os erros disparados durante a carga inicial.
+const page = await abrirPagina(browser, {
+  antesDeAbrir: p => {
+    p.on('console', m => m.type() === 'error' && errosConsole.push(m.text()));
+    p.on('pageerror', e => errosConsole.push(String(e)));
+  },
+});
 
 const testes = [];
 const checar = async (nome, fn) => {
@@ -39,8 +40,7 @@ const contador = () => page.locator('#count').textContent();
 await checar('perfil de interesse personaliza a entrada do guia', async () => {
   await page.getByRole('button', { name: /Pessoa física/ }).click();
   igual(await page.locator('.profile-number').textContent(), '15', 'prévia do perfil');
-  await page.getByRole('button', { name: /Explorar tudo/ }).click();
-  await page.getByRole('button', { name: `Entrar no guia com ${TOTAL_ESPERADO} itens` }).click();
+  await entrarNoGuia(page);
   igual(await page.getByRole('dialog').count(), 0, 'diálogo encerrado');
 });
 
