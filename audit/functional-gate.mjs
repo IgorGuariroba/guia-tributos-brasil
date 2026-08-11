@@ -51,14 +51,14 @@ const igual = (obtido, esperado, ctx) => {
   if (obtido !== esperado) throw new Error(`${ctx}: esperado "${esperado}", obtido "${obtido}"`);
 };
 
-const linhas = () => page.locator('tbody tr').count();
+const linhas = () => page.locator('#tbody tr').count();
 
 // Esperas de convergência da tabela, usadas por vários testes. Centralizadas
 // porque a condição (comparar contra o total) é a mesma em todos eles.
 const aguardarTodasAsLinhas = () =>
-  page.waitForFunction(t => document.querySelectorAll('tbody tr').length === t, TOTAL_ESPERADO);
+  page.waitForFunction(t => document.querySelectorAll('#tbody tr').length === t, TOTAL_ESPERADO);
 const aguardarLinhasFiltradas = () =>
-  page.waitForFunction(t => document.querySelectorAll('tbody tr').length < t, TOTAL_ESPERADO);
+  page.waitForFunction(t => document.querySelectorAll('#tbody tr').length < t, TOTAL_ESPERADO);
 const contador = () => page.locator('#count').textContent();
 
 await checar('perfil de interesse personaliza a entrada do guia', async () => {
@@ -89,13 +89,13 @@ await checar(`carga inicial renderiza ${TOTAL_ESPERADO} linhas`, async () => {
 
 await checar('busca textual filtra (ICMS => 1)', async () => {
   await page.fill('#search', 'ICMS');
-  await page.waitForFunction(() => document.querySelectorAll('tbody tr').length === 1);
+  await page.waitForFunction(() => document.querySelectorAll('#tbody tr').length === 1);
   igual(await linhas(), 1, 'linhas');
 });
 
 await checar('busca ignora acentos (tributaria => >0)', async () => {
   await page.fill('#search', 'tributaria');
-  await page.waitForFunction(() => document.querySelectorAll('tbody tr').length > 0);
+  await page.waitForFunction(() => document.querySelectorAll('#tbody tr').length > 0);
   if ((await linhas()) === 0) throw new Error('busca sem acento não encontrou nada');
 });
 
@@ -148,7 +148,7 @@ await checar('contexto usa categorias atômicas e chips removíveis', async () =
     await page.fill('#contexto-search', 'empresa');
     await page.getByRole('option', { name: TEXTO.empresa, exact: true }).click();
     await aguardarLinhasFiltradas();
-    const contextos = await page.locator('tbody tr td:nth-child(5)').allTextContents();
+    const contextos = await page.locator('#tbody tr td:nth-child(5)').allTextContents();
     if (!contextos.every(c => c.split(/\s*\/\s*/).includes(TEXTO.empresa))) {
       throw new Error('filtro Empresa retornou contexto sem a categoria atômica');
     }
@@ -188,13 +188,13 @@ await checar('ordenação acionável por teclado (Enter) e aria-sort correto', a
   await page.waitForFunction(
     () => document.querySelector('th[data-key="nome"]').getAttribute('aria-sort') === 'ascending',
   );
-  const primeiroAsc = await page.locator('tbody tr th').first().innerText();
+  const primeiroAsc = await page.locator('#tbody tr th').first().innerText();
 
   await page.keyboard.press('Enter');
   await page.waitForFunction(
     () => document.querySelector('th[data-key="nome"]').getAttribute('aria-sort') === 'descending',
   );
-  const primeiroDesc = await page.locator('tbody tr th').first().innerText();
+  const primeiroDesc = await page.locator('#tbody tr th').first().innerText();
 
   if (primeiroAsc === primeiroDesc) {
     throw new Error('ordem não inverteu ao pressionar Enter novamente');
@@ -357,7 +357,7 @@ await checar('ícones são decorativos (invisíveis para leitores de tela)', asy
 await checar('texto permanece legível sem os ícones (não há dependência visual)', async () => {
   // Se um ícone fosse a única fonte de informação, remover as máscaras perderia dados.
   const r = await page.evaluate(() => {
-    const linha = document.querySelector('tbody tr');
+    const linha = document.querySelector('#tbody tr');
     const celulas = [...linha.querySelectorAll('th,td')].map(c => c.textContent.trim());
     return { celulas, vazias: celulas.filter(t => t.length === 0).length };
   });
@@ -433,8 +433,8 @@ await checar('aliases retornam o item correto', async () => {
     await page.fill('#search', termoLocalizado);
     await page.waitForFunction(
       expected =>
-        document.querySelectorAll('tbody tr').length === 1 &&
-        document.querySelector('tbody tr')?.id === expected,
+        document.querySelectorAll('#tbody tr').length === 1 &&
+        document.querySelector('#tbody tr')?.id === expected,
       id,
       { timeout: 5000 },
     );
@@ -477,11 +477,11 @@ await checar('relações da Reforma são válidas, recíprocas e filtráveis', a
   }
   await page.click('#reforma');
   await page.getByRole('option', { name: 'O que sai', exact: true }).click();
-  await page.waitForFunction(() => document.querySelectorAll('tbody tr').length > 0);
-  if (!(await page.locator('tbody tr details.reforma-details').count())) {
+  await page.waitForFunction(() => document.querySelectorAll('#tbody tr').length > 0);
+  if (!(await page.locator('#tbody tr details.reforma-details').count())) {
     throw new Error('filtro não renderizou relações');
   }
-  const tempos = await page.locator('tbody tr time[datetime]').count();
+  const tempos = await page.locator('#tbody tr time[datetime]').count();
   if (!tempos) throw new Error('timeline sem elementos time');
 });
 

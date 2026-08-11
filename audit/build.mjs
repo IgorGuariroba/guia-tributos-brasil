@@ -97,6 +97,22 @@ const EN_GLOSSARY = [
   ['Copiar Markdown', 'Copy Markdown'],
   ['Copiado', 'Copied'],
   ['Remover filtro', 'Remove filter'],
+  ['Termos sem resultado neste dispositivo', 'No-result terms on this device'],
+  [
+    'O termo é normalizado (sem maiúsculas e acentos) e guardado apenas com sua contagem, sem data ou identificador.',
+    'The term is normalized (lowercase and without accents) and stored only with its count, without date or identifier.',
+  ],
+  ['Exportar JSON', 'Export JSON'],
+  ['Apagar dados', 'Delete data'],
+  ['Contagem local de termos sem resultado', 'Local count of no-result terms'],
+  ['Termo', 'Term'],
+  ['Contagens', 'Counts'],
+  ['JSON exportado.', 'JSON exported.'],
+  ['Dados apagados neste dispositivo.', 'Data deleted on this device.'],
+  [
+    'As buscas sem resultado são contadas somente neste dispositivo, de forma agregada e sem cookies, identificadores ou conexão externa.',
+    'No-result searches are counted only on this device, in aggregate, without cookies, identifiers or external connections.',
+  ],
 ];
 const traduzir = valor => EN_GLOSSARY.reduce((texto, [pt, en]) => texto.split(pt).join(en), valor);
 const traduzirCatalogo = dados =>
