@@ -462,7 +462,44 @@ function traduzirHtml(html) {
     ],
   ];
   const integral = correcoesIntegrais.reduce((texto, [pt, en]) => texto.split(pt).join(en), final);
-  return integral
+  const catalogo = [
+    ['Sujeito:', 'Taxpayer:'],
+    ['Periodicidade:', 'Frequency:'],
+    ['Individual ou jurídica', 'Individual or legal entity'],
+    ['conforme a hipótese de incidência', 'depending on the taxable event'],
+    ['Conforme a hipótese aplicável.', 'According to the applicable circumstances.'],
+    ['Implementação', 'Implementation'],
+    ['Varia por município', 'Varies by municipality'],
+    ['Varia por estado', 'Varies by state'],
+    ['Tax sobre', 'Tax on'],
+    ['Fee de', 'Fee for'],
+    ['Contribution para', 'Contribution for'],
+    ['Constituição Federal', 'Federal Constitution'],
+    ['Código Tributário Nacional', 'National Tax Code'],
+    ['legislação', 'legislation'],
+    ['tributável', 'taxable'],
+    ['hipótese', 'case'],
+    ['pessoas físicas', 'individuals'],
+    ['pessoas jurídicas', 'legal entities'],
+    ['Receita', 'Revenue'],
+    ['renda', 'income'],
+    ['faturamento', 'turnover'],
+    ['trabalhista', 'labor'],
+    ['Setor público', 'Public sector'],
+    ['Serviços públicos', 'Public services'],
+    ['Resíduos', 'Waste'],
+    ['Saúde', 'Health'],
+    ['Educação', 'Education'],
+    ['Construção', 'Construction'],
+    ['Mineração', 'Mining'],
+    ['Transporte', 'Transport'],
+    ['Regulação', 'Regulation'],
+    ['Licenciamento', 'Licensing'],
+    ['Publicidade', 'Advertising'],
+    ['Novo tax federal', 'New federal tax'],
+  ];
+  return catalogo
+    .reduce((texto, [pt, en]) => texto.split(pt).join(en), integral)
     .replace(/data-icone="(?:Tax|Fee|Contribution|Charge)s?"/g, m =>
       m.replace(/(?:Tax|tax|Fee|fee|Contribution|contribution|Charge|charge)s?/, 'imposto'),
     )
