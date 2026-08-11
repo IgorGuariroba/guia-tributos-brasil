@@ -201,6 +201,10 @@ footer p{margin:0 0 10px}footer p:last-child{margin:0}
   .table-wrap{display:none}.result-cards{display:grid;gap:14px}.stats .sort-help{display:none}
 }
 @media(max-width:360px){.container{padding:10px}header{padding:16px 14px}.notice{border-left-width:8px}}
+
+/* No celular, os resultados substituem a tabela por grupos de esfera e detalhes sob demanda. */
+.mobile-result-intro{margin:0;padding:11px 12px;border:var(--b);background:var(--ink);color:#fff;font-size:12px}.mobile-result-intro strong{color:var(--accent)}
+.result-group{display:grid;gap:9px;min-width:0}.result-group-title{position:sticky;top:0;z-index:1;margin:4px 0 0;padding:9px 11px;background:var(--accent2);color:#fff;border:var(--b);font-family:var(--display);font-size:15px;text-transform:uppercase}.result-strip{display:grid;grid-template-columns:minmax(64px,74px) minmax(0,1fr);gap:8px;min-width:0;background:#fff;border:var(--b);box-shadow:3px 3px 0 #000;padding:10px}.result-strip>*{min-width:0}.result-strip h3{grid-row:1/3;margin:0;font-family:var(--display);font-size:18px;overflow-wrap:anywhere}.result-strip p{margin:0;font-size:11px;overflow-wrap:anywhere}.result-strip .result-strip-meta{display:flex;gap:5px;flex-wrap:wrap}.result-strip .badge{white-space:normal}.result-strip details{grid-column:1/-1;border-top:2px solid #000}.result-strip summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700;text-transform:uppercase}.result-strip details p{padding-bottom:4px;font-size:12px}
 /* Ícones: Lucide v1.31.0 (ISC) — embutidos como mask-image em ::before.
    Zero nós no DOM, zero requisições, cor herdada via background-color.
    Gerado por audit/gen-icons.mjs — não edite à mão. */
@@ -645,11 +649,9 @@ function matchesFilter(item,key){
 }
 function renderCards(){
   if(!matchMedia("(max-width:600px)").matches){$("card-results").innerHTML="";return;}
-  $("card-results").innerHTML=filtered.map(x=>`<article class="result-card">
-    <h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><p class="result-name">${esc(x.nome)}</p>
-    <dl><dt>Tipo</dt><dd>${esc(x.tipo)}</dd><dt>Esfera</dt><dd>${esc(x.esfera)}</dd><dt>Contexto</dt><dd>${esc(x.contexto)}</dd><dt>Status</dt><dd>${esc(x.status)}</dd>
-    <details><summary>O que é / quando aparece</summary><p>${esc(x.descricao)}</p></details></dl>
-  </article>`).join("");
+  const groups=new Map();
+  filtered.forEach(item=>{if(!groups.has(item.esfera))groups.set(item.esfera,[]);groups.get(item.esfera).push(item);});
+  $("card-results").innerHTML=`<p class="mobile-result-intro"><strong>Por esfera:</strong> resultados organizados por esfera, com contexto e explicação sob demanda.</p>`+[...groups].map(([esfera,items])=>`<section class="result-group" aria-label="Esfera ${esc(esfera)}"><h3 class="result-group-title">${esc(esfera)} · ${items.length}</h3>${items.map(x=>`<article class="result-strip result-card"><h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><p><strong>${esc(x.nome)}</strong></p><p class="result-strip-meta"><span class="badge">${esc(x.tipo)}</span><span class="badge">${esc(x.status)}</span></p><details><summary>Ver contexto e explicação</summary><p><strong>${esc(x.contexto)}</strong></p><p>${esc(x.descricao)}</p></details></article>`).join("")}</section>`).join("");
 }
 function profileButtons(){
   return Object.entries(PROFILES).map(([key,profile])=>`<li><button type="button" class="profile-option" data-profile="${key}" aria-pressed="${activeProfile===key}"><strong>${esc(profile.name)}</strong><span>${esc(profile.short)} — ${esc(profile.description)}</span></button></li>`).join("");
