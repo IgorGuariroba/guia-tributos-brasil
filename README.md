@@ -58,6 +58,50 @@ Depois de editar `data/tributos.json` ou `src/index.template.html`, rode `npm ru
 commite tanto a fonte quanto `public/` — o Gate 1 (build) reprova PRs em que os dois
 divergem, exatamente como um `git diff --exit-code` de código gerado.
 
+## Contrato da API pública
+
+A API estática está disponível em [`/api/tributos.json`](public/api/tributos.json). Ela não
+possui runtime nem faz requisições externas. O documento tem este envelope:
+
+- `version` (`string`): versão automática no formato `sha256-<64 hex>`, calculada sobre o
+  JSON canônico de `data/tributos.json`; muda sempre que o catálogo muda.
+- `gerado_em` (`string`, ISO 8601): data-base determinística da revisão do catálogo. Não é o
+  relógio do build, portanto duas execuções reproduzem os mesmos bytes.
+- `total` (`integer`): quantidade de itens; deve ser igual a `itens.length` (atualmente 78).
+- `itens` (`array`): os registros do catálogo. Cada registro contém os campos obrigatórios
+  `id`, `sigla`, `nome`, `tipo`, `esfera`, `contexto`, `descricao` e `status`, todos strings
+  não vazias. `contexto` pode conter categorias separadas por `/`.
+
+Os enums atualmente publicados são:
+
+- `tipo`: `Imposto`, `Contribuição`, `Compensação`, `Contribuição para terceiros`, `Taxa`,
+  `Fundo / taxas`, `Encargo trabalhista`, `Fator de cálculo`, `Encargo / contribuições para
+terceiros`, `Regime tributário`, `Documento de arrecadação`, `Ferramenta / apuração` e
+  `Mecanismo de tributação`.
+- `esfera`: `Federal`, `Estadual`, `Municipal`, `Estadual + Municipal`, `Federal / repartida`,
+  `Municipal / DF` e `Compartilhado`.
+- `status`: `Vigente`, `Em transição`, `Não instituído`, `Implementação 2026`,
+  `Implementação`, `Vigente / regras específicas`, `Denominação histórica/comum`,
+  `Vigente / nome local`, `Varia por município`, `Varia por estado`, `Vigente / uso específico`,
+  `Vigente / específica`, `Vigente / uso conforme caso` e `Vigente conforme fundo`.
+
+O schema exige strings não vazias; consumidores devem tratar valores desconhecidos de forma
+compatível para frente. O campo `id` é um slug minúsculo e **estável**: uma vez publicado,
+nunca é reatribuído nem reaproveitado, mesmo que o item seja removido. Use-o como chave e em
+links, não a posição do item no array.
+
+Exemplo mínimo de consumo:
+
+```js
+const resposta = await fetch('/api/tributos.json').then(r => r.json());
+for (const tributo of resposta.itens) console.log(tributo.id, tributo.nome);
+```
+
+[`/api/tributos.csv`](public/api/tributos.csv) permanece disponível para planilhas. Como CSV
+não comporta envelope, ele contém somente cabeçalho e linhas de itens, nas colunas `ID`,
+`Sigla`, `Nome`, `Tipo/Natureza`, `Esfera`, `Contexto`, `Descrição` e `Status`; a primeira
+linha tem BOM UTF-8 e os metadados `version`/`gerado_em` não são repetidos nele.
+
 ## SEO e metadados sociais
 
 `npm run build` também gera, a partir da mesma URL canonical fixa
@@ -382,4 +426,6 @@ Material informativo — não substitui a análise da legislação específica d
 
 ## Licença
 
-MIT
+O código do projeto é MIT (consulte [`LICENSE`](LICENSE)). O catálogo em `data/` e seus
+artefatos de dados em `public/api/` são **CC BY 4.0** (consulte [`data/LICENSE`](data/LICENSE));
+a atribuição deve apontar para este projeto.

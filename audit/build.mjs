@@ -10,11 +10,15 @@
  *   node audit/build.mjs          # gera public/index.html e public/api/*
  *   node audit/build.mjs --check  # gera em memória e falha se divergir do que está commitado
  */
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const CHECK = process.argv.includes('--check');
 const SITE_URL = 'https://igorguariroba.github.io/guia-tributos-brasil/';
+// A data-base do catálogo é a revisão que introduziu data/tributos.json. Ela é
+// deliberadamente fixa: usar "agora" faria um build sem mudanças divergir.
+const DATA_REVISAO = '2026-08-10T22:16:49-03:00';
 
 const REQUIRED_FIELDS = [
   'id',
@@ -161,7 +165,21 @@ async function main() {
     .replace(marcador, `const DATA = ${JSON.stringify(dados)};\n`)
     .replace(marcadorJsonLd, scriptJsonLd);
 
-  const apiJson = `${JSON.stringify(dados, null, 2)}\n`;
+  // A versão é o hash do conteúdo canônico do catálogo: muda automaticamente
+  // quando qualquer item muda, sem depender de passo manual ou relógio.
+  const version = `sha256-${createHash('sha256').update(JSON.stringify(dados)).digest('hex')}`;
+  const apiJson = `${JSON.stringify(
+    {
+      version,
+      gerado_em: DATA_REVISAO,
+      total: dados.length,
+      itens: dados,
+    },
+    null,
+    2,
+  )}\n`;
+  // CSV é mantido como formato tabular: envelope não se aplica a ele. A versão
+  // e a data-base ficam documentadas no contrato JSON e no README.
   const apiCsv = paraCsv(dados);
 
   const alvos = [
