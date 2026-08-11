@@ -94,7 +94,15 @@
       "guia": {
         "oneOf": [
           { "type": "null" },
-          { "type": "object", "additionalProperties": false, "required": ["id", "rotulo"], "properties": { "id": { "type": "string" }, "rotulo": { "type": "string", "minLength": 1 } } }
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "rotulo"],
+            "properties": {
+              "id": { "type": "string" },
+              "rotulo": { "type": "string", "minLength": 1 }
+            }
+          }
         ]
       },
       "fundamento": {

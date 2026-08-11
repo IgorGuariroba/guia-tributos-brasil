@@ -8,16 +8,23 @@ const limite = Math.ceil(itens.length * 0.9);
 const erros = [];
 for (const campo of campos) {
   const preenchidos = itens.filter(item => Object.hasOwn(item, campo)).length;
-  if (preenchidos < limite) erros.push(`${campo}: ${preenchidos}/${itens.length} (mínimo ${limite})`);
+  if (preenchidos < limite) {
+    erros.push(`${campo}: ${preenchidos}/${itens.length} (mínimo ${limite})`);
+  }
 }
 const ids = new Set(itens.map(item => item.id));
 for (const item of itens) {
-  if (item.guia !== null && (!item.guia || typeof item.guia !== 'object' || !ids.has(item.guia.id))) {
+  if (
+    item.guia !== null &&
+    (!item.guia || typeof item.guia !== 'object' || !ids.has(item.guia.id))
+  ) {
     erros.push(`${item.id}: guia deve apontar para um id existente ou ser null.`);
   }
 }
 if (erros.length) {
-  console.error('✗ Gate de cobertura 4.4 reprovado:\n  - ' + erros.join('\n  - '));
+  console.error(`✗ Gate de cobertura 4.4 reprovado:\n  - ${erros.join('\n  - ')}`);
   process.exit(1);
 }
-console.log(`✓ Gate 4.4 aprovado: ${itens.length} itens, cobertura mínima de ${limite} itens por campo.`);
+console.log(
+  `✓ Gate 4.4 aprovado: ${itens.length} itens, cobertura mínima de ${limite} itens por campo.`,
+);

@@ -1,5 +1,5 @@
 {
-  "version": "sha256-56c2294bed0099290cdb6301eae2043d79df51c5a7709c64ce4a732ed6830ff2",
+  "version": "sha256-5d2acf4e4816696a44215779ba97bd7cebf0b33155416fdd38053dc759e4ae39",
   "gerado_em": "2026-08-10T22:16:49-03:00",
   "total": 78,
   "itens": [
@@ -29,7 +29,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "irpj",
@@ -56,7 +59,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "irrf",
@@ -80,7 +86,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "ipi",
@@ -104,7 +113,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "iof",
@@ -131,7 +143,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "ii",
@@ -158,7 +173,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "ie",
@@ -185,7 +203,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "itr",
@@ -212,7 +233,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l9393.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "igf",
@@ -236,7 +260,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "icms",
@@ -260,7 +287,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "ipva",
@@ -288,7 +318,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "itcmd",
@@ -316,7 +349,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "iss",
@@ -344,7 +380,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "issqn",
@@ -369,7 +408,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "iptu",
@@ -397,7 +439,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "itbi",
@@ -424,7 +469,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "ibs",
@@ -453,7 +501,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "is",
@@ -478,7 +529,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "pis-pasep",
@@ -502,7 +556,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp07.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "pis",
@@ -526,7 +583,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l9718.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "pasep",
@@ -550,7 +610,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp08.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cofins",
@@ -574,7 +637,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp70.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "csll",
@@ -601,7 +667,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "adcsll",
@@ -625,7 +694,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cbs",
@@ -653,7 +725,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cide",
@@ -677,7 +752,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cide-combustiveis",
@@ -701,7 +779,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10336.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cide-royalties",
@@ -725,7 +806,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l10168.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "inss",
@@ -749,7 +833,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cpp",
@@ -777,7 +864,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cprb",
@@ -802,7 +892,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l12546.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "rat",
@@ -830,7 +923,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "sat",
@@ -855,7 +951,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "salario-educacao",
@@ -879,7 +978,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l9424.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "fust",
@@ -903,7 +1005,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l9998.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "funttel",
@@ -927,7 +1032,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l10052.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "condecine",
@@ -951,7 +1059,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/mpv/2228-1.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "afrmm",
@@ -975,7 +1086,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l10893.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cfem",
@@ -999,7 +1113,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cfurh",
@@ -1023,7 +1140,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "funrural",
@@ -1047,7 +1167,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "senai",
@@ -1071,7 +1194,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/del4048.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "sesi",
@@ -1095,7 +1221,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/del9403.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "senac",
@@ -1119,7 +1248,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/del8621.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "sesc",
@@ -1143,7 +1275,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/del9853.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "sebrae",
@@ -1167,7 +1302,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "senar",
@@ -1191,7 +1329,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8315.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "sest",
@@ -1215,7 +1356,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "senat",
@@ -1239,7 +1383,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cosip",
@@ -1267,7 +1414,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "cip",
@@ -1292,7 +1442,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tfe",
@@ -1317,7 +1470,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tfa",
@@ -1342,7 +1498,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "trss",
@@ -1367,7 +1526,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tff-municipal",
@@ -1396,7 +1558,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tflf",
@@ -1421,7 +1586,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tlp",
@@ -1449,7 +1617,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tcr",
@@ -1474,7 +1645,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tfrm",
@@ -1499,7 +1673,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
           "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tfa-anvisa",
@@ -1523,7 +1700,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tfvs",
@@ -1548,7 +1728,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tff-federal",
@@ -1572,7 +1755,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tfi",
@@ -1596,7 +1782,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "fistel",
@@ -1620,7 +1809,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "taf",
@@ -1645,7 +1837,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l11182.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "tffa",
@@ -1669,7 +1864,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l10883.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "fgts",
@@ -1696,7 +1894,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "fap",
@@ -1720,7 +1921,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/decreto/d3048.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "sistema-s",
@@ -1744,7 +1948,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "ret",
@@ -1768,7 +1975,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l10931.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "simples",
@@ -1792,7 +2002,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "das",
@@ -1820,7 +2033,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "das-mei",
@@ -1849,7 +2065,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "darf",
@@ -1877,7 +2096,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l9430.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "dae",
@@ -1901,7 +2123,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "gps",
@@ -1930,7 +2155,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "gcap",
@@ -1954,7 +2182,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l7713.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     },
     {
       "id": "come-cotas",
@@ -1979,7 +2210,10 @@
           "url": "https://www.planalto.gov.br/ccivil_03/leis/l11033.htm",
           "observacao": ""
         }
-      ]
+      ],
+      "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+      "periodicidade": "Conforme a hipótese aplicável.",
+      "guia": null
     }
   ]
 }
