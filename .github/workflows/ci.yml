@@ -44,6 +44,9 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Gate de contribuição (schema e mensagem de erro)
+        run: npm run gate:contribuicao
+
       - name: Gate de build (data/tributos.json → public/)
         run: npm run gate:build
 

@@ -1,0 +1,97 @@
+name: Novo item do catálogo
+description: Proponha uma taxa, contribuição ou encargo verificável
+title: "[Catálogo] "
+labels: ["conteúdo", "contribuição externa"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Preencha os campos abaixo conforme data/schema.json. Não envie alíquotas, cálculos ou dados pessoais.
+  - type: input
+    id: id
+    attributes:
+      label: ID estável
+      description: Slug minúsculo, por exemplo taxa-fiscalizacao-municipal.
+      placeholder: taxa-exemplo
+    validations:
+      required: true
+  - type: input
+    id: sigla
+    attributes:
+      label: Sigla
+    validations:
+      required: true
+  - type: input
+    id: nome
+    attributes:
+      label: Nome completo
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options:
+        - Imposto
+        - Contribuição
+        - Compensação
+        - Contribuição para terceiros
+        - Taxa
+        - Fundo / taxas
+        - Encargo trabalhista
+        - Fator de cálculo
+        - Encargo / contribuições para terceiros
+        - Regime tributário
+        - Documento de arrecadação
+        - Ferramenta / apuração
+        - Mecanismo de tributação
+    validations:
+      required: true
+  - type: dropdown
+    id: esfera
+    attributes:
+      label: Esfera
+      options:
+        - Federal
+        - Estadual
+        - Municipal
+        - Estadual + Municipal
+        - Federal / repartida
+        - Municipal / DF
+        - Compartilhado
+    validations:
+      required: true
+  - type: input
+    id: contexto
+    attributes:
+      label: Contexto
+      description: Categorias separadas por /.
+    validations:
+      required: true
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição neutra
+      description: O que é e em que situação aparece, sem apurar valores.
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options: [Vigente, Em transição, Em implantação, Varia por ente, Não instituído, Histórico]
+    validations:
+      required: true
+  - type: textarea
+    id: fonte
+    attributes:
+      label: Fonte e data de consulta
+      description: URL oficial, norma ou órgão competente; inclua a data.
+    validations:
+      required: true
+  - type: textarea
+    id: justificativa
+    attributes:
+      label: Por que este item pertence ao escopo?
+    validations:
+      required: true

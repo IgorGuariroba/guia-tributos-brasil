@@ -422,6 +422,14 @@ docker build -t guia-tributos .
 docker run -d -p 8080:80 guia-tributos
 ```
 
+## O que está e o que não está aqui
+
+Este é um catálogo público de referência, não uma lista oficial exaustiva nem um sistema de apuração. Incluímos tributos, contribuições, fundos, encargos trabalhistas, taxas regulatórias, documentos e mecanismos que ajudam a explicar o que uma pessoa ou empresa encontra no sistema brasileiro. Não incluímos cada taxa criada por município, cada tarifa/preço público, multas, obrigações acessórias ou variações de alíquota: sem uma fonte nacional estável, elas devem ser propostas com município/UF e fonte oficial.
+
+A diferença para a lista de **100 entradas** publicada pelo [Portal Tributário](https://www.portaltributario.com.br/tributos.htm) foi auditada item a item em [`docs/auditoria-escopo.md`](docs/auditoria-escopo.md), com consulta em 11/08/2026. As 78 entradas deste Guia consolidam sinônimos e variantes (por exemplo, ISS/ISSQN e as modalidades de INSS), descartam itens não tributários ou históricos sem identidade própria e preservam taxas setoriais quando há uma categoria verificável. A auditoria não afirma vigência jurídica: cada item precisa de fonte primária na revisão.
+
+Para propor cobertura local, use o [template de contribuição](.github/ISSUE_TEMPLATE/novo-item.yml) e leia [`CONTRIBUTING.md`](CONTRIBUTING.md). O CI valida campos, ids e enums antes de executar os gates estáticos.
+
 ## Conteúdo
 
 Atualizado em **agosto de 2026**, refletindo a Reforma Tributária do Consumo (EC 132/2023,
