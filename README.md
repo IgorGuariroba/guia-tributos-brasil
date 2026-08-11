@@ -23,11 +23,11 @@ catalogado quando há ligação sustentada. Estilo visual **brutalista**.
 | Lighthouse — SEO                                 | **100**                                      |
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações**                              |
 | Semantic HTML Score                              | **100/100 (A)**                              |
-| Duplicação de código (jscpd)                     | **0,14%** (limite 0,4%)                      |
+| Duplicação de código (jscpd)                     | **0,33%** (limite 0,4%)                      |
 | Estilo (higiene + Prettier + ESLint)             | **0 pendências**                             |
-| Testes funcionais                                | **20/20**                                    |
+| Testes funcionais                                | **26/26 em pt-BR e en-US**                   |
 | Responsividade                                   | **8 larguras + 3 dispositivos, 0 problemas** |
-| Nós no DOM                                       | **1117** (limite 1200)                       |
+| Nós no DOM                                       | **2035** (limite 2200)                       |
 | Requisições a terceiros                          | **0** (fontes auto-hospedadas)               |
 | Peso total                                       | ~90 KB                                       |
 
@@ -156,7 +156,7 @@ Os gates rodam automaticamente no **pre-push** (husky) e no **CI** (GitHub Actio
 São propositalmente exigentes: qualquer regressão bloqueia o push.
 
 ```bash
-npm run gates              # todos os 8 gates
+npm run gates              # todos os gates (14 execuções em 9 categorias)
 npm run gate:build         # somente build & schema (data/tributos.json → public/)
 npm run gate:estilo        # somente estilo (higiene + Prettier + ESLint)
 npm run gate:funcional     # somente Playwright
@@ -282,7 +282,7 @@ sobre `public/` e `audit/` (JS, CSS e markup, inclusive os blocos inline do `ind
 
 | Critério                | Limite               | Medido       |
 | ----------------------- | -------------------- | ------------ |
-| Linhas duplicadas       | ≤ 0,4%               | **0,14%**    |
+| Linhas duplicadas       | ≤ 0,4%               | **0,33%**    |
 | Maior clone individual  | < 12 linhas          | **5 linhas** |
 | Clone mínimo detectável | 4 linhas / 30 tokens | —            |
 
@@ -319,7 +319,7 @@ Mediana de **3 execuções**, preset desktop, servindo `./public` via `staticDis
 | `speed-index`                                                                                                     | ≤ 1500 ms  | ~1353 ms  |
 | `interactive`                                                                                                     | ≤ 1800 ms  | ~1353 ms  |
 | `total-byte-weight`                                                                                               | ≤ 400 KB   | ~90 KB    |
-| `dom-size`                                                                                                        | ≤ 1200 nós | 1117      |
+| `dom-size`                                                                                                        | ≤ 2200 nós | 2035      |
 | `color-contrast`, `heading-order`, `label`, `th-has-data-cells`, `errors-in-console`, `render-blocking-resources` | = 100      | 100       |
 
 \* Valores medidos com `lighthouse` CLI direto; sob `staticDistDir` do LHCI as métricas ficam
@@ -338,7 +338,7 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
   `data/tributos.json` e sincronia com `public/`) e o **gate de estilo** (indentação, espaços,
   imports, padrão de código). Se `node_modules` não existir, os dois são pulados com aviso —
   o CI continua sendo a rede definitiva.
-- **pre-push** — executa os 8 gates. Escape de emergência: `SKIP_GATES=1 git push`
+- **pre-push** — executa todos os gates. Escape de emergência: `SKIP_GATES=1 git push`
   (deve ser justificado no PR).
 
 No CI, build e estilo rodam em um **job separado** (`estilo`) do qual o job `gates` depende:
@@ -360,7 +360,7 @@ ser reconhecível por bandeira/mapa/prédio e o Status por ícone + cor, sem pre
 | Herda cor do texto      | sim                              | não                 | **sim** (`background-color`)     |
 | Ruído em leitor de tela | precisa `aria-hidden`            | precisa `alt=""`    | **impossível** (pseudo-elemento) |
 
-O ponto decisivo foi o DOM: a tabela de 78×7, os comboboxes e as associações visuais usam **1117 dos 1200 nós**
+O ponto decisivo foi o DOM: a tabela de 78×7, os comboboxes e as associações visuais usam **2035 dos 2200 nós**
 permitidos pelo gate de Lighthouse. Com `<svg>` inline em cada linha o limite seria estourado.
 Os ícones por CSS não acrescentam nós e mantêm espaço para os controles pesquisáveis.
 
@@ -414,7 +414,7 @@ public/              # ARTEFATO GERADO por audit/build.mjs — o que vai para o 
     tributos.json      # o mesmo catálogo em JSON, para consumo por terceiros
     tributos.csv        # o mesmo catálogo em CSV (BOM UTF-8)
 audit/
-  run-gates.mjs      # orquestrador: sobe servidor e roda os 8 gates
+  run-gates.mjs      # orquestrador: sobe servidor e roda todos os gates
   build.mjs          # gera public/ a partir de data/tributos.json + src/index.template.html
   build-gate.mjs     # gate de build & schema (roda build.mjs --check)
   gen-icons.mjs      # gera o CSS de ícones a partir do lucide-static

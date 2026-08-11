@@ -6,6 +6,10 @@ Derivado de [`analise-concorrencia.md`](analise-concorrencia.md). Data-base: ago
 pública, estruturada e citável** do que o Brasil cobra — a fonte que o contador linka no
 parecer e que o ERP consome como JSON.
 
+> **Status: concluído em agosto de 2026.** As 24 tarefas das fases 1–5 foram implementadas.
+> Os critérios automatizados são cobertos pelos gates; a tarefa 5.6 usa agregação local
+> exportável porque a entrega estática não permite consolidação entre visitantes sem runtime.
+
 ---
 
 ## 0. Princípios que o plano não pode quebrar
