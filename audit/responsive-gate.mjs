@@ -243,6 +243,27 @@ for (const bp of BREAKPOINTS) {
   await page.close();
 }
 
+// Impressão: controles de interação não devem aparecer e a tabela deve ocupar a página.
+const paginaPrint = await abrirPagina(browser, { viewport: { width: 1024, height: 900 } });
+await paginaPrint.emulateMedia({ media: 'print' });
+await paginaPrint.waitForFunction(() => document.querySelectorAll('tbody tr').length > 0);
+const printProblemas = await paginaPrint.evaluate(() => {
+  const ocultos = ['.filters', '.copy-markdown', '.profile-selector', 'footer'].filter(
+    sel => getComputedStyle(document.querySelector(sel)).display !== 'none',
+  );
+  const tabela = document.querySelector('.table-wrap');
+  return [
+    ...ocultos,
+    ...(getComputedStyle(tabela).display === 'none' ? ['.table-wrap oculto na impressão'] : []),
+  ];
+});
+if (printProblemas.length) totalProblemas += printProblemas.length;
+console.log(
+  `${printProblemas.length ? '✗' : '✓'} impressão: controles ocultos e resultados disponíveis${printProblemas.length ? ` → ${printProblemas.join(', ')}` : ''}`,
+);
+relatorio.push({ media: 'print', problemas: printProblemas });
+await paginaPrint.close();
+
 // Verificação extra: emulação de dispositivos reais (com isMobile e DPR corretos)
 console.log('\n— emulação de dispositivos reais —');
 for (const nome of ['iPhone 14', 'Pixel 7', 'iPad Mini']) {

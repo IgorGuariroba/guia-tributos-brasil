@@ -135,6 +135,14 @@ input:focus,button:focus-visible{outline:3px solid var(--accent2);outline-offset
 .actions button{width:auto;cursor:pointer;font-weight:700;box-shadow:var(--shadow-sm);transition:transform .08s linear,box-shadow .08s linear}
 .actions button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
 .actions button:active{transform:translate(2px,2px);box-shadow:0 0 0 #000}
+.copy-markdown{width:auto;min-height:44px;padding:6px 9px;font-size:11px;cursor:pointer;background:#fff;box-shadow:2px 2px 0 #000;text-transform:uppercase}.copy-markdown.copied{background:var(--success-surface);color:var(--success-text)}
+.copy-status{margin:8px 0 0;font-size:12px;font-weight:700}
+@media print{
+  @page{margin:1.5cm} body{background:#fff;color:#000;font-size:11pt} .skip-link,.profile-selector,.filters,.associations,.guide,footer,.copy-markdown,.print-hide,.mobile-result-intro,.result-group-title,.result-strip details summary{display:none!important}
+  .container{max-width:none;padding:0} header{background:#fff;border:0;box-shadow:none;padding:0;margin:0 0 16pt} h1{font-size:24pt}.subtitle{font-size:10pt;border-top:1pt solid #000}
+  .results{margin:0}.table-wrap{display:block;overflow:visible;max-height:none;border:0;box-shadow:none}table{min-width:0;width:100%;font-size:8pt}th,td{padding:4pt;border-bottom:1pt solid #000;border-right:0;font-size:8pt}thead th{position:static;background:#000!important;color:#fff!important}tr{break-inside:avoid}caption{background:#000!important;color:#fff!important}
+  .result-cards{display:none!important}.copy-status{font-size:9pt}
+}
 .primary{background:var(--accent2);color:#fff}
 .stats{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
 #count{background:var(--ink);color:#fff;padding:2px 8px}
@@ -401,6 +409,7 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
       <div class="actions">
         <button id="reset" type="reset" data-icone="limpar">Limpar filtros</button>
         <button id="csv" type="button" class="primary" data-icone="csv">Exportar resultado para CSV</button>
+        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
       </div>
     </form>
     <p class="stats"><output id="count" for="search" aria-live="polite"></output><span class="sort-help" aria-hidden="true">•</span><span class="sort-help">Use os botões nos títulos das colunas para ordenar.</span></p>
@@ -419,6 +428,7 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
           <th scope="col" data-key="contexto" aria-sort="none"><button type="button" class="th-btn">Contexto <span class="sort-ind" aria-hidden="true"></span></button></th>
           <th scope="col" data-key="descricao" aria-sort="none"><button type="button" class="th-btn">O que é / quando aparece <span class="sort-ind" aria-hidden="true"></span></button></th>
           <th scope="col" data-key="status" aria-sort="none"><button type="button" class="th-btn">Status <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col" class="print-hide">Ações</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
       </table>
@@ -676,7 +686,7 @@ function renderCards(){
   if(!matchMedia("(max-width:600px)").matches){$("card-results").innerHTML="";return;}
   const groups=new Map();
   filtered.forEach(item=>{if(!groups.has(item.esfera))groups.set(item.esfera,[]);groups.get(item.esfera).push(item);});
-  $("card-results").innerHTML=`<p class="mobile-result-intro"><strong>Por esfera:</strong> resultados organizados por esfera, com contexto e explicação sob demanda.</p>`+[...groups].map(([esfera,items])=>`<section class="result-group" aria-label="Esfera ${esc(esfera)}"><h3 class="result-group-title">${esc(esfera)} · ${items.length}</h3>${items.map(x=>`<article class="result-strip result-card"><h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><p><strong>${esc(x.nome)}</strong></p><p class="result-strip-meta"><span class="badge">${esc(x.tipo)}</span><span class="badge">${esc(x.status)}</span></p><details><summary>Ver contexto e explicação</summary><p><strong>${esc(x.contexto)}</strong></p><p>${esc(x.descricao)}${x.nota_status?` <strong>Nota do status:</strong> ${esc(x.nota_status)}`:""}</p></details></article>`).join("")}</section>`).join("");
+  $("card-results").innerHTML=`<p class="mobile-result-intro"><strong>Por esfera:</strong> resultados organizados por esfera, com contexto e explicação sob demanda.</p>`+[...groups].map(([esfera,items])=>`<section class="result-group" aria-label="Esfera ${esc(esfera)}"><h3 class="result-group-title">${esc(esfera)} · ${items.length}</h3>${items.map(x=>`<article class="result-strip result-card"><h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><p><strong>${esc(x.nome)}</strong></p><p class="result-strip-meta"><span class="badge">${esc(x.tipo)}</span><span class="badge">${esc(x.status)}</span></p><details><summary>Ver contexto e explicação</summary><p><strong>${esc(x.contexto)}</strong></p><p>${esc(x.descricao)}${x.nota_status?` <strong>Nota do status:</strong> ${esc(x.nota_status)}`:""}</p></details><button type="button" class="copy-markdown" data-copy-id="${esc(x.id)}" aria-label="Copiar ${esc(x.sigla)} como Markdown">Copiar Markdown</button></article>`).join("")}</section>`).join("");
 }
 function profileButtons(){
   return Object.entries(PROFILES).map(([key,profile])=>`<li><button type="button" class="profile-option" data-profile="${key}" aria-pressed="${activeProfile===key}"><strong>${esc(profile.name)}</strong><span>${esc(profile.short)} — ${esc(profile.description)}</span></button></li>`).join("");
@@ -725,6 +735,7 @@ function render(){
     <td>${esc(x.contexto)}</td>
     <td>${esc(x.descricao)}</td>
     <td data-icone="${iconePara(ICONE_STATUS,x.status)}" class="${/transi|implant/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}${x.nota_status?` — ${esc(x.nota_status)}`:""}</td>
+    <td class="print-hide"><button type="button" class="copy-markdown" data-copy-id="${esc(x.id)}" aria-label="Copiar ${esc(x.sigla)} como Markdown">Copiar Markdown</button></td>
   </tr>`).join("");
   renderCards();
   renderChips();
@@ -747,6 +758,17 @@ $("filtros").addEventListener("reset",()=>{setTimeout(()=>{
   closeCombos();render();syncUrl();
 },0);});
 addEventListener("resize",renderCards);
+function markdownDoItem(item){
+  return `## ${item.sigla} — ${item.nome}\n\n- **Tipo / natureza:** ${item.tipo}\n- **Esfera:** ${item.esfera}\n- **Contexto:** ${item.contexto}\n- **Status:** ${item.status}${item.nota_status?` — ${item.nota_status}`:""}\n\n${item.descricao}`;
+}
+async function copiarMarkdown(id,button){
+  const item=DATA.find(x=>x.id===id); if(!item) return;
+  const texto=markdownDoItem(item);
+  try{await navigator.clipboard.writeText(texto);}catch{const area=document.createElement("textarea");area.value=texto;area.setAttribute("readonly","");area.style.position="fixed";area.style.opacity="0";document.body.append(area);area.select();document.execCommand("copy");area.remove();}
+  button.classList.add("copied");button.textContent="Copiado";$('copy-status').textContent=`${item.sigla} copiado como Markdown.`;
+  setTimeout(()=>{button.classList.remove("copied");button.textContent="Copiar Markdown";},1800);
+}
+document.addEventListener("click",event=>{const button=event.target.closest("[data-copy-id]");if(button)copiarMarkdown(button.dataset.copyId,button);});
 $("csv").addEventListener("click",()=>{
   const cols=["sigla","nome","tipo","esfera","contexto","descricao","status","nota_status"];
   const header=["Sigla","Nome","Tipo/Natureza","Esfera","Contexto","Descrição","Status","Nota do status"];

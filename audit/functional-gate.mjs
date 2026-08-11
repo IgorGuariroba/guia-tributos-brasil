@@ -202,6 +202,23 @@ await checar('skip-link aponta para destino existente e focável', async () => {
   igual(await alvo.getAttribute('tabindex'), '-1', 'tabindex do destino');
 });
 
+await checar('copiar Markdown gera conteúdo esperado por item', async () => {
+  await page.goto(`${URL_AUDITADA}?profile=all`);
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write'], {
+    origin: new URL(URL_AUDITADA).origin,
+  });
+  await entrarNoGuia(page);
+  await page.locator('[data-copy-id="iss"]').first().click();
+  const texto = await page.evaluate(() => navigator.clipboard.readText());
+  if (!texto.startsWith('## ISS — ')) throw new Error(`Markdown inesperado: ${texto.slice(0, 40)}`);
+  if (!texto.includes('- **Tipo / natureza:** Imposto')) throw new Error('Markdown sem tipo');
+  igual(
+    await page.locator('#copy-status').textContent(),
+    'ISS copiado como Markdown.',
+    'status da cópia',
+  );
+});
+
 await checar('export CSV gera arquivo com cabeçalho e BOM', async () => {
   const [download] = await Promise.all([
     page.waitForEvent('download', { timeout: 15000 }),
