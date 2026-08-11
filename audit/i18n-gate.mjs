@@ -35,6 +35,10 @@ const interfaceEn = en
   .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/gi, '')
   .replace(/const DATA = \[[\s\S]*?;\n/, '');
 for (const frase of [
+  'Guia de taxes do Brazil',
+  'Guia de Taxes do Brazil',
+  'no Brazil',
+  '78 siglas',
   'Guia pesquisável',
   'Tributos, contribuições, taxas e encargos no Brasil',
   'Escolha de perfil de interesse',
@@ -52,6 +56,12 @@ for (const frase of [
   'Taxes da empresa',
   'Novos taxes do consumo',
   ' e legislation',
+  ' do Brazil',
+  ' no Brazil',
+  ' taxes do ',
+  ' fees e ',
+  ' charges no ',
+  ' de siglas',
   'Selecione de ',
   'conforme',
   'durante a transition',
