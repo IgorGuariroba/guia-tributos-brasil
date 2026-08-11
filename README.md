@@ -21,6 +21,7 @@ tipo/esfera/contexto/status, ordenação por coluna e exportação para CSV. Est
 | Lighthouse — SEO | **100** |
 | axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
 | Semantic HTML Score | **100/100 (A)** |
+| Duplicação de código (jscpd) | **0,24%** (limite 1%) |
 | Testes funcionais | **20/20** |
 | Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
 | Nós no DOM | **1117** (limite 1200) |
@@ -44,11 +45,12 @@ Os gates rodam automaticamente no **pre-push** (husky) e no **CI** (GitHub Actio
 São propositalmente exigentes: qualquer regressão bloqueia o push.
 
 ```bash
-npm run gates              # todos os 5 gates
+npm run gates              # todos os 6 gates
 npm run gate:funcional     # somente Playwright
 npm run gate:responsivo    # somente responsividade (320→1920px)
 npm run gate:a11y          # somente axe-core
 npm run gate:semantica     # somente Semantic HTML Score
+npm run gate:duplicacao    # somente duplicação de código (jscpd)
 npm run gate:lighthouse    # somente Lighthouse CI
 ```
 
@@ -117,7 +119,27 @@ Rubrica de 100 pontos em 7 categorias (`audit/semantic-core.mjs`), avaliada no D
 | Texto | 8 | listas reais, `strong`/`em` (não `b`/`i`), `time`/`abbr` |
 | Dinâmico | 7 | contador em `aria-live`, estado vazio anunciável |
 
-### Gate 5 · Lighthouse CI (`lighthouserc.json`)
+### Gate 5 · Duplicação de código (`audit/duplication-gate.mjs`)
+
+Mede reutilização via clones copiar-e-colar com [jscpd](https://github.com/kucherenko/jscpd)
+sobre `public/` e `audit/` (JS, CSS e markup, inclusive os blocos inline do `index.html`).
+
+| Critério | Limite | Medido |
+|---|---|---|
+| Linhas duplicadas | ≤ 1% | **0,24%** |
+| Maior clone individual | < 30 linhas | **7 linhas** |
+| Clone mínimo detectável | 5 linhas / 50 tokens | — |
+
+Dois critérios porque o percentual global sozinho esconde um bloco grande copiado dentro de
+um arquivo grande; o limite por clone pega esse caso.
+
+Ajustes por variável de ambiente: `DUP_MAX_PERCENT`, `DUP_MAX_CLONE_LINES`, `DUP_MIN_LINES`,
+`DUP_MIN_TOKENS`. Relatório em `audit/reports/jscpd/jscpd-report.json` (artefato do CI).
+
+> `--max-size 5mb` é obrigatório: o default do jscpd (100 kb) ignoraria silenciosamente o
+> `public/index.html` (~105 kb) e reportaria um falso "0 clones".
+
+### Gate 6 · Lighthouse CI (`lighthouserc.json`)
 
 Mediana de **3 execuções**, preset desktop, servindo `./public` via `staticDistDir`.
 
@@ -150,7 +172,7 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
 - **pre-commit** — barato e instantâneo: bloqueia commit de relatórios/evidências, impede
   reintrodução de `fonts.googleapis.com` e valida a presença de marcação essencial
   (`<main>`, `<caption>`, `role="search"`, `aria-live`).
-- **pre-push** — executa os 5 gates. Escape de emergência: `SKIP_GATES=1 git push`
+- **pre-push** — executa os 6 gates. Escape de emergência: `SKIP_GATES=1 git push`
   (deve ser justificado no PR).
 
 ## Sistema de ícones
@@ -214,13 +236,14 @@ public/              # o que vai para o GitHub Pages
   favicon.svg
   fonts/             # 10 arquivos woff2 auto-hospedados
 audit/
-  run-gates.mjs      # orquestrador: sobe servidor e roda os 5 gates
+  run-gates.mjs      # orquestrador: sobe servidor e roda os 6 gates
   gen-icons.mjs      # gera o CSS de ícones a partir do lucide-static
   functional-gate.mjs
   responsive-gate.mjs
   axe-gate.mjs
   semantic-gate.mjs
   semantic-core.mjs  # rubrica de 100 pontos
+  duplication-gate.mjs # gate de duplicação (jscpd)
 lighthouserc.json
 .husky/              # pre-commit e pre-push
 .github/workflows/ci.yml
