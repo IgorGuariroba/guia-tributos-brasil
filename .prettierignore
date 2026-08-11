@@ -13,6 +13,7 @@ public/favicon.svg
 # src/index.template.html é o mesmo artefato antes da injeção de dados (ver
 # audit/build.mjs) e segue a mesma regra.
 public/index.html
+public/en/index.html
 src/index.template.html
 public/api/tributos.json
 public/api/tributos.csv

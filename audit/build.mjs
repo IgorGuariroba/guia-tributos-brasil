@@ -48,6 +48,77 @@ const OPTIONAL_FIELDS = ['nota_status', 'aliases', 'substituido_por', 'substitui
 const URL_PATTERN = /^https:\/\//;
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
+// A tradução é deliberadamente local e determinística: a edição em português
+// continua sendo a fonte do catálogo e nenhum serviço externo participa do build.
+const EN_GLOSSARY = [
+  ['Reforma Tributária', 'Tax Reform'],
+  ['tributos', 'taxes'],
+  ['Tributos', 'Taxes'],
+  ['contribuições', 'contributions'],
+  ['Contribuições', 'Contributions'],
+  ['taxas', 'fees'],
+  ['Taxas', 'Fees'],
+  ['encargos', 'charges'],
+  ['Encargos', 'Charges'],
+  ['Brasil', 'Brazil'],
+  ['imposto', 'tax'],
+  ['Imposto', 'Tax'],
+  ['Contribuição', 'Contribution'],
+  ['Taxa', 'Fee'],
+  ['Vigente', 'In force'],
+  ['Em transição', 'In transition'],
+  ['Em implantação', 'Being implemented'],
+  ['Varia por ente', 'Varies by jurisdiction'],
+  ['Não instituído', 'Not enacted'],
+  ['Histórico', 'Historical'],
+  ['federal', 'federal'],
+  ['estadual', 'state'],
+  ['municipal', 'municipal'],
+  ['União', 'Federal government'],
+  ['O que é / quando aparece', 'What it is / when it appears'],
+  ['Contexto', 'Context'],
+  ['Esfera', 'Jurisdiction'],
+  ['Status', 'Status'],
+  ['Descrição', 'Description'],
+  ['Tipo / natureza', 'Type / nature'],
+  ['Fontes', 'Sources'],
+  ['Fundamento legal', 'Legal basis'],
+  ['Explorar tudo', 'Explore all'],
+  ['Sem recorte', 'No filter'],
+  ['Empresa e empregador', 'Business and employer'],
+  ['Reforma tributária', 'Tax reform'],
+  ['O que está mudando', 'What is changing'],
+  ['Guia pesquisável', 'Searchable guide'],
+  ['itens', 'items'],
+  ['item', 'item'],
+  ['resultados', 'results'],
+  ['filtros', 'filters'],
+  ['Nenhum', 'No'],
+  ['Copiar Markdown', 'Copy Markdown'],
+  ['Copiado', 'Copied'],
+  ['Remover filtro', 'Remove filter'],
+];
+const traduzir = valor => EN_GLOSSARY.reduce((texto, [pt, en]) => texto.split(pt).join(en), valor);
+const traduzirCatalogo = dados =>
+  dados.map(item =>
+    Object.fromEntries(
+      Object.entries(item).map(([chave, valor]) => [
+        chave,
+        typeof valor === 'string'
+          ? traduzir(valor)
+          : Array.isArray(valor)
+            ? valor.map(x => (typeof x === 'string' ? traduzir(x) : x))
+            : valor,
+      ]),
+    ),
+  );
+function traduzirHtml(html) {
+  return EN_GLOSSARY.reduce((texto, [pt, en]) => texto.split(pt).join(en), html).replace(
+    'lang="pt-BR"',
+    'lang="en-US"',
+  );
+}
+
 function validar(dados) {
   const erros = [];
   if (!Array.isArray(dados) || dados.length === 0) {
@@ -176,6 +247,11 @@ function paraSitemap() {
     <loc>${SITE_URL}</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}en/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
 `;
@@ -335,8 +411,25 @@ async function main() {
   const manifest = paraManifest();
   const serviceWorker = paraServiceWorker(version);
 
+  const dadosEn = traduzirCatalogo(dados);
+  const templateEn = traduzirHtml(template)
+    .replace('const DATA = __TRIBUTOS_DATA__;\n', `const DATA = ${JSON.stringify(dadosEn)};\n`)
+    .replace(
+      marcadorJsonLd,
+      `<script type="application/ld+json">${JSON.stringify(paraJsonLd(dadosEn))}</script>`,
+    );
+  const htmlEn = templateEn
+    .replace(
+      '<link rel="canonical" href="https://igorguariroba.github.io/guia-tributos-brasil/">',
+      '<link rel="canonical" href="https://igorguariroba.github.io/guia-tributos-brasil/en/">',
+    )
+    .replaceAll('href="fonts/', 'href="../fonts/')
+    .replaceAll('src:url(fonts/', 'src:url(../fonts/')
+    .replaceAll('href="favicon.svg"', 'href="../favicon.svg"')
+    .replaceAll('href="./', 'href="../');
   const alvos = [
     ['public/index.html', htmlGerado],
+    ['public/en/index.html', htmlEn],
     ['public/api/tributos.json', apiJson],
     ['public/api/tributos.csv', apiCsv],
     ['public/robots.txt', paraRobots()],
@@ -370,6 +463,7 @@ async function main() {
   }
 
   await mkdir('public/api', { recursive: true });
+  await mkdir('public/en', { recursive: true });
   for (const [caminho, conteudo] of alvos) {
     await writeFile(caminho, conteudo);
   }

@@ -453,6 +453,13 @@ LC 214/2025, LC 227/2026): CBS, IBS e IS em implementação; ICMS, ISS, PIS/Pase
 
 Material informativo — não substitui a análise da legislação específica do ente ou da operação.
 
+## Idiomas
+
+A versão em inglês está disponível em [`/en/`](public/en/index.html). O catálogo mantém os
+mesmos `id` estáveis do contrato pt-BR; apenas a interface e os campos textuais são traduzidos
+no build determinístico. As duas páginas publicam `hreflang` recíproco (`pt-BR`, `en` e
+`x-default`) e o gate `npm run gate:i18n` verifica a paridade.
+
 ## Licença
 
 O código do projeto é MIT (consulte [`LICENSE`](LICENSE)). O catálogo em `data/` e seus

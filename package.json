@@ -26,7 +26,8 @@
     "axe:cli": "axe http://localhost:8080/ --tags wcag2a,wcag2aa,wcag21a,wcag21aa,wcag22aa,best-practice --exit",
     "prepare": "husky",
     "gate:responsivo": "node audit/run-gates.mjs responsividade",
-    "gate:offline": "node audit/offline-gate.mjs"
+    "gate:offline": "node audit/offline-gate.mjs",
+    "gate:i18n": "node audit/i18n-gate.mjs"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.12.1",
