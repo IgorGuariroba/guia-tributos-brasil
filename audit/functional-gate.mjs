@@ -19,10 +19,10 @@ const TEXTO = {
   tipo: EN ? 'Type / nature' : 'Tipo / natureza',
   imposto: EN ? 'Tax' : 'Imposto',
   taxa: EN ? 'Fee' : 'Taxa',
-  empresa: 'Empresa',
+  empresa: EN ? 'Business' : 'Empresa',
   contexto: EN ? 'Context' : 'Contexto',
   remove: EN ? 'Remove filter' : 'Remover filtro',
-  contador: n => `${n} de ${TOTAL_ESPERADO} ${EN ? 'items' : 'itens'} exibidos`,
+  contador: n => `${n} de ${TOTAL_ESPERADO} ${EN ? 'items shown' : 'itens exibidos'}`,
 };
 
 const errosConsole = [];
@@ -62,7 +62,7 @@ const aguardarLinhasFiltradas = () =>
 const contador = () => page.locator('#count').textContent();
 
 await checar('perfil de interesse personaliza a entrada do guia', async () => {
-  await page.getByRole('button', { name: /Pessoa física/ }).click();
+  await page.getByRole('button', { name: /Pessoa física|Individual/ }).click();
   igual(await page.locator('.profile-number').textContent(), '15', 'prévia do perfil');
   await entrarNoGuia(page);
   igual(await page.getByRole('dialog').count(), 0, 'diálogo encerrado');
@@ -145,7 +145,7 @@ await checar('combobox pesquisável permite múltiplos tipos', async () => {
 await checar('contexto usa categorias atômicas e chips removíveis', async () => {
   try {
     await page.click('#contexto');
-    await page.fill('#contexto-search', 'empresa');
+    await page.fill('#contexto-search', EN ? 'business' : 'empresa');
     await page.getByRole('option', { name: TEXTO.empresa, exact: true }).click();
     await aguardarLinhasFiltradas();
     const contextos = await page.locator('#tbody tr td:nth-child(5)').allTextContents();
@@ -229,7 +229,7 @@ await checar('copiar Markdown gera conteúdo esperado por item', async () => {
   }
   igual(
     await page.locator('#copy-status').textContent(),
-    'ISS copiado como Markdown.',
+    EN ? 'ISS copied as Markdown.' : 'ISS copiado como Markdown.',
     'status da cópia',
   );
 });
@@ -366,7 +366,9 @@ await checar('texto permanece legível sem os ícones (não há dependência vis
 
 await checar('deep-link restaura filtros, hash, foco e histórico', async () => {
   await page.goto(`${URL_AUDITADA}?profile=all&tipo=${encodeURIComponent(TEXTO.imposto)}#item-iss`);
-  await page.getByRole('button', { name: /Entrar no guia com/ }).click();
+  await page
+    .getByRole('button', { name: new RegExp(EN ? 'Enter the guide with' : 'Entrar no guia com') })
+    .click();
   igual(await linhas(), 18, 'linhas filtradas por URL');
   igual(await page.locator('#iss').count(), 1, 'item do hash');
   await page.locator('#iss').focus();
@@ -390,7 +392,7 @@ await checar('embed renderiza item válido e trata id inválido', async () => {
   igual(
     await page.locator('#embed-title').textContent(),
     EN
-      ? 'ISS — Tax sobre Serviços de Qualquer Natureza'
+      ? 'ISS — Tax sobre Services de Qualquer Natureza'
       : 'ISS — Imposto sobre Serviços de Qualquer Natureza',
     'título embed',
   );
@@ -398,7 +400,7 @@ await checar('embed renderiza item válido e trata id inválido', async () => {
   await page.goto(`${URL_AUDITADA}?embed=id-que-nao-existe`);
   igual(
     await page.locator('#embed-title').textContent(),
-    'Item não encontrado',
+    EN ? 'Item not found' : 'Item não encontrado',
     'mensagem para id inválido',
   );
   igual(await page.locator('.embed-back').count(), 1, 'retorno ao catálogo');

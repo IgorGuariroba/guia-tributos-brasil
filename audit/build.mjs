@@ -74,6 +74,20 @@ const EN_GLOSSARY = [
   ['federal', 'federal'],
   ['estadual', 'state'],
   ['municipal', 'municipal'],
+  ['Pessoa física', 'Individual'],
+  ['Pessoa jurídica', 'Legal entity'],
+  ['Patrimônio', 'Assets'],
+  ['Imobiliário', 'Real estate'],
+  ['Veículos', 'Vehicles'],
+  ['Herança', 'Inheritance'],
+  ['Doação', 'Donation'],
+  ['Investimentos', 'Investments'],
+  ['Empresa', 'Business'],
+  ['Folha', 'Payroll'],
+  ['Trabalho', 'Work'],
+  ['Sistema S', 'S System'],
+  ['Serviços', 'Services'],
+  ['Receita', 'Revenue'],
   ['União', 'Federal government'],
   ['O que é / quando aparece', 'What it is / when it appears'],
   ['Contexto', 'Context'],
@@ -131,10 +145,329 @@ const traduzirCatalogo = dados =>
     ),
   );
 function traduzirHtml(html) {
-  return EN_GLOSSARY.reduce((texto, [pt, en]) => texto.split(pt).join(en), html)
+  const frases = [
+    ['pt_BR', 'en_US'],
+    [
+      'Pessoa física|Patrimônio|Imobiliário|Veículos|Herança|Doação|Investimentos',
+      'Individual|Assets|Real estate|Vehicles|Inheritance|Donation|Investments',
+    ],
+    ['MEI|Empresa|Receita|Serviços', 'MEI|Business|Revenue|Services'],
+    ['Empresa|Folha|Trabalho|Sistema S', 'Business|Payroll|Work|S System'],
+    ['transição|implantação', 'transition|implementation'],
+    [
+      'Guia pesquisável de tributos, contribuições, taxas e encargos do Brasil: 78 siglas com tipo, esfera, contexto e status na Reforma Tributária.',
+      'Searchable guide to Brazilian taxes, contributions, fees and charges: 78 acronyms with type, jurisdiction, context and Tax Reform status.',
+    ],
+    [
+      'Guia de Tributos, Contribuições, Taxas e Encargos do Brasil',
+      'Brazilian Taxes, Contributions, Fees and Charges Guide',
+    ],
+    [
+      'Tributos, contribuições, taxas e encargos no Brasil',
+      'Taxes, contributions, fees and charges in Brazil',
+    ],
+    ['Escolha de perfil de interesse', 'Choose an area of interest'],
+    ['Pesquisar e filtrar tributos', 'Search and filter taxes'],
+    ['Filtros aplicados', 'Applied filters'],
+    [
+      'Guia pesquisável de siglas e nomes usados no sistema tributário, trabalhista, regulatório e financeiro brasileiro. Use os filtros para localizar rapidamente um item por contexto, esfera, natureza ou status.',
+      'Searchable guide to acronyms and names used in Brazil’s tax, labor, regulatory and financial systems. Use the filters to quickly find an item by context, jurisdiction, nature or status.',
+    ],
+    ['Comparar tributos e encargos', 'Compare taxes and charges'],
+    [
+      'Selecione de 2 a 4 itens para ver diferenças lado a lado. Exemplos: ITBI × ITCMD, CBS × COFINS e RAT × FAP.',
+      'Select 2 to 4 items to compare them side by side. Examples: ITBI × ITCMD, CBS × COFINS and RAT × FAP.',
+    ],
+    [
+      'Escolha uma jornada. Confira o recorte ao lado e só então entre no guia.',
+      'Choose a path. Review the selection beside it before entering the guide.',
+    ],
+    ['No perfil escolhido', 'No profile selected'],
+    ['Nenhum perfil selecionado', 'No profile selected'],
+    ['Nenhum perfil escolhido', 'No profile selected'],
+    ['Entrar no guia com', 'Enter the guide with'],
+    [' itens', ' items'],
+
+    [
+      'Searchable guide de siglas e nomes usados no sistema tributário, trabalhista, regulatório e financeiro brasileiro. Use os filters para localizar rapidamente um item por contexto, esfera, natureza ou status.',
+      'Searchable guide to acronyms and names used in Brazil’s tax, labor, regulatory and financial systems. Use the filters to quickly find an item by context, jurisdiction, nature or status.',
+    ],
+    ['Copiar Markdown', 'Copy Markdown'],
+    ['Item não encontrado', 'Item not found'],
+    ['Limpar filters', 'Clear filters'],
+    ['Exportar resultado para CSV', 'Export results to CSV'],
+    ['Resultados da pesquisa', 'Search results'],
+    ['Do cotidiano às obrigações', 'From everyday life to obligations'],
+    ['Prévia do seu guia', 'Your guide preview'],
+    ['No perfil escolhido', 'No profile selected'],
+    [
+      'Selecione uma jornada para ver quantas informações serão priorizadas.',
+      'Select a path to see how many entries will be prioritized.',
+    ],
+    ['Comparar taxes e charges', 'Compare taxes and charges'],
+    [
+      'Selecione de 2 a 4 items para ver diferenças lado a lado.',
+      'Select 2 to 4 items to compare them side by side.',
+    ],
+    ['Escolha pelo menos 2 items.', 'Choose at least 2 items.'],
+    [
+      'Exemplos amplos de patrimônio, renda e transmissão de bens.',
+      'Broad examples involving assets, income and transfers.',
+    ],
+    ['Tem um veículo', 'You own a vehicle'],
+    ['Tem um imóvel urbano', 'You own an urban property'],
+    ['Recebe renda', 'You receive income'],
+    ['Recebe herança ou doação', 'You receive an inheritance or a donation'],
+    ['Exemplos para', 'Examples for'],
+    ['Você', 'You'],
+    ['O que a lei observa', 'What the law considers'],
+    ['Pode gerar', 'May result in'],
+    ['Escolha uma jornada', 'Choose a path'],
+    ['Nenhum perfil selecionado', 'No profile selected'],
+    [
+      'Categorias independentes; aceita várias',
+      'Independent categories; multiple selections allowed',
+    ],
+    ['Nenhuma opção encontrada.', 'No option found.'],
+    [
+      'Nenhum item corresponde aos filtros e ao perfil selecionados.',
+      'No item matches the selected filters and profile.',
+    ],
+    [' COFINS e RAT ', ' COFINS and RAT '],
+    [' e ', ' and '],
+    [' ou ', ' or '],
+    ['Antes de abrir o guia', 'Before opening the guide'],
+    ['Monte sua entrada', 'Set up your guide'],
+    [
+      'Confira o recorte ao lado e só então entre no guia.',
+      'Review the selection beside it before entering the guide.',
+    ],
+    ['Terms sem resultado neste dispositivo', 'No-result terms on this device'],
+    ['Termos sem resultado neste dispositivo', 'No-result terms on this device'],
+    ['itens exibidos', 'items shown'],
+    ['de itens', 'of items'],
+    ['O que é / quando aparece', 'What it is / when it appears'],
+    ['Tipo / natureza', 'Type / nature'],
+    ['Fundamento legal', 'Legal basis'],
+    ['Remover filtro', 'Remove filter'],
+    ['Buscar opções', 'Search options'],
+    ['Aceita várias opções', 'Multiple options allowed'],
+    ['Atualização:', 'Updated:'],
+    ['Fontes normativas e institucionais:', 'Statutory and institutional sources:'],
+    ['Importante:', 'Important:'],
+    [
+      'Pessoa física ou jurídica, conforme a hipótese de incidência.',
+      'Individual or legal entity, depending on the taxable event.',
+    ],
+    ['Conforme a hipótese aplicável.', 'According to the applicable circumstances.'],
+    ['Taxa', 'Fee'],
+    ['Imposto', 'Tax'],
+    ['Contribuição', 'Contribution'],
+    ['copiado como Markdown', 'copied as Markdown'],
+    ['Pessoa física', 'Individual'],
+    ['Pessoa jurídica', 'Legal entity'],
+    ['Patrimônio', 'Assets'],
+    ['Imobiliário', 'Real estate'],
+    ['Veículos', 'Vehicles'],
+    ['Herança', 'Inheritance'],
+    ['Doação', 'Donation'],
+    ['Investimentos', 'Investments'],
+    ['Empresa', 'Business'],
+    ['Folha', 'Payroll'],
+    ['Trabalho', 'Work'],
+    ['Sistema S', 'S System'],
+    ['Serviços', 'Services'],
+    ['Receita', 'Revenue'],
+    ['transição', 'transition'],
+    ['implantação', 'implementation'],
+    ['Vigente', 'In force'],
+    ['Em transição', 'In transition'],
+    ['Em implantação', 'Being implemented'],
+    ['Varia por ente', 'Varies by jurisdiction'],
+    ['Histórico', 'Historical'],
+    ['federal', 'federal'],
+    ['Explorar tudo', 'Explore all'],
+    ['Sem recorte', 'No filter'],
+    [
+      'Veja os 78 itens e use os filtros livremente.',
+      'See all 78 items and use the filters freely.',
+    ],
+    ['Pessoa física', 'Individual'],
+    ['MEI e pequeno negócio', 'MEI and small business'],
+    ['Empresa e empregador', 'Business and employer'],
+    ['Reforma tributária', 'Tax reform'],
+    ['Renda e patrimônio', 'Income and assets'],
+    ['Folha e operação', 'Payroll and operations'],
+    ['O que está mudando', 'What is changing'],
+    ['estadual', 'state'],
+    ['municipal', 'municipal'],
+    ['Empresa', 'Business'],
+    ['Folha', 'Payroll'],
+    ['Serviços', 'Services'],
+    ['Renda', 'Income'],
+    ['Patrimônio', 'Assets'],
+    ['Herança', 'Inheritance'],
+    ['Doação', 'Donation'],
+    ['Veículos', 'Vehicles'],
+    ['Imobiliário', 'Real estate'],
+    ['Receita', 'Revenue'],
+    ['Trabalho', 'Work'],
+    ['transição', 'transition'],
+    ['implantação', 'implementation'],
+    ['legislação', 'legislation'],
+    ['hipóteses', 'circumstances'],
+    ['conforme', 'according to'],
+    ['contribuições', 'contributions'],
+    ['tributos', 'taxes'],
+    ['taxas', 'fees'],
+    ['encargos', 'charges'],
+    ['Brasil', 'Brazil'],
+    ['Reforma Tributária', 'Tax Reform'],
+  ];
+  const traduzido = frases.reduce((texto, [pt, en]) => texto.split(pt).join(en), html);
+  const final = EN_GLOSSARY.reduce((texto, [pt, en]) => texto.split(pt).join(en), traduzido);
+  const correcoesIntegrais = [
+    [
+      'Guia de taxes do Brazil: taxes, contributions, fees e charges no Brazil — 78 siglas',
+      'Brazilian taxes guide: taxes, contributions, fees and charges in Brazil — 78 acronyms',
+    ],
+    [
+      'Sources auto-hospedadas: elimina render-blocking de fonts.googleapis.com',
+      'Self-hosted sources: eliminates render-blocking from fonts.googleapis.com',
+    ],
+    ['Ir para os results', 'Skip to results'],
+    ['Comparar taxes e charges', 'Compare taxes and charges'],
+    [
+      'Selecione de 2 a 4 items para ver diferenças lado a lado. Exemplos:',
+      'Select 2 to 4 items to compare side by side. Examples:',
+    ],
+    [
+      'Comece pelo que você tem, recebe ou faz. A situação cotidiana e a hipótese observada pela legislation ajudam a explicar qual tributo ou obrigação pode aparecer.',
+      'Start with what you own, receive or do. The everyday situation and the applicable circumstances help explain which tax or obligation may arise.',
+    ],
+    [
+      'o objeto ou acontecimento é uma pista visual. A cobrança depende das circumstances, regras, isenções e demais condições previstas na legislation aplicável.',
+      'the object or event is a visual cue. Liability depends on the circumstances, rules, exemptions and other conditions under applicable legislation.',
+    ],
+    ['Filtros de pesquisa', 'Search filters'],
+    ['Pesquisar em todos os dados', 'Search all data'],
+    [
+      'Digite uma sigla, nome, descrição ou contexto…',
+      'Enter an acronym, name, description or context…',
+    ],
+    ['Relação na Reforma', 'Tax Reform relation'],
+    ['O que sai ou entra', 'What is being replaced or introduced'],
+    ['Limpar filters', 'Clear filters'],
+    [
+      'Use os botões nos títulos das colunas para ordenar.',
+      'Use the buttons in column headings to sort.',
+    ],
+    [
+      'Taxes, contributions, fees e charges — resultado dos filters',
+      'Taxes, contributions, fees and charges — filtered results',
+    ],
+    [
+      '“encargo” é uma categoria prática, não uma espécie tributária constitucional equivalente a “tax” ou “taxa”. Também incluí guias, regimes e mecanismos muito confundidos com taxes — eles estão identificados corretamente na coluna',
+      '“Charge” is a practical category, not a constitutional tax category equivalent to a tax or fee. This guide also includes guides, regimes and mechanisms often confused with taxes — they are correctly identified in the',
+    ],
+    [
+      'Tributo cuja cobrança não depende de uma contraprestação estatal específica diretamente ligada ao contribuinte. Exemplos:',
+      'A tax whose collection does not depend on a specific state service directly linked to the taxpayer. Examples:',
+    ],
+    [
+      'Tributo ligado ao exercício do poder de polícia ou à utilização, efetiva ou potencial, de serviço público específico e divisível prestado ou colocado à disposição do contribuinte.',
+      'A fee linked to police power or the actual or potential use of a specific and divisible public service provided or made available to the taxpayer.',
+    ],
+    [
+      'Tributo normalmente vinculado a uma finalidade constitucional específica, como seguridade social, intervenção no domínio econômico ou interesse de categorias, além da iluminação pública.',
+      'A contribution normally linked to a specific constitutional purpose, such as social security, intervention in the economic domain or category interests, in addition to public lighting.',
+    ],
+    [
+      'Expressão ampla de uso contábil/trabalhista para obrigações que aumentam o custo de uma relação ou atividade. Pode incluir valores que não são taxes, como o FGTS.',
+      'A broad accounting/labor term for obligations that increase the cost of a relationship or activity. It may include amounts that are not taxes, such as FGTS.',
+    ],
+    ['agosto de 2026', 'August 2026'],
+    [
+      'A lista reúne os principais taxes e siglas de uso nacional e várias denominações setoriais/locais conhecidas.',
+      'The list covers the main taxes and nationally used acronyms, as well as several known sector-specific and local names.',
+    ],
+    [
+      'Não existe uma lista única e finita de todas as siglas de fees municipais e estaduais: nomes e siglas podem variar por ente federativo.',
+      'There is no single, finite list of all municipal and state fee acronyms: names and acronyms may vary by jurisdiction.',
+    ],
+    [
+      'Em 2026 começou a implementação operacional da CBS e do IBS;',
+      'Operational implementation of CBS and IBS began in 2026;',
+    ],
+    [
+      'estão sujeitos ao cronograma de transition definido pela Tax Reform.',
+      'are subject to the transition schedule defined by the Tax Reform.',
+    ],
+    [
+      'Este material é informativo e não substitui análise da legislation específica do ente ou da operação.',
+      'This material is for information only and does not replace analysis of the specific legislation applicable to the jurisdiction or transaction.',
+    ],
+    ['Todos os tipos', 'All types'],
+    ['Todas as esferas', 'All jurisdictions'],
+    ['Todos os contextos', 'All contexts'],
+    ['Todos os status', 'All statuses'],
+    ['Escolha pelo menos 2 items.', 'Select at least 2 items.'],
+    ['Guia personalizado', 'Personalized guide'],
+    ['informações no seu recorte atual.', 'entries in your current selection.'],
+    ['Trocar jornada', 'Change path'],
+    ['O identificador', 'The identifier'],
+    ['não corresponde a um item do catálogo.', 'does not match a catalog item.'],
+    ['Ver catálogo completo', 'View complete catalog'],
+    ['Ver relação e transition', 'View relation and transition'],
+    ['Nota do status', 'Status note'],
+    ['Sigla', 'Acronym'],
+    ['Nome', 'Name'],
+    ['Tipo/Natureza', 'Type/Nature'],
+    ['Nota do status', 'Status note'],
+    ['Itens de patrimônio/renda/transmissão', 'Assets/income/transfers'],
+    [
+      'os dois perfis mostram exatamente as mesmas associações, mudando só o intro.',
+      'both profiles show exactly the same associations, changing only the introduction.',
+    ],
+    ['Tem um veículo', 'Owns a vehicle'],
+    ['Tem um imóvel urbano', 'Owns an urban property'],
+    ['Recebe renda', 'Receives income'],
+    ['Recebe herança ou doação', 'Receives an inheritance or donation'],
+    ['Propriedade do veículo automotor', 'Ownership of a motor vehicle'],
+    ['Propriedade predial ou territorial urbana', 'Urban building or land ownership'],
+    ['Transmissão gratuita de bens ou direitos', 'Free transfer of assets or rights'],
+    ['Estados e DF', 'States and Federal District'],
+    ['Municípios e DF', 'Municipalities and Federal District'],
+    ['Tax de renda', 'Income tax'],
+    ['imóveis', 'real estate'],
+    ['obrigações pessoais', 'personal obligations'],
+    ['Rotina simplificada', 'Simplified routine'],
+    ['Itens ligados ao', 'Items related to'],
+    ['faturamento', 'turnover'],
+    ['serviços e documentos de arrecadação', 'services and collection documents'],
+    ['Payroll e operação', 'Payroll and operations'],
+    ['Taxes da empresa', 'Business taxes'],
+    ['contributions patronais', 'employer contributions'],
+    ['Novos taxes do consumo', 'New consumption taxes'],
+    ['items que estão em transition', 'items undergoing transition'],
+    [
+      'Operação de consumo abrangida pela nova legislation',
+      'Consumption transaction covered by the new legislation',
+    ],
+    ['Estados, DF e municípios', 'States, Federal District and municipalities'],
+    ['Substituição gradual durante a transition', 'Gradual replacement during the transition'],
+    [
+      'Searchable guide de siglas e nomes usados no sistema tributário, trabalhista, regulatório e financeiro brasileiro. Use os filters para localizar rapidamente um item por contexto, esfera, natureza ou status.',
+      'Searchable guide to acronyms and names used in the Brazilian tax, labor, regulatory and financial systems. Use the filters to quickly find an item by context, jurisdiction, nature or status.',
+    ],
+  ];
+  const integral = correcoesIntegrais.reduce((texto, [pt, en]) => texto.split(pt).join(en), final);
+  return integral
     .replace(/data-icone="(?:Tax|Fee|Contribution|Charge)s?"/g, m =>
       m.replace(/(?:Tax|tax|Fee|fee|Contribution|contribution|Charge|charge)s?/, 'imposto'),
     )
+    .replaceAll('items exibidos', 'items shown')
+    .replaceAll('itens exibidos', 'items shown')
     .replace('lang="pt-BR"', 'lang="en-US"');
 }
 
@@ -276,7 +609,7 @@ function paraSitemap() {
 `;
 }
 
-function paraJsonLd(dados) {
+function paraJsonLd(dados, idioma = 'pt-BR') {
   // DefinedTermSet/DefinedTerm: expõe o catálogo como dado estruturado para que
   // buscadores entendam a página como um glossário de termos, não como texto solto.
   // @id de cada termo aponta para a URL do site com o id estável do catálogo (o
@@ -286,11 +619,16 @@ function paraJsonLd(dados) {
     '@context': 'https://schema.org',
     '@type': 'DefinedTermSet',
     '@id': `${SITE_URL}#catalogo`,
-    name: 'Guia de Tributos, Contribuições, Taxas e Encargos do Brasil',
+    name:
+      idioma === 'en-US'
+        ? 'Brazilian Taxes, Contributions, Fees and Charges Guide'
+        : 'Guia de Tributos, Contribuições, Taxas e Encargos do Brasil',
     description:
-      'Catálogo de tributos, contribuições, taxas e encargos do Brasil: sigla, tipo, esfera, contexto e status na Reforma Tributária.',
-    url: SITE_URL,
-    inLanguage: 'pt-BR',
+      idioma === 'en-US'
+        ? 'Catalog of Brazilian taxes, contributions, fees and charges: acronym, type, jurisdiction, context and Tax Reform status.'
+        : 'Catálogo de tributos, contribuições, taxas e encargos do Brasil: sigla, tipo, esfera, contexto e status na Reforma Tributária.',
+    url: idioma === 'en-US' ? `${SITE_URL}en/` : SITE_URL,
+    inLanguage: idioma,
     hasDefinedTerm: dados.map(item => ({
       '@type': 'DefinedTerm',
       '@id': `${SITE_URL}#${item.id}`,
@@ -435,7 +773,7 @@ async function main() {
     .replace('const DATA = __TRIBUTOS_DATA__;\n', `const DATA = ${JSON.stringify(dadosEn)};\n`)
     .replace(
       marcadorJsonLd,
-      `<script type="application/ld+json">${JSON.stringify(paraJsonLd(dadosEn))}</script>`,
+      `<script type="application/ld+json">${JSON.stringify(paraJsonLd(dadosEn, 'en-US'))}</script>`,
     );
   const htmlEn = templateEn
     .replace(
