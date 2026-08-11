@@ -366,6 +366,24 @@ await checar('deep-link restaura filtros, hash, foco e histórico', async () => 
   igual(await page.url(), `${URL_AUDITADA}?profile=all&esfera=Federal`, 'avançar restaura URL');
 });
 
+await checar('embed renderiza item válido e trata id inválido', async () => {
+  await page.goto(`${URL_AUDITADA}?embed=iss`);
+  igual(await page.locator('#embed-panel').getAttribute('hidden'), null, 'painel embed visível');
+  igual(
+    await page.locator('#embed-title').textContent(),
+    'ISS — Imposto sobre Serviços de Qualquer Natureza',
+    'título embed',
+  );
+  igual(await page.locator('table:visible').count(), 0, 'layout mínimo sem tabela visível');
+  await page.goto(`${URL_AUDITADA}?embed=id-que-nao-existe`);
+  igual(
+    await page.locator('#embed-title').textContent(),
+    'Item não encontrado',
+    'mensagem para id inválido',
+  );
+  igual(await page.locator('.embed-back').count(), 1, 'retorno ao catálogo');
+});
+
 await checar('aliases retornam o item correto', async () => {
   await page.goto(`${URL_AUDITADA}?profile=all`);
   await entrarNoGuia(page);

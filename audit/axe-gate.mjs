@@ -19,6 +19,16 @@ const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-prac
 const estados = [
   { nome: 'carga-inicial', setup: async () => {} },
   {
+    nome: 'embed-item',
+    url: '?embed=iss',
+    setup: async () => {},
+  },
+  {
+    nome: 'embed-id-invalido',
+    url: '?embed=id-que-nao-existe',
+    setup: async () => {},
+  },
+  {
     nome: 'filtrado',
     setup: async page => {
       await page.fill('#search', 'ICMS');
@@ -40,7 +50,10 @@ let totalViolacoes = 0;
 
 for (const estado of estados) {
   const page = await abrirPagina(browser);
-  if (estado.nome !== 'carga-inicial') await entrarNoGuia(page);
+  if (estado.url) {
+    await page.goto(`${process.env.AUDIT_URL || 'http://localhost:8080/'}${estado.url}`);
+  }
+  if (estado.nome !== 'carga-inicial' && !estado.url) await entrarNoGuia(page);
   await estado.setup(page);
   await page.addScriptTag({ content: axeSource });
 

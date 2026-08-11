@@ -338,6 +338,14 @@ th[aria-sort=none] .sort-ind::after{content:none}
   --icone-asc:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22m5%2012%207-7%207%207%22%2F%3E%3Cpath%20d%3D%22M12%2019V5%22%2F%3E%3C%2Fsvg%3E");
   --icone-desc:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M12%205v14%22%2F%3E%3Cpath%20d%3D%22m19%2012-7%207-7-7%22%2F%3E%3C%2Fsvg%3E");
 }
+.embed-panel{max-width:680px;margin:0 auto;padding:1.5rem;border:3px solid var(--ink,#111);background:#fff}
+.embed-panel h1{font-size:clamp(1.7rem,4vw,2.6rem);margin:.25rem 0 1rem}
+.embed-panel dl{display:grid;grid-template-columns:minmax(8rem, 30%) 1fr;margin:0;border-top:2px solid #111}
+.embed-panel dt,.embed-panel dd{padding:.7rem;border-bottom:1px solid #777;margin:0}.embed-panel dt{font-weight:800}.embed-panel .embed-error{border-color:#b42318}.embed-back{display:inline-block;margin-top:1.25rem;font-weight:700}
+body.embed-mode{background:var(--paper,#f5f1e8)}
+body.embed-mode .container{max-width:760px;padding:1rem}
+body.embed-mode .container>header,body.embed-mode .container>section:not(#embed-panel),body.embed-mode .container>search,body.embed-mode .container>details,body.embed-mode .container>footer{display:none}
+body.embed-mode .embed-panel[hidden]{display:block}
 /* Coluna Tipo: badge com ícone, mantendo a tarja brutalista */
 td[data-icone]{white-space:normal}
 td[data-icone]::before{--icone-tam:1em}
@@ -376,6 +384,7 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
 <body>
 <a class="skip-link" href="#resultados" data-icone="atalho">Ir para os resultados</a>
 <main class="container">
+  <section id="embed-panel" class="embed-panel" aria-labelledby="embed-title" hidden></section>
   <header>
     <h1>Tributos, contribuições, taxas e encargos no Brasil</h1>
     <p class="subtitle">Guia pesquisável de siglas e nomes usados no sistema tributário, trabalhista, regulatório e financeiro brasileiro. Use os filtros para localizar rapidamente um item por contexto, esfera, natureza ou status.</p>
@@ -470,6 +479,8 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
 
 <script>
 const DATA = __TRIBUTOS_DATA__;
+const embedId = new URLSearchParams(location.search).get("embed");
+if (embedId) document.body.classList.add("embed-mode");
 const PROFILES = {
   all:{name:"Explorar tudo",short:"Sem recorte",description:"Veja os 78 itens e use os filtros livremente.",match:()=>true},
   pessoa:{name:"Pessoa física",short:"Renda e patrimônio",description:"Imposto de renda, imóveis, veículos, herança, investimentos e obrigações pessoais.",match:x=>/Pessoa física|Patrimônio|Imobiliário|Veículos|Herança|Doação|Investimentos/.test(x.contexto)},
@@ -713,7 +724,19 @@ function renderProfileSelector(){
   const confirm=mount.querySelector(".profile-confirm");
   if(confirm) confirm.addEventListener("click",()=>{profileConfirmed=true;render();if(location.hash)setTimeout(focusHash,50);else{$("resultados").focus({preventScroll:true});$("resultados").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}});
 }
+function renderEmbed(){
+  const panel=$("embed-panel");
+  const item=DATA.find(x=>x.id===embedId);
+  panel.hidden=false;
+  if(!item){
+    panel.classList.add("embed-error");
+    panel.innerHTML=`<h1 id="embed-title">Item não encontrado</h1><p>O identificador <strong>${esc(embedId||"")}</strong> não corresponde a um item do catálogo.</p><a class="embed-back" href="./">Ver catálogo completo</a>`;
+    return;
+  }
+  panel.innerHTML=`<p class="association-kicker">Guia de Tributos do Brasil</p><h1 id="embed-title"><abbr title="${esc(item.nome)}">${esc(item.sigla)}</abbr> — ${esc(item.nome)}</h1><dl><dt>Tipo / natureza</dt><dd>${esc(item.tipo)}</dd><dt>Esfera</dt><dd>${esc(item.esfera)}</dd><dt>Contexto</dt><dd>${esc(item.contexto)}</dd><dt>O que é / quando aparece</dt><dd>${esc(item.descricao)}</dd><dt>Status</dt><dd>${esc(item.status)}${item.nota_status?` — ${esc(item.nota_status)}`:""}</dd></dl><a class="embed-back" href="./#${encodeURIComponent(item.id)}">Abrir catálogo completo</a>`;
+}
 function render(){
+  if(embedId){renderEmbed();return;}
   const q=normalize($("search").value);
   filtered=DATA.filter(x=>{
     const hay=normalize([x.sigla,x.nome,x.tipo,x.esfera,x.contexto,x.descricao,x.status,x.nota_status,...(x.aliases||[])].join(" "));
