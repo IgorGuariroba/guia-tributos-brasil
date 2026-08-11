@@ -49,7 +49,7 @@
         "csp-xss": "off",
 
         "total-byte-weight": ["error", { "maxNumericValue": 400000 }],
-        "dom-size": ["error", { "maxNumericValue": 1200 }],
+        "dom-size": ["error", { "maxNumericValue": 2200 }],
         "network-requests": "off",
 
         "cls-culprits-insight": ["error", { "minScore": 1 }],

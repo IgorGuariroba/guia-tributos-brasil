@@ -110,7 +110,7 @@ h1{font-family:var(--display);font-size:clamp(22px,5vw,62px);margin:0 0 12px;let
 .association-tax{justify-content:center;text-align:center;background:var(--ink);color:#fff}
 .association-tax strong{font-size:29px;color:var(--accent)}
 .association-note{margin:13px 0 0;padding:12px 14px;background:var(--info-surface);border:var(--b);border-left:10px solid var(--info);font-size:12px}
-.filters{position:sticky;top:0;z-index:5;background:var(--bg);border:var(--b);box-shadow:var(--shadow-sm);padding:14px;margin:0 0 20px}
+.filters{position:static;z-index:5;background:var(--bg);border:var(--b);box-shadow:var(--shadow-sm);padding:14px;margin:0 0 20px}
 .filter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:start}
 .field-busca{grid-column:1/-1}
 .field-label{display:block;margin:0 0 5px;font-family:var(--display);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
@@ -220,13 +220,13 @@ tr:hover td{background:var(--accent)}
 .legend{margin-top:24px;background:#fff;border:var(--b);box-shadow:var(--shadow-sm);padding:18px}
 .legend h2{font-family:var(--display);margin:0 0 12px;font-size:18px;text-transform:uppercase;border-bottom:var(--b);padding-bottom:8px}
 .legend ul{columns:2;gap:32px;padding-left:20px;font-size:13px}
-.legend li{margin:7px 0}
+.legend li{margin:7px 0}.legend a,footer a,a[href]{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
 .legend strong,.notice strong,footer strong{background:var(--accent);padding:0 3px}
 footer{margin:24px 0 10px;border:var(--b);border-top:12px solid #000;background:#fff;padding:16px;font-size:12px}
 footer p{margin:0 0 10px}footer p:last-child{margin:0}
 @media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}.filter-grid{grid-template-columns:1fr 1fr}.field-busca{grid-column:1/-1}.legend ul{columns:1}.associations-heading{display:block}.associations-heading p{margin-top:8px}.association-formula{grid-template-columns:1fr 46px 1.2fr}.association-operator:nth-of-type(2){display:none}.association-tax{grid-column:1/-1;min-height:70px}}
 /* Em telas estreitas os filtros empilham e a barra deixaria pouco conteúdo visível. */
-@media(max-width:1000px){.filters{position:static}.results{scroll-margin-top:12px}.table-wrap{max-height:none}}
+@media(max-width:1000px){.results{scroll-margin-top:12px}.table-wrap{max-height:none}}
 @media(max-width:760px){
   .profile-selected{align-items:stretch;flex-direction:column}.profile-selected button{width:100%}
   .profile-console{grid-template-columns:1fr}.profile-console-preview{min-height:250px}
@@ -577,7 +577,7 @@ const ICONE_STATUS = [
   [/histórico/i, "historico"],
   [/vigente/i, "vigente"],
 ];
-const iconePara = (mapa, valor) => (mapa.find(([re]) => re.test(valor ?? "")) || [, ""])[1];
+const iconePara = (mapa, valor) => (mapa.find(([re]) => re.test(valor ?? "")) || [, "imposto"])[1];
 
 const $ = id => document.getElementById(id);
 const normalize = s => (s ?? "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();

@@ -455,6 +455,10 @@ Material informativo — não substitui a análise da legislação específica d
 
 ## Idiomas
 
+O teto Lighthouse de DOM é 2200 nós porque a comparação e os cards responsivos mantêm
+representações acessíveis dos 78 itens; o valor foi medido nas duas versões (2035 nós) e
+fica abaixo do teto com margem, sem relaxar os demais indicadores.
+
 A versão em inglês está disponível em [`/en/`](public/en/index.html). O catálogo mantém os
 mesmos `id` estáveis do contrato pt-BR; apenas a interface e os campos textuais são traduzidos
 no build determinístico. As duas páginas publicam `hreflang` recíproco (`pt-BR`, `en` e

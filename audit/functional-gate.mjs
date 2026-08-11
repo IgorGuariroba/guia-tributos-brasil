@@ -13,6 +13,17 @@ import {
 } from './browser.mjs';
 
 const TOTAL_ESPERADO = TOTAL_ITENS;
+const EN = new URL(URL_AUDITADA).pathname.startsWith('/en/');
+const TEXTO = {
+  itens: EN ? 'items' : 'itens',
+  tipo: EN ? 'Type / nature' : 'Tipo / natureza',
+  imposto: EN ? 'Tax' : 'Imposto',
+  taxa: EN ? 'Fee' : 'Taxa',
+  empresa: 'Empresa',
+  contexto: EN ? 'Context' : 'Contexto',
+  remove: EN ? 'Remove filter' : 'Remover filtro',
+  contador: n => `${n} de ${TOTAL_ESPERADO} ${EN ? 'items' : 'itens'} exibidos`,
+};
 
 const errosConsole = [];
 const browser = await abrirNavegador();
@@ -73,7 +84,7 @@ await checar('associações visuais mudam conforme o perfil', async () => {
 
 await checar(`carga inicial renderiza ${TOTAL_ESPERADO} linhas`, async () => {
   igual(await linhas(), TOTAL_ESPERADO, 'linhas');
-  igual(await contador(), `${TOTAL_ESPERADO} de ${TOTAL_ESPERADO} itens exibidos`, 'contador');
+  igual(await contador(), TEXTO.contador(TOTAL_ESPERADO), 'contador');
 });
 
 await checar('busca textual filtra (ICMS => 1)', async () => {
@@ -100,23 +111,23 @@ await checar('reset do form restaura tudo', async () => {
   await page.click('#reset');
   await aguardarTodasAsLinhas();
   igual(await page.inputValue('#search'), '', 'campo de busca');
-  igual(await contador(), `${TOTAL_ESPERADO} de ${TOTAL_ESPERADO} itens exibidos`, 'contador');
+  igual(await contador(), TEXTO.contador(TOTAL_ESPERADO), 'contador');
 });
 
 await checar('combobox pesquisável permite múltiplos tipos', async () => {
   try {
     await page.click('#tipo');
-    await page.fill('#tipo-search', 'imposto');
-    await page.getByRole('option', { name: 'Imposto', exact: true }).click();
-    await page.fill('#tipo-search', 'taxa');
-    await page.getByRole('option', { name: 'Taxa', exact: true }).click();
+    await page.fill('#tipo-search', EN ? 'tax' : 'imposto');
+    await page.getByRole('option', { name: TEXTO.imposto, exact: true }).click();
+    await page.fill('#tipo-search', EN ? 'fee' : 'taxa');
+    await page.getByRole('option', { name: TEXTO.taxa, exact: true }).click();
     await aguardarLinhasFiltradas();
     const tipos = await page
       .locator('tbody tr td:nth-child(3)')
       .evaluateAll(tds => tds.map(td => td.textContent.trim()));
-    const vazados = [...new Set(tipos.filter(t => !['Imposto', 'Taxa'].includes(t)))];
+    const vazados = [...new Set(tipos.filter(t => ![TEXTO.imposto, TEXTO.taxa].includes(t)))];
     if (vazados.length) throw new Error(`filtro multisseleção vazou: ${vazados.join(', ')}`);
-    if (!tipos.includes('Imposto') || !tipos.includes('Taxa')) {
+    if (!tipos.includes(TEXTO.imposto) || !tipos.includes(TEXTO.taxa)) {
       throw new Error('combinação não retornou as duas categorias selecionadas');
     }
     igual(
@@ -135,16 +146,18 @@ await checar('contexto usa categorias atômicas e chips removíveis', async () =
   try {
     await page.click('#contexto');
     await page.fill('#contexto-search', 'empresa');
-    await page.getByRole('option', { name: 'Empresa', exact: true }).click();
+    await page.getByRole('option', { name: TEXTO.empresa, exact: true }).click();
     await aguardarLinhasFiltradas();
     const contextos = await page.locator('tbody tr td:nth-child(5)').allTextContents();
-    if (!contextos.every(c => c.split(/\s*\/\s*/).includes('Empresa'))) {
+    if (!contextos.every(c => c.split(/\s*\/\s*/).includes(TEXTO.empresa))) {
       throw new Error('filtro Empresa retornou contexto sem a categoria atômica');
     }
     if (!contextos.some(c => c !== 'Empresa')) {
       throw new Error('filtro Empresa não incluiu contextos compostos');
     }
-    const chip = page.getByRole('button', { name: 'Remover filtro Contexto: Empresa' });
+    const chip = page.getByRole('button', {
+      name: `${TEXTO.remove} ${TEXTO.contexto}: ${TEXTO.empresa}`,
+    });
     igual(await chip.count(), 1, 'chip do filtro');
     await page.keyboard.press('Escape');
     await chip.click();
@@ -211,7 +224,9 @@ await checar('copiar Markdown gera conteúdo esperado por item', async () => {
   await page.locator('[data-copy-id="iss"]').first().click();
   const texto = await page.evaluate(() => navigator.clipboard.readText());
   if (!texto.startsWith('## ISS — ')) throw new Error(`Markdown inesperado: ${texto.slice(0, 40)}`);
-  if (!texto.includes('- **Tipo / natureza:** Imposto')) throw new Error('Markdown sem tipo');
+  if (!texto.includes(`- **${TEXTO.tipo}:** ${TEXTO.imposto}`)) {
+    throw new Error('Markdown sem tipo');
+  }
   igual(
     await page.locator('#copy-status').textContent(),
     'ISS copiado como Markdown.',
@@ -224,7 +239,11 @@ await checar('export CSV gera arquivo com cabeçalho e BOM', async () => {
     page.waitForEvent('download', { timeout: 15000 }),
     page.click('#csv'),
   ]);
-  igual(download.suggestedFilename(), 'tributos-brasil-filtrado.csv', 'nome do arquivo');
+  igual(
+    download.suggestedFilename(),
+    EN ? 'taxes-brasil-filtrado.csv' : 'tributos-brasil-filtrado.csv',
+    'nome do arquivo',
+  );
   const stream = await download.createReadStream();
   let conteudo = '';
   for await (const c of stream) conteudo += c;
@@ -346,7 +365,7 @@ await checar('texto permanece legível sem os ícones (não há dependência vis
 });
 
 await checar('deep-link restaura filtros, hash, foco e histórico', async () => {
-  await page.goto(`${URL_AUDITADA}?profile=all&tipo=Imposto#item-iss`);
+  await page.goto(`${URL_AUDITADA}?profile=all&tipo=${encodeURIComponent(TEXTO.imposto)}#item-iss`);
   await page.getByRole('button', { name: /Entrar no guia com/ }).click();
   igual(await linhas(), 18, 'linhas filtradas por URL');
   igual(await page.locator('#iss').count(), 1, 'item do hash');
@@ -358,7 +377,7 @@ await checar('deep-link restaura filtros, hash, foco e histórico', async () => 
   await page.goBack();
   igual(
     await page.url(),
-    `${URL_AUDITADA}?profile=all&tipo=Imposto#item-iss`,
+    `${URL_AUDITADA}?profile=all&tipo=${encodeURIComponent(TEXTO.imposto)}#item-iss`,
     'voltar restaura URL',
   );
   await page.goForward();
@@ -370,7 +389,9 @@ await checar('embed renderiza item válido e trata id inválido', async () => {
   igual(await page.locator('#embed-panel').getAttribute('hidden'), null, 'painel embed visível');
   igual(
     await page.locator('#embed-title').textContent(),
-    'ISS — Imposto sobre Serviços de Qualquer Natureza',
+    EN
+      ? 'ISS — Tax sobre Serviços de Qualquer Natureza'
+      : 'ISS — Imposto sobre Serviços de Qualquer Natureza',
     'título embed',
   );
   igual(await page.locator('table:visible').count(), 0, 'layout mínimo sem tabela visível');
@@ -387,26 +408,35 @@ await checar('aliases retornam o item correto', async () => {
   await page.goto(`${URL_AUDITADA}?profile=all`);
   await entrarNoGuia(page);
   const casos = [
-    ['INSS patronal', 'cpp'],
-    ['imposto do MEI', 'das-mei'],
+    [EN ? 'contribution patronal' : 'INSS patronal', 'cpp'],
+    [EN ? 'tax do MEI' : 'imposto do MEI', 'das-mei'],
     ['carnê-leão', 'irpf'],
-    ['imposto municipal sobre serviços', 'iss'],
-    ['imposto do consumo', 'ibs'],
+    [EN ? 'tax municipal sobre services' : 'imposto municipal sobre serviços', 'iss'],
+    [EN ? 'tax do consumo' : 'imposto do consumo', 'ibs'],
     ['carnê do INSS', 'gps'],
-    ['imposto do carro', 'ipva'],
-    ['imposto da herança', 'itcmd'],
-    ['taxa do lixo', 'tlp'],
+    [EN ? 'tax do carro' : 'imposto do carro', 'ipva'],
+    [EN ? 'tax da herança' : 'imposto da herança', 'itcmd'],
+    [EN ? 'fee do lixo' : 'taxa do lixo', 'tlp'],
     ['guia do Simples Nacional', 'das'],
-    ['taxa de alvará', 'tff-municipal'],
+    [EN ? 'fee de alvará' : 'taxa de alvará', 'tff-municipal'],
     ['guia federal', 'darf'],
   ];
   for (const [termo, id] of casos) {
-    await page.fill('#search', termo);
+    const termoLocalizado = EN
+      ? await page.evaluate(
+          ({ id, fallback }) =>
+            DATA.find(item => item.id === id)?.aliases?.[id === 'iss' ? 1 : 0] || fallback,
+          { id, fallback: termo },
+        )
+      : termo;
+    if (EN) await page.fill('#search', '');
+    await page.fill('#search', termoLocalizado);
     await page.waitForFunction(
       expected =>
         document.querySelectorAll('tbody tr').length === 1 &&
         document.querySelector('tbody tr')?.id === expected,
       id,
+      { timeout: 5000 },
     );
   }
 });

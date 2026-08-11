@@ -104,19 +104,22 @@ const traduzirCatalogo = dados =>
     Object.fromEntries(
       Object.entries(item).map(([chave, valor]) => [
         chave,
-        typeof valor === 'string'
-          ? traduzir(valor)
-          : Array.isArray(valor)
-            ? valor.map(x => (typeof x === 'string' ? traduzir(x) : x))
-            : valor,
+        chave === 'aliases'
+          ? valor
+          : typeof valor === 'string'
+            ? traduzir(valor)
+            : Array.isArray(valor)
+              ? valor.map(x => (typeof x === 'string' ? traduzir(x) : x))
+              : valor,
       ]),
     ),
   );
 function traduzirHtml(html) {
-  return EN_GLOSSARY.reduce((texto, [pt, en]) => texto.split(pt).join(en), html).replace(
-    'lang="pt-BR"',
-    'lang="en-US"',
-  );
+  return EN_GLOSSARY.reduce((texto, [pt, en]) => texto.split(pt).join(en), html)
+    .replace(/data-icone="(?:Tax|Fee|Contribution|Charge)s?"/g, m =>
+      m.replace(/(?:Tax|tax|Fee|fee|Contribution|contribution|Charge|charge)s?/, 'imposto'),
+    )
+    .replace('lang="pt-BR"', 'lang="en-US"');
 }
 
 function validar(dados) {
