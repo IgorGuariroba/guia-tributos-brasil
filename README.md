@@ -7,7 +7,9 @@
 
 Página estática, sem dependências de runtime, que reúne **78 siglas** do sistema tributário,
 trabalhista, regulatório e financeiro brasileiro — com perfis de interesse, busca, filtros por
-tipo/esfera/contexto/status, ordenação por coluna e exportação para CSV. Estilo visual **brutalista**.
+tipo/esfera/contexto/status, ordenação por coluna e exportação para CSV. Os campos operacionais
+`sujeito_passivo`, `periodicidade` e `guia` são descritivos; `guia` só aponta para documento já
+catalogado quando há ligação sustentada. Estilo visual **brutalista**.
 
 🔗 **Publicado em:** https://igorguariroba.github.io/guia-tributos-brasil/
 
@@ -54,6 +56,7 @@ escrito à mão** — é gerado por `node audit/build.mjs` a partir de `data/tri
 ```bash
 npm run build              # regenera public/index.html e public/api/*
 npm run gate:build         # valida o schema e falha se public/ estiver desatualizado
+npm run gate:cobertura      # exige os campos operacionais em pelo menos 90% dos itens
 ```
 
 ### Fundamento legal e fontes primárias

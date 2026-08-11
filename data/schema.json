@@ -19,7 +19,10 @@
       "status",
       "atualizado_em",
       "fontes",
-      "fundamento"
+      "fundamento",
+      "sujeito_passivo",
+      "periodicidade",
+      "guia"
     ],
     "properties": {
       "id": {
@@ -85,6 +88,14 @@
             "url": { "type": "string", "format": "uri", "pattern": "^https://" }
           }
         }
+      },
+      "sujeito_passivo": { "type": "string", "minLength": 1 },
+      "periodicidade": { "type": "string", "minLength": 1 },
+      "guia": {
+        "oneOf": [
+          { "type": "null" },
+          { "type": "object", "additionalProperties": false, "required": ["id", "rotulo"], "properties": { "id": { "type": "string" }, "rotulo": { "type": "string", "minLength": 1 } } }
+        ]
       },
       "fundamento": {
         "type": "array",

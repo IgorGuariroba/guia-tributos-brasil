@@ -32,6 +32,9 @@ const REQUIRED_FIELDS = [
   'atualizado_em',
   'fontes',
   'fundamento',
+  'sujeito_passivo',
+  'periodicidade',
+  'guia',
 ];
 const STATUS_ENUM = [
   'Vigente',
@@ -67,6 +70,8 @@ function validar(dados) {
         ) {
           erros.push(`${rotulo}: "aliases" deve ser uma lista de textos não vazios.`);
         }
+      } else if (campo === 'guia') {
+        if (valor !== null && (typeof valor !== 'object' || typeof valor.id !== 'string' || typeof valor.rotulo !== 'string')) erros.push(`${rotulo}: guia deve ser null ou objeto com id e rotulo.`);
       } else if (campo === 'fontes' || campo === 'fundamento') {
         if (!Array.isArray(valor) || valor.length < 1) {
           erros.push(`${rotulo}: "${campo}" deve ser uma lista não vazia.`);

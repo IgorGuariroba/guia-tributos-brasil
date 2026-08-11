@@ -9,6 +9,7 @@
     "build": "node audit/build.mjs",
     "gates": "node audit/run-gates.mjs",
     "gate:build": "node audit/build-gate.mjs",
+    "gate:cobertura": "node audit/coverage-gate.mjs",
     "gate:frescor": "node audit/freshness-gate.mjs",
     "gate:contribuicao": "node audit/contribution-gate.mjs",
     "gate:funcional": "node audit/run-gates.mjs funcional",

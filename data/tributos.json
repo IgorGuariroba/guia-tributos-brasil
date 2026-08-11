@@ -8,7 +8,10 @@
     "contexto": "Pessoa física",
     "descricao": "Incide sobre renda e proventos tributáveis de pessoas físicas, conforme as regras do Imposto de Renda.",
     "status": "Vigente",
-    "aliases": ["carnê-leão", "carne leao"],
+    "aliases": [
+      "carnê-leão",
+      "carne leao"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -22,7 +25,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "irpj",
@@ -33,7 +39,9 @@
     "contexto": "Empresa",
     "descricao": "Incide sobre a renda/lucro tributável das pessoas jurídicas.",
     "status": "Vigente",
-    "aliases": ["imposto da empresa"],
+    "aliases": [
+      "imposto da empresa"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -47,7 +55,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "irrf",
@@ -71,7 +82,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "ipi",
@@ -95,7 +109,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "iof",
@@ -106,7 +123,9 @@
     "contexto": "Financeiro",
     "descricao": "Incide sobre operações de crédito, câmbio, seguro e operações relativas a títulos ou valores mobiliários.",
     "status": "Vigente",
-    "aliases": ["imposto financeiro"],
+    "aliases": [
+      "imposto financeiro"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -120,7 +139,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "ii",
@@ -131,7 +153,9 @@
     "contexto": "Comércio exterior",
     "descricao": "Incide sobre a importação de produtos estrangeiros.",
     "status": "Vigente",
-    "aliases": ["imposto de importação"],
+    "aliases": [
+      "imposto de importação"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -145,7 +169,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "ie",
@@ -156,7 +183,9 @@
     "contexto": "Comércio exterior",
     "descricao": "Pode incidir sobre a exportação de produtos nacionais ou nacionalizados nas hipóteses previstas em lei.",
     "status": "Vigente",
-    "aliases": ["imposto de exportação"],
+    "aliases": [
+      "imposto de exportação"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -170,7 +199,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "itr",
@@ -181,7 +213,9 @@
     "contexto": "Imobiliário / Rural",
     "descricao": "Incide sobre propriedade territorial rural.",
     "status": "Vigente",
-    "aliases": ["imposto rural"],
+    "aliases": [
+      "imposto rural"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -195,7 +229,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l9393.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "igf",
@@ -219,7 +256,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "icms",
@@ -243,7 +283,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "ipva",
@@ -254,7 +297,10 @@
     "contexto": "Veículos",
     "descricao": "Incide sobre a propriedade de veículos automotores, conforme legislação estadual.",
     "status": "Vigente",
-    "aliases": ["imposto do carro", "imposto de veículo"],
+    "aliases": [
+      "imposto do carro",
+      "imposto de veículo"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -268,7 +314,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "itcmd",
@@ -279,7 +328,10 @@
     "contexto": "Herança / Doação / Patrimônio",
     "descricao": "Incide sobre transmissão gratuita de bens ou direitos por herança ou doação.",
     "status": "Vigente",
-    "aliases": ["imposto da herança", "imposto de herança"],
+    "aliases": [
+      "imposto da herança",
+      "imposto de herança"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -293,7 +345,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "iss",
@@ -304,7 +359,10 @@
     "contexto": "Serviços",
     "descricao": "Incide sobre prestações de serviços definidas em lei complementar. Será substituído gradualmente pelo IBS.",
     "status": "Em transição",
-    "aliases": ["ISSQN", "imposto municipal sobre serviços"],
+    "aliases": [
+      "ISSQN",
+      "imposto municipal sobre serviços"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -318,7 +376,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "issqn",
@@ -343,7 +404,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "iptu",
@@ -354,7 +418,10 @@
     "contexto": "Imobiliário",
     "descricao": "Incide sobre propriedade predial e territorial urbana.",
     "status": "Vigente",
-    "aliases": ["imposto predial", "imposto da casa"],
+    "aliases": [
+      "imposto predial",
+      "imposto da casa"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -368,7 +435,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "itbi",
@@ -379,7 +449,9 @@
     "contexto": "Imobiliário",
     "descricao": "Incide, em linhas gerais, sobre transmissão onerosa inter vivos de bens imóveis e direitos imobiliários abrangidos pela legislação.",
     "status": "Vigente",
-    "aliases": ["imposto de transferência de imóvel"],
+    "aliases": [
+      "imposto de transferência de imóvel"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -393,7 +465,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "ibs",
@@ -405,7 +480,10 @@
     "descricao": "Novo imposto sobre consumo de competência compartilhada entre estados, DF e municípios. Está em implementação na Reforma Tributária.",
     "status": "Em implantação",
     "nota_status": "Implementação 2026",
-    "aliases": ["imposto do consumo", "imposto sobre consumo"],
+    "aliases": [
+      "imposto do consumo",
+      "imposto sobre consumo"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -419,7 +497,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "is",
@@ -444,7 +525,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "pis-pasep",
@@ -468,7 +552,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp07.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "pis",
@@ -492,7 +579,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l9718.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "pasep",
@@ -516,7 +606,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp08.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cofins",
@@ -540,7 +633,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp70.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "csll",
@@ -551,7 +647,9 @@
     "contexto": "Empresa",
     "descricao": "Contribuição social calculada sobre o resultado ajustado das pessoas jurídicas, conforme regime aplicável.",
     "status": "Vigente",
-    "aliases": ["contribuição sobre o lucro"],
+    "aliases": [
+      "contribuição sobre o lucro"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -565,7 +663,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "adcsll",
@@ -589,7 +690,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cbs",
@@ -601,7 +705,9 @@
     "descricao": "Novo tributo federal sobre consumo, criado no âmbito da Reforma Tributária, em implementação a partir de 2026.",
     "status": "Em implantação",
     "nota_status": "Implementação 2026",
-    "aliases": ["contribuição do consumo"],
+    "aliases": [
+      "contribuição do consumo"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -615,7 +721,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cide",
@@ -639,7 +748,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cide-combustiveis",
@@ -663,7 +775,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10336.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cide-royalties",
@@ -687,7 +802,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l10168.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "inss",
@@ -711,7 +829,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cpp",
@@ -722,7 +843,10 @@
     "contexto": "Empresa / Folha",
     "descricao": "Contribuição previdenciária de responsabilidade patronal sobre bases previstas na legislação.",
     "status": "Vigente",
-    "aliases": ["INSS patronal", "contribuição patronal"],
+    "aliases": [
+      "INSS patronal",
+      "contribuição patronal"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -736,7 +860,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cprb",
@@ -761,7 +888,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l12546.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "rat",
@@ -772,7 +902,10 @@
     "contexto": "Empresa / Folha",
     "descricao": "Contribuição destinada ao financiamento dos benefícios decorrentes dos riscos ambientais do trabalho, com alíquotas vinculadas ao risco da atividade.",
     "status": "Vigente",
-    "aliases": ["SAT", "seguro acidente do trabalho"],
+    "aliases": [
+      "SAT",
+      "seguro acidente do trabalho"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -786,7 +919,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "sat",
@@ -811,7 +947,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "salario-educacao",
@@ -835,7 +974,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l9424.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "fust",
@@ -859,7 +1001,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l9998.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "funttel",
@@ -883,7 +1028,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l10052.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "condecine",
@@ -907,7 +1055,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/mpv/2228-1.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "afrmm",
@@ -931,7 +1082,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l10893.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cfem",
@@ -955,7 +1109,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cfurh",
@@ -979,7 +1136,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "funrural",
@@ -1003,7 +1163,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "senai",
@@ -1027,7 +1190,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/del4048.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "sesi",
@@ -1051,7 +1217,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/del9403.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "senac",
@@ -1075,7 +1244,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/del8621.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "sesc",
@@ -1099,7 +1271,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/del9853.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "sebrae",
@@ -1123,7 +1298,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "senar",
@@ -1147,7 +1325,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8315.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "sest",
@@ -1171,7 +1352,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "senat",
@@ -1195,7 +1379,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cosip",
@@ -1206,7 +1393,10 @@
     "contexto": "Imóvel / Serviços públicos",
     "descricao": "Contribuição destinada ao custeio, expansão e melhoria do serviço de iluminação pública.",
     "status": "Vigente",
-    "aliases": ["taxa de luz", "contribuição de iluminação"],
+    "aliases": [
+      "taxa de luz",
+      "contribuição de iluminação"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1220,7 +1410,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "cip",
@@ -1245,7 +1438,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tfe",
@@ -1270,7 +1466,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tfa",
@@ -1295,7 +1494,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "trss",
@@ -1320,7 +1522,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tff-municipal",
@@ -1332,7 +1537,10 @@
     "descricao": "Sigla adotada por alguns municípios para fiscalização de funcionamento de estabelecimentos.",
     "status": "Varia por ente",
     "nota_status": "Varia por município",
-    "aliases": ["taxa de alvará", "taxa de funcionamento"],
+    "aliases": [
+      "taxa de alvará",
+      "taxa de funcionamento"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1346,7 +1554,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tflf",
@@ -1371,7 +1582,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tlp",
@@ -1383,7 +1597,9 @@
     "descricao": "Denominação utilizada em algumas legislações locais; a validade e a configuração dependem do serviço específico e divisível e da legislação do ente.",
     "status": "Varia por ente",
     "nota_status": "Varia por município",
-    "aliases": ["taxa do lixo"],
+    "aliases": [
+      "taxa do lixo"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1397,7 +1613,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tcr",
@@ -1422,7 +1641,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tfrm",
@@ -1447,7 +1669,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
         "observacao": "A instituição e os detalhes dependem da lei do ente competente."
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tfa-anvisa",
@@ -1471,7 +1696,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tfvs",
@@ -1496,7 +1724,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tff-federal",
@@ -1520,7 +1751,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tfi",
@@ -1544,7 +1778,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "fistel",
@@ -1568,7 +1805,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "taf",
@@ -1593,7 +1833,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l11182.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "tffa",
@@ -1617,7 +1860,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l10883.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "fgts",
@@ -1628,7 +1874,9 @@
     "contexto": "Empresa / Folha / Trabalho",
     "descricao": "Depósito obrigatório do empregador em favor do trabalhador nas hipóteses legais. Não é imposto nem contribuição tributária comum.",
     "status": "Vigente",
-    "aliases": ["fundo de garantia"],
+    "aliases": [
+      "fundo de garantia"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1642,7 +1890,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "fap",
@@ -1666,7 +1917,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/decreto/d3048.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "sistema-s",
@@ -1690,7 +1944,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "ret",
@@ -1714,7 +1971,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l10931.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "simples",
@@ -1738,7 +1998,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "das",
@@ -1749,7 +2012,10 @@
     "contexto": "Empresa",
     "descricao": "Documento usado para recolher tributos abrangidos pelo Simples Nacional. Não é tributo.",
     "status": "Vigente",
-    "aliases": ["guia do Simples Nacional", "boleto do Simples"],
+    "aliases": [
+      "guia do Simples Nacional",
+      "boleto do Simples"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1763,7 +2029,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "das-mei",
@@ -1774,7 +2043,11 @@
     "contexto": "MEI / Empresa",
     "descricao": "Documento mensal utilizado pelo MEI para recolhimentos previstos no regime. Não é tributo autônomo.",
     "status": "Vigente",
-    "aliases": ["imposto do MEI", "boleto do MEI", "guia do MEI"],
+    "aliases": [
+      "imposto do MEI",
+      "boleto do MEI",
+      "guia do MEI"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1788,7 +2061,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "darf",
@@ -1799,7 +2075,10 @@
     "contexto": "Pessoa física / Empresa",
     "descricao": "Documento utilizado para recolher diversas receitas e tributos federais. Não é imposto.",
     "status": "Vigente",
-    "aliases": ["guia federal", "guia de recolhimento federal"],
+    "aliases": [
+      "guia federal",
+      "guia de recolhimento federal"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1813,7 +2092,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l9430.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "dae",
@@ -1837,7 +2119,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "gps",
@@ -1849,7 +2134,10 @@
     "descricao": "Guia historicamente utilizada para recolhimentos previdenciários em diversas situações. Não é tributo.",
     "status": "Vigente",
     "nota_status": "Uso conforme caso",
-    "aliases": ["carnê do INSS", "guia da previdência"],
+    "aliases": [
+      "carnê do INSS",
+      "guia da previdência"
+    ],
     "atualizado_em": "2026-08-10",
     "fontes": [
       {
@@ -1863,7 +2151,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "gcap",
@@ -1887,7 +2178,10 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l7713.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   },
   {
     "id": "come-cotas",
@@ -1912,6 +2206,9 @@
         "url": "https://www.planalto.gov.br/ccivil_03/leis/l11033.htm",
         "observacao": ""
       }
-    ]
+    ],
+    "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
+    "periodicidade": "Conforme a hipótese aplicável.",
+    "guia": null
   }
 ]

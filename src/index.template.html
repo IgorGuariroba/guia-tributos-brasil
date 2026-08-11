@@ -437,6 +437,7 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
           <th scope="col" data-key="contexto" aria-sort="none"><button type="button" class="th-btn">Contexto <span class="sort-ind" aria-hidden="true"></span></button></th>
           <th scope="col" data-key="descricao" aria-sort="none"><button type="button" class="th-btn">O que é / quando aparece <span class="sort-ind" aria-hidden="true"></span></button></th>
           <th scope="col" data-key="status" aria-sort="none"><button type="button" class="th-btn">Status <span class="sort-ind" aria-hidden="true"></span></button></th>
+          <th scope="col">Operação</th>
           <th scope="col" class="print-hide">Ações</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
@@ -758,6 +759,7 @@ function render(){
     <td>${esc(x.contexto)}</td>
     <td>${esc(x.descricao)} <details><summary>Fundamento legal</summary>${x.fundamento.map(f=>`<p><a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.lei)}</a>${f.observacao?` — ${esc(f.observacao)}`:""}</p>`).join("")}</details></td>
     <td data-icone="${iconePara(ICONE_STATUS,x.status)}" class="${/transi|implant/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}${x.nota_status?` — ${esc(x.nota_status)}`:""}</td>
+    <td><strong>Sujeito:</strong> ${esc(x.sujeito_passivo)}<br><strong>Periodicidade:</strong> ${esc(x.periodicidade)}${x.guia?`<br><strong>Guia:</strong> <a href="#${esc(x.guia.id)}">${esc(x.guia.rotulo)}</a>`:""}</td>
     <td class="print-hide"><button type="button" class="copy-markdown" data-copy-id="${esc(x.id)}" aria-label="Copiar ${esc(x.sigla)} como Markdown">Copiar Markdown</button></td>
   </tr>`).join("");
   renderCards();
