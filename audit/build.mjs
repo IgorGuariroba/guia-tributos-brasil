@@ -26,6 +26,7 @@ const REQUIRED_FIELDS = [
   'descricao',
   'status',
 ];
+const ALLOWED_FIELDS = [...REQUIRED_FIELDS, 'aliases'];
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 function validar(dados) {
@@ -43,11 +44,25 @@ function validar(dados) {
     }
     for (const campo of REQUIRED_FIELDS) {
       const valor = item[campo];
-      if (typeof valor !== 'string' || valor.trim() === '') {
+      if (campo === 'aliases') {
+        if (
+          valor !== undefined &&
+          (!Array.isArray(valor) || valor.some(alias => typeof alias !== 'string' || !alias.trim()))
+        ) {
+          erros.push(`${rotulo}: "aliases" deve ser uma lista de textos não vazios.`);
+        }
+      } else if (typeof valor !== 'string' || valor.trim() === '') {
         erros.push(`${rotulo}: campo obrigatório "${campo}" ausente ou vazio.`);
       }
     }
-    const chavesExtras = Object.keys(item).filter(k => !REQUIRED_FIELDS.includes(k));
+    if (
+      item.aliases !== undefined &&
+      (!Array.isArray(item.aliases) ||
+        item.aliases.some(alias => typeof alias !== 'string' || !alias.trim()))
+    ) {
+      erros.push(`${rotulo}: "aliases" deve ser uma lista de textos não vazios.`);
+    }
+    const chavesExtras = Object.keys(item).filter(k => !ALLOWED_FIELDS.includes(k));
     if (chavesExtras.length) {
       erros.push(`${rotulo}: campo(s) não previstos no schema: ${chavesExtras.join(', ')}.`);
     }
