@@ -13,20 +13,21 @@ tipo/esfera/contexto/status, ordenação por coluna e exportação para CSV. Est
 
 ## Estado de qualidade
 
-| Métrica | Resultado |
-|---|---|
-| Lighthouse — Performance | **100** |
-| Lighthouse — Accessibility | **100** |
-| Lighthouse — Best Practices | **100** |
-| Lighthouse — SEO | **100** |
-| axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações** |
-| Semantic HTML Score | **100/100 (A)** |
-| Duplicação de código (jscpd) | **0,16%** (limite 0,4%) |
-| Testes funcionais | **20/20** |
-| Responsividade | **8 larguras + 3 dispositivos, 0 problemas** |
-| Nós no DOM | **1117** (limite 1200) |
-| Requisições a terceiros | **0** (fontes auto-hospedadas) |
-| Peso total | ~90 KB |
+| Métrica                                          | Resultado                                    |
+| ------------------------------------------------ | -------------------------------------------- |
+| Lighthouse — Performance                         | **100**                                      |
+| Lighthouse — Accessibility                       | **100**                                      |
+| Lighthouse — Best Practices                      | **100**                                      |
+| Lighthouse — SEO                                 | **100**                                      |
+| axe-core (WCAG 2.0/2.1/2.2 A+AA + best-practice) | **0 violações**                              |
+| Semantic HTML Score                              | **100/100 (A)**                              |
+| Duplicação de código (jscpd)                     | **0,14%** (limite 0,4%)                      |
+| Estilo (higiene + Prettier + ESLint)             | **0 pendências**                             |
+| Testes funcionais                                | **20/20**                                    |
+| Responsividade                                   | **8 larguras + 3 dispositivos, 0 problemas** |
+| Nós no DOM                                       | **1117** (limite 1200)                       |
+| Requisições a terceiros                          | **0** (fontes auto-hospedadas)               |
+| Peso total                                       | ~90 KB                                       |
 
 Medido **na URL de produção** (`--preset=desktop`): LCP **0.3 s**, CLS **0**, TBT **0 ms**,
 5 requisições, nenhuma externa.
@@ -45,7 +46,8 @@ Os gates rodam automaticamente no **pre-push** (husky) e no **CI** (GitHub Actio
 São propositalmente exigentes: qualquer regressão bloqueia o push.
 
 ```bash
-npm run gates              # todos os 6 gates
+npm run gates              # todos os 7 gates
+npm run gate:estilo        # somente estilo (higiene + Prettier + ESLint)
 npm run gate:funcional     # somente Playwright
 npm run gate:responsivo    # somente responsividade (320→1920px)
 npm run gate:a11y          # somente axe-core
@@ -54,7 +56,36 @@ npm run gate:duplicacao    # somente duplicação de código (jscpd)
 npm run gate:lighthouse    # somente Lighthouse CI
 ```
 
-### Gate 1 · Funcional (`audit/functional-gate.mjs`)
+Correção automática do que o gate de estilo aponta:
+
+```bash
+npm run format             # prettier --write .
+npm run lint:fix           # eslint . --fix
+```
+
+### Gate 1 · Estilo (`audit/style-gate.mjs`)
+
+Três camadas, da mais barata para a mais cara. Roda em ~2 s, sem navegador — por isso é o
+único gate que também entra no **pre-commit** e ganha um job próprio no CI, dando feedback
+de padrão em segundos em vez de esperar Playwright e Lighthouse.
+
+| Camada             | Ferramenta              | O que trava                                                                                         |
+| ------------------ | ----------------------- | --------------------------------------------------------------------------------------------------- |
+| Higiene de arquivo | nativo (`git ls-files`) | tabulação, indentação fora do passo de 2, espaço no fim da linha, CRLF, BOM, falta de newline final |
+| Formatação         | `prettier --check`      | aspas, larguras, quebras, vírgula final — forma canônica única                                      |
+| Padrão de código   | `eslint`                | imports duplicados/desordenados, `var`, `let` que deveria ser `const`, `==`, variável não usada     |
+
+A camada de higiene percorre **todos os arquivos versionados de texto**, inclusive
+`public/index.html`, que o Prettier ignora de propósito: ele é o artefato estático entregue
+ao usuário (CSS/JS inline compactados para render-blocking zero) e reformatá-lo mudaria o
+payload medido pelo gate do Lighthouse. Assim o HTML continua com consistência verificada
+sem ficar sujeito ao reformatador.
+
+Configuração em `.editorconfig` (fonte da verdade para o editor), `.prettierrc.json` /
+`.prettierignore` e `eslint.config.mjs`. O ESLint **não** define regras de formatação —
+essa responsabilidade é só do Prettier, para as duas ferramentas nunca se contradizerem.
+
+### Gate 2 · Funcional (`audit/functional-gate.mjs`)
 
 20 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
 seleção e confirmação do perfil de interesse, associações visuais dinâmicas por perfil, carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
@@ -65,20 +96,20 @@ exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas)
 asserções sobre os ícones (renderização real de pixels, mapeamento completo, natureza
 decorativa e independência do texto em relação a eles).
 
-### Gate 2 · Responsividade (`audit/responsive-gate.mjs`)
+### Gate 3 · Responsividade (`audit/responsive-gate.mjs`)
 
 Audita **8 larguras** e falha se qualquer uma tiver problema:
 
-| Largura | Alvo | Layout esperado |
-|---:|---|---|
-| 320px | celular pequeno | cards 1col, filtros 1col |
-| 375px | iPhone | cards 1col, filtros 1col |
-| 390px | celular moderno | cards 1col, filtros 1col |
-| 768px | tablet | cards 2col, filtros 2col |
-| 1024px | tablet/desktop pequeno | cards 4col, filtros 4col |
-| 1280px | desktop | cards 4col, filtros 4col |
-| 1440px | desktop | cards 4col, filtros 4col |
-| 1920px | monitor grande | cards 4col, filtros 4col |
+| Largura | Alvo                   | Layout esperado          |
+| ------: | ---------------------- | ------------------------ |
+|   320px | celular pequeno        | cards 1col, filtros 1col |
+|   375px | iPhone                 | cards 1col, filtros 1col |
+|   390px | celular moderno        | cards 1col, filtros 1col |
+|   768px | tablet                 | cards 2col, filtros 2col |
+|  1024px | tablet/desktop pequeno | cards 4col, filtros 4col |
+|  1280px | desktop                | cards 4col, filtros 4col |
+|  1440px | desktop                | cards 4col, filtros 4col |
+|  1920px | monitor grande         | cards 4col, filtros 4col |
 
 Mais **3 dispositivos reais** emulados (iPhone 14, Pixel 7, iPad Mini) com `isMobile` e DPR corretos.
 
@@ -93,7 +124,7 @@ Verificações por largura:
 7. barra sticky com folga de scroll e **ocupando ≤ 40% da viewport** (se não couber, deve deixar de ser sticky)
 8. **filtro e reset funcionam** naquela largura (comportamento, não só layout)
 
-### Gate 3 · Acessibilidade (`audit/axe-gate.mjs`)
+### Gate 4 · Acessibilidade (`audit/axe-gate.mjs`)
 
 axe-core com as tags `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice`.
 **Exige 0 violações** e audita **3 estados** do DOM, já que a tabela é renderizada por JS:
@@ -104,31 +135,31 @@ axe-core com as tags `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practic
 
 O CI executa também o `@axe-core/cli` como verificação independente.
 
-### Gate 4 · HTML semântico (`audit/semantic-gate.mjs`)
+### Gate 5 · HTML semântico (`audit/semantic-gate.mjs`)
 
 Rubrica de 100 pontos em 7 categorias (`audit/semantic-core.mjs`), avaliada no DOM renderizado.
 **Mínimo exigido: 100.**
 
-| Categoria | Peso | O que verifica |
-|---|---:|---|
-| Landmarks | 20 | `<main>` único, `header`/`footer`, `section`/`article`, `role=search` |
-| Headings | 15 | um só `<h1>`, nenhum nível pulado, heading por seção |
-| Formulários | 20 | rótulo acessível em todo controle, `type` nos botões, `fieldset`/`legend` |
-| Tabela | 20 | `thead`/`tbody`, `th[scope]`, `caption`, `aria-sort`, cabeçalho focável |
-| Divitis | 10 | proporção de `div`/`span` ≤ 15% dos elementos |
-| Texto | 8 | listas reais, `strong`/`em` (não `b`/`i`), `time`/`abbr` |
-| Dinâmico | 7 | contador em `aria-live`, estado vazio anunciável |
+| Categoria   | Peso | O que verifica                                                            |
+| ----------- | ---: | ------------------------------------------------------------------------- |
+| Landmarks   |   20 | `<main>` único, `header`/`footer`, `section`/`article`, `role=search`     |
+| Headings    |   15 | um só `<h1>`, nenhum nível pulado, heading por seção                      |
+| Formulários |   20 | rótulo acessível em todo controle, `type` nos botões, `fieldset`/`legend` |
+| Tabela      |   20 | `thead`/`tbody`, `th[scope]`, `caption`, `aria-sort`, cabeçalho focável   |
+| Divitis     |   10 | proporção de `div`/`span` ≤ 15% dos elementos                             |
+| Texto       |    8 | listas reais, `strong`/`em` (não `b`/`i`), `time`/`abbr`                  |
+| Dinâmico    |    7 | contador em `aria-live`, estado vazio anunciável                          |
 
-### Gate 5 · Duplicação de código (`audit/duplication-gate.mjs`)
+### Gate 6 · Duplicação de código (`audit/duplication-gate.mjs`)
 
 Mede reutilização via clones copiar-e-colar com [jscpd](https://github.com/kucherenko/jscpd)
 sobre `public/` e `audit/` (JS, CSS e markup, inclusive os blocos inline do `index.html`).
 
-| Critério | Limite | Medido |
-|---|---|---|
-| Linhas duplicadas | ≤ 0,4% | **0,16%** |
-| Maior clone individual | < 12 linhas | **5 linhas** |
-| Clone mínimo detectável | 4 linhas / 30 tokens | — |
+| Critério                | Limite               | Medido       |
+| ----------------------- | -------------------- | ------------ |
+| Linhas duplicadas       | ≤ 0,4%               | **0,14%**    |
+| Maior clone individual  | < 12 linhas          | **5 linhas** |
+| Clone mínimo detectável | 4 linhas / 30 tokens | —            |
 
 Dois critérios porque o percentual global sozinho esconde um bloco grande copiado dentro de
 um arquivo grande; o limite por clone pega esse caso. Em base pequena (~2,5 mil linhas) o
@@ -146,25 +177,25 @@ Ajustes por variável de ambiente: `DUP_MAX_PERCENT`, `DUP_MAX_CLONE_LINES`, `DU
 > `--max-size 5mb` é obrigatório: o default do jscpd (100 kb) ignoraria silenciosamente o
 > `public/index.html` (~105 kb) e reportaria um falso "0 clones".
 
-### Gate 6 · Lighthouse CI (`lighthouserc.json`)
+### Gate 7 · Lighthouse CI (`lighthouserc.json`)
 
 Mediana de **3 execuções**, preset desktop, servindo `./public` via `staticDistDir`.
 
-| Assertion | Limite | Medido |
-|---|---|---|
-| `categories:accessibility` | = 100 | 100 |
-| `categories:best-practices` | = 100 | 100 |
-| `categories:seo` | = 100 | 100 |
-| `categories:performance` | ≥ 99 | 100 |
-| `first-contentful-paint` | ≤ 1200 ms | ~1353 ms* |
-| `largest-contentful-paint` | ≤ 1500 ms | ~1503 ms* |
-| `total-blocking-time` | ≤ 100 ms | 0 ms |
-| `cumulative-layout-shift` | ≤ 0.02 | 0.000 |
-| `speed-index` | ≤ 1500 ms | ~1353 ms |
-| `interactive` | ≤ 1800 ms | ~1353 ms |
-| `total-byte-weight` | ≤ 400 KB | ~90 KB |
-| `dom-size` | ≤ 1200 nós | 1117 |
-| `color-contrast`, `heading-order`, `label`, `th-has-data-cells`, `errors-in-console`, `render-blocking-resources` | = 100 | 100 |
+| Assertion                                                                                                         | Limite     | Medido    |
+| ----------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
+| `categories:accessibility`                                                                                        | = 100      | 100       |
+| `categories:best-practices`                                                                                       | = 100      | 100       |
+| `categories:seo`                                                                                                  | = 100      | 100       |
+| `categories:performance`                                                                                          | ≥ 99       | 100       |
+| `first-contentful-paint`                                                                                          | ≤ 1200 ms  | ~1353 ms* |
+| `largest-contentful-paint`                                                                                        | ≤ 1500 ms  | ~1503 ms* |
+| `total-blocking-time`                                                                                             | ≤ 100 ms   | 0 ms      |
+| `cumulative-layout-shift`                                                                                         | ≤ 0.02     | 0.000     |
+| `speed-index`                                                                                                     | ≤ 1500 ms  | ~1353 ms  |
+| `interactive`                                                                                                     | ≤ 1800 ms  | ~1353 ms  |
+| `total-byte-weight`                                                                                               | ≤ 400 KB   | ~90 KB    |
+| `dom-size`                                                                                                        | ≤ 1200 nós | 1117      |
+| `color-contrast`, `heading-order`, `label`, `th-has-data-cells`, `errors-in-console`, `render-blocking-resources` | = 100      | 100       |
 
 \* Valores medidos com `lighthouse` CLI direto; sob `staticDistDir` do LHCI as métricas ficam
 abaixo dos limites. A variância observada entre execuções é < 2 ms.
@@ -176,11 +207,16 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
 
 ## Hooks de git
 
-- **pre-commit** — barato e instantâneo: bloqueia commit de relatórios/evidências, impede
-  reintrodução de `fonts.googleapis.com` e valida a presença de marcação essencial
-  (`<main>`, `<caption>`, `role="search"`, `aria-live`).
-- **pre-push** — executa os 6 gates. Escape de emergência: `SKIP_GATES=1 git push`
+- **pre-commit** — barato (~2 s): bloqueia commit de relatórios/evidências, impede
+  reintrodução de `fonts.googleapis.com`, valida a presença de marcação essencial
+  (`<main>`, `<caption>`, `role="search"`, `aria-live`) e roda o **gate de estilo**
+  (indentação, espaços, imports, padrão de código). Se `node_modules` não existir, o gate de
+  estilo é pulado com aviso — o CI continua sendo a rede definitiva.
+- **pre-push** — executa os 7 gates. Escape de emergência: `SKIP_GATES=1 git push`
   (deve ser justificado no PR).
+
+No CI, o gate de estilo roda em um **job separado** (`estilo`) do qual o job `gates` depende:
+um erro de indentação falha em ~40 s em vez de consumir os minutos de navegador.
 
 ## Sistema de ícones
 
@@ -190,12 +226,12 @@ ser reconhecível por bandeira/mapa/prédio e o Status por ícone + cor, sem pre
 
 ### Por que `mask-image` em `::before` e não `<svg>` inline ou `<img>`
 
-| Critério | `<svg>` inline | `<img>` | **`mask-image` em `::before`** |
-|---|---|---|---|
-| Nós no DOM | +5 a +8 por ícone (~1.500 total) | +1 por ícone (+253) | **0** |
-| Requisições | 0 | +37 | **0** |
-| Herda cor do texto | sim | não | **sim** (`background-color`) |
-| Ruído em leitor de tela | precisa `aria-hidden` | precisa `alt=""` | **impossível** (pseudo-elemento) |
+| Critério                | `<svg>` inline                   | `<img>`             | **`mask-image` em `::before`**   |
+| ----------------------- | -------------------------------- | ------------------- | -------------------------------- |
+| Nós no DOM              | +5 a +8 por ícone (~1.500 total) | +1 por ícone (+253) | **0**                            |
+| Requisições             | 0                                | +37                 | **0**                            |
+| Herda cor do texto      | sim                              | não                 | **sim** (`background-color`)     |
+| Ruído em leitor de tela | precisa `aria-hidden`            | precisa `alt=""`    | **impossível** (pseudo-elemento) |
 
 O ponto decisivo foi o DOM: a tabela de 78×7, os comboboxes e as associações visuais usam **1117 dos 1200 nós**
 permitidos pelo gate de Lighthouse. Com `<svg>` inline em cada linha o limite seria estourado.
@@ -243,8 +279,9 @@ public/              # o que vai para o GitHub Pages
   favicon.svg
   fonts/             # 10 arquivos woff2 auto-hospedados
 audit/
-  run-gates.mjs      # orquestrador: sobe servidor e roda os 6 gates
+  run-gates.mjs      # orquestrador: sobe servidor e roda os 7 gates
   gen-icons.mjs      # gera o CSS de ícones a partir do lucide-static
+  style-gate.mjs     # gate de estilo (higiene + Prettier + ESLint)
   functional-gate.mjs
   responsive-gate.mjs
   axe-gate.mjs
@@ -253,6 +290,9 @@ audit/
   duplication-gate.mjs # gate de duplicação (jscpd)
   browser.mjs        # URL, viewport, entrada no guia e relatórios compartilhados
 lighthouserc.json
+.editorconfig        # indentação/EOL/EOF para o editor
+.prettierrc.json     # formatação canônica (+ .prettierignore)
+eslint.config.mjs    # padrão de código e imports
 .husky/              # pre-commit e pre-push
 .github/workflows/ci.yml
 Dockerfile           # alternativa de deploy via nginx

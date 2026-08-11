@@ -69,12 +69,16 @@ const executar = (rotulo, cmd, args, env = {}) =>
 
 const somente = process.argv[2];
 const todos = [
-  ['Gate 1/6 · Funcional (Playwright)', 'node', ['audit/functional-gate.mjs']],
-  ['Gate 2/6 · Responsividade (8 larguras, 320→1920px)', 'node', ['audit/responsive-gate.mjs']],
-  ['Gate 3/6 · Acessibilidade (axe-core, 0 violações)', 'node', ['audit/axe-gate.mjs']],
-  ['Gate 4/6 · HTML semântico (score mínimo 100)', 'node', ['audit/semantic-gate.mjs']],
-  ['Gate 5/6 · Duplicação de código (jscpd)', 'node', ['audit/duplication-gate.mjs']],
-  ['Gate 6/6 · Lighthouse CI (thresholds)', 'npx', ['--no-install', 'lhci', 'autorun']],
+  // O gate de estilo vem primeiro: é o mais barato (~2s, sem navegador) e
+  // falhar cedo evita gastar minutos de Playwright/Lighthouse num código que
+  // já não passa no básico.
+  ['Gate 1/7 · Estilo (higiene, Prettier, ESLint)', 'node', ['audit/style-gate.mjs']],
+  ['Gate 2/7 · Funcional (Playwright)', 'node', ['audit/functional-gate.mjs']],
+  ['Gate 3/7 · Responsividade (8 larguras, 320→1920px)', 'node', ['audit/responsive-gate.mjs']],
+  ['Gate 4/7 · Acessibilidade (axe-core, 0 violações)', 'node', ['audit/axe-gate.mjs']],
+  ['Gate 5/7 · HTML semântico (score mínimo 100)', 'node', ['audit/semantic-gate.mjs']],
+  ['Gate 6/7 · Duplicação de código (jscpd)', 'node', ['audit/duplication-gate.mjs']],
+  ['Gate 7/7 · Lighthouse CI (thresholds)', 'npx', ['--no-install', 'lhci', 'autorun']],
 ];
 const selecionados = somente
   ? todos.filter(g => g[0].toLowerCase().includes(somente.toLowerCase()))
@@ -94,7 +98,9 @@ for (const r of resultados) {
 
 const reprovados = resultados.filter(r => r.code !== 0);
 if (reprovados.length) {
-  console.error(`\n✗ ${reprovados.length} de ${resultados.length} gate(s) reprovado(s). Push bloqueado.`);
+  console.error(
+    `\n✗ ${reprovados.length} de ${resultados.length} gate(s) reprovado(s). Push bloqueado.`,
+  );
   process.exit(1);
 }
 console.log(`\n✓ Todos os ${resultados.length} gates aprovados.`);

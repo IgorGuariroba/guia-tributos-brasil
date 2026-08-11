@@ -9,7 +9,7 @@
  * exigia editar quatro arquivos — com risco de os gates divergirem em silêncio.
  */
 import { chromium } from 'playwright';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 
 /** URL servida pelo orquestrador (audit/run-gates.mjs) ou o padrão do `npm run serve`. */
 export const URL_AUDITADA = process.env.AUDIT_URL || 'http://localhost:8080/';
@@ -37,9 +37,7 @@ export const abrirNavegador = () => chromium.launch();
  */
 export async function abrirPagina(browser, opcoes = {}) {
   const { viewport = VIEWPORT_PADRAO, antesDeAbrir, contexto, ...resto } = opcoes;
-  const page = contexto
-    ? await contexto.newPage()
-    : await browser.newPage({ viewport, ...resto });
+  const page = contexto ? await contexto.newPage() : await browser.newPage({ viewport, ...resto });
   antesDeAbrir?.(page);
   await page.goto(URL_AUDITADA, { waitUntil: 'networkidle' });
   return page;

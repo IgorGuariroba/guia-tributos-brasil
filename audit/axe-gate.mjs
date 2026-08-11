@@ -46,7 +46,7 @@ for (const estado of estados) {
 
   const resultado = await page.evaluate(
     async tags => await window.axe.run(document, { runOnly: { type: 'tag', values: tags } }),
-    TAGS
+    TAGS,
   );
 
   const violacoes = resultado.violations;
@@ -68,7 +68,7 @@ for (const estado of estados) {
   const icone = violacoes.length ? '✗' : '✓';
   console.log(
     `${icone} [${estado.nome}] violações=${violacoes.length} ` +
-      `regras-ok=${resultado.passes.length} incompletas=${resultado.incomplete.length}`
+      `regras-ok=${resultado.passes.length} incompletas=${resultado.incomplete.length}`,
   );
   for (const v of violacoes) {
     console.log(`    → ${v.id} (${v.impact}): ${v.help}`);
@@ -82,7 +82,7 @@ salvarRelatorio('axe.json', relatorio);
 
 console.log(
   `\naxe-core ${require('axe-core').version} | tags: ${TAGS.join(', ')}\n` +
-    `TOTAL DE VIOLAÇÕES: ${totalViolacoes}`
+    `TOTAL DE VIOLAÇÕES: ${totalViolacoes}`,
 );
 
 if (totalViolacoes > 0) {

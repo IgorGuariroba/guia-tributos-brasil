@@ -1,0 +1,13 @@
+node_modules/
+package-lock.json
+audit/reports/
+.lighthouseci/
+evidencias-e2e/
+public/fonts/
+public/favicon.svg
+
+# public/index.html é entregue como um único arquivo estático otimizado
+# (CSS/JS inline minimizados em linha para render-blocking zero). Reformatá-lo
+# alteraria o payload servido e o LCP medido pelo gate do Lighthouse.
+# Sua consistência é verificada pelo gate de estilo (audit/style-gate.mjs).
+public/index.html

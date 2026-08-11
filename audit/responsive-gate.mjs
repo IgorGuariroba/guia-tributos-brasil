@@ -62,8 +62,11 @@ for (const bp of BREAKPOINTS) {
 
       // 1. scroll horizontal no documento
       const overflowDoc = de.scrollWidth - vw;
-      if (overflowDoc > 0)
-        ps.push(`scroll horizontal no documento: ${overflowDoc}px (scrollWidth ${de.scrollWidth} > viewport ${vw})`);
+      if (overflowDoc > 0) {
+        ps.push(
+          `scroll horizontal no documento: ${overflowDoc}px (scrollWidth ${de.scrollWidth} > viewport ${vw})`,
+        );
+      }
 
       // 2. elementos estourando a viewport
       for (const el of document.querySelectorAll('body *')) {
@@ -72,25 +75,27 @@ for (const bp of BREAKPOINTS) {
         if (cs.position === 'fixed' || cs.position === 'absolute') continue; // skip-link fora de tela
         const b = el.getBoundingClientRect();
         if (b.width === 0 && b.height === 0) continue;
-        if (b.right > vw + 1)
+        if (b.right > vw + 1) {
           ps.push(`${desc(el)} estoura à direita: right=${Math.round(b.right)} > viewport=${vw}`);
+        }
         if (b.left < -1) ps.push(`${desc(el)} estoura à esquerda: left=${Math.round(b.left)}`);
       }
 
       // 3. alvos de toque
       if (touch) {
         const interativos = document.querySelectorAll(
-          'button, a[href], select, input, [tabindex]:not([tabindex="-1"])'
+          'button, a[href], select, input, [tabindex]:not([tabindex="-1"])',
         );
         for (const el of interativos) {
           const cs = getComputedStyle(el);
           if (cs.position === 'fixed' || cs.position === 'absolute') continue;
           const b = el.getBoundingClientRect();
           if (b.width === 0 || b.height === 0) continue;
-          if (b.height < ALVO_MIN || b.width < ALVO_MIN)
+          if (b.height < ALVO_MIN || b.width < ALVO_MIN) {
             ps.push(
-              `alvo de toque pequeno em ${desc(el)}: ${Math.round(b.width)}x${Math.round(b.height)} < ${ALVO_MIN}x${ALVO_MIN}`
+              `alvo de toque pequeno em ${desc(el)}: ${Math.round(b.width)}x${Math.round(b.height)} < ${ALVO_MIN}x${ALVO_MIN}`,
             );
+          }
         }
       }
 
@@ -100,14 +105,20 @@ for (const bp of BREAKPOINTS) {
         for (let j = i + 1; j < campos.length; j++) {
           const a = campos[i].getBoundingClientRect();
           const b = campos[j].getBoundingClientRect();
-          const sobrepoe = a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1;
+          const sobrepoe =
+            a.left < b.right - 1 &&
+            b.left < a.right - 1 &&
+            a.top < b.bottom - 1 &&
+            b.top < a.bottom - 1;
           if (sobrepoe) ps.push(`controles sobrepostos: ${desc(campos[i])} e ${desc(campos[j])}`);
         }
       }
 
       // 5. legibilidade
       const corpo = parseFloat(getComputedStyle(document.body).fontSize);
-      if (corpo < FONTE_CORPO_MIN) ps.push(`fonte do corpo muito pequena: ${corpo}px < ${FONTE_CORPO_MIN}px`);
+      if (corpo < FONTE_CORPO_MIN) {
+        ps.push(`fonte do corpo muito pequena: ${corpo}px < ${FONTE_CORPO_MIN}px`);
+      }
       const amostra = ['.subtitle', '.card p', '.legend li', 'tbody td', 'footer p', '.stats'];
       for (const sel of amostra) {
         const el = document.querySelector(sel);
@@ -119,16 +130,30 @@ for (const bp of BREAKPOINTS) {
       // 6. desktop usa tabela; celular usa cards sem rolagem horizontal
       const cardResults = document.querySelector('.result-cards');
       if (largura <= 600) {
-        if (getComputedStyle(scroller).display !== 'none') ps.push('tabela deveria estar oculta no celular');
-        if (!cardResults || getComputedStyle(cardResults).display === 'none') ps.push('cards de resultado ausentes no celular');
-        if (document.querySelectorAll('.result-card').length !== 78)
-          ps.push(`quantidade incorreta de cards: ${document.querySelectorAll('.result-card').length}`);
+        if (getComputedStyle(scroller).display !== 'none') {
+          ps.push('tabela deveria estar oculta no celular');
+        }
+        if (!cardResults || getComputedStyle(cardResults).display === 'none') {
+          ps.push('cards de resultado ausentes no celular');
+        }
+        if (document.querySelectorAll('.result-card').length !== 78) {
+          ps.push(
+            `quantidade incorreta de cards: ${document.querySelectorAll('.result-card').length}`,
+          );
+        }
       } else if (scroller) {
         const sb = scroller.getBoundingClientRect();
-        if (sb.right > vw + 1) ps.push(`.table-wrap vaza da viewport: right=${Math.round(sb.right)} > ${vw}`);
+        if (sb.right > vw + 1) {
+          ps.push(`.table-wrap vaza da viewport: right=${Math.round(sb.right)} > ${vw}`);
+        }
         const tabela = scroller.querySelector('table');
-        if (tabela && scroller.scrollWidth <= scroller.clientWidth && tabela.getBoundingClientRect().width > sb.width + 1)
+        if (
+          tabela &&
+          scroller.scrollWidth <= scroller.clientWidth &&
+          tabela.getBoundingClientRect().width > sb.width + 1
+        ) {
           ps.push('tabela maior que o container mas o scroller não rola');
+        }
       }
 
       // 7. barra sticky: só exige folga de scroll se ela realmente for sticky nesta largura,
@@ -140,17 +165,19 @@ for (const bp of BREAKPOINTS) {
         const alturaBarra = filtros.getBoundingClientRect().height;
         if (posicao === 'sticky') {
           const sm = parseFloat(getComputedStyle(resultados).scrollMarginTop) || 0;
-          if (sm < alturaBarra)
+          if (sm < alturaBarra) {
             ps.push(
-              `scroll-margin-top de #resultados (${sm}px) menor que a barra sticky (${Math.round(alturaBarra)}px): cabeçalho da tabela ficaria coberto`
+              `scroll-margin-top de #resultados (${sm}px) menor que a barra sticky (${Math.round(alturaBarra)}px): cabeçalho da tabela ficaria coberto`,
             );
+          }
           const limite = window.innerHeight * 0.4;
-          if (alturaBarra > limite)
+          if (alturaBarra > limite) {
             ps.push(
               `barra sticky ocupa ${Math.round(alturaBarra)}px de ${window.innerHeight}px ` +
                 `(${Math.round((alturaBarra / window.innerHeight) * 100)}% da viewport, limite 40%): ` +
-                `deveria deixar de ser sticky nesta largura`
+                `deveria deixar de ser sticky nesta largura`,
             );
+          }
         }
       }
 
@@ -167,14 +194,17 @@ for (const bp of BREAKPOINTS) {
         metricas: {
           viewport: vw,
           scrollWidth: de.scrollWidth,
-          cards: getComputedStyle(document.querySelector('.cards')).gridTemplateColumns.split(' ').length,
-          filtros: getComputedStyle(document.querySelector('.filter-grid')).gridTemplateColumns.split(' ').length,
+          cards: getComputedStyle(document.querySelector('.cards')).gridTemplateColumns.split(' ')
+            .length,
+          filtros: getComputedStyle(
+            document.querySelector('.filter-grid'),
+          ).gridTemplateColumns.split(' ').length,
           h1: getComputedStyle(document.querySelector('h1')).fontSize,
           linhas: document.querySelectorAll('tbody tr').length,
         },
       };
     },
-    { ALVO_MIN, FONTE_MIN, FONTE_CORPO_MIN, touch: bp.touch, largura: bp.w }
+    { ALVO_MIN, FONTE_MIN, FONTE_CORPO_MIN, touch: bp.touch, largura: bp.w },
   );
 
   // 8b. o filtro precisa funcionar nesta largura (teste de comportamento, não só de layout)
@@ -182,9 +212,15 @@ for (const bp of BREAKPOINTS) {
   try {
     const resultSelector = bp.w <= 600 ? '.result-card' : 'tbody tr';
     await page.fill('#search', 'ICMS');
-    await page.waitForFunction(sel => document.querySelectorAll(sel).length === 1, resultSelector, { timeout: 5000 });
+    await page.waitForFunction(sel => document.querySelectorAll(sel).length === 1, resultSelector, {
+      timeout: 5000,
+    });
     await page.click('#reset');
-    await page.waitForFunction(sel => document.querySelectorAll(sel).length === 78, resultSelector, { timeout: 5000 });
+    await page.waitForFunction(
+      sel => document.querySelectorAll(sel).length === 78,
+      resultSelector,
+      { timeout: 5000 },
+    );
   } catch {
     ps.push('filtro/reset não funcionou nesta largura');
   }
@@ -197,8 +233,9 @@ for (const bp of BREAKPOINTS) {
   const icone = unicos.length ? '✗' : '✓';
   console.log(
     `${icone} ${String(bp.w).padStart(4)}px ${bp.rotulo.padEnd(22)} ` +
-      `cards=${m.cards}col filtros=${m.filtros}col h1=${m.h1} linhas=${m.linhas}` +
-      (unicos.length ? `  → ${unicos.length} problema(s)` : '')
+      `cards=${m.cards}col filtros=${m.filtros}col h1=${m.h1} linhas=${m.linhas}${
+        unicos.length ? `  → ${unicos.length} problema(s)` : ''
+      }`,
   );
   for (const p of unicos.slice(0, 8)) console.log(`      • ${p}`);
   if (unicos.length > 8) console.log(`      … e mais ${unicos.length - 8}`);
@@ -227,7 +264,7 @@ for (const nome of ['iPhone 14', 'Pixel 7', 'iPad Mini']) {
 await browser.close();
 salvarRelatorio('responsive.json', relatorio);
 
-console.log(`\nBreakpoints auditados: ${BREAKPOINTS.map(b => b.w + 'px').join(', ')}`);
+console.log(`\nBreakpoints auditados: ${BREAKPOINTS.map(b => `${b.w}px`).join(', ')}`);
 console.log(`TOTAL DE PROBLEMAS: ${totalProblemas}`);
 
 if (totalProblemas > 0) {

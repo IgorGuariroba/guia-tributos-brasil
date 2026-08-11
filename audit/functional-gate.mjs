@@ -35,6 +35,13 @@ const igual = (obtido, esperado, ctx) => {
 };
 
 const linhas = () => page.locator('tbody tr').count();
+
+// Esperas de convergência da tabela, usadas por vários testes. Centralizadas
+// porque a condição (comparar contra o total) é a mesma em todos eles.
+const aguardarTodasAsLinhas = () =>
+  page.waitForFunction(t => document.querySelectorAll('tbody tr').length === t, TOTAL_ESPERADO);
+const aguardarLinhasFiltradas = () =>
+  page.waitForFunction(t => document.querySelectorAll('tbody tr').length < t, TOTAL_ESPERADO);
 const contador = () => page.locator('#count').textContent();
 
 await checar('perfil de interesse personaliza a entrada do guia', async () => {
@@ -85,10 +92,7 @@ await checar('estado vazio anuncia mensagem', async () => {
 
 await checar('reset do form restaura tudo', async () => {
   await page.click('#reset');
-  await page.waitForFunction(
-    t => document.querySelectorAll('tbody tr').length === t,
-    TOTAL_ESPERADO
-  );
+  await aguardarTodasAsLinhas();
   igual(await page.inputValue('#search'), '', 'campo de busca');
   igual(await contador(), `${TOTAL_ESPERADO} de ${TOTAL_ESPERADO} itens exibidos`, 'contador');
 });
@@ -100,19 +104,24 @@ await checar('combobox pesquisável permite múltiplos tipos', async () => {
     await page.getByRole('option', { name: 'Imposto', exact: true }).click();
     await page.fill('#tipo-search', 'taxa');
     await page.getByRole('option', { name: 'Taxa', exact: true }).click();
-    await page.waitForFunction(t => document.querySelectorAll('tbody tr').length < t, TOTAL_ESPERADO);
-    const tipos = await page.locator('tbody tr td:nth-child(3)').evaluateAll(tds =>
-      tds.map(td => td.textContent.trim())
-    );
+    await aguardarLinhasFiltradas();
+    const tipos = await page
+      .locator('tbody tr td:nth-child(3)')
+      .evaluateAll(tds => tds.map(td => td.textContent.trim()));
     const vazados = [...new Set(tipos.filter(t => !['Imposto', 'Taxa'].includes(t)))];
     if (vazados.length) throw new Error(`filtro multisseleção vazou: ${vazados.join(', ')}`);
-    if (!tipos.includes('Imposto') || !tipos.includes('Taxa'))
+    if (!tipos.includes('Imposto') || !tipos.includes('Taxa')) {
       throw new Error('combinação não retornou as duas categorias selecionadas');
-    igual(await page.locator('#tipo').getAttribute('aria-expanded'), 'true', 'combobox permanece aberto');
+    }
+    igual(
+      await page.locator('#tipo').getAttribute('aria-expanded'),
+      'true',
+      'combobox permanece aberto',
+    );
   } finally {
     await page.keyboard.press('Escape');
     await page.click('#reset');
-    await page.waitForFunction(t => document.querySelectorAll('tbody tr').length === t, TOTAL_ESPERADO);
+    await aguardarTodasAsLinhas();
   }
 });
 
@@ -121,17 +130,19 @@ await checar('contexto usa categorias atômicas e chips removíveis', async () =
     await page.click('#contexto');
     await page.fill('#contexto-search', 'empresa');
     await page.getByRole('option', { name: 'Empresa', exact: true }).click();
-    await page.waitForFunction(t => document.querySelectorAll('tbody tr').length < t, TOTAL_ESPERADO);
+    await aguardarLinhasFiltradas();
     const contextos = await page.locator('tbody tr td:nth-child(5)').allTextContents();
-    if (!contextos.every(c => c.split(/\s*\/\s*/).includes('Empresa')))
+    if (!contextos.every(c => c.split(/\s*\/\s*/).includes('Empresa'))) {
       throw new Error('filtro Empresa retornou contexto sem a categoria atômica');
-    if (!contextos.some(c => c !== 'Empresa'))
+    }
+    if (!contextos.some(c => c !== 'Empresa')) {
       throw new Error('filtro Empresa não incluiu contextos compostos');
+    }
     const chip = page.getByRole('button', { name: 'Remover filtro Contexto: Empresa' });
     igual(await chip.count(), 1, 'chip do filtro');
     await page.keyboard.press('Escape');
     await chip.click();
-    await page.waitForFunction(t => document.querySelectorAll('tbody tr').length === t, TOTAL_ESPERADO);
+    await aguardarTodasAsLinhas();
   } finally {
     await page.click('#reset');
   }
@@ -146,7 +157,9 @@ await checar('busca e rótulos dos filtros aparecem na primeira tela', async () 
       return style.display !== 'none' && label.getBoundingClientRect().height > 0;
     }),
   }));
-  if (ux.searchBottom > ux.viewport) throw new Error(`busca abaixo da primeira tela: ${ux.searchBottom}px`);
+  if (ux.searchBottom > ux.viewport) {
+    throw new Error(`busca abaixo da primeira tela: ${ux.searchBottom}px`);
+  }
   if (!ux.labels) throw new Error('há rótulo de filtro invisível');
 });
 
@@ -154,23 +167,26 @@ await checar('ordenação acionável por teclado (Enter) e aria-sort correto', a
   await page.focus('th[data-key="nome"] .th-btn');
   await page.keyboard.press('Enter');
   await page.waitForFunction(
-    () => document.querySelector('th[data-key="nome"]').getAttribute('aria-sort') === 'ascending'
+    () => document.querySelector('th[data-key="nome"]').getAttribute('aria-sort') === 'ascending',
   );
   const primeiroAsc = await page.locator('tbody tr th').first().innerText();
 
   await page.keyboard.press('Enter');
   await page.waitForFunction(
-    () => document.querySelector('th[data-key="nome"]').getAttribute('aria-sort') === 'descending'
+    () => document.querySelector('th[data-key="nome"]').getAttribute('aria-sort') === 'descending',
   );
   const primeiroDesc = await page.locator('tbody tr th').first().innerText();
 
-  if (primeiroAsc === primeiroDesc) throw new Error('ordem não inverteu ao pressionar Enter novamente');
+  if (primeiroAsc === primeiroDesc) {
+    throw new Error('ordem não inverteu ao pressionar Enter novamente');
+  }
 
-  const sorts = await page.locator('th[data-key]').evaluateAll(ths =>
-    ths.map(t => t.getAttribute('aria-sort'))
-  );
-  if (sorts.filter(s => s !== 'none').length !== 1)
+  const sorts = await page
+    .locator('th[data-key]')
+    .evaluateAll(ths => ths.map(t => t.getAttribute('aria-sort')));
+  if (sorts.filter(s => s !== 'none').length !== 1) {
     throw new Error(`apenas uma coluna deve estar ordenada, obtido: ${sorts.join(',')}`);
+  }
 });
 
 await checar('skip-link aponta para destino existente e focável', async () => {
@@ -208,7 +224,7 @@ await checar('zero requisições a domínios externos', async () => {
     performance
       .getEntriesByType('resource')
       .map(r => r.name)
-      .filter(u => /^https?:\/\//.test(u) && !u.startsWith(location.origin))
+      .filter(u => /^https?:\/\//.test(u) && !u.startsWith(location.origin)),
   );
   if (externos.length) throw new Error(`recursos externos: ${externos.join(', ')}`);
 });
@@ -222,19 +238,20 @@ await checar('ícones renderizam em todos os elementos [data-icone]', async () =
     });
     const tdSemChave = document.querySelectorAll('td[data-icone=""]').length;
     const indicadores = [...document.querySelectorAll('.sort-ind')].filter(
-      e => getComputedStyle(e).maskImage !== 'none'
+      e => getComputedStyle(e).maskImage !== 'none',
     ).length;
     return {
       total: els.length,
-      semMascara: semMascara.map(e => e.tagName + '[' + e.dataset.icone + ']').slice(0, 5),
+      semMascara: semMascara.map(e => `${e.tagName}[${e.dataset.icone}]`).slice(0, 5),
       tdSemChave,
       indicadores,
       totalTh: document.querySelectorAll('th[data-key]').length,
     };
   });
   if (r.total === 0) throw new Error('nenhum elemento com [data-icone] encontrado');
-  if (r.semMascara.length)
+  if (r.semMascara.length) {
     throw new Error(`ícones sem mask-image (data-URI inválido?): ${r.semMascara.join(', ')}`);
+  }
   igual(r.tdSemChave, 0, 'células com data-icone vazio (mapeamento incompleto)');
   igual(r.indicadores, r.totalTh, 'indicadores de ordenação com ícone');
 });
@@ -259,7 +276,7 @@ await checar('ícones desenham pixels de verdade (data-URI válido)', async () =
     });
     const cores = await page.evaluate(async b64 => {
       const img = new Image();
-      img.src = 'data:image/png;base64,' + b64;
+      img.src = `data:image/png;base64,${b64}`;
       await img.decode();
       const c = document.createElement('canvas');
       c.width = img.width;
@@ -272,8 +289,11 @@ await checar('ícones desenham pixels de verdade (data-URI válido)', async () =
       return set.size;
     }, recorte.toString('base64'));
     // fundo uniforme => 1 ou 2 cores. Um ícone desenhado gera bem mais (antialiasing).
-    if (cores < 3)
-      throw new Error(`ícone não desenhou pixels em ${nome} (${sel}): apenas ${cores} cor(es) no recorte`);
+    if (cores < 3) {
+      throw new Error(
+        `ícone não desenhou pixels em ${nome} (${sel}): apenas ${cores} cor(es) no recorte`,
+      );
+    }
   }
 });
 
@@ -283,7 +303,10 @@ await checar('ícones são decorativos (invisíveis para leitores de tela)', asy
   const r = await page.evaluate(() => ({
     imgs: document.querySelectorAll('img').length,
     svgSemTitulo: [...document.querySelectorAll('svg')].filter(
-      s => !s.getAttribute('aria-label') && !s.querySelector('title') && s.getAttribute('aria-hidden') !== 'true'
+      s =>
+        !s.getAttribute('aria-label') &&
+        !s.querySelector('title') &&
+        s.getAttribute('aria-hidden') !== 'true',
     ).length,
   }));
   igual(r.imgs, 0, '<img> na página (ícones devem ser CSS)');

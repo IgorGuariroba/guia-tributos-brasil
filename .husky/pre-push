@@ -1,13 +1,14 @@
 #!/usr/bin/env sh
 # Gates objetivos de qualidade. Bloqueia o push se qualquer um reprovar.
 #
-# Gate 1 · Funcional       → 12 asserções (filtros, ordenação por teclado, CSV, console limpo)
-# Gate 2 · Responsividade  → 320/375/390/768/1024/1280/1440/1920px + 3 dispositivos reais:
+# Gate 1 · Estilo          → higiene de arquivo (indentação, espaços, LF, EOF) + Prettier + ESLint
+# Gate 2 · Funcional       → 12 asserções (filtros, ordenação por teclado, CSV, console limpo)
+# Gate 3 · Responsividade  → 320/375/390/768/1024/1280/1440/1920px + 3 dispositivos reais:
 #                            zero overflow, alvos de toque >= 44px, sem sobreposição
-# Gate 3 · Acessibilidade  → axe-core, 0 violações WCAG 2.0/2.1/2.2 A+AA + best-practice, 3 estados
-# Gate 4 · Semântica       → Semantic HTML Score = 100/100
-# Gate 5 · Duplicação      → jscpd: <= 0,4% de linhas duplicadas e nenhum clone >= 12 linhas
-# Gate 6 · Lighthouse CI   → a11y/BP/SEO = 100, perf >= 99, LCP <= 1.5s, CLS <= 0.02, TBT <= 100ms
+# Gate 4 · Acessibilidade  → axe-core, 0 violações WCAG 2.0/2.1/2.2 A+AA + best-practice, 3 estados
+# Gate 5 · Semântica       → Semantic HTML Score = 100/100
+# Gate 6 · Duplicação      → jscpd: <= 0,4% de linhas duplicadas e nenhum clone >= 12 linhas
+# Gate 7 · Lighthouse CI   → a11y/BP/SEO = 100, perf >= 99, LCP <= 1.5s, CLS <= 0.02, TBT <= 100ms
 #
 # Emergência (usar com parcimônia e justificar no PR):
 #   SKIP_GATES=1 git push

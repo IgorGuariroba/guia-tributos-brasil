@@ -21,7 +21,7 @@
  * Relatório completo em audit/reports/jscpd/jscpd-report.json (artefato do CI).
  */
 import { spawn } from 'node:child_process';
-import { readFileSync, mkdirSync, rmSync } from 'node:fs';
+import { mkdirSync, readFileSync, rmSync } from 'node:fs';
 
 const MAX_PERCENT = Number(process.env.DUP_MAX_PERCENT ?? 0.4);
 const MAX_CLONE_LINES = Number(process.env.DUP_MAX_CLONE_LINES ?? 12);
@@ -41,12 +41,18 @@ const args = [
   'jscpd',
   'public',
   'audit',
-  '--min-lines', String(MIN_LINES),
-  '--min-tokens', String(MIN_TOKENS),
-  '--max-size', '5mb',
-  '--ignore', 'audit/reports/**',
-  '--reporters', 'json',
-  '--output', SAIDA,
+  '--min-lines',
+  String(MIN_LINES),
+  '--min-tokens',
+  String(MIN_TOKENS),
+  '--max-size',
+  '5mb',
+  '--ignore',
+  'audit/reports/**',
+  '--reporters',
+  'json',
+  '--output',
+  SAIDA,
   '--silent',
 ];
 
@@ -79,10 +85,13 @@ console.log(`  reutilização efetiva: ${(100 - t.percentage).toFixed(2)}% do c�
 
 for (const [formato, v] of Object.entries(relatorio.statistics.formats ?? {})) {
   const s = v.total;
-  console.log(`  · ${formato.padEnd(11)} ${String(s.duplicatedLines).padStart(4)}/${String(s.lines).padEnd(5)} linhas (${s.percentage}%)`);
+  console.log(
+    `  · ${formato.padEnd(11)} ${String(s.duplicatedLines).padStart(4)}/${String(s.lines).padEnd(5)} linhas (${s.percentage}%)`,
+  );
 }
 
-const linhasDoClone = c => Math.max(c.firstFile.end - c.firstFile.start, c.secondFile.end - c.secondFile.start) + 1;
+const linhasDoClone = c =>
+  Math.max(c.firstFile.end - c.firstFile.start, c.secondFile.end - c.secondFile.start) + 1;
 const ordenados = [...clones].sort((a, b) => linhasDoClone(b) - linhasDoClone(a));
 
 if (ordenados.length) {
@@ -90,9 +99,13 @@ if (ordenados.length) {
   for (const c of ordenados.slice(0, 20)) {
     const a = c.firstFile;
     const b = c.secondFile;
-    console.log(`  [${String(linhasDoClone(c)).padStart(3)} linhas] ${a.name}:${a.start}-${a.end}  ⇄  ${b.name}:${b.start}-${b.end}`);
+    console.log(
+      `  [${String(linhasDoClone(c)).padStart(3)} linhas] ${a.name}:${a.start}-${a.end}  ⇄  ${b.name}:${b.start}-${b.end}`,
+    );
   }
-  if (ordenados.length > 20) console.log(`  … e mais ${ordenados.length - 20} clone(s). Veja ${RELATORIO}.`);
+  if (ordenados.length > 20) {
+    console.log(`  … e mais ${ordenados.length - 20} clone(s). Veja ${RELATORIO}.`);
+  }
 }
 
 const falhas = [];
@@ -112,4 +125,6 @@ if (falhas.length) {
   process.exit(1);
 }
 
-console.log(`\n✓ GATE de duplicação APROVADO (${t.percentage}% <= ${MAX_PERCENT}%, maior clone < ${MAX_CLONE_LINES} linhas).`);
+console.log(
+  `\n✓ GATE de duplicação APROVADO (${t.percentage}% <= ${MAX_PERCENT}%, maior clone < ${MAX_CLONE_LINES} linhas).`,
+);
