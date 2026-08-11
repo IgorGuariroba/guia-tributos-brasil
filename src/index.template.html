@@ -540,6 +540,25 @@ const iconePara = (mapa, valor) => (mapa.find(([re]) => re.test(valor ?? "")) ||
 
 const $ = id => document.getElementById(id);
 const normalize = s => (s ?? "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const urlState = () => new URLSearchParams(location.search);
+const valuesFromUrl = key => (urlState().get(key) || "").split(",").map(decodeURIComponent).filter(Boolean);
+function restoreUrlState(){
+  const params=urlState();
+  $("search").value=params.get("q")||"";
+  Object.keys(FILTERS).forEach(key=>valuesFromUrl(key).forEach(value=>selectedFilters[key].add(value)));
+}
+function syncUrl(){
+  const url=new URL(location.href); const params=url.searchParams;
+  params.delete("q"); if($("search").value) params.set("q",$("search").value);
+  Object.keys(FILTERS).forEach(key=>{params.delete(key);const values=[...selectedFilters[key]];if(values.length)params.set(key,values.map(encodeURIComponent).join(","));});
+  history.replaceState({},"",`${url.pathname}${url.search}${url.hash}`);
+}
+function focusHash(){
+  const id=decodeURIComponent(location.hash.slice(1)); if(!id)return;
+  const target=document.getElementById(id); if(!target)return;
+  target.setAttribute("tabindex","-1"); target.focus({preventScroll:true}); target.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  const details=target.querySelector("details"); if(details)details.open=true;
+}
 
 const FILTERS = {
   tipo:{label:"Tipo / natureza",all:"Todos os tipos"},
@@ -548,6 +567,7 @@ const FILTERS = {
   status:{label:"Status",all:"Todos os status"},
 };
 const selectedFilters=Object.fromEntries(Object.keys(FILTERS).map(key=>[key,new Set()]));
+restoreUrlState();
 const contextTokens=value=>String(value??"").split(/\s*\/\s*/).map(v=>v.trim()).filter(Boolean);
 
 function uniqueValues(key){
@@ -629,6 +649,7 @@ Object.keys(FILTERS).forEach(createCombobox);
 document.addEventListener("click",event=>{
   if(!event.target.closest(".multi-combobox")) closeCombos();
 });
+addEventListener("popstate",()=>{Object.values(selectedFilters).forEach(values=>values.clear());restoreUrlState();render();focusHash();});
 document.addEventListener("keydown",event=>{
   if(event.key==="Escape") closeCombos();
 });
@@ -680,12 +701,12 @@ function renderProfileSelector(){
   const change=mount.querySelector("[data-change-profile]");
   if(change) change.addEventListener("click",()=>{profileConfirmed=false;render();});
   const confirm=mount.querySelector(".profile-confirm");
-  if(confirm) confirm.addEventListener("click",()=>{profileConfirmed=true;render();$("resultados").focus({preventScroll:true});$("resultados").scrollIntoView({behavior:"smooth",block:"start"});});
+  if(confirm) confirm.addEventListener("click",()=>{profileConfirmed=true;render();if(location.hash)setTimeout(focusHash,50);else{$("resultados").focus({preventScroll:true});$("resultados").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}});
 }
 function render(){
   const q=normalize($("search").value);
   filtered=DATA.filter(x=>{
-    const hay=normalize([x.sigla,x.nome,x.tipo,x.esfera,x.contexto,x.descricao,x.status,x.nota_status].join(" "));
+    const hay=normalize([x.sigla,x.nome,x.tipo,x.esfera,x.contexto,x.descricao,x.status,x.nota_status,...(x.aliases||[])].join(" "));
     const profileMatch=!activeProfile||PROFILES[activeProfile].match(x);
     return profileMatch && (!q || hay.includes(q)) && Object.keys(FILTERS).every(key=>matchesFilter(x,key));
   });
@@ -696,7 +717,7 @@ function render(){
   /* Abra o diálogo antes de montar a tabela extensa para evitar reflow síncrono do DOM completo. */
   renderProfileSelector();
   renderAssociations();
-  $("tbody").innerHTML=filtered.map(x=>`<tr>
+  $("tbody").innerHTML=filtered.map(x=>`<tr id="${esc(x.id)}" tabindex="-1">
     <th scope="row" class="sigla"><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></th>
     <td>${esc(x.nome)}</td>
     <td data-icone="${iconePara(ICONE_TIPO,x.tipo)}">${esc(x.tipo)}</td>
@@ -712,8 +733,9 @@ function render(){
   document.querySelectorAll("th[data-key]").forEach(th=>{
     th.setAttribute("aria-sort", th.dataset.key===sortKey ? (sortAsc?"ascending":"descending") : "none");
   });
+  syncUrl();
 }
-$("search").addEventListener("input",render);
+$("search").addEventListener("input",()=>{render();syncUrl();});
 document.querySelectorAll("th[data-key] .th-btn").forEach(btn=>btn.addEventListener("click",()=>{
   const k=btn.closest("th").dataset.key;
   if(sortKey===k) sortAsc=!sortAsc; else {sortKey=k;sortAsc=true;}
@@ -722,7 +744,7 @@ document.querySelectorAll("th[data-key] .th-btn").forEach(btn=>btn.addEventListe
 $("filtros").addEventListener("reset",()=>{setTimeout(()=>{
   Object.values(selectedFilters).forEach(values=>values.clear());
   Object.keys(FILTERS).forEach(key=>{updateComboSummary(key);$(`${key}-search`).value="";renderComboOptions(key);});
-  closeCombos();render();
+  closeCombos();render();syncUrl();
 },0);});
 addEventListener("resize",renderCards);
 $("csv").addEventListener("click",()=>{
@@ -734,6 +756,7 @@ $("csv").addEventListener("click",()=>{
   const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="tributos-brasil-filtrado.csv"; a.click(); URL.revokeObjectURL(a.href);
 });
 render();
+setTimeout(focusHash,0);
 </script>
 </body>
 </html>

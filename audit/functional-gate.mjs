@@ -4,7 +4,13 @@
  * Cobre filtros, estado vazio, reset, ordenação por teclado, aria-sort, export CSV
  * e ausência de erros de console.
  */
-import { abrirNavegador, abrirPagina, entrarNoGuia, TOTAL_ITENS } from './browser.mjs';
+import {
+  abrirNavegador,
+  abrirPagina,
+  entrarNoGuia,
+  TOTAL_ITENS,
+  URL_AUDITADA,
+} from './browser.mjs';
 
 const TOTAL_ESPERADO = TOTAL_ITENS;
 
@@ -321,6 +327,54 @@ await checar('texto permanece legível sem os ícones (não há dependência vis
     return { celulas, vazias: celulas.filter(t => t.length === 0).length };
   });
   igual(r.vazias, 0, `células sem texto próprio (${JSON.stringify(r.celulas)})`);
+});
+
+await checar('deep-link restaura filtros, hash, foco e histórico', async () => {
+  await page.goto(`${URL_AUDITADA}?profile=all&tipo=Imposto#item-iss`);
+  await page.getByRole('button', { name: /Entrar no guia com/ }).click();
+  igual(await linhas(), 18, 'linhas filtradas por URL');
+  igual(await page.locator('#iss').count(), 1, 'item do hash');
+  await page.locator('#iss').focus();
+  await page.waitForFunction(() => document.activeElement?.id === 'iss');
+  const focado = await page.evaluate(() => document.activeElement?.id);
+  igual(focado, 'iss', 'foco no item do hash');
+  await page.goto(`${URL_AUDITADA}?profile=all&esfera=Federal`);
+  await page.goBack();
+  igual(
+    await page.url(),
+    `${URL_AUDITADA}?profile=all&tipo=Imposto#item-iss`,
+    'voltar restaura URL',
+  );
+  await page.goForward();
+  igual(await page.url(), `${URL_AUDITADA}?profile=all&esfera=Federal`, 'avançar restaura URL');
+});
+
+await checar('aliases retornam o item correto', async () => {
+  await page.goto(`${URL_AUDITADA}?profile=all`);
+  await entrarNoGuia(page);
+  const casos = [
+    ['INSS patronal', 'cpp'],
+    ['imposto do MEI', 'das-mei'],
+    ['carnê-leão', 'irpf'],
+    ['imposto municipal sobre serviços', 'iss'],
+    ['imposto do consumo', 'ibs'],
+    ['carnê do INSS', 'gps'],
+    ['imposto do carro', 'ipva'],
+    ['imposto da herança', 'itcmd'],
+    ['taxa do lixo', 'tlp'],
+    ['guia do Simples Nacional', 'das'],
+    ['taxa de alvará', 'tff-municipal'],
+    ['guia federal', 'darf'],
+  ];
+  for (const [termo, id] of casos) {
+    await page.fill('#search', termo);
+    await page.waitForFunction(
+      expected =>
+        document.querySelectorAll('tbody tr').length === 1 &&
+        document.querySelector('tbody tr')?.id === expected,
+      id,
+    );
+  }
 });
 
 await checar('console sem erros', async () => {

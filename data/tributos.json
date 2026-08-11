@@ -7,7 +7,8 @@
     "esfera": "Federal",
     "contexto": "Pessoa física",
     "descricao": "Incide sobre renda e proventos tributáveis de pessoas físicas, conforme as regras do Imposto de Renda.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["carnê-leão", "carne leao"]
   },
   {
     "id": "irpj",
@@ -17,7 +18,8 @@
     "esfera": "Federal",
     "contexto": "Empresa",
     "descricao": "Incide sobre a renda/lucro tributável das pessoas jurídicas.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto da empresa"]
   },
   {
     "id": "irrf",
@@ -47,7 +49,8 @@
     "esfera": "Federal",
     "contexto": "Financeiro",
     "descricao": "Incide sobre operações de crédito, câmbio, seguro e operações relativas a títulos ou valores mobiliários.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto financeiro"]
   },
   {
     "id": "ii",
@@ -57,7 +60,8 @@
     "esfera": "Federal",
     "contexto": "Comércio exterior",
     "descricao": "Incide sobre a importação de produtos estrangeiros.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto de importação"]
   },
   {
     "id": "ie",
@@ -67,7 +71,8 @@
     "esfera": "Federal",
     "contexto": "Comércio exterior",
     "descricao": "Pode incidir sobre a exportação de produtos nacionais ou nacionalizados nas hipóteses previstas em lei.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto de exportação"]
   },
   {
     "id": "itr",
@@ -77,7 +82,8 @@
     "esfera": "Federal",
     "contexto": "Imobiliário / Rural",
     "descricao": "Incide sobre propriedade territorial rural.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto rural"]
   },
   {
     "id": "igf",
@@ -107,7 +113,8 @@
     "esfera": "Estadual",
     "contexto": "Veículos",
     "descricao": "Incide sobre a propriedade de veículos automotores, conforme legislação estadual.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto do carro", "imposto de veículo"]
   },
   {
     "id": "itcmd",
@@ -117,7 +124,8 @@
     "esfera": "Estadual",
     "contexto": "Herança / Doação / Patrimônio",
     "descricao": "Incide sobre transmissão gratuita de bens ou direitos por herança ou doação.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto da herança", "imposto de herança"]
   },
   {
     "id": "iss",
@@ -127,7 +135,8 @@
     "esfera": "Municipal",
     "contexto": "Serviços",
     "descricao": "Incide sobre prestações de serviços definidas em lei complementar. Será substituído gradualmente pelo IBS.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "aliases": ["ISSQN", "imposto municipal sobre serviços"]
   },
   {
     "id": "issqn",
@@ -137,7 +146,8 @@
     "esfera": "Municipal",
     "contexto": "Serviços",
     "descricao": "Outra sigla amplamente utilizada para o ISS.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "aliases": []
   },
   {
     "id": "iptu",
@@ -147,7 +157,8 @@
     "esfera": "Municipal",
     "contexto": "Imobiliário",
     "descricao": "Incide sobre propriedade predial e territorial urbana.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto predial", "imposto da casa"]
   },
   {
     "id": "itbi",
@@ -157,7 +168,8 @@
     "esfera": "Municipal",
     "contexto": "Imobiliário",
     "descricao": "Incide, em linhas gerais, sobre transmissão onerosa inter vivos de bens imóveis e direitos imobiliários abrangidos pela legislação.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto de transferência de imóvel"]
   },
   {
     "id": "ibs",
@@ -168,7 +180,8 @@
     "contexto": "Consumo / Empresa",
     "descricao": "Novo imposto sobre consumo de competência compartilhada entre estados, DF e municípios. Está em implementação na Reforma Tributária.",
     "status": "Em implantação",
-    "nota_status": "Implementação 2026"
+    "nota_status": "Implementação 2026",
+    "aliases": ["imposto do consumo", "imposto sobre consumo"]
   },
   {
     "id": "is",
@@ -229,7 +242,8 @@
     "esfera": "Federal",
     "contexto": "Empresa",
     "descricao": "Contribuição social calculada sobre o resultado ajustado das pessoas jurídicas, conforme regime aplicável.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["contribuição sobre o lucro"]
   },
   {
     "id": "adcsll",
@@ -250,7 +264,8 @@
     "contexto": "Consumo / Empresa",
     "descricao": "Novo tributo federal sobre consumo, criado no âmbito da Reforma Tributária, em implementação a partir de 2026.",
     "status": "Em implantação",
-    "nota_status": "Implementação 2026"
+    "nota_status": "Implementação 2026",
+    "aliases": ["contribuição do consumo"]
   },
   {
     "id": "cide",
@@ -300,7 +315,8 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha",
     "descricao": "Contribuição previdenciária de responsabilidade patronal sobre bases previstas na legislação.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["INSS patronal", "contribuição patronal"]
   },
   {
     "id": "cprb",
@@ -321,7 +337,8 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha",
     "descricao": "Contribuição destinada ao financiamento dos benefícios decorrentes dos riscos ambientais do trabalho, com alíquotas vinculadas ao risco da atividade.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["SAT", "seguro acidente do trabalho"]
   },
   {
     "id": "sat",
@@ -502,7 +519,8 @@
     "esfera": "Municipal / DF",
     "contexto": "Imóvel / Serviços públicos",
     "descricao": "Contribuição destinada ao custeio, expansão e melhoria do serviço de iluminação pública.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["taxa de luz", "contribuição de iluminação"]
   },
   {
     "id": "cip",
@@ -557,7 +575,8 @@
     "contexto": "Empresa / Licenciamento",
     "descricao": "Sigla adotada por alguns municípios para fiscalização de funcionamento de estabelecimentos.",
     "status": "Varia por ente",
-    "nota_status": "Varia por município"
+    "nota_status": "Varia por município",
+    "aliases": ["taxa de alvará", "taxa de funcionamento"]
   },
   {
     "id": "tflf",
@@ -579,7 +598,8 @@
     "contexto": "Imobiliário / Serviços públicos",
     "descricao": "Denominação utilizada em algumas legislações locais; a validade e a configuração dependem do serviço específico e divisível e da legislação do ente.",
     "status": "Varia por ente",
-    "nota_status": "Varia por município"
+    "nota_status": "Varia por município",
+    "aliases": ["taxa do lixo"]
   },
   {
     "id": "tcr",
@@ -683,7 +703,8 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Trabalho",
     "descricao": "Depósito obrigatório do empregador em favor do trabalhador nas hipóteses legais. Não é imposto nem contribuição tributária comum.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["fundo de garantia"]
   },
   {
     "id": "fap",
@@ -733,7 +754,8 @@
     "esfera": "Compartilhado",
     "contexto": "Empresa",
     "descricao": "Documento usado para recolher tributos abrangidos pelo Simples Nacional. Não é tributo.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["guia do Simples Nacional", "boleto do Simples"]
   },
   {
     "id": "das-mei",
@@ -743,7 +765,8 @@
     "esfera": "Compartilhado",
     "contexto": "MEI / Empresa",
     "descricao": "Documento mensal utilizado pelo MEI para recolhimentos previstos no regime. Não é tributo autônomo.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["imposto do MEI", "boleto do MEI", "guia do MEI"]
   },
   {
     "id": "darf",
@@ -753,7 +776,8 @@
     "esfera": "Federal",
     "contexto": "Pessoa física / Empresa",
     "descricao": "Documento utilizado para recolher diversas receitas e tributos federais. Não é imposto.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "aliases": ["guia federal", "guia de recolhimento federal"]
   },
   {
     "id": "dae",
@@ -774,7 +798,8 @@
     "contexto": "Previdência",
     "descricao": "Guia historicamente utilizada para recolhimentos previdenciários em diversas situações. Não é tributo.",
     "status": "Vigente",
-    "nota_status": "Uso conforme caso"
+    "nota_status": "Uso conforme caso",
+    "aliases": ["carnê do INSS", "guia da previdência"]
   },
   {
     "id": "gcap",
