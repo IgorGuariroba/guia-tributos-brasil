@@ -155,6 +155,7 @@ input:focus,button:focus-visible{outline:3px solid var(--accent2);outline-offset
 }
 .primary{background:var(--accent2);color:#fff}
 .stats{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.analytics-note{margin:8px 0 0;color:var(--muted);font-size:11px}
 #count{background:var(--ink);color:#fff;padding:2px 8px}
 .badge{display:inline-block;padding:2px 7px;border:2px solid #000;background:var(--accent);font-size:11px;white-space:nowrap;text-transform:uppercase;font-weight:600}
 .results{scroll-margin-top:340px}
@@ -441,6 +442,7 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
       </div>
     </form>
     <p class="stats"><output id="count" for="search" aria-live="polite"></output><span class="sort-help" aria-hidden="true">•</span><span class="sort-help">Use os botões nos títulos das colunas para ordenar.</span></p>
+    <p class="analytics-note">As buscas sem resultado são contadas somente neste dispositivo, de forma agregada e sem cookies, identificadores ou conexão externa.</p>
   </search>
 
   <section class="results" id="resultados" tabindex="-1" aria-labelledby="results-title">
@@ -499,6 +501,22 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
 
 <script>
 const DATA = __TRIBUTOS_DATA__;
+/*
+ * A entrega é estática: não há servidor próprio para receber eventos e não criamos
+ * uma URL fictícia (que seria 404/405). O único fallback viável é um contador local
+ * agregado. Ele registra apenas a quantidade total neste navegador; não guarda a
+ * consulta, IP, horário, identificador ou qualquer dado que permita reidentificação.
+ */
+let ultimoVazioRegistrado = null;
+function registrarBuscaSemResultado(consulta){
+  if(!consulta || consulta===ultimoVazioRegistrado) return;
+  ultimoVazioRegistrado=consulta;
+  try{
+    const chave="guia-tributos:buscas-sem-resultado";
+    const atual=Number.parseInt(localStorage.getItem(chave)||"0",10);
+    localStorage.setItem(chave,String(Number.isFinite(atual)?atual+1:1));
+  }catch{/* armazenamento pode estar desabilitado; a busca continua funcionando */}
+}
 const embedId = new URLSearchParams(location.search).get("embed");
 if (embedId) document.body.classList.add("embed-mode");
 const PROFILES = {
@@ -786,6 +804,7 @@ function render(){
     const profileMatch=!activeProfile||PROFILES[activeProfile].match(x);
     return profileMatch && (!q || hay.includes(q)) && Object.keys(FILTERS).every(key=>matchesFilter(x,key));
   });
+  registrarBuscaSemResultado(q && filtered.length===0 ? q : null);
   filtered.sort((a,b)=>{
     const A=(a[sortKey]??"").toString(), B=(b[sortKey]??"").toString();
     return A.localeCompare(B,"pt-BR",{numeric:true})*(sortAsc?1:-1);

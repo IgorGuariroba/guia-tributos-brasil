@@ -27,7 +27,9 @@
     "prepare": "husky",
     "gate:responsivo": "node audit/run-gates.mjs responsividade",
     "gate:offline": "node audit/offline-gate.mjs",
-    "gate:i18n": "node audit/i18n-gate.mjs"
+    "gate:i18n": "node audit/i18n-gate.mjs",
+    "gate:analytics": "node audit/analytics-gate.mjs",
+    "gate:analytics:funcional": "node audit/analytics-functional-gate.mjs"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.12.1",

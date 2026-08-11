@@ -81,6 +81,10 @@ divergem, exatamente como um `git diff --exit-code` de código gerado.
 
 ## Contrato da API pública
 
+### Analytics de buscas sem resultado
+
+A hospedagem é exclusivamente estática e não existe endpoint próprio disponível para receber eventos. Por isso, não há requisição fictícia nem envio a terceiros: quando uma busca não encontra resultados, o navegador incrementa apenas o contador agregado `localStorage["guia-tributos:buscas-sem-resultado"]` neste dispositivo. A consulta, IP, horário e qualquer identificador não são armazenados. Isso é uma limitação explícita: o dado não é consolidado entre visitantes; para obter consolidação futura será necessário um serviço próprio compatível com a política de privacidade.
+
 A API estática está disponível em [`/api/tributos.json`](public/api/tributos.json). Ela não
 possui runtime nem faz requisições externas. O documento tem este envelope:
 
