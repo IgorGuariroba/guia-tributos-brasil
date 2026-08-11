@@ -10,6 +10,8 @@
 <link rel="alternate" hreflang="en" href="https://igorguariroba.github.io/guia-taxes-brasil/en/">
 <link rel="alternate" hreflang="x-default" href="https://igorguariroba.github.io/guia-taxes-brasil/">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#006630">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Guia de Taxes, Contributions, Fees e Charges do Brazil">
@@ -140,6 +142,11 @@ input:focus,button:focus-visible{outline:3px solid var(--accent2);outline-offset
 .actions button:active{transform:translate(2px,2px);box-shadow:0 0 0 #000}
 .copy-markdown{width:auto;min-height:44px;padding:6px 9px;font-size:11px;cursor:pointer;background:#fff;box-shadow:2px 2px 0 #000;text-transform:uppercase}.copy-markdown.copied{background:var(--success-surface);color:var(--success-text)}
 .copy-status{margin:8px 0 0;font-size:12px;font-weight:700}
+.comparison{margin:24px 0;padding:16px;background:#fff;border:var(--b);box-shadow:var(--shadow)}
+.comparison h2{font-family:var(--display);margin:0 0 6px;text-transform:uppercase}
+.comparison-help{margin:0 0 12px;font-size:12px}.comparison-options{display:flex;flex-wrap:wrap;gap:8px}.comparison-options button{width:auto;cursor:pointer;font-weight:700;background:#fff}.comparison-options button[aria-pressed="true"]{background:var(--accent)}
+.comparison-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:16px}.comparison-card{min-width:0;padding:12px;border:2px solid #000;background:var(--bg)}.comparison-card h3{margin:0 0 8px;font-family:var(--display);font-size:20px}.comparison-card dl{margin:0;font-size:12px}.comparison-card dt{margin-top:8px;font-weight:700;text-transform:uppercase}.comparison-card dd{margin:2px 0 0;overflow-wrap:anywhere}
+@media(max-width:600px){.comparison-grid{grid-template-columns:1fr}.comparison-options button{width:100%}}
 @media print{
   @page{margin:1.5cm} body{background:#fff;color:#000;font-size:11pt} .skip-link,.profile-selector,.filters,.associations,.guide,footer,.copy-markdown,.print-hide,.mobile-result-intro,.result-group-title,.result-strip details summary{display:none!important}
   .container{max-width:none;padding:0} header{background:#fff;border:0;box-shadow:none;padding:0;margin:0 0 16pt} h1{font-size:24pt}.subtitle{font-size:10pt;border-top:1pt solid #000}
@@ -396,6 +403,13 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
 
   <section id="profile-selector" class="profile-selector" aria-label="Escolha de perfil de interesse"></section>
 
+  <section class="comparison" aria-labelledby="comparison-title">
+    <h2 id="comparison-title">Comparar taxes e charges</h2>
+    <p class="comparison-help" id="comparison-help">Selecione de 2 a 4 items para ver diferenças lado a lado. Exemplos: ITBI × ITCMD, CBS × COFINS e RAT × FAP.</p>
+    <div id="comparison-options" class="comparison-options" role="group" aria-describedby="comparison-help"></div>
+    <div id="comparison-grid" class="comparison-grid" aria-live="polite"></div>
+  </section>
+
   <section class="associations" aria-labelledby="associations-title">
     <div class="associations-heading">
       <div><p class="association-kicker">Exemplos para <strong id="association-profile">Explore all</strong></p><h2 id="associations-title">Do cotidiano às obrigações</h2></div>
@@ -606,6 +620,27 @@ function uniqueValues(key){
 function esc(s){
   return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 }
+const COMPARISON_PAIRS = [
+  ["itbi", "itcmd"], ["cbs", "cofins"], ["rat", "fap"]
+];
+let comparisonIds = [];
+function renderComparison(){
+  const options = $("comparison-options");
+  options.innerHTML = COMPARISON_PAIRS.flat().filter((id,index,array)=>array.indexOf(id)===index).map(id=>{
+    const item=DATA.find(x=>x.id===id);
+    return `<button type="button" data-compare-id="${id}" aria-pressed="${comparisonIds.includes(id)}">${esc(item.sigla)}</button>`;
+  }).join("");
+  options.querySelectorAll("[data-compare-id]").forEach(button=>button.addEventListener("click",()=>{
+    const id=button.dataset.compareId;
+    if(comparisonIds.includes(id)) comparisonIds=comparisonIds.filter(value=>value!==id);
+    else if(comparisonIds.length<4) comparisonIds=[...comparisonIds,id];
+    renderComparison();
+  }));
+  $("comparison-grid").innerHTML = comparisonIds.length<2 ? "<p>Escolha pelo menos 2 items.</p>" : comparisonIds.map(id=>{
+    const x=DATA.find(item=>item.id===id);
+    return `<article class="comparison-card"><h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><dl><dt>Nome</dt><dd>${esc(x.nome)}</dd><dt>Natureza</dt><dd>${esc(x.tipo)}</dd><dt>Jurisdiction</dt><dd>${esc(x.esfera)}</dd><dt>Context</dt><dd>${esc(x.contexto)}</dd><dt>Status</dt><dd>${esc(x.status)}</dd><dt>Description</dt><dd>${esc(x.descricao)}</dd></dl></article>`;
+  }).join("");
+}
 function renderAssociations(){
   const profileKey=activeProfile||"all";
   const group=ASSOCIATIONS[profileKey]||ASSOCIATIONS.all;
@@ -757,6 +792,7 @@ function render(){
   });
   /* Abra o diálogo antes de montar a tabela extensa para evitar reflow síncrono do DOM completo. */
   renderProfileSelector();
+  renderComparison();
   renderAssociations();
   $("tbody").innerHTML=filtered.map(x=>`<tr id="${esc(x.id)}" tabindex="-1">
     <th scope="row" class="sigla"><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></th>
@@ -811,6 +847,12 @@ $("csv").addEventListener("click",()=>{
 });
 render();
 setTimeout(focusHash,0);
+
+// O catálogo continua 100% funcional sem o service worker; o registro é apenas
+// uma melhoria progressiva para visitas posteriores e nunca bloqueia a UI.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('../sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>

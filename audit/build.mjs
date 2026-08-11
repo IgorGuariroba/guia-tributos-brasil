@@ -426,7 +426,9 @@ async function main() {
     .replaceAll('href="fonts/', 'href="../fonts/')
     .replaceAll('src:url(fonts/', 'src:url(../fonts/')
     .replaceAll('href="favicon.svg"', 'href="../favicon.svg"')
-    .replaceAll('href="./', 'href="../');
+    .replaceAll('href="./', 'href="../')
+    .replaceAll('href="manifest.webmanifest"', 'href="../manifest.webmanifest"')
+    .replaceAll("register('sw.js')", "register('../sw.js')");
   const alvos = [
     ['public/index.html', htmlGerado],
     ['public/en/index.html', htmlEn],

@@ -48,8 +48,14 @@ export async function abrirPagina(browser, opcoes = {}) {
  * A página abre num seletor de perfil; sem isso a tabela nem existe no DOM.
  */
 export async function entrarNoGuia(page) {
-  await page.getByRole('button', { name: /Explorar tudo/ }).click();
-  await page.getByRole('button', { name: `Entrar no guia com ${TOTAL_ITENS} itens` }).click();
+  await page.getByRole('button', { name: /Explorar tudo|Explore all/ }).click();
+  await page
+    .getByRole('button', {
+      name: new RegExp(
+        `(?:Entrar no guia com|Enter the guide with) ${TOTAL_ITENS} (?:itens|items)`,
+      ),
+    })
+    .click();
 }
 
 /** Grava um relatório JSON em audit/reports/ e devolve o caminho escrito. */

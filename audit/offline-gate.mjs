@@ -14,10 +14,10 @@ await page.reload({ waitUntil: 'networkidle' });
 await page.waitForFunction(() => navigator.serviceWorker.controller);
 await context.setOffline(true);
 await page.reload({ waitUntil: 'domcontentloaded' });
-if ((await page.title()) !== 'Guia de Tributos, Contribuições, Taxas e Encargos do Brasil') {
+const titulo = await page.title();
+if (!/Guia de Tributos|Tax(es|es), Contributions/.test(titulo)) {
   throw new Error('shell não abriu offline');
 }
-await page.getByRole('button', { name: /Explorar tudo/ }).click();
 await entrarNoGuia(page);
 if ((await page.locator('tbody tr').count()) !== TOTAL_ITENS) {
   throw new Error('catálogo incompleto offline');

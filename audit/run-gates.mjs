@@ -88,8 +88,19 @@ const selecionados = somente
   : todos;
 
 const resultados = [];
+const gatesDeNavegador = /Funcional|Responsividade|Acessibilidade|HTML semântico|Lighthouse/;
 for (const [rotulo, cmd, args] of selecionados) {
-  resultados.push(await executar(rotulo, cmd, args));
+  if (gatesDeNavegador.test(rotulo)) {
+    for (const idioma of ['', 'en/']) {
+      resultados.push(
+        await executar(`${rotulo} · ${idioma ? 'en-US' : 'pt-BR'}`, cmd, args, {
+          AUDIT_URL: `${URL_BASE}${idioma}`,
+        }),
+      );
+    }
+  } else {
+    resultados.push(await executar(rotulo, cmd, args));
+  }
 }
 
 servidor.close();
