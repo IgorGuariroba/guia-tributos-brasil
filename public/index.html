@@ -325,25 +325,13 @@ td[data-icone]::before{--icone-tam:1em}
 }
 .field-busca input{padding-left:2.9em}
 
-/* Codificação cromática por significado. A faixa, o ícone e o texto trabalham
-   juntos: cor é uma pista de varredura visual, nunca a única informação. */
+/* Tipo/natureza e esfera usam tratamento neutro: texto e ícone já distinguem
+   essas categorias sem criar associações artificiais entre paletas. A cor fica
+   reservada ao status, onde comunica estado e requer atenção. */
 tbody td[data-icone]{
   background:var(--semantic-surface,var(--neutral-surface));color:var(--semantic-text,var(--neutral-text));
   box-shadow:inset 7px 0 0 var(--semantic,var(--neutral));font-weight:600;
 }
-/* Tipo / natureza */
-td[data-icone="imposto"]{--semantic:var(--info);--semantic-surface:var(--info-surface);--semantic-text:var(--info-text)}
-td[data-icone="taxa"]{--semantic:var(--purple);--semantic-surface:var(--purple-surface);--semantic-text:var(--purple-text)}
-td[data-icone="contribuicao"],td[data-icone="contribuicao-terceiros"]{--semantic:var(--success);--semantic-surface:var(--success-surface);--semantic-text:var(--success-text)}
-td[data-icone="compensacao"],td[data-icone="fator"]{--semantic:var(--cyan);--semantic-surface:var(--cyan-surface);--semantic-text:var(--cyan-text)}
-td[data-icone="encargo-trabalhista"]{--semantic:var(--critical);--semantic-surface:var(--critical-surface);--semantic-text:var(--critical-text)}
-td[data-icone="regime"],td[data-icone="mecanismo"]{--semantic:var(--teal);--semantic-surface:var(--teal-surface);--semantic-text:var(--teal-text)}
-td[data-icone="documento"],td[data-icone="ferramenta"],td[data-icone="fundo"]{--semantic:var(--pink);--semantic-surface:var(--pink-surface);--semantic-text:var(--pink-text)}
-/* Esfera */
-td[data-icone="federal"]{--semantic:var(--info);--semantic-surface:var(--info-surface);--semantic-text:var(--info-text)}
-td[data-icone="estadual"]{--semantic:var(--purple);--semantic-surface:var(--purple-surface);--semantic-text:var(--purple-text)}
-td[data-icone="municipal"]{--semantic:var(--critical);--semantic-surface:var(--critical-surface);--semantic-text:var(--critical-text)}
-td[data-icone="compartilhado"]{--semantic:var(--teal);--semantic-surface:var(--teal-surface);--semantic-text:var(--teal-text)}
 /* Status: convenções universais de sucesso, atenção, mudança e erro. */
 td[data-icone="vigente"]{--semantic:var(--success);--semantic-surface:var(--success-surface);--semantic-text:var(--success-text)}
 td[data-icone="transicao"]{--semantic:var(--warning);--semantic-surface:var(--warning-surface);--semantic-text:var(--warning-text)}
