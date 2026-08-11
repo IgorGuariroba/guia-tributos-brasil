@@ -18,7 +18,8 @@
       "descricao",
       "status",
       "atualizado_em",
-      "fontes"
+      "fontes",
+      "fundamento"
     ],
     "properties": {
       "id": {
@@ -71,10 +72,7 @@
         "items": { "type": "string", "minLength": 1 },
         "default": []
       },
-      "atualizado_em": {
-        "type": "string",
-        "format": "date-time"
-      },
+      "atualizado_em": { "type": "string", "format": "date" },
       "fontes": {
         "type": "array",
         "minItems": 1,
@@ -85,6 +83,20 @@
           "properties": {
             "rotulo": { "type": "string", "minLength": 1 },
             "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+          }
+        }
+      },
+      "fundamento": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lei", "url"],
+          "properties": {
+            "lei": { "type": "string", "minLength": 1 },
+            "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+            "observacao": { "type": "string" }
           }
         }
       }

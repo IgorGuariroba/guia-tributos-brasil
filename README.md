@@ -46,7 +46,7 @@ npm run serve           # abre http://localhost:8080
 `data/tributos.json` é a **fonte da verdade** dos 78 itens (schema em `data/schema.json`:
 campos obrigatórios, `id` único e estável no formato slug). O campo `status` usa o enum fechado
 `Vigente`, `Em transição`, `Em implantação`, `Varia por ente`, `Não instituído` ou `Histórico`;
-`nota_status` é opcional e preserva qualificadores específicos. Cada item também exige `atualizado_em` (ISO 8601) e ao menos uma `fonte` com rótulo e URL HTTPS. A data-base desta revisão é `2026-08-10T22:16:49-03:00`; as fontes apontam para a orientação tributária oficial da Receita Federal. `public/index.html` **não é
+`nota_status` é opcional e preserva qualificadores específicos. `public/index.html` **não é
 escrito à mão** — é gerado por `node audit/build.mjs` a partir de `data/tributos.json` +
 `src/index.template.html`, junto com `public/api/tributos.json` e `public/api/tributos.csv`
 (o mesmo catálogo em JSON e CSV, para consumo por terceiros).
@@ -54,10 +54,13 @@ escrito à mão** — é gerado por `node audit/build.mjs` a partir de `data/tri
 ```bash
 npm run build              # regenera public/index.html e public/api/*
 npm run gate:build         # valida o schema e falha se public/ estiver desatualizado
-npm run gate:frescor       # reprova itens revisados há mais de 180 dias
 ```
 
-O gate de frescor roda no CI em agenda trimestral (janeiro, abril, julho e outubro), além de poder ser executado localmente. Para reproduzir uma data específica: `FRESHNESS_AS_OF=2026-12-01 npm run gate:frescor`.
+### Fundamento legal e fontes primárias
+
+Todos os 78 itens têm `fundamento` (norma, URL HTTPS e observação opcional) e `fontes` com link primário para o texto oficial no Portal do Planalto. Para taxas municipais/estaduais, o registro aponta a base constitucional ou geral e explicita que a lei do ente competente deve ser consultada; isso evita apresentar uma norma genérica como se fosse a lei instituidora local. O catálogo é informativo e não substitui a legislação vigente nem presta orientação tributária.
+
+O Gate de build reprova qualquer item sem fundamento ou fonte, além de validar que os links apontem para HTTPS. A validação de disponibilidade dos links deve ocorrer em job periódico não bloqueante, pois a indisponibilidade temporária do portal não deve impedir uma contribuição de conteúdo.
 
 Depois de editar `data/tributos.json` ou `src/index.template.html`, rode `npm run build` e
 commite tanto a fonte quanto `public/` — o Gate 1 (build) reprova PRs em que os dois

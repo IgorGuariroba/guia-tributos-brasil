@@ -1,5 +1,5 @@
 {
-  "version": "sha256-df274e14c086b7e2b34160e4cd6991124e39172ce5b003c0954bf32563e9962b",
+  "version": "sha256-56c2294bed0099290cdb6301eae2043d79df51c5a7709c64ce4a732ed6830ff2",
   "gerado_em": "2026-08-10T22:16:49-03:00",
   "total": 78,
   "itens": [
@@ -16,11 +16,18 @@
         "carnê-leão",
         "carne leao"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN (Lei nº 5.172/1966)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": ""
         }
       ]
     },
@@ -36,11 +43,18 @@
       "aliases": [
         "imposto da empresa"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN (Lei nº 5.172/1966)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": ""
         }
       ]
     },
@@ -53,11 +67,18 @@
       "contexto": "Pessoa física / Empresa / Financeiro",
       "descricao": "Forma de arrecadação do Imposto de Renda em que o pagador retém o valor na fonte em diversas hipóteses.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN (Lei nº 5.172/1966)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": ""
         }
       ]
     },
@@ -70,11 +91,18 @@
       "contexto": "Indústria / Comércio exterior",
       "descricao": "Incide sobre produtos industrializados e, em determinadas hipóteses, na importação. Sofre mudanças relevantes com a Reforma Tributária.",
       "status": "Em transição",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 153, IV",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -90,11 +118,18 @@
       "aliases": [
         "imposto financeiro"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN (Lei nº 5.172/1966)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": ""
         }
       ]
     },
@@ -110,11 +145,18 @@
       "aliases": [
         "imposto de importação"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN (Lei nº 5.172/1966)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": ""
         }
       ]
     },
@@ -130,11 +172,18 @@
       "aliases": [
         "imposto de exportação"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN (Lei nº 5.172/1966)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": ""
         }
       ]
     },
@@ -150,11 +199,18 @@
       "aliases": [
         "imposto rural"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9393.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 9.393/1996",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9393.htm",
+          "observacao": ""
         }
       ]
     },
@@ -167,11 +223,18 @@
       "contexto": "Patrimônio",
       "descricao": "Previsto constitucionalmente, mas depende de lei complementar para ser instituído.",
       "status": "Não instituído",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 153, VII",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -184,11 +247,18 @@
       "contexto": "Comércio / Consumo / Transporte / Telecom",
       "descricao": "Tributa principalmente circulação de mercadorias, transporte intermunicipal/interestadual e comunicação. Será substituído gradualmente pelo IBS.",
       "status": "Em transição",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 87/1996",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm",
+          "observacao": ""
         }
       ]
     },
@@ -205,11 +275,18 @@
         "imposto do carro",
         "imposto de veículo"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 155, III",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -226,11 +303,18 @@
         "imposto da herança",
         "imposto de herança"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 155, I",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -247,11 +331,18 @@
         "ISSQN",
         "imposto municipal sobre serviços"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 116/2003",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
+          "observacao": ""
         }
       ]
     },
@@ -265,11 +356,18 @@
       "descricao": "Outra sigla amplamente utilizada para o ISS.",
       "status": "Em transição",
       "aliases": [],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 116/2003",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
+          "observacao": ""
         }
       ]
     },
@@ -286,11 +384,18 @@
         "imposto predial",
         "imposto da casa"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 156, I",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -306,11 +411,18 @@
       "aliases": [
         "imposto de transferência de imóvel"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 156, II",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -328,11 +440,18 @@
         "imposto do consumo",
         "imposto sobre consumo"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 214/2025",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
+          "observacao": ""
         }
       ]
     },
@@ -346,11 +465,18 @@
       "descricao": "Novo imposto federal seletivo sobre bens e serviços definidos em lei, voltado especialmente a externalidades negativas à saúde ou ao meio ambiente.",
       "status": "Em implantação",
       "nota_status": "Implementação",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 214/2025",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
+          "observacao": ""
         }
       ]
     },
@@ -363,11 +489,18 @@
       "contexto": "Empresa / Folha / Receita",
       "descricao": "Contribuições sociais associadas ao financiamento de finalidades sociais. Integram o sistema que será substituído pela CBS.",
       "status": "Em transição",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp07.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 7/1970",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp07.htm",
+          "observacao": ""
         }
       ]
     },
@@ -380,11 +513,18 @@
       "contexto": "Empresa / Receita",
       "descricao": "Contribuição incidente segundo regimes e hipóteses previstos na legislação, com forte presença na tributação da receita/faturamento.",
       "status": "Em transição",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9718.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 9.718/1998",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9718.htm",
+          "observacao": ""
         }
       ]
     },
@@ -397,11 +537,18 @@
       "contexto": "Setor público",
       "descricao": "Componente do PIS/Pasep ligado historicamente ao setor público.",
       "status": "Em transição",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp08.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 8/1970",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp08.htm",
+          "observacao": ""
         }
       ]
     },
@@ -414,11 +561,18 @@
       "contexto": "Empresa / Receita",
       "descricao": "Contribuição social incidente, em diversas hipóteses, sobre receita/faturamento. Será substituída pela CBS.",
       "status": "Em transição",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp70.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 70/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp70.htm",
+          "observacao": ""
         }
       ]
     },
@@ -434,11 +588,18 @@
       "aliases": [
         "contribuição sobre o lucro"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 7.689/1988",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm",
+          "observacao": ""
         }
       ]
     },
@@ -451,11 +612,18 @@
       "contexto": "Empresa / Financeiro",
       "descricao": "Adicional de CSLL aplicável a hipóteses e setores definidos em legislação específica.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 7.689/1988",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7689.htm",
+          "observacao": ""
         }
       ]
     },
@@ -472,11 +640,18 @@
       "aliases": [
         "contribuição do consumo"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 214/2025",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
+          "observacao": ""
         }
       ]
     },
@@ -489,11 +664,18 @@
       "contexto": "Setorial / Economia",
       "descricao": "Classe de contribuições federais usadas para intervenção em determinados setores econômicos.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 149",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -506,11 +688,18 @@
       "contexto": "Combustíveis",
       "descricao": "Contribuição incidente nas hipóteses legais relacionadas a combustíveis.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10336.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 10.336/2001",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10336.htm",
+          "observacao": ""
         }
       ]
     },
@@ -523,11 +712,18 @@
       "contexto": "Tecnologia / Internacional",
       "descricao": "Nome de uso comum para a CIDE incidente em determinadas remessas e contratos envolvendo tecnologia, royalties e serviços técnicos.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10168.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 10.168/2000",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10168.htm",
+          "observacao": ""
         }
       ]
     },
@@ -540,11 +736,18 @@
       "contexto": "Folha / Pessoa física / Empresa",
       "descricao": "No uso cotidiano, INSS identifica contribuições destinadas à Previdência Social recolhidas por segurados e empresas. INSS é também o nome da autarquia.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.212/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -561,11 +764,18 @@
         "INSS patronal",
         "contribuição patronal"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.212/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -579,11 +789,18 @@
       "descricao": "Regime de contribuição previdenciária calculada sobre receita bruta em hipóteses legais específicas.",
       "status": "Vigente",
       "nota_status": "Regras específicas",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l12546.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 12.546/2011",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l12546.htm",
+          "observacao": ""
         }
       ]
     },
@@ -600,11 +817,18 @@
         "SAT",
         "seguro acidente do trabalho"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.212/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -618,11 +842,18 @@
       "descricao": "Denominação tradicional frequentemente associada à contribuição atualmente tratada no contexto do RAT.",
       "status": "Histórico",
       "nota_status": "Denominação histórica/comum",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.212/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -635,11 +866,18 @@
       "contexto": "Empresa / Folha / Educação",
       "descricao": "Contribuição social destinada ao financiamento da educação básica pública.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9424.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 9.424/1996",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9424.htm",
+          "observacao": ""
         }
       ]
     },
@@ -652,11 +890,18 @@
       "contexto": "Telecom",
       "descricao": "Contribuição setorial voltada à universalização dos serviços de telecomunicações.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9998.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 9.998/2000",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9998.htm",
+          "observacao": ""
         }
       ]
     },
@@ -669,11 +914,18 @@
       "contexto": "Telecom / Tecnologia",
       "descricao": "Contribuição destinada ao desenvolvimento tecnológico das telecomunicações.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10052.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 10.052/2000",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10052.htm",
+          "observacao": ""
         }
       ]
     },
@@ -686,11 +938,18 @@
       "contexto": "Audiovisual",
       "descricao": "Contribuição de intervenção no domínio econômico ligada ao setor audiovisual.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/mpv/2228-1.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Medida Provisória nº 2.228-1/2001",
+          "url": "https://www.planalto.gov.br/ccivil_03/mpv/2228-1.htm",
+          "observacao": ""
         }
       ]
     },
@@ -703,11 +962,18 @@
       "contexto": "Comércio exterior / Marítimo",
       "descricao": "Adicional incidente sobre frete aquaviário em hipóteses legais e destinado à Marinha Mercante.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10893.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 10.893/2004",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10893.htm",
+          "observacao": ""
         }
       ]
     },
@@ -720,11 +986,18 @@
       "contexto": "Mineração",
       "descricao": "Compensação financeira devida pela exploração de recursos minerais; não é imposto.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 7.990/1989",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm",
+          "observacao": ""
         }
       ]
     },
@@ -737,11 +1010,18 @@
       "contexto": "Energia / Recursos hídricos",
       "descricao": "Compensação financeira vinculada ao aproveitamento de recursos hídricos para geração de energia em hipóteses legais.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 7.990/1989",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7990.htm",
+          "observacao": ""
         }
       ]
     },
@@ -754,11 +1034,18 @@
       "contexto": "Agronegócio / Rural",
       "descricao": "Denominação usual para contribuições previdenciárias incidentes em operações do produtor rural segundo as regras aplicáveis.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.212/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -771,11 +1058,18 @@
       "contexto": "Empresa / Folha / Sistema S",
       "descricao": "Contribuição destinada ao SENAI, integrante das contribuições arrecadadas para terceiros em hipóteses aplicáveis.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/del4048.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Decreto-Lei nº 4.048/1942",
+          "url": "https://www.planalto.gov.br/ccivil_03/del4048.htm",
+          "observacao": ""
         }
       ]
     },
@@ -788,11 +1082,18 @@
       "contexto": "Empresa / Folha / Sistema S",
       "descricao": "Contribuição destinada ao SESI.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/del9403.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Decreto-Lei nº 9.403/1946",
+          "url": "https://www.planalto.gov.br/ccivil_03/del9403.htm",
+          "observacao": ""
         }
       ]
     },
@@ -805,11 +1106,18 @@
       "contexto": "Empresa / Folha / Sistema S",
       "descricao": "Contribuição destinada ao SENAC.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/del8621.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Decreto-Lei nº 8.621/1946",
+          "url": "https://www.planalto.gov.br/ccivil_03/del8621.htm",
+          "observacao": ""
         }
       ]
     },
@@ -822,11 +1130,18 @@
       "contexto": "Empresa / Folha / Sistema S",
       "descricao": "Contribuição destinada ao SESC.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/del9853.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Decreto-Lei nº 9.853/1946",
+          "url": "https://www.planalto.gov.br/ccivil_03/del9853.htm",
+          "observacao": ""
         }
       ]
     },
@@ -839,11 +1154,18 @@
       "contexto": "Empresa / Sistema S",
       "descricao": "Contribuição destinada ao apoio às micro e pequenas empresas, conforme enquadramento legal.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.029/1990",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -856,11 +1178,18 @@
       "contexto": "Agronegócio / Sistema S",
       "descricao": "Contribuição destinada ao SENAR.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8315.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.315/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8315.htm",
+          "observacao": ""
         }
       ]
     },
@@ -873,11 +1202,18 @@
       "contexto": "Transporte / Sistema S",
       "descricao": "Contribuição destinada ao SEST.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.706/1993",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm",
+          "observacao": ""
         }
       ]
     },
@@ -890,11 +1226,18 @@
       "contexto": "Transporte / Sistema S",
       "descricao": "Contribuição destinada ao SENAT.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.706/1993",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8706.htm",
+          "observacao": ""
         }
       ]
     },
@@ -911,11 +1254,18 @@
         "taxa de luz",
         "contribuição de iluminação"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 149-A",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -929,11 +1279,18 @@
       "descricao": "Sigla usada por diversos municípios para a contribuição de iluminação pública (COSIP).",
       "status": "Vigente",
       "nota_status": "Nome local",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 149-A",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -947,11 +1304,18 @@
       "descricao": "Taxa municipal encontrada em diversos municípios para fiscalização de estabelecimentos; nome e regras variam localmente.",
       "status": "Varia por ente",
       "nota_status": "Varia por município",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -965,11 +1329,18 @@
       "descricao": "Taxa municipal relacionada à fiscalização de anúncios; nomenclatura e regras variam conforme o município.",
       "status": "Varia por ente",
       "nota_status": "Varia por município",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -983,11 +1354,18 @@
       "descricao": "Taxa municipal associada a serviços públicos específicos de coleta/destinação de resíduos de serviços de saúde, conforme legislação local.",
       "status": "Varia por ente",
       "nota_status": "Varia por município",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -1005,11 +1383,18 @@
         "taxa de alvará",
         "taxa de funcionamento"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -1023,11 +1408,18 @@
       "descricao": "Taxa municipal de fiscalização de localização e funcionamento, com nomenclatura variável.",
       "status": "Varia por ente",
       "nota_status": "Varia por município",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -1044,11 +1436,18 @@
       "aliases": [
         "taxa do lixo"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -1062,11 +1461,18 @@
       "descricao": "Denominação genérica/local para taxa ligada à coleta de resíduos; sigla e regras variam por município.",
       "status": "Varia por ente",
       "nota_status": "Varia por município",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -1080,11 +1486,18 @@
       "descricao": "Taxa estadual existente em alguns estados para fiscalização de atividades minerárias, conforme legislação local.",
       "status": "Varia por ente",
       "nota_status": "Varia por estado",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "CTN, arts. 77–80 (lei local instituidora)",
+          "url": "https://www.planalto.gov.br/ccivil_03/tributario/lei5172.htm",
+          "observacao": "A instituição e os detalhes dependem da lei do ente competente."
         }
       ]
     },
@@ -1097,11 +1510,18 @@
       "contexto": "Saúde / Regulação",
       "descricao": "Taxa de fiscalização vinculada à atuação regulatória da Anvisa em hipóteses previstas em lei.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 9.782/1999",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1115,11 +1535,18 @@
       "descricao": "Sigla empregada no contexto de fiscalização sanitária; verificar a denominação usada no ato normativo específico.",
       "status": "Vigente",
       "nota_status": "Uso específico",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 9.782/1999",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9782.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1132,11 +1559,18 @@
       "contexto": "Telecom / Regulação",
       "descricao": "Taxa integrante do FISTEL associada à fiscalização do funcionamento de estações de telecomunicações.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 5.070/1966",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1149,11 +1583,18 @@
       "contexto": "Telecom / Regulação",
       "descricao": "Taxa integrante do FISTEL ligada à fiscalização da instalação de estações de telecomunicações.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 5.070/1966",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1166,11 +1607,18 @@
       "contexto": "Telecom / Regulação",
       "descricao": "Fundo associado, entre outras receitas, às taxas de fiscalização de instalação e funcionamento. Não é um imposto.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 5.070/1966",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5070.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1184,11 +1632,18 @@
       "descricao": "Taxa regulatória relacionada à fiscalização da aviação civil, conforme hipóteses legais.",
       "status": "Vigente",
       "nota_status": "Uso específico",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l11182.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 11.182/2005",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l11182.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1201,11 +1656,18 @@
       "contexto": "Agronegócio / Regulação",
       "descricao": "Taxa federal ligada a serviços e atos de fiscalização agropecuária nas hipóteses previstas em lei.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10883.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 10.883/2004",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10883.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1221,11 +1683,18 @@
       "aliases": [
         "fundo de garantia"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.036/1990",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1238,11 +1707,18 @@
       "contexto": "Empresa / Folha",
       "descricao": "Multiplicador usado para ajustar a contribuição relacionada aos riscos ambientais do trabalho. Não é tributo autônomo.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/decreto/d3048.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Decreto nº 3.048/1999",
+          "url": "https://www.planalto.gov.br/ccivil_03/decreto/d3048.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1255,11 +1731,18 @@
       "contexto": "Empresa / Folha",
       "descricao": "Expressão prática para contribuições destinadas a entidades como SENAI, SESI, SENAC, SESC, SEBRAE, SENAR, SEST e SENAT.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Constituição Federal, art. 240",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1272,11 +1755,18 @@
       "contexto": "Imobiliário / Construção",
       "descricao": "Regime especial aplicável, entre outras hipóteses, a incorporações imobiliárias. Não é um imposto isolado.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10931.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 10.931/2004",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l10931.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1289,11 +1779,18 @@
       "contexto": "Empresa",
       "descricao": "Regime tributário simplificado para microempresas e empresas de pequeno porte, que reúne diversos tributos em documento único.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 123/2006",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1310,11 +1807,18 @@
         "guia do Simples Nacional",
         "boleto do Simples"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 123/2006",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1332,11 +1836,18 @@
         "boleto do MEI",
         "guia do MEI"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei Complementar nº 123/2006",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1353,11 +1864,18 @@
         "guia federal",
         "guia de recolhimento federal"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9430.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 9.430/1996",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9430.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1370,11 +1888,18 @@
       "contexto": "Doméstico / Folha",
       "descricao": "Guia que reúne recolhimentos do empregador doméstico no eSocial. Não é tributo autônomo.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.212/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1392,11 +1917,18 @@
         "carnê do INSS",
         "guia da previdência"
       ],
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 8.212/1991",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8212cons.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1409,11 +1941,18 @@
       "contexto": "Pessoa física / Patrimônio",
       "descricao": "Programa/forma de apuração de ganho de capital de pessoa física. Não é um imposto chamado GCAP.",
       "status": "Vigente",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7713.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 7.713/1988",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l7713.htm",
+          "observacao": ""
         }
       ]
     },
@@ -1427,11 +1966,18 @@
       "descricao": "Mecanismo de antecipação de IR em determinados fundos de investimento; não é tributo autônomo.",
       "status": "Vigente",
       "nota_status": "Conforme fundo",
-      "atualizado_em": "2026-08-10T22:16:49-03:00",
+      "atualizado_em": "2026-08-10",
       "fontes": [
         {
-          "rotulo": "Receita Federal — orientação tributária",
-          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+          "rotulo": "Planalto — texto legal oficial",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l11033.htm"
+        }
+      ],
+      "fundamento": [
+        {
+          "lei": "Lei nº 11.033/2004",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l11033.htm",
+          "observacao": ""
         }
       ]
     }

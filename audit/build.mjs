@@ -31,6 +31,7 @@ const REQUIRED_FIELDS = [
   'status',
   'atualizado_em',
   'fontes',
+  'fundamento',
 ];
 const STATUS_ENUM = [
   'Vigente',
@@ -41,6 +42,7 @@ const STATUS_ENUM = [
   'Histórico',
 ];
 const OPTIONAL_FIELDS = ['nota_status', 'aliases'];
+const URL_PATTERN = /^https:\/\//;
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 function validar(dados) {
@@ -65,30 +67,37 @@ function validar(dados) {
         ) {
           erros.push(`${rotulo}: "aliases" deve ser uma lista de textos não vazios.`);
         }
-      } else if (campo === 'fontes') {
-        // Validado abaixo para produzir uma mensagem específica.
+      } else if (campo === 'fontes' || campo === 'fundamento') {
+        if (!Array.isArray(valor) || valor.length < 1) {
+          erros.push(`${rotulo}: "${campo}" deve ser uma lista não vazia.`);
+        }
       } else if (campo === 'atualizado_em') {
-        // Validado abaixo como data ISO.
+        if (typeof valor !== 'string' || valor.trim() === '') {
+          erros.push(`${rotulo}: campo obrigatório "${campo}" ausente ou vazio.`);
+        }
       } else if (typeof valor !== 'string' || valor.trim() === '') {
         erros.push(`${rotulo}: campo obrigatório "${campo}" ausente ou vazio.`);
       }
     }
-    if (
-      !item.fontes ||
-      !Array.isArray(item.fontes) ||
-      item.fontes.length === 0 ||
-      item.fontes.some(
-        f =>
-          typeof f?.rotulo !== 'string' || typeof f?.url !== 'string' || !/^https:\/\//.test(f.url),
-      )
-    ) {
-      erros.push(`${rotulo}: "fontes" deve conter ao menos uma fonte com rotulo e URL HTTPS.`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(item.atualizado_em)) {
+      erros.push(`${rotulo}: atualizado_em deve ser uma data ISO (AAAA-MM-DD).`);
     }
-    if (
-      typeof item.atualizado_em !== 'string' ||
-      Number.isNaN(new Date(item.atualizado_em).getTime())
-    ) {
-      erros.push(`${rotulo}: "atualizado_em" deve ser uma data ISO válida.`);
+    for (const campo of ['fontes', 'fundamento']) {
+      if (!Array.isArray(item[campo]) || item[campo].length < 1) {
+        erros.push(`${rotulo}: ${campo} precisa ter ao menos um registro.`);
+      } else {
+        item[campo].forEach((fonte, i) => {
+          if (!fonte || (typeof fonte.lei === 'undefined' && campo === 'fundamento')) {
+            erros.push(`${rotulo}: ${campo}[${i}] sem lei.`);
+          }
+          if (!fonte || (typeof fonte.rotulo === 'undefined' && campo === 'fontes')) {
+            erros.push(`${rotulo}: ${campo}[${i}] sem rótulo.`);
+          }
+          if (!fonte || typeof fonte.url !== 'string' || !URL_PATTERN.test(fonte.url)) {
+            erros.push(`${rotulo}: ${campo}[${i}] precisa de URL HTTPS.`);
+          }
+        });
+      }
     }
     if (!STATUS_ENUM.includes(item.status)) {
       erros.push(`${rotulo}: status "${item.status}" não pertence ao enum fechado.`);
