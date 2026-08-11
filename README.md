@@ -34,6 +34,16 @@ catalogado quando há ligação sustentada. Estilo visual **brutalista**.
 Medido **na URL de produção** (`--preset=desktop`): LCP **0.3 s**, CLS **0**, TBT **0 ms**,
 5 requisições, nenhuma externa.
 
+## PWA e uso offline
+
+Após a primeira visita com conexão, o service worker pré-armazena a página, o catálogo e os
+formatos JSON/CSV. A versão do cache é derivada do hash do catálogo; uma nova publicação ativa
+um cache novo e remove o anterior, sem impedir atualizações dos dados. O manifest é gerado junto
+com os demais artefatos estáticos. Deep-links (`?q=`, `?embed=` e `#item-*`) continuam sendo
+resolvidos pelo mesmo `index.html` em modo offline.
+
+Valide o fluxo offline com `npm run gate:offline` (o navegador deve ter sido instalado).
+
 ## Como rodar localmente
 
 ```bash

@@ -7,6 +7,8 @@
 <title>Guia de Tributos, Contribuições, Taxas e Encargos do Brasil</title>
 <link rel="canonical" href="https://igorguariroba.github.io/guia-tributos-brasil/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#006630">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Guia de Tributos, Contribuições, Taxas e Encargos do Brasil">
@@ -842,6 +844,12 @@ $("csv").addEventListener("click",()=>{
 });
 render();
 setTimeout(focusHash,0);
+
+// O catálogo continua 100% funcional sem o service worker; o registro é apenas
+// uma melhoria progressiva para visitas posteriores e nunca bloqueia a UI.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>

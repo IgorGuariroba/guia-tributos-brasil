@@ -1,0 +1,19 @@
+{
+  "name": "Guia de Tributos, Contribuições, Taxas e Encargos do Brasil",
+  "short_name": "Guia de Tributos",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#006630",
+  "description": "Catálogo estático de tributos, contribuições, taxas e encargos do Brasil.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

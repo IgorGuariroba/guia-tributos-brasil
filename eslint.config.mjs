@@ -13,6 +13,7 @@ export default [
       '.lighthouseci/**',
       'evidencias-e2e/**',
       'public/fonts/**',
+      'public/sw.js',
     ],
   },
 

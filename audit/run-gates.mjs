@@ -81,6 +81,7 @@ const todos = [
   ['Gate 6/8 · HTML semântico (score mínimo 100)', 'node', ['audit/semantic-gate.mjs']],
   ['Gate 7/8 · Duplicação de código (jscpd)', 'node', ['audit/duplication-gate.mjs']],
   ['Gate 8/8 · Lighthouse CI (thresholds)', 'npx', ['--no-install', 'lhci', 'autorun']],
+  ['Gate 9/9 · PWA offline (Playwright)', 'node', ['audit/offline-gate.mjs']],
 ];
 const selecionados = somente
   ? todos.filter(g => g[0].toLowerCase().includes(somente.toLowerCase()))

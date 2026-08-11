@@ -18,3 +18,5 @@ public/api/tributos.json
 public/api/tributos.csv
 public/robots.txt
 public/sitemap.xml
+public/sw.js
+public/manifest.webmanifest

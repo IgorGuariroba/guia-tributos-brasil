@@ -207,6 +207,56 @@ function paraJsonLd(dados) {
   };
 }
 
+function paraManifest() {
+  return `${JSON.stringify(
+    {
+      name: 'Guia de Tributos, Contribuições, Taxas e Encargos do Brasil',
+      short_name: 'Guia de Tributos',
+      lang: 'pt-BR',
+      start_url: './',
+      scope: './',
+      display: 'standalone',
+      background_color: '#f7f5ef',
+      theme_color: '#006630',
+      description: 'Catálogo estático de tributos, contribuições, taxas e encargos do Brasil.',
+      icons: [{ src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],
+    },
+    null,
+    2,
+  )}\n`;
+}
+
+function paraServiceWorker(version) {
+  const precache = [
+    './',
+    'index.html',
+    'manifest.webmanifest',
+    'favicon.svg',
+    'og-image.png',
+    'api/tributos.json',
+    'api/tributos.csv',
+  ];
+  return `const CACHE = 'guia-tributos-${version}';
+const PRECACHE = ${JSON.stringify(precache)};
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(PRECACHE)).then(() => self.skipWaiting()));
+});
+self.addEventListener('activate', event => {
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('guia-tributos-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+});
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
+    if (new URL(event.request.url).origin === self.location.origin) {
+      const copy = response.clone();
+      caches.open(CACHE).then(cache => cache.put(event.request, copy));
+    }
+    return response;
+  }).catch(() => event.request.mode === 'navigate' ? caches.match('./').then(cached => cached || caches.match('index.html')) : Response.error())));
+});
+`;
+}
+
 function paraCsv(dados) {
   const cols = [
     'id',
@@ -282,6 +332,8 @@ async function main() {
   // CSV é mantido como formato tabular: envelope não se aplica a ele. A versão
   // e a data-base ficam documentadas no contrato JSON e no README.
   const apiCsv = paraCsv(dados);
+  const manifest = paraManifest();
+  const serviceWorker = paraServiceWorker(version);
 
   const alvos = [
     ['public/index.html', htmlGerado],
@@ -289,6 +341,8 @@ async function main() {
     ['public/api/tributos.csv', apiCsv],
     ['public/robots.txt', paraRobots()],
     ['public/sitemap.xml', paraSitemap()],
+    ['public/manifest.webmanifest', manifest],
+    ['public/sw.js', serviceWorker],
   ];
 
   if (CHECK) {
