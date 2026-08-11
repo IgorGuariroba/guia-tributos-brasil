@@ -198,10 +198,10 @@ essa responsabilidade é só do Prettier, para as duas ferramentas nunca se cont
 
 ### Gate 3 · Funcional (`audit/functional-gate.mjs`)
 
-20 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
+21 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
 seleção e confirmação do perfil de interesse, associações visuais dinâmicas por perfil, carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
 reset do formulário, combobox pesquisável com multisseleção, contextos atômicos, chips removíveis,
-rótulos visíveis, busca na primeira tela, **ordenação acionável por teclado** com `aria-sort`
+rótulos visíveis, busca na primeira tela, **modo comparação de 2–4 itens** (ITBI×ITCMD, CBS×COFINS e RAT×FAP), **ordenação acionável por teclado** com `aria-sort`
 exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 8 colunas, 79 linhas),
 `<abbr title>` em todas as siglas, zero recursos externos, console sem erros e quatro
 asserções sobre os ícones (renderização real de pixels, mapeamento completo, natureza

@@ -455,6 +455,40 @@ await checar('relações da Reforma são válidas, recíprocas e filtráveis', a
   if (!tempos) throw new Error('timeline sem elementos time');
 });
 
+await checar('modo comparação cobre pares prioritários e limita 2–4 itens', async () => {
+  await page.goto(`${URL_AUDITADA}?profile=all`);
+  await entrarNoGuia(page);
+  const escolher = async siglas => {
+    for (const sigla of siglas) {
+      await page.locator(`[data-compare-id="${sigla.toLowerCase()}"]`).click();
+    }
+    igual(
+      await page.locator('.comparison-card').count(),
+      siglas.length,
+      `cards de ${siglas.join('×')}`,
+    );
+  };
+  await escolher(['ITBI', 'ITCMD']);
+  await page.locator('[data-compare-id="cbs"]').click();
+  await page.locator('[data-compare-id="cofins"]').click();
+  await page.locator('[data-compare-id="rat"]').click();
+  igual(await page.locator('.comparison-card').count(), 4, 'limite máximo');
+  for (const sigla of ['ITBI', 'ITCMD', 'CBS', 'COFINS']) {
+    if (!(await page.locator('.comparison-card').getByText(sigla, { exact: true }).count())) {
+      throw new Error(`item ${sigla} ausente`);
+    }
+  }
+  for (const id of ['itbi', 'itcmd', 'cbs', 'cofins']) {
+    await page.locator(`[data-compare-id="${id}"]`).click();
+  }
+  await page.locator('[data-compare-id="rat"]').click();
+  await page.locator('[data-compare-id="fap"]').click();
+  igual(await page.locator('.comparison-card').count(), 2, 'troca de seleção');
+  if (!(await page.locator('.comparison-card').getByText('RAT', { exact: true }).count())) {
+    throw new Error('par RAT×FAP não renderizou');
+  }
+});
+
 await checar('console sem erros', async () => {
   igual(errosConsole.length, 0, `erros de console (${errosConsole.join(' | ')})`);
 });
