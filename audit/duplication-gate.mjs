@@ -3,6 +3,8 @@
  * Gate de duplicação de código (reutilização).
  *
  * Mede clones copiar-e-colar com jscpd sobre public/ e audit/ e reprova se:
+ * `public/en/` é ignorado porque é um artefato localizado gerado do mesmo template;
+ * `public/index.html` continua auditando integralmente a estrutura compartilhada.
  *   1. o percentual de linhas duplicadas ultrapassar DUP_MAX_PERCENT (default 0.4%); ou
  *   2. existir qualquer clone com >= DUP_MAX_CLONE_LINES linhas (default 12).
  *
@@ -48,7 +50,7 @@ const args = [
   '--max-size',
   '5mb',
   '--ignore',
-  'audit/reports/**',
+  'audit/reports/**,public/en/**',
   '--reporters',
   'json',
   '--output',
