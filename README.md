@@ -37,8 +37,26 @@ Medido **na URL de produção** (`--preset=desktop`): LCP **0.3 s**, CLS **0**, 
 ```bash
 npm ci
 npx playwright install chromium
-npm run serve          # abre http://localhost:8080
+npm run build           # gera public/index.html e public/api/* a partir de data/tributos.json
+npm run serve           # abre http://localhost:8080
 ```
+
+## De onde vem o catálogo
+
+`data/tributos.json` é a **fonte da verdade** dos 78 itens (schema em `data/schema.json`:
+campos obrigatórios, `id` único e estável no formato slug). `public/index.html` **não é
+escrito à mão** — é gerado por `node audit/build.mjs` a partir de `data/tributos.json` +
+`src/index.template.html`, junto com `public/api/tributos.json` e `public/api/tributos.csv`
+(o mesmo catálogo em JSON e CSV, para consumo por terceiros).
+
+```bash
+npm run build              # regenera public/index.html e public/api/*
+npm run gate:build         # valida o schema e falha se public/ estiver desatualizado
+```
+
+Depois de editar `data/tributos.json` ou `src/index.template.html`, rode `npm run build` e
+commite tanto a fonte quanto `public/` — o Gate 1 (build) reprova PRs em que os dois
+divergem, exatamente como um `git diff --exit-code` de código gerado.
 
 ## Gates de qualidade
 
@@ -46,7 +64,8 @@ Os gates rodam automaticamente no **pre-push** (husky) e no **CI** (GitHub Actio
 São propositalmente exigentes: qualquer regressão bloqueia o push.
 
 ```bash
-npm run gates              # todos os 7 gates
+npm run gates              # todos os 8 gates
+npm run gate:build         # somente build & schema (data/tributos.json → public/)
 npm run gate:estilo        # somente estilo (higiene + Prettier + ESLint)
 npm run gate:funcional     # somente Playwright
 npm run gate:responsivo    # somente responsividade (320→1920px)
@@ -63,7 +82,21 @@ npm run format             # prettier --write .
 npm run lint:fix           # eslint . --fix
 ```
 
-### Gate 1 · Estilo (`audit/style-gate.mjs`)
+### Gate 1 · Build & Schema (`audit/build-gate.mjs`)
+
+O catálogo vive em `data/tributos.json` (schema em `data/schema.json`), não em
+`public/index.html`. Este gate roda `node audit/build.mjs --check` e reprova se:
+
+- algum item tiver campo obrigatório ausente, `id` fora do padrão `^[a-z0-9]+(-[a-z0-9]+)*$`
+  ou `id` duplicado;
+- `public/index.html`, `public/api/tributos.json` ou `public/api/tributos.csv` divergirem do
+  que `data/tributos.json` + `src/index.template.html` produziriam — ou seja, alguém editou
+  o artefato gerado à mão, ou mudou o dado/template e esqueceu de rodar `npm run build`.
+
+Roda em menos de 1s, sem navegador — por isso entra no **pre-commit**, junto do gate de
+estilo, além do pre-push e de um job próprio no CI.
+
+### Gate 2 · Estilo (`audit/style-gate.mjs`)
 
 Três camadas, da mais barata para a mais cara. Roda em ~2 s, sem navegador — por isso é o
 único gate que também entra no **pre-commit** e ganha um job próprio no CI, dando feedback
@@ -85,7 +118,7 @@ Configuração em `.editorconfig` (fonte da verdade para o editor), `.prettierrc
 `.prettierignore` e `eslint.config.mjs`. O ESLint **não** define regras de formatação —
 essa responsabilidade é só do Prettier, para as duas ferramentas nunca se contradizerem.
 
-### Gate 2 · Funcional (`audit/functional-gate.mjs`)
+### Gate 3 · Funcional (`audit/functional-gate.mjs`)
 
 20 asserções sobre a página real, para que os gates de qualidade não aprovem uma página quebrada:
 seleção e confirmação do perfil de interesse, associações visuais dinâmicas por perfil, carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
@@ -96,7 +129,7 @@ exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas)
 asserções sobre os ícones (renderização real de pixels, mapeamento completo, natureza
 decorativa e independência do texto em relação a eles).
 
-### Gate 3 · Responsividade (`audit/responsive-gate.mjs`)
+### Gate 4 · Responsividade (`audit/responsive-gate.mjs`)
 
 Audita **8 larguras** e falha se qualquer uma tiver problema:
 
@@ -124,7 +157,7 @@ Verificações por largura:
 7. barra sticky com folga de scroll e **ocupando ≤ 40% da viewport** (se não couber, deve deixar de ser sticky)
 8. **filtro e reset funcionam** naquela largura (comportamento, não só layout)
 
-### Gate 4 · Acessibilidade (`audit/axe-gate.mjs`)
+### Gate 5 · Acessibilidade (`audit/axe-gate.mjs`)
 
 axe-core com as tags `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice`.
 **Exige 0 violações** e audita **3 estados** do DOM, já que a tabela é renderizada por JS:
@@ -135,7 +168,7 @@ axe-core com as tags `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practic
 
 O CI executa também o `@axe-core/cli` como verificação independente.
 
-### Gate 5 · HTML semântico (`audit/semantic-gate.mjs`)
+### Gate 6 · HTML semântico (`audit/semantic-gate.mjs`)
 
 Rubrica de 100 pontos em 7 categorias (`audit/semantic-core.mjs`), avaliada no DOM renderizado.
 **Mínimo exigido: 100.**
@@ -150,7 +183,7 @@ Rubrica de 100 pontos em 7 categorias (`audit/semantic-core.mjs`), avaliada no D
 | Texto       |    8 | listas reais, `strong`/`em` (não `b`/`i`), `time`/`abbr`                  |
 | Dinâmico    |    7 | contador em `aria-live`, estado vazio anunciável                          |
 
-### Gate 6 · Duplicação de código (`audit/duplication-gate.mjs`)
+### Gate 7 · Duplicação de código (`audit/duplication-gate.mjs`)
 
 Mede reutilização via clones copiar-e-colar com [jscpd](https://github.com/kucherenko/jscpd)
 sobre `public/` e `audit/` (JS, CSS e markup, inclusive os blocos inline do `index.html`).
@@ -177,7 +210,7 @@ Ajustes por variável de ambiente: `DUP_MAX_PERCENT`, `DUP_MAX_CLONE_LINES`, `DU
 > `--max-size 5mb` é obrigatório: o default do jscpd (100 kb) ignoraria silenciosamente o
 > `public/index.html` (~105 kb) e reportaria um falso "0 clones".
 
-### Gate 7 · Lighthouse CI (`lighthouserc.json`)
+### Gate 8 · Lighthouse CI (`lighthouserc.json`)
 
 Mediana de **3 execuções**, preset desktop, servindo `./public` via `staticDistDir`.
 
@@ -209,14 +242,16 @@ Em troca, foram ativados gates numéricos explícitos de `dom-size` e `total-byt
 
 - **pre-commit** — barato (~2 s): bloqueia commit de relatórios/evidências, impede
   reintrodução de `fonts.googleapis.com`, valida a presença de marcação essencial
-  (`<main>`, `<caption>`, `role="search"`, `aria-live`) e roda o **gate de estilo**
-  (indentação, espaços, imports, padrão de código). Se `node_modules` não existir, o gate de
-  estilo é pulado com aviso — o CI continua sendo a rede definitiva.
-- **pre-push** — executa os 7 gates. Escape de emergência: `SKIP_GATES=1 git push`
+  (`<main>`, `<caption>`, `role="search"`, `aria-live`) e roda o **gate de build** (schema de
+  `data/tributos.json` e sincronia com `public/`) e o **gate de estilo** (indentação, espaços,
+  imports, padrão de código). Se `node_modules` não existir, os dois são pulados com aviso —
+  o CI continua sendo a rede definitiva.
+- **pre-push** — executa os 8 gates. Escape de emergência: `SKIP_GATES=1 git push`
   (deve ser justificado no PR).
 
-No CI, o gate de estilo roda em um **job separado** (`estilo`) do qual o job `gates` depende:
-um erro de indentação falha em ~40 s em vez de consumir os minutos de navegador.
+No CI, build e estilo rodam em um **job separado** (`estilo`) do qual o job `gates` depende:
+um dado inválido ou um erro de indentação falham em segundos em vez de consumir os minutos
+de navegador.
 
 ## Sistema de ícones
 
@@ -274,12 +309,22 @@ nem `<svg>` sem rótulo**, e que **toda célula mantém texto próprio**. axe-co
 ## Estrutura
 
 ```
-public/              # o que vai para o GitHub Pages
-  index.html         # página completa (HTML + CSS + JS + dados)
+data/
+  tributos.json      # FONTE DA VERDADE do catálogo (78 itens, ver "De onde vem o catálogo")
+  schema.json        # contrato de data/tributos.json (campos obrigatórios, id, enums)
+src/
+  index.template.html # o HTML completo com um marcador no lugar dos dados
+public/              # ARTEFATO GERADO por audit/build.mjs — o que vai para o GitHub Pages
+  index.html          # página completa (HTML + CSS + JS + dados injetados no build)
   favicon.svg
-  fonts/             # 10 arquivos woff2 auto-hospedados
+  fonts/              # 10 arquivos woff2 auto-hospedados
+  api/
+    tributos.json      # o mesmo catálogo em JSON, para consumo por terceiros
+    tributos.csv        # o mesmo catálogo em CSV (BOM UTF-8)
 audit/
-  run-gates.mjs      # orquestrador: sobe servidor e roda os 7 gates
+  run-gates.mjs      # orquestrador: sobe servidor e roda os 8 gates
+  build.mjs          # gera public/ a partir de data/tributos.json + src/index.template.html
+  build-gate.mjs     # gate de build & schema (roda build.mjs --check)
   gen-icons.mjs      # gera o CSS de ícones a partir do lucide-static
   style-gate.mjs     # gate de estilo (higiene + Prettier + ESLint)
   functional-gate.mjs

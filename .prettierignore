@@ -10,4 +10,9 @@ public/favicon.svg
 # (CSS/JS inline minimizados em linha para render-blocking zero). Reformatá-lo
 # alteraria o payload servido e o LCP medido pelo gate do Lighthouse.
 # Sua consistência é verificada pelo gate de estilo (audit/style-gate.mjs).
+# src/index.template.html é o mesmo artefato antes da injeção de dados (ver
+# audit/build.mjs) e segue a mesma regra.
 public/index.html
+src/index.template.html
+public/api/tributos.json
+public/api/tributos.csv

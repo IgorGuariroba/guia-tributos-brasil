@@ -15,10 +15,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Job separado e sem navegador: falha em ~40s e dá feedback imediato de estilo
-  # no PR, sem esperar os gates pesados (Playwright + Lighthouse).
+  # Job separado e sem navegador: falha em segundos e dá feedback imediato de
+  # build/estilo no PR, sem esperar os gates pesados (Playwright + Lighthouse).
   estilo:
-    name: Estilo (higiene · Prettier · ESLint)
+    name: Build & Schema · Estilo (higiene · Prettier · ESLint)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +30,9 @@ jobs:
 
       - name: Instalar dependências
         run: npm ci
+
+      - name: Gate de build (data/tributos.json → public/)
+        run: npm run gate:build
 
       - name: Gate de estilo
         run: npm run gate:estilo

@@ -69,16 +69,18 @@ const executar = (rotulo, cmd, args, env = {}) =>
 
 const somente = process.argv[2];
 const todos = [
-  // O gate de estilo vem primeiro: é o mais barato (~2s, sem navegador) e
-  // falhar cedo evita gastar minutos de Playwright/Lighthouse num código que
-  // já não passa no básico.
-  ['Gate 1/7 · Estilo (higiene, Prettier, ESLint)', 'node', ['audit/style-gate.mjs']],
-  ['Gate 2/7 · Funcional (Playwright)', 'node', ['audit/functional-gate.mjs']],
-  ['Gate 3/7 · Responsividade (8 larguras, 320→1920px)', 'node', ['audit/responsive-gate.mjs']],
-  ['Gate 4/7 · Acessibilidade (axe-core, 0 violações)', 'node', ['audit/axe-gate.mjs']],
-  ['Gate 5/7 · HTML semântico (score mínimo 100)', 'node', ['audit/semantic-gate.mjs']],
-  ['Gate 6/7 · Duplicação de código (jscpd)', 'node', ['audit/duplication-gate.mjs']],
-  ['Gate 7/7 · Lighthouse CI (thresholds)', 'npx', ['--no-install', 'lhci', 'autorun']],
+  // O gate de build vem primeiro: é o mais barato (<1s, sem navegador) e todo
+  // outro gate roda sobre public/, que é gerado a partir de data/tributos.json.
+  // Se o dado é inválido ou o artefato está desatualizado, falhar aqui evita
+  // gastar minutos analisando um público desatualizado ou inconsistente.
+  ['Gate 1/8 · Build & Schema (data/tributos.json → public/)', 'node', ['audit/build-gate.mjs']],
+  ['Gate 2/8 · Estilo (higiene, Prettier, ESLint)', 'node', ['audit/style-gate.mjs']],
+  ['Gate 3/8 · Funcional (Playwright)', 'node', ['audit/functional-gate.mjs']],
+  ['Gate 4/8 · Responsividade (8 larguras, 320→1920px)', 'node', ['audit/responsive-gate.mjs']],
+  ['Gate 5/8 · Acessibilidade (axe-core, 0 violações)', 'node', ['audit/axe-gate.mjs']],
+  ['Gate 6/8 · HTML semântico (score mínimo 100)', 'node', ['audit/semantic-gate.mjs']],
+  ['Gate 7/8 · Duplicação de código (jscpd)', 'node', ['audit/duplication-gate.mjs']],
+  ['Gate 8/8 · Lighthouse CI (thresholds)', 'npx', ['--no-install', 'lhci', 'autorun']],
 ];
 const selecionados = somente
   ? todos.filter(g => g[0].toLowerCase().includes(somente.toLowerCase()))

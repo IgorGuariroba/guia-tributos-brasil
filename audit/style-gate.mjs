@@ -42,10 +42,17 @@ const EXT_BINARIA = new Set([
 ]);
 
 // LICENSE é texto de terceiros; package-lock.json é gerado pelo npm.
-const IGNORADOS = new Set(['LICENSE', 'package-lock.json']);
+// public/api/tributos.csv é gerado por audit/build.mjs com BOM UTF-8 proposital
+// (compatibilidade com Excel no Brasil) — sua consistência é validada pelo gate de build,
+// não por este.
+const IGNORADOS = new Set(['LICENSE', 'package-lock.json', 'public/api/tributos.csv']);
 
-// Arquivos com indentação legítima fora do passo de 2 (ex.: continuação alinhada).
-const SEM_CHECAGEM_DE_INDENTACAO = new Set(['README.md']);
+// Arquivos com indentação legítima fora do passo de 2 (ex.: listas markdown numeradas).
+const SEM_CHECAGEM_DE_INDENTACAO = new Set([
+  'README.md',
+  'docs/analise-concorrencia.md',
+  'docs/plano-de-melhoria.md',
+]);
 
 const erros = [];
 const registrar = (arquivo, linha, msg) =>

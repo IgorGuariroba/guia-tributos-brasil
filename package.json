@@ -6,7 +6,9 @@
   "description": "Guia pesquisável de tributos, contribuições, taxas e encargos do Brasil — página estática com gates de acessibilidade e performance.",
   "scripts": {
     "serve": "npx http-server public -p 8080 -c-1 -o",
+    "build": "node audit/build.mjs",
     "gates": "node audit/run-gates.mjs",
+    "gate:build": "node audit/build-gate.mjs",
     "gate:funcional": "node audit/run-gates.mjs funcional",
     "gate:a11y": "node audit/run-gates.mjs acessibilidade",
     "gate:semantica": "node audit/run-gates.mjs semântico",

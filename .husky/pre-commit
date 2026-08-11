@@ -29,6 +29,14 @@ if [ -f public/index.html ]; then
   done
 fi
 
+# Gate de build: data/tributos.json válido e public/ sincronizado (<1s, sem navegador).
+# Corrija com: npm run build
+if [ -d node_modules ]; then
+  node audit/build-gate.mjs || exit 1
+else
+  echo "⚠  node_modules ausente — gate de build pulado. Rode: npm ci"
+fi
+
 # Gate de estilo: higiene de arquivo + Prettier + ESLint (~2s, sem navegador).
 # Roda sobre o conteúdo do working tree; por isso o commit só deve ser feito com
 # as alterações salvas em disco (fluxo normal). Corrija com:
