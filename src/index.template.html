@@ -206,6 +206,7 @@ tr:hover td{background:var(--accent)}
 .guide{margin-top:28px}
 .guide>summary{min-height:52px;display:flex;align-items:center;padding:10px 14px;background:var(--ink);color:var(--accent);border:var(--b);box-shadow:var(--shadow-sm);font-family:var(--display);text-transform:uppercase;cursor:pointer}
 .guide[open]>summary{margin-bottom:18px}
+.table-wrap details>summary{min-height:44px;display:flex;align-items:center;padding:8px 0;cursor:pointer}
 .legend{margin-top:24px;background:#fff;border:var(--b);box-shadow:var(--shadow-sm);padding:18px}
 .legend h2{font-family:var(--display);margin:0 0 12px;font-size:18px;text-transform:uppercase;border-bottom:var(--b);padding-bottom:8px}
 .legend ul{columns:2;gap:32px;padding-left:20px;font-size:13px}
@@ -412,6 +413,7 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
           <div class="field"><span class="field-label" id="esfera-label">Esfera</span><div class="multi-combobox" data-filter="esfera"></div><small class="filter-help">Aceita várias opções</small></div>
           <div class="field"><span class="field-label" id="contexto-label">Contexto</span><div class="multi-combobox" data-filter="contexto"></div><small class="filter-help">Categorias independentes; aceita várias</small></div>
           <div class="field"><span class="field-label" id="status-label">Status</span><div class="multi-combobox" data-filter="status"></div><small class="filter-help">Aceita várias opções</small></div>
+          <div class="field"><span class="field-label" id="reforma-label">Relação na Reforma</span><div class="multi-combobox" data-filter="reforma"></div><small class="filter-help">O que sai ou entra</small></div>
         </div>
         <ul id="active-filters" class="filter-chips" aria-label="Filtros aplicados"></ul>
       </fieldset>
@@ -587,13 +589,15 @@ const FILTERS = {
   esfera:{label:"Esfera",all:"Todas as esferas"},
   contexto:{label:"Contexto",all:"Todos os contextos",atomic:true},
   status:{label:"Status",all:"Todos os status"},
+  reforma:{label:"Relação na Reforma",all:"Todas as relações",atomic:true},
 };
 const selectedFilters=Object.fromEntries(Object.keys(FILTERS).map(key=>[key,new Set()]));
 restoreUrlState();
 const contextTokens=value=>String(value??"").split(/\s*\/\s*/).map(v=>v.trim()).filter(Boolean);
+const relationTokens=item=>[...((item.substituido_por||[]).length?["O que sai"]:[]), ...((item.substitui||[]).length?["O que entra"]:[])];
 
 function uniqueValues(key){
-  const values=FILTERS[key].atomic ? DATA.flatMap(x=>contextTokens(x[key])) : DATA.map(x=>x[key]);
+  const values=key==="reforma" ? DATA.flatMap(relationTokens) : FILTERS[key].atomic ? DATA.flatMap(x=>contextTokens(x[key])) : DATA.map(x=>x[key]);
   return [...new Set(values.filter(Boolean))].sort((a,b)=>a.localeCompare(b,"pt-BR"));
 }
 function esc(s){
@@ -691,7 +695,7 @@ function renderChips(){
 function matchesFilter(item,key){
   const selected=selectedFilters[key];
   if(!selected.size) return true;
-  const itemValues=FILTERS[key].atomic?contextTokens(item[key]):[item[key]];
+  const itemValues=key==="reforma"?relationTokens(item):FILTERS[key].atomic?contextTokens(item[key]):[item[key]];
   return itemValues.some(value=>selected.has(value));
 }
 function renderCards(){
@@ -757,7 +761,7 @@ function render(){
     <td data-icone="${iconePara(ICONE_TIPO,x.tipo)}">${esc(x.tipo)}</td>
     <td data-icone="${iconePara(ICONE_ESFERA,x.esfera)}">${esc(x.esfera)}</td>
     <td>${esc(x.contexto)}</td>
-    <td>${esc(x.descricao)} <details><summary>Fundamento legal</summary>${x.fundamento.map(f=>`<p><a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.lei)}</a>${f.observacao?` — ${esc(f.observacao)}`:""}</p>`).join("")}</details></td>
+    <td>${esc(x.descricao)} <details><summary>Fundamento legal</summary>${x.fundamento.map(f=>`<p><a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.lei)}</a>${f.observacao?` — ${esc(f.observacao)}`:""}</p>`).join("")}</details>${(x.substituido_por||[]).length||(x.substitui||[]).length?`<details class="reforma-details"><summary>Ver relação e transição</summary><p><strong>${(x.substituido_por||[]).length?"Substituído por:":"Substitui:"}</strong> ${(x.substituido_por||x.substitui).map(id=>{const a=DATA.find(y=>y.id===id);return `<a href="#${esc(id)}">${esc(a?.sigla||id)}</a>`}).join(", ")}</p>${x.vigencia?`<ol>${x.vigencia.marcos.map(m=>`<li><time datetime="${esc(m.data)}">${esc(m.data)}</time> — ${esc(m.descricao)}</li>`).join("")}</ol>`:""}</details>`:""}</td>
     <td data-icone="${iconePara(ICONE_STATUS,x.status)}" class="${/transi|implant/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}${x.nota_status?` — ${esc(x.nota_status)}`:""}</td>
     <td><strong>Sujeito:</strong> ${esc(x.sujeito_passivo)}<br><strong>Periodicidade:</strong> ${esc(x.periodicidade)}${x.guia?`<br><strong>Guia:</strong> <a href="#${esc(x.guia.id)}">${esc(x.guia.rotulo)}</a>`:""}</td>
     <td class="print-hide"><button type="button" class="copy-markdown" data-copy-id="${esc(x.id)}" aria-label="Copiar ${esc(x.sigla)} como Markdown">Copiar Markdown</button></td>

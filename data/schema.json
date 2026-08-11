@@ -72,10 +72,16 @@
       },
       "aliases": {
         "type": "array",
-        "items": { "type": "string", "minLength": 1 },
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
         "default": []
       },
-      "atualizado_em": { "type": "string", "format": "date" },
+      "atualizado_em": {
+        "type": "string",
+        "format": "date"
+      },
       "fontes": {
         "type": "array",
         "minItems": 1,
@@ -84,23 +90,43 @@
           "additionalProperties": false,
           "required": ["rotulo", "url"],
           "properties": {
-            "rotulo": { "type": "string", "minLength": 1 },
-            "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+            "rotulo": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            }
           }
         }
       },
-      "sujeito_passivo": { "type": "string", "minLength": 1 },
-      "periodicidade": { "type": "string", "minLength": 1 },
+      "sujeito_passivo": {
+        "type": "string",
+        "minLength": 1
+      },
+      "periodicidade": {
+        "type": "string",
+        "minLength": 1
+      },
       "guia": {
         "oneOf": [
-          { "type": "null" },
+          {
+            "type": "null"
+          },
           {
             "type": "object",
             "additionalProperties": false,
             "required": ["id", "rotulo"],
             "properties": {
-              "id": { "type": "string" },
-              "rotulo": { "type": "string", "minLength": 1 }
+              "id": {
+                "type": "string"
+              },
+              "rotulo": {
+                "type": "string",
+                "minLength": 1
+              }
             }
           }
         ]
@@ -113,11 +139,70 @@
           "additionalProperties": false,
           "required": ["lei", "url"],
           "properties": {
-            "lei": { "type": "string", "minLength": 1 },
-            "url": { "type": "string", "format": "uri", "pattern": "^https://" },
-            "observacao": { "type": "string" }
+            "lei": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            "observacao": {
+              "type": "string"
+            }
           }
         }
+      },
+      "substituido_por": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "uniqueItems": true
+      },
+      "substitui": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "uniqueItems": true
+      },
+      "vigencia": {
+        "type": "object",
+        "required": ["inicio", "fim", "marcos"],
+        "properties": {
+          "inicio": {
+            "type": "string",
+            "format": "date"
+          },
+          "fim": {
+            "type": "string",
+            "format": "date"
+          },
+          "marcos": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["data", "descricao"],
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "descricao": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
       }
     }
   }

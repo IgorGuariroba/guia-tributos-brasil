@@ -44,7 +44,7 @@ const STATUS_ENUM = [
   'Não instituído',
   'Histórico',
 ];
-const OPTIONAL_FIELDS = ['nota_status', 'aliases'];
+const OPTIONAL_FIELDS = ['nota_status', 'aliases', 'substituido_por', 'substitui', 'vigencia'];
 const URL_PATTERN = /^https:\/\//;
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
@@ -143,6 +143,18 @@ function validar(dados) {
       ids.add(item.id);
     }
   });
+  const porId = new Map(dados.map(item => [item.id, item]));
+  for (const item of dados) {
+    for (const campo of ['substituido_por', 'substitui']) {
+      for (const id of item[campo] || []) {
+        if (!porId.has(id)) erros.push(`${item.id}: ${campo} aponta para id inexistente ${id}.`);
+        const inverso = campo === 'substituido_por' ? 'substitui' : 'substituido_por';
+        if (porId.has(id) && !(porId.get(id)[inverso] || []).includes(item.id)) {
+          erros.push(`${item.id}: relação não recíproca com ${id}.`);
+        }
+      }
+    }
+  }
   return erros;
 }
 

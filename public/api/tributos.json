@@ -1,5 +1,5 @@
 {
-  "version": "sha256-5d2acf4e4816696a44215779ba97bd7cebf0b33155416fdd38053dc759e4ae39",
+  "version": "sha256-52cfbe70e7c4fba05cc2d55d607addef5df7a3aaaeb1a34838ad7288f20e4393",
   "gerado_em": "2026-08-10T22:16:49-03:00",
   "total": 78,
   "itens": [
@@ -32,7 +32,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "irpj",
@@ -62,7 +64,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "irrf",
@@ -89,7 +93,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "ipi",
@@ -116,7 +122,34 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [
+        "is",
+        "ibs"
+      ],
+      "substitui": [],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "iof",
@@ -146,7 +179,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "ii",
@@ -176,7 +211,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "ie",
@@ -206,7 +243,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "itr",
@@ -236,7 +275,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "igf",
@@ -263,7 +304,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "icms",
@@ -290,7 +333,33 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [
+        "ibs"
+      ],
+      "substitui": [],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "ipva",
@@ -321,7 +390,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "itcmd",
@@ -352,7 +423,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "iss",
@@ -383,7 +456,33 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [
+        "ibs"
+      ],
+      "substitui": [],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "issqn",
@@ -411,7 +510,33 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [
+        "ibs"
+      ],
+      "substitui": [],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "iptu",
@@ -442,7 +567,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "itbi",
@@ -472,7 +599,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "ibs",
@@ -504,7 +633,36 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": [
+        "icms",
+        "iss",
+        "issqn",
+        "ipi"
+      ],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "is",
@@ -532,7 +690,33 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": [
+        "ipi"
+      ],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "pis-pasep",
@@ -559,7 +743,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "pis",
@@ -586,7 +772,33 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [
+        "cbs"
+      ],
+      "substitui": [],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "pasep",
@@ -613,7 +825,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cofins",
@@ -640,7 +854,33 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [
+        "cbs"
+      ],
+      "substitui": [],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "csll",
@@ -670,7 +910,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "adcsll",
@@ -697,7 +939,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cbs",
@@ -728,7 +972,34 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": [
+        "pis",
+        "cofins"
+      ],
+      "vigencia": {
+        "inicio": "2026-01-01",
+        "fim": "2033-12-31",
+        "marcos": [
+          {
+            "data": "2026-01-01",
+            "descricao": "Início da fase de teste e adaptação operacional da transição."
+          },
+          {
+            "data": "2027-01-01",
+            "descricao": "Início da cobrança da CBS e extinção de PIS/Cofins, conforme o cronograma legal."
+          },
+          {
+            "data": "2029-01-01",
+            "descricao": "Início da transição gradual entre os tributos atuais e o IBS."
+          },
+          {
+            "data": "2033-01-01",
+            "descricao": "Conclusão prevista da transição para o novo modelo de tributação do consumo."
+          }
+        ]
+      }
     },
     {
       "id": "cide",
@@ -755,7 +1026,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cide-combustiveis",
@@ -782,7 +1055,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cide-royalties",
@@ -809,7 +1084,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "inss",
@@ -836,7 +1113,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cpp",
@@ -867,7 +1146,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cprb",
@@ -895,7 +1176,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "rat",
@@ -926,7 +1209,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "sat",
@@ -954,7 +1239,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "salario-educacao",
@@ -981,7 +1268,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "fust",
@@ -1008,7 +1297,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "funttel",
@@ -1035,7 +1326,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "condecine",
@@ -1062,7 +1355,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "afrmm",
@@ -1089,7 +1384,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cfem",
@@ -1116,7 +1413,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cfurh",
@@ -1143,7 +1442,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "funrural",
@@ -1170,7 +1471,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "senai",
@@ -1197,7 +1500,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "sesi",
@@ -1224,7 +1529,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "senac",
@@ -1251,7 +1558,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "sesc",
@@ -1278,7 +1587,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "sebrae",
@@ -1305,7 +1616,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "senar",
@@ -1332,7 +1645,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "sest",
@@ -1359,7 +1674,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "senat",
@@ -1386,7 +1703,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cosip",
@@ -1417,7 +1736,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "cip",
@@ -1445,7 +1766,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tfe",
@@ -1473,7 +1796,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tfa",
@@ -1501,7 +1826,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "trss",
@@ -1529,7 +1856,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tff-municipal",
@@ -1561,7 +1890,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tflf",
@@ -1589,7 +1920,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tlp",
@@ -1620,7 +1953,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tcr",
@@ -1648,7 +1983,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tfrm",
@@ -1676,7 +2013,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tfa-anvisa",
@@ -1703,7 +2042,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tfvs",
@@ -1731,7 +2072,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tff-federal",
@@ -1758,7 +2101,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tfi",
@@ -1785,7 +2130,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "fistel",
@@ -1812,7 +2159,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "taf",
@@ -1840,7 +2189,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "tffa",
@@ -1867,7 +2218,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "fgts",
@@ -1897,7 +2250,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "fap",
@@ -1924,7 +2279,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "sistema-s",
@@ -1951,7 +2308,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "ret",
@@ -1978,7 +2337,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "simples",
@@ -2005,7 +2366,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "das",
@@ -2036,7 +2399,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "das-mei",
@@ -2068,7 +2433,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "darf",
@@ -2099,7 +2466,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "dae",
@@ -2126,7 +2495,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "gps",
@@ -2158,7 +2529,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "gcap",
@@ -2185,7 +2558,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     },
     {
       "id": "come-cotas",
@@ -2213,7 +2588,9 @@
       ],
       "sujeito_passivo": "Pessoa física ou jurídica, conforme a hipótese de incidência.",
       "periodicidade": "Conforme a hipótese aplicável.",
-      "guia": null
+      "guia": null,
+      "substituido_por": [],
+      "substitui": []
     }
   ]
 }

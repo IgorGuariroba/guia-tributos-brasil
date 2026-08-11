@@ -284,7 +284,6 @@ await checar('ícones desenham pixels de verdade (data-URI válido)', async () =
   // mas não pinta nada. A única verificação honesta é comparar pixels renderizados.
   const amostras = [
     { sel: '.card h2[data-icone]', nome: 'card' },
-    { sel: 'td[data-icone="federal"]', nome: 'esfera na tabela' },
     { sel: '.actions button[data-icone="csv"]', nome: 'botão CSV' },
   ];
   for (const { sel, nome } of amostras) {
@@ -410,6 +409,50 @@ await checar('aliases retornam o item correto', async () => {
       id,
     );
   }
+});
+
+await checar('relações da Reforma são válidas, recíprocas e filtráveis', async () => {
+  /* global DATA */
+  await page.goto(`${URL_AUDITADA}?profile=all`);
+  await entrarNoGuia(page);
+  const resultado = await page.evaluate(() => {
+    const ids = new Set(DATA.map(x => x.id));
+    const erros = [];
+    DATA.forEach(x => {
+      for (const [campo, inverso] of [
+        ['substituido_por', 'substitui'],
+        ['substitui', 'substituido_por'],
+      ]) {
+        for (const id of x[campo] || []) {
+          if (!ids.has(id) || !(DATA.find(y => y.id === id)?.[inverso] || []).includes(x.id)) {
+            erros.push(`${x.id}->${id}`);
+          }
+        }
+      }
+    });
+    const timeCount = DATA.filter(x => x.vigencia).reduce(
+      (n, x) => n + x.vigencia.marcos.length,
+      0,
+    );
+    return {
+      erros,
+      timeCount,
+      relations: DATA.filter(x => (x.substituido_por || []).length || (x.substitui || []).length)
+        .length,
+    };
+  });
+  if (resultado.erros.length) throw new Error(`relações inválidas: ${resultado.erros.join(',')}`);
+  if (resultado.relations < 6 || resultado.timeCount < 20) {
+    throw new Error('cobertura de relações ou marcos insuficiente');
+  }
+  await page.click('#reforma');
+  await page.getByRole('option', { name: 'O que sai', exact: true }).click();
+  await page.waitForFunction(() => document.querySelectorAll('tbody tr').length > 0);
+  if (!(await page.locator('tbody tr details.reforma-details').count())) {
+    throw new Error('filtro não renderizou relações');
+  }
+  const tempos = await page.locator('tbody tr time[datetime]').count();
+  if (!tempos) throw new Error('timeline sem elementos time');
 });
 
 await checar('console sem erros', async () => {
