@@ -58,6 +58,29 @@ Depois de editar `data/tributos.json` ou `src/index.template.html`, rode `npm ru
 commite tanto a fonte quanto `public/` — o Gate 1 (build) reprova PRs em que os dois
 divergem, exatamente como um `git diff --exit-code` de código gerado.
 
+## SEO e metadados sociais
+
+`npm run build` também gera, a partir da mesma URL canonical fixa
+(`https://igorguariroba.github.io/guia-tributos-brasil/`):
+
+- **`public/robots.txt`** — libera todo o crawling e aponta para o sitemap.
+- **`public/sitemap.xml`** — uma URL indexável (SPA de página única; fragmentos `#item-x`
+  não entram até existir deep-link funcional — ver `docs/plano-de-melhoria.md`, tarefa 2.2).
+- **`<link rel="canonical">`, `og:*`, `twitter:*`** injetados no `<head>` de
+  `src/index.template.html` (não gerados dinamicamente — são estáticos, iguais em todo build).
+
+`public/og-image.png` (1200×630, visual brutalista igual ao site) é gerado separadamente,
+via Chromium/Playwright, e commitado como artefato binário:
+
+```bash
+node audit/gen-og-image.mjs    # regenera public/og-image.png
+```
+
+Só precisa rodar de novo se o texto/design da imagem mudar — não faz parte do `npm run build`
+nem do Gate de build (é determinístico, mas caro de gerar a cada push; sua consistência
+fica sob revisão humana no PR, como qualquer outro binário versionado).
+Lighthouse SEO permanece **100** com os metadados presentes (`lighthouserc.json`).
+
 ## Gates de qualidade
 
 Os gates rodam automaticamente no **pre-push** (husky) e no **CI** (GitHub Actions).

@@ -16,3 +16,5 @@ public/index.html
 src/index.template.html
 public/api/tributos.json
 public/api/tributos.csv
+public/robots.txt
+public/sitemap.xml

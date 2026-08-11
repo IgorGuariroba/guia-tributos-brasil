@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://igorguariroba.github.io/guia-tributos-brasil/sitemap.xml

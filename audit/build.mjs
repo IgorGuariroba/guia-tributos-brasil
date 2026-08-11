@@ -14,6 +14,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const CHECK = process.argv.includes('--check');
+const SITE_URL = 'https://igorguariroba.github.io/guia-tributos-brasil/';
 
 const REQUIRED_FIELDS = [
   'id',
@@ -63,6 +64,29 @@ function validar(dados) {
   return erros;
 }
 
+function paraRobots() {
+  return `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`;
+}
+
+function paraSitemap() {
+  // Uma única URL indexável: o site é uma SPA de página única sem roteamento de
+  // servidor. Fragmentos (#item-x) não são páginas distintas para crawlers — não
+  // entram no sitemap até existir deep-link funcional com estado inicial (fase
+  // 2.2 do plano de melhoria) que justifique tratá-los como URLs próprias.
+  // Sem <lastmod>: o build precisa ser determinístico byte a byte (Gate de
+  // build/--check); uma data "hoje" tornaria o artefato divergente todo dia
+  // mesmo sem mudança real no catálogo.
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${SITE_URL}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+`;
+}
+
 function paraCsv(dados) {
   const cols = ['id', 'sigla', 'nome', 'tipo', 'esfera', 'contexto', 'descricao', 'status'];
   const header = [
@@ -109,6 +133,8 @@ async function main() {
     ['public/index.html', htmlGerado],
     ['public/api/tributos.json', apiJson],
     ['public/api/tributos.csv', apiCsv],
+    ['public/robots.txt', paraRobots()],
+    ['public/sitemap.xml', paraSitemap()],
   ];
 
   if (CHECK) {
