@@ -8,7 +8,18 @@
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["id", "sigla", "nome", "tipo", "esfera", "contexto", "descricao", "status"],
+    "required": [
+      "id",
+      "sigla",
+      "nome",
+      "tipo",
+      "esfera",
+      "contexto",
+      "descricao",
+      "status",
+      "atualizado_em",
+      "fontes"
+    ],
     "properties": {
       "id": {
         "type": "string",
@@ -59,6 +70,23 @@
         "type": "array",
         "items": { "type": "string", "minLength": 1 },
         "default": []
+      },
+      "atualizado_em": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "fontes": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rotulo", "url"],
+          "properties": {
+            "rotulo": { "type": "string", "minLength": 1 },
+            "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+          }
+        }
       }
     }
   }

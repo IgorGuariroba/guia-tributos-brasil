@@ -8,7 +8,14 @@
     "contexto": "Pessoa física",
     "descricao": "Incide sobre renda e proventos tributáveis de pessoas físicas, conforme as regras do Imposto de Renda.",
     "status": "Vigente",
-    "aliases": ["carnê-leão", "carne leao"]
+    "aliases": ["carnê-leão", "carne leao"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "irpj",
@@ -19,7 +26,14 @@
     "contexto": "Empresa",
     "descricao": "Incide sobre a renda/lucro tributável das pessoas jurídicas.",
     "status": "Vigente",
-    "aliases": ["imposto da empresa"]
+    "aliases": ["imposto da empresa"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "irrf",
@@ -29,7 +43,14 @@
     "esfera": "Federal",
     "contexto": "Pessoa física / Empresa / Financeiro",
     "descricao": "Forma de arrecadação do Imposto de Renda em que o pagador retém o valor na fonte em diversas hipóteses.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "ipi",
@@ -39,7 +60,14 @@
     "esfera": "Federal",
     "contexto": "Indústria / Comércio exterior",
     "descricao": "Incide sobre produtos industrializados e, em determinadas hipóteses, na importação. Sofre mudanças relevantes com a Reforma Tributária.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "iof",
@@ -50,7 +78,14 @@
     "contexto": "Financeiro",
     "descricao": "Incide sobre operações de crédito, câmbio, seguro e operações relativas a títulos ou valores mobiliários.",
     "status": "Vigente",
-    "aliases": ["imposto financeiro"]
+    "aliases": ["imposto financeiro"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "ii",
@@ -61,7 +96,14 @@
     "contexto": "Comércio exterior",
     "descricao": "Incide sobre a importação de produtos estrangeiros.",
     "status": "Vigente",
-    "aliases": ["imposto de importação"]
+    "aliases": ["imposto de importação"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "ie",
@@ -72,7 +114,14 @@
     "contexto": "Comércio exterior",
     "descricao": "Pode incidir sobre a exportação de produtos nacionais ou nacionalizados nas hipóteses previstas em lei.",
     "status": "Vigente",
-    "aliases": ["imposto de exportação"]
+    "aliases": ["imposto de exportação"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "itr",
@@ -83,7 +132,14 @@
     "contexto": "Imobiliário / Rural",
     "descricao": "Incide sobre propriedade territorial rural.",
     "status": "Vigente",
-    "aliases": ["imposto rural"]
+    "aliases": ["imposto rural"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "igf",
@@ -93,7 +149,14 @@
     "esfera": "Federal",
     "contexto": "Patrimônio",
     "descricao": "Previsto constitucionalmente, mas depende de lei complementar para ser instituído.",
-    "status": "Não instituído"
+    "status": "Não instituído",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "icms",
@@ -103,7 +166,14 @@
     "esfera": "Estadual",
     "contexto": "Comércio / Consumo / Transporte / Telecom",
     "descricao": "Tributa principalmente circulação de mercadorias, transporte intermunicipal/interestadual e comunicação. Será substituído gradualmente pelo IBS.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "ipva",
@@ -114,7 +184,14 @@
     "contexto": "Veículos",
     "descricao": "Incide sobre a propriedade de veículos automotores, conforme legislação estadual.",
     "status": "Vigente",
-    "aliases": ["imposto do carro", "imposto de veículo"]
+    "aliases": ["imposto do carro", "imposto de veículo"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "itcmd",
@@ -125,7 +202,14 @@
     "contexto": "Herança / Doação / Patrimônio",
     "descricao": "Incide sobre transmissão gratuita de bens ou direitos por herança ou doação.",
     "status": "Vigente",
-    "aliases": ["imposto da herança", "imposto de herança"]
+    "aliases": ["imposto da herança", "imposto de herança"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "iss",
@@ -136,7 +220,14 @@
     "contexto": "Serviços",
     "descricao": "Incide sobre prestações de serviços definidas em lei complementar. Será substituído gradualmente pelo IBS.",
     "status": "Em transição",
-    "aliases": ["ISSQN", "imposto municipal sobre serviços"]
+    "aliases": ["ISSQN", "imposto municipal sobre serviços"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "issqn",
@@ -147,7 +238,14 @@
     "contexto": "Serviços",
     "descricao": "Outra sigla amplamente utilizada para o ISS.",
     "status": "Em transição",
-    "aliases": []
+    "aliases": [],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "iptu",
@@ -158,7 +256,14 @@
     "contexto": "Imobiliário",
     "descricao": "Incide sobre propriedade predial e territorial urbana.",
     "status": "Vigente",
-    "aliases": ["imposto predial", "imposto da casa"]
+    "aliases": ["imposto predial", "imposto da casa"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "itbi",
@@ -169,7 +274,14 @@
     "contexto": "Imobiliário",
     "descricao": "Incide, em linhas gerais, sobre transmissão onerosa inter vivos de bens imóveis e direitos imobiliários abrangidos pela legislação.",
     "status": "Vigente",
-    "aliases": ["imposto de transferência de imóvel"]
+    "aliases": ["imposto de transferência de imóvel"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "ibs",
@@ -181,7 +293,14 @@
     "descricao": "Novo imposto sobre consumo de competência compartilhada entre estados, DF e municípios. Está em implementação na Reforma Tributária.",
     "status": "Em implantação",
     "nota_status": "Implementação 2026",
-    "aliases": ["imposto do consumo", "imposto sobre consumo"]
+    "aliases": ["imposto do consumo", "imposto sobre consumo"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "is",
@@ -192,7 +311,14 @@
     "contexto": "Consumo / Indústria",
     "descricao": "Novo imposto federal seletivo sobre bens e serviços definidos em lei, voltado especialmente a externalidades negativas à saúde ou ao meio ambiente.",
     "status": "Em implantação",
-    "nota_status": "Implementação"
+    "nota_status": "Implementação",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "pis-pasep",
@@ -202,7 +328,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Receita",
     "descricao": "Contribuições sociais associadas ao financiamento de finalidades sociais. Integram o sistema que será substituído pela CBS.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "pis",
@@ -212,7 +345,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Receita",
     "descricao": "Contribuição incidente segundo regimes e hipóteses previstos na legislação, com forte presença na tributação da receita/faturamento.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "pasep",
@@ -222,7 +362,14 @@
     "esfera": "Federal",
     "contexto": "Setor público",
     "descricao": "Componente do PIS/Pasep ligado historicamente ao setor público.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cofins",
@@ -232,7 +379,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Receita",
     "descricao": "Contribuição social incidente, em diversas hipóteses, sobre receita/faturamento. Será substituída pela CBS.",
-    "status": "Em transição"
+    "status": "Em transição",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "csll",
@@ -243,7 +397,14 @@
     "contexto": "Empresa",
     "descricao": "Contribuição social calculada sobre o resultado ajustado das pessoas jurídicas, conforme regime aplicável.",
     "status": "Vigente",
-    "aliases": ["contribuição sobre o lucro"]
+    "aliases": ["contribuição sobre o lucro"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "adcsll",
@@ -253,7 +414,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Financeiro",
     "descricao": "Adicional de CSLL aplicável a hipóteses e setores definidos em legislação específica.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cbs",
@@ -265,7 +433,14 @@
     "descricao": "Novo tributo federal sobre consumo, criado no âmbito da Reforma Tributária, em implementação a partir de 2026.",
     "status": "Em implantação",
     "nota_status": "Implementação 2026",
-    "aliases": ["contribuição do consumo"]
+    "aliases": ["contribuição do consumo"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cide",
@@ -275,7 +450,14 @@
     "esfera": "Federal",
     "contexto": "Setorial / Economia",
     "descricao": "Classe de contribuições federais usadas para intervenção em determinados setores econômicos.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cide-combustiveis",
@@ -285,7 +467,14 @@
     "esfera": "Federal",
     "contexto": "Combustíveis",
     "descricao": "Contribuição incidente nas hipóteses legais relacionadas a combustíveis.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cide-royalties",
@@ -295,7 +484,14 @@
     "esfera": "Federal",
     "contexto": "Tecnologia / Internacional",
     "descricao": "Nome de uso comum para a CIDE incidente em determinadas remessas e contratos envolvendo tecnologia, royalties e serviços técnicos.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "inss",
@@ -305,7 +501,14 @@
     "esfera": "Federal",
     "contexto": "Folha / Pessoa física / Empresa",
     "descricao": "No uso cotidiano, INSS identifica contribuições destinadas à Previdência Social recolhidas por segurados e empresas. INSS é também o nome da autarquia.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cpp",
@@ -316,7 +519,14 @@
     "contexto": "Empresa / Folha",
     "descricao": "Contribuição previdenciária de responsabilidade patronal sobre bases previstas na legislação.",
     "status": "Vigente",
-    "aliases": ["INSS patronal", "contribuição patronal"]
+    "aliases": ["INSS patronal", "contribuição patronal"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cprb",
@@ -327,7 +537,14 @@
     "contexto": "Empresa / Folha / Receita",
     "descricao": "Regime de contribuição previdenciária calculada sobre receita bruta em hipóteses legais específicas.",
     "status": "Vigente",
-    "nota_status": "Regras específicas"
+    "nota_status": "Regras específicas",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "rat",
@@ -338,7 +555,14 @@
     "contexto": "Empresa / Folha",
     "descricao": "Contribuição destinada ao financiamento dos benefícios decorrentes dos riscos ambientais do trabalho, com alíquotas vinculadas ao risco da atividade.",
     "status": "Vigente",
-    "aliases": ["SAT", "seguro acidente do trabalho"]
+    "aliases": ["SAT", "seguro acidente do trabalho"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "sat",
@@ -349,7 +573,14 @@
     "contexto": "Empresa / Folha",
     "descricao": "Denominação tradicional frequentemente associada à contribuição atualmente tratada no contexto do RAT.",
     "status": "Histórico",
-    "nota_status": "Denominação histórica/comum"
+    "nota_status": "Denominação histórica/comum",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "salario-educacao",
@@ -359,7 +590,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Educação",
     "descricao": "Contribuição social destinada ao financiamento da educação básica pública.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "fust",
@@ -369,7 +607,14 @@
     "esfera": "Federal",
     "contexto": "Telecom",
     "descricao": "Contribuição setorial voltada à universalização dos serviços de telecomunicações.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "funttel",
@@ -379,7 +624,14 @@
     "esfera": "Federal",
     "contexto": "Telecom / Tecnologia",
     "descricao": "Contribuição destinada ao desenvolvimento tecnológico das telecomunicações.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "condecine",
@@ -389,7 +641,14 @@
     "esfera": "Federal",
     "contexto": "Audiovisual",
     "descricao": "Contribuição de intervenção no domínio econômico ligada ao setor audiovisual.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "afrmm",
@@ -399,7 +658,14 @@
     "esfera": "Federal",
     "contexto": "Comércio exterior / Marítimo",
     "descricao": "Adicional incidente sobre frete aquaviário em hipóteses legais e destinado à Marinha Mercante.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cfem",
@@ -409,7 +675,14 @@
     "esfera": "Federal / repartida",
     "contexto": "Mineração",
     "descricao": "Compensação financeira devida pela exploração de recursos minerais; não é imposto.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cfurh",
@@ -419,7 +692,14 @@
     "esfera": "Federal / repartida",
     "contexto": "Energia / Recursos hídricos",
     "descricao": "Compensação financeira vinculada ao aproveitamento de recursos hídricos para geração de energia em hipóteses legais.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "funrural",
@@ -429,7 +709,14 @@
     "esfera": "Federal",
     "contexto": "Agronegócio / Rural",
     "descricao": "Denominação usual para contribuições previdenciárias incidentes em operações do produtor rural segundo as regras aplicáveis.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "senai",
@@ -439,7 +726,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Sistema S",
     "descricao": "Contribuição destinada ao SENAI, integrante das contribuições arrecadadas para terceiros em hipóteses aplicáveis.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "sesi",
@@ -449,7 +743,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Sistema S",
     "descricao": "Contribuição destinada ao SESI.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "senac",
@@ -459,7 +760,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Sistema S",
     "descricao": "Contribuição destinada ao SENAC.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "sesc",
@@ -469,7 +777,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Sistema S",
     "descricao": "Contribuição destinada ao SESC.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "sebrae",
@@ -479,7 +794,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Sistema S",
     "descricao": "Contribuição destinada ao apoio às micro e pequenas empresas, conforme enquadramento legal.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "senar",
@@ -489,7 +811,14 @@
     "esfera": "Federal",
     "contexto": "Agronegócio / Sistema S",
     "descricao": "Contribuição destinada ao SENAR.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "sest",
@@ -499,7 +828,14 @@
     "esfera": "Federal",
     "contexto": "Transporte / Sistema S",
     "descricao": "Contribuição destinada ao SEST.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "senat",
@@ -509,7 +845,14 @@
     "esfera": "Federal",
     "contexto": "Transporte / Sistema S",
     "descricao": "Contribuição destinada ao SENAT.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cosip",
@@ -520,7 +863,14 @@
     "contexto": "Imóvel / Serviços públicos",
     "descricao": "Contribuição destinada ao custeio, expansão e melhoria do serviço de iluminação pública.",
     "status": "Vigente",
-    "aliases": ["taxa de luz", "contribuição de iluminação"]
+    "aliases": ["taxa de luz", "contribuição de iluminação"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "cip",
@@ -531,7 +881,14 @@
     "contexto": "Imóvel / Serviços públicos",
     "descricao": "Sigla usada por diversos municípios para a contribuição de iluminação pública (COSIP).",
     "status": "Vigente",
-    "nota_status": "Nome local"
+    "nota_status": "Nome local",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tfe",
@@ -542,7 +899,14 @@
     "contexto": "Empresa / Licenciamento",
     "descricao": "Taxa municipal encontrada em diversos municípios para fiscalização de estabelecimentos; nome e regras variam localmente.",
     "status": "Varia por ente",
-    "nota_status": "Varia por município"
+    "nota_status": "Varia por município",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tfa",
@@ -553,7 +917,14 @@
     "contexto": "Empresa / Publicidade",
     "descricao": "Taxa municipal relacionada à fiscalização de anúncios; nomenclatura e regras variam conforme o município.",
     "status": "Varia por ente",
-    "nota_status": "Varia por município"
+    "nota_status": "Varia por município",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "trss",
@@ -564,7 +935,14 @@
     "contexto": "Saúde / Resíduos",
     "descricao": "Taxa municipal associada a serviços públicos específicos de coleta/destinação de resíduos de serviços de saúde, conforme legislação local.",
     "status": "Varia por ente",
-    "nota_status": "Varia por município"
+    "nota_status": "Varia por município",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tff-municipal",
@@ -576,7 +954,14 @@
     "descricao": "Sigla adotada por alguns municípios para fiscalização de funcionamento de estabelecimentos.",
     "status": "Varia por ente",
     "nota_status": "Varia por município",
-    "aliases": ["taxa de alvará", "taxa de funcionamento"]
+    "aliases": ["taxa de alvará", "taxa de funcionamento"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tflf",
@@ -587,7 +972,14 @@
     "contexto": "Empresa / Licenciamento",
     "descricao": "Taxa municipal de fiscalização de localização e funcionamento, com nomenclatura variável.",
     "status": "Varia por ente",
-    "nota_status": "Varia por município"
+    "nota_status": "Varia por município",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tlp",
@@ -599,7 +991,14 @@
     "descricao": "Denominação utilizada em algumas legislações locais; a validade e a configuração dependem do serviço específico e divisível e da legislação do ente.",
     "status": "Varia por ente",
     "nota_status": "Varia por município",
-    "aliases": ["taxa do lixo"]
+    "aliases": ["taxa do lixo"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tcr",
@@ -610,7 +1009,14 @@
     "contexto": "Imobiliário / Resíduos",
     "descricao": "Denominação genérica/local para taxa ligada à coleta de resíduos; sigla e regras variam por município.",
     "status": "Varia por ente",
-    "nota_status": "Varia por município"
+    "nota_status": "Varia por município",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tfrm",
@@ -621,7 +1027,14 @@
     "contexto": "Mineração",
     "descricao": "Taxa estadual existente em alguns estados para fiscalização de atividades minerárias, conforme legislação local.",
     "status": "Varia por ente",
-    "nota_status": "Varia por estado"
+    "nota_status": "Varia por estado",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tfa-anvisa",
@@ -631,7 +1044,14 @@
     "esfera": "Federal",
     "contexto": "Saúde / Regulação",
     "descricao": "Taxa de fiscalização vinculada à atuação regulatória da Anvisa em hipóteses previstas em lei.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tfvs",
@@ -642,7 +1062,14 @@
     "contexto": "Saúde / Regulação",
     "descricao": "Sigla empregada no contexto de fiscalização sanitária; verificar a denominação usada no ato normativo específico.",
     "status": "Vigente",
-    "nota_status": "Uso específico"
+    "nota_status": "Uso específico",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tff-federal",
@@ -652,7 +1079,14 @@
     "esfera": "Federal",
     "contexto": "Telecom / Regulação",
     "descricao": "Taxa integrante do FISTEL associada à fiscalização do funcionamento de estações de telecomunicações.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tfi",
@@ -662,7 +1096,14 @@
     "esfera": "Federal",
     "contexto": "Telecom / Regulação",
     "descricao": "Taxa integrante do FISTEL ligada à fiscalização da instalação de estações de telecomunicações.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "fistel",
@@ -672,7 +1113,14 @@
     "esfera": "Federal",
     "contexto": "Telecom / Regulação",
     "descricao": "Fundo associado, entre outras receitas, às taxas de fiscalização de instalação e funcionamento. Não é um imposto.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "taf",
@@ -683,7 +1131,14 @@
     "contexto": "Aviação / Regulação",
     "descricao": "Taxa regulatória relacionada à fiscalização da aviação civil, conforme hipóteses legais.",
     "status": "Vigente",
-    "nota_status": "Uso específico"
+    "nota_status": "Uso específico",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "tffa",
@@ -693,7 +1148,14 @@
     "esfera": "Federal",
     "contexto": "Agronegócio / Regulação",
     "descricao": "Taxa federal ligada a serviços e atos de fiscalização agropecuária nas hipóteses previstas em lei.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "fgts",
@@ -704,7 +1166,14 @@
     "contexto": "Empresa / Folha / Trabalho",
     "descricao": "Depósito obrigatório do empregador em favor do trabalhador nas hipóteses legais. Não é imposto nem contribuição tributária comum.",
     "status": "Vigente",
-    "aliases": ["fundo de garantia"]
+    "aliases": ["fundo de garantia"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "fap",
@@ -714,7 +1183,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha",
     "descricao": "Multiplicador usado para ajustar a contribuição relacionada aos riscos ambientais do trabalho. Não é tributo autônomo.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "sistema-s",
@@ -724,7 +1200,14 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha",
     "descricao": "Expressão prática para contribuições destinadas a entidades como SENAI, SESI, SENAC, SESC, SEBRAE, SENAR, SEST e SENAT.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "ret",
@@ -734,7 +1217,14 @@
     "esfera": "Federal",
     "contexto": "Imobiliário / Construção",
     "descricao": "Regime especial aplicável, entre outras hipóteses, a incorporações imobiliárias. Não é um imposto isolado.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "simples",
@@ -744,7 +1234,14 @@
     "esfera": "Compartilhado",
     "contexto": "Empresa",
     "descricao": "Regime tributário simplificado para microempresas e empresas de pequeno porte, que reúne diversos tributos em documento único.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "das",
@@ -755,7 +1252,14 @@
     "contexto": "Empresa",
     "descricao": "Documento usado para recolher tributos abrangidos pelo Simples Nacional. Não é tributo.",
     "status": "Vigente",
-    "aliases": ["guia do Simples Nacional", "boleto do Simples"]
+    "aliases": ["guia do Simples Nacional", "boleto do Simples"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "das-mei",
@@ -766,7 +1270,14 @@
     "contexto": "MEI / Empresa",
     "descricao": "Documento mensal utilizado pelo MEI para recolhimentos previstos no regime. Não é tributo autônomo.",
     "status": "Vigente",
-    "aliases": ["imposto do MEI", "boleto do MEI", "guia do MEI"]
+    "aliases": ["imposto do MEI", "boleto do MEI", "guia do MEI"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "darf",
@@ -777,7 +1288,14 @@
     "contexto": "Pessoa física / Empresa",
     "descricao": "Documento utilizado para recolher diversas receitas e tributos federais. Não é imposto.",
     "status": "Vigente",
-    "aliases": ["guia federal", "guia de recolhimento federal"]
+    "aliases": ["guia federal", "guia de recolhimento federal"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "dae",
@@ -787,7 +1305,14 @@
     "esfera": "Federal",
     "contexto": "Doméstico / Folha",
     "descricao": "Guia que reúne recolhimentos do empregador doméstico no eSocial. Não é tributo autônomo.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "gps",
@@ -799,7 +1324,14 @@
     "descricao": "Guia historicamente utilizada para recolhimentos previdenciários em diversas situações. Não é tributo.",
     "status": "Vigente",
     "nota_status": "Uso conforme caso",
-    "aliases": ["carnê do INSS", "guia da previdência"]
+    "aliases": ["carnê do INSS", "guia da previdência"],
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "gcap",
@@ -809,7 +1341,14 @@
     "esfera": "Federal",
     "contexto": "Pessoa física / Patrimônio",
     "descricao": "Programa/forma de apuração de ganho de capital de pessoa física. Não é um imposto chamado GCAP.",
-    "status": "Vigente"
+    "status": "Vigente",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   },
   {
     "id": "come-cotas",
@@ -820,6 +1359,13 @@
     "contexto": "Financeiro / Investimentos",
     "descricao": "Mecanismo de antecipação de IR em determinados fundos de investimento; não é tributo autônomo.",
     "status": "Vigente",
-    "nota_status": "Conforme fundo"
+    "nota_status": "Conforme fundo",
+    "atualizado_em": "2026-08-10T22:16:49-03:00",
+    "fontes": [
+      {
+        "rotulo": "Receita Federal — orientação tributária",
+        "url": "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      }
+    ]
   }
 ]

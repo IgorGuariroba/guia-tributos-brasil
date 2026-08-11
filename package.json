@@ -9,6 +9,7 @@
     "build": "node audit/build.mjs",
     "gates": "node audit/run-gates.mjs",
     "gate:build": "node audit/build-gate.mjs",
+    "gate:frescor": "node audit/freshness-gate.mjs",
     "gate:funcional": "node audit/run-gates.mjs funcional",
     "gate:a11y": "node audit/run-gates.mjs acessibilidade",
     "gate:semantica": "node audit/run-gates.mjs semântico",

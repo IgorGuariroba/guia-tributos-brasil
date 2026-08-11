@@ -29,6 +29,8 @@ const REQUIRED_FIELDS = [
   'contexto',
   'descricao',
   'status',
+  'atualizado_em',
+  'fontes',
 ];
 const STATUS_ENUM = [
   'Vigente',
@@ -63,9 +65,30 @@ function validar(dados) {
         ) {
           erros.push(`${rotulo}: "aliases" deve ser uma lista de textos não vazios.`);
         }
+      } else if (campo === 'fontes') {
+        // Validado abaixo para produzir uma mensagem específica.
+      } else if (campo === 'atualizado_em') {
+        // Validado abaixo como data ISO.
       } else if (typeof valor !== 'string' || valor.trim() === '') {
         erros.push(`${rotulo}: campo obrigatório "${campo}" ausente ou vazio.`);
       }
+    }
+    if (
+      !item.fontes ||
+      !Array.isArray(item.fontes) ||
+      item.fontes.length === 0 ||
+      item.fontes.some(
+        f =>
+          typeof f?.rotulo !== 'string' || typeof f?.url !== 'string' || !/^https:\/\//.test(f.url),
+      )
+    ) {
+      erros.push(`${rotulo}: "fontes" deve conter ao menos uma fonte com rotulo e URL HTTPS.`);
+    }
+    if (
+      typeof item.atualizado_em !== 'string' ||
+      Number.isNaN(new Date(item.atualizado_em).getTime())
+    ) {
+      erros.push(`${rotulo}: "atualizado_em" deve ser uma data ISO válida.`);
     }
     if (!STATUS_ENUM.includes(item.status)) {
       erros.push(`${rotulo}: status "${item.status}" não pertence ao enum fechado.`);

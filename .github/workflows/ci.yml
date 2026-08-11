@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "0 9 1 1,4,7,10 *"
 
 permissions:
   contents: read
@@ -15,6 +17,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  frescor:
+    name: Gate de frescor do catálogo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verificar revisão em até 180 dias
+        run: npm run gate:frescor
+
   # Job separado e sem navegador: falha em segundos e dá feedback imediato de
   # build/estilo no PR, sem esperar os gates pesados (Playwright + Lighthouse).
   estilo:
