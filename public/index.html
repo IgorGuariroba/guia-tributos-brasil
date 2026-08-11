@@ -650,8 +650,15 @@ const COMPARISON_PAIRS = [
 let comparisonIds = [];
 function renderComparison(){
   const options = $("comparison-options");
-  options.innerHTML = COMPARISON_PAIRS.flat().filter((id,index,array)=>array.indexOf(id)===index).map(id=>{
-    const item=DATA.find(x=>x.id===id);
+  const profile=PROFILES[activeProfile||"all"];
+  const comparisonItems=COMPARISON_PAIRS.flat()
+    .filter((id,index,array)=>array.indexOf(id)===index)
+    .map(id=>DATA.find(x=>x.id===id))
+    .filter(item=>item&&profile.match(item));
+  const availableIds=new Set(comparisonItems.map(item=>item.id));
+  comparisonIds=comparisonIds.filter(id=>availableIds.has(id));
+  options.innerHTML = comparisonItems.map(item=>{
+    const id=item.id;
     return `<button type="button" data-compare-id="${id}" aria-pressed="${comparisonIds.includes(id)}">${esc(item.sigla)}</button>`;
   }).join("");
   options.querySelectorAll("[data-compare-id]").forEach(button=>button.addEventListener("click",()=>{
