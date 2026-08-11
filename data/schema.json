@@ -42,6 +42,17 @@
       },
       "status": {
         "type": "string",
+        "enum": [
+          "Vigente",
+          "Em transição",
+          "Em implantação",
+          "Varia por ente",
+          "Não instituído",
+          "Histórico"
+        ]
+      },
+      "nota_status": {
+        "type": "string",
         "minLength": 1
       }
     }
