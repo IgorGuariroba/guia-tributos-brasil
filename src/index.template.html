@@ -155,7 +155,7 @@ input:focus,button:focus-visible{outline:3px solid var(--accent2);outline-offset
 }
 .primary{background:var(--accent2);color:#fff}
 .stats{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
-.analytics-note{margin:8px 0 0;color:var(--muted);font-size:11px}
+.analytics-note{margin:8px 0 0;color:var(--muted);font-size:11px}.analytics-panel{margin:12px 0 0;padding:12px;border:1px solid var(--line);background:var(--paper)}.analytics-panel h2{font-size:14px;margin:0 0 6px}.analytics-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.analytics-table{border-collapse:collapse;font-size:12px}.analytics-table th,.analytics-table td{padding:4px 10px 4px 0;text-align:left;border-bottom:1px solid var(--line)}
 #count{background:var(--ink);color:#fff;padding:2px 8px}
 .badge{display:inline-block;padding:2px 7px;border:2px solid #000;background:var(--accent);font-size:11px;white-space:nowrap;text-transform:uppercase;font-weight:600}
 .results{scroll-margin-top:340px}
@@ -443,6 +443,13 @@ tbody tr:hover td[data-icone]{background:var(--accent);color:#000}
     </form>
     <p class="stats"><output id="count" for="search" aria-live="polite"></output><span class="sort-help" aria-hidden="true">•</span><span class="sort-help">Use os botões nos títulos das colunas para ordenar.</span></p>
     <p class="analytics-note">As buscas sem resultado são contadas somente neste dispositivo, de forma agregada e sem cookies, identificadores ou conexão externa.</p>
+    <section class="analytics-panel" aria-labelledby="analytics-title">
+      <h2 id="analytics-title">Termos sem resultado neste dispositivo</h2>
+      <p id="analytics-description">O termo é normalizado (sem maiúsculas e acentos) e guardado apenas com sua contagem, sem data ou identificador.</p>
+      <div class="analytics-actions"><button id="analytics-export" type="button">Exportar JSON</button><button id="analytics-clear" type="button">Apagar dados</button></div>
+      <p id="analytics-status" role="status" aria-live="polite"></p>
+      <table class="analytics-table" aria-describedby="analytics-description"><caption class="visually-hidden">Contagem local de termos sem resultado</caption><thead><tr><th scope="col">Termo</th><th scope="col">Contagens</th></tr></thead><tbody id="analytics-body"></tbody></table>
+    </section>
   </search>
 
   <section class="results" id="resultados" tabindex="-1" aria-labelledby="results-title">
@@ -508,14 +515,13 @@ const DATA = __TRIBUTOS_DATA__;
  * consulta, IP, horário, identificador ou qualquer dado que permita reidentificação.
  */
 let ultimoVazioRegistrado = null;
+const ANALYTICS_KEY="guia-tributos:buscas-sem-resultado";
+function lerBuscasSemResultado(){try{return JSON.parse(localStorage.getItem(ANALYTICS_KEY)||"{}")}catch{return {}}}
+function renderAnalytics(){const dados=lerBuscasSemResultado();$("analytics-body").innerHTML=Object.entries(dados).sort((a,b)=>b[1]-a[1]).map(([termo,total])=>`<tr><th scope="row">${esc(termo)}</th><td>${total}</td></tr>`).join("");}
 function registrarBuscaSemResultado(consulta){
   if(!consulta || consulta===ultimoVazioRegistrado) return;
   ultimoVazioRegistrado=consulta;
-  try{
-    const chave="guia-tributos:buscas-sem-resultado";
-    const atual=Number.parseInt(localStorage.getItem(chave)||"0",10);
-    localStorage.setItem(chave,String(Number.isFinite(atual)?atual+1:1));
-  }catch{/* armazenamento pode estar desabilitado; a busca continua funcionando */}
+  try{const dados=lerBuscasSemResultado();dados[consulta]=(Number(dados[consulta])||0)+1;localStorage.setItem(ANALYTICS_KEY,JSON.stringify(dados));renderAnalytics();}catch{/* armazenamento pode estar desabilitado; a busca continua funcionando */}
 }
 const embedId = new URLSearchParams(location.search).get("embed");
 if (embedId) document.body.classList.add("embed-mode");
@@ -834,6 +840,9 @@ function render(){
   syncUrl();
 }
 $("search").addEventListener("input",()=>{render();syncUrl();});
+$("analytics-export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(lerBuscasSemResultado(),null,2)],{type:"application/json"});const link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download="buscas-sem-resultado.json";link.click();URL.revokeObjectURL(link.href);$("analytics-status").textContent="JSON exportado.";});
+$("analytics-clear").addEventListener("click",()=>{localStorage.removeItem(ANALYTICS_KEY);ultimoVazioRegistrado=null;renderAnalytics();$("analytics-status").textContent="Dados apagados neste dispositivo.";});
+renderAnalytics();
 document.querySelectorAll("th[data-key] .th-btn").forEach(btn=>btn.addEventListener("click",()=>{
   const k=btn.closest("th").dataset.key;
   if(sortKey===k) sortAsc=!sortAsc; else {sortKey=k;sortAsc=true;}
