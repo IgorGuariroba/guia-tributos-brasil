@@ -30,6 +30,15 @@ const REQUIRED_FIELDS = [
   'descricao',
   'status',
 ];
+const STATUS_ENUM = [
+  'Vigente',
+  'Em transição',
+  'Em implantação',
+  'Varia por ente',
+  'Não instituído',
+  'Histórico',
+];
+const OPTIONAL_FIELDS = ['nota_status'];
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 function validar(dados) {
@@ -51,7 +60,18 @@ function validar(dados) {
         erros.push(`${rotulo}: campo obrigatório "${campo}" ausente ou vazio.`);
       }
     }
-    const chavesExtras = Object.keys(item).filter(k => !REQUIRED_FIELDS.includes(k));
+    if (!STATUS_ENUM.includes(item.status)) {
+      erros.push(`${rotulo}: status "${item.status}" não pertence ao enum fechado.`);
+    }
+    if (
+      item.nota_status !== undefined &&
+      (typeof item.nota_status !== 'string' || item.nota_status.trim() === '')
+    ) {
+      erros.push(`${rotulo}: nota_status, quando presente, precisa ser texto não vazio.`);
+    }
+    const chavesExtras = Object.keys(item).filter(
+      k => !REQUIRED_FIELDS.includes(k) && !OPTIONAL_FIELDS.includes(k),
+    );
     if (chavesExtras.length) {
       erros.push(`${rotulo}: campo(s) não previstos no schema: ${chavesExtras.join(', ')}.`);
     }
@@ -118,7 +138,17 @@ function paraJsonLd(dados) {
 }
 
 function paraCsv(dados) {
-  const cols = ['id', 'sigla', 'nome', 'tipo', 'esfera', 'contexto', 'descricao', 'status'];
+  const cols = [
+    'id',
+    'sigla',
+    'nome',
+    'tipo',
+    'esfera',
+    'contexto',
+    'descricao',
+    'status',
+    'nota_status',
+  ];
   const header = [
     'ID',
     'Sigla',
@@ -128,6 +158,7 @@ function paraCsv(dados) {
     'Contexto',
     'Descrição',
     'Status',
+    'Nota do status',
   ];
   const quote = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
   const linhas = [

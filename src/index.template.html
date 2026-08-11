@@ -465,7 +465,7 @@ const PROFILES = {
   pessoa:{name:"Pessoa física",short:"Renda e patrimônio",description:"Imposto de renda, imóveis, veículos, herança, investimentos e obrigações pessoais.",match:x=>/Pessoa física|Patrimônio|Imobiliário|Veículos|Herança|Doação|Investimentos/.test(x.contexto)},
   mei:{name:"MEI e pequeno negócio",short:"Rotina simplificada",description:"Itens ligados ao MEI, Simples Nacional, faturamento, serviços e documentos de arrecadação.",match:x=>/MEI|Empresa|Receita|Serviços/.test(x.contexto)||/SIMPLES|DAS/.test(x.sigla)},
   empregador:{name:"Empresa e empregador",short:"Folha e operação",description:"Tributos da empresa, folha, trabalho, contribuições patronais e Sistema S.",match:x=>/Empresa|Folha|Trabalho|Sistema S/.test(x.contexto)},
-  reforma:{name:"Reforma tributária",short:"O que está mudando",description:"Tributos em implementação ou transição e os principais itens afetados pela reforma do consumo.",match:x=>/transição|implementação/i.test(x.status)||/^(IBS|CBS|IS|ICMS|ISS|ISSQN|IPI|PIS|PIS\/PASEP|COFINS)$/.test(x.sigla)},
+  reforma:{name:"Reforma tributária",short:"O que está mudando",description:"Tributos em implementação ou transição e os principais itens afetados pela reforma do consumo.",match:x=>/transição|implantação/i.test(x.status)||/^(IBS|CBS|IS|ICMS|ISS|ISSQN|IPI|PIS|PIS\/PASEP|COFINS)$/.test(x.sigla)},
 };
 /* Itens de patrimônio/renda/transmissão compartilhados por "all" e "pessoa":
    os dois perfis mostram exatamente as mesmas associações, mudando só o intro. */
@@ -530,10 +530,10 @@ const ICONE_ESFERA = [
 ];
 const ICONE_STATUS = [
   [/transição/i, "transicao"],
-  [/implementação/i, "implementacao"],
-  [/não instalado|não instituído/i, "nao-instituido"],
+  [/implantação/i, "implementacao"],
+  [/não instituído/i, "nao-instituido"],
   [/varia por/i, "varia"],
-  [/histórica|histórico/i, "historico"],
+  [/histórico/i, "historico"],
   [/vigente/i, "vigente"],
 ];
 const iconePara = (mapa, valor) => (mapa.find(([re]) => re.test(valor ?? "")) || [, ""])[1];
@@ -655,7 +655,7 @@ function renderCards(){
   if(!matchMedia("(max-width:600px)").matches){$("card-results").innerHTML="";return;}
   const groups=new Map();
   filtered.forEach(item=>{if(!groups.has(item.esfera))groups.set(item.esfera,[]);groups.get(item.esfera).push(item);});
-  $("card-results").innerHTML=`<p class="mobile-result-intro"><strong>Por esfera:</strong> resultados organizados por esfera, com contexto e explicação sob demanda.</p>`+[...groups].map(([esfera,items])=>`<section class="result-group" aria-label="Esfera ${esc(esfera)}"><h3 class="result-group-title">${esc(esfera)} · ${items.length}</h3>${items.map(x=>`<article class="result-strip result-card"><h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><p><strong>${esc(x.nome)}</strong></p><p class="result-strip-meta"><span class="badge">${esc(x.tipo)}</span><span class="badge">${esc(x.status)}</span></p><details><summary>Ver contexto e explicação</summary><p><strong>${esc(x.contexto)}</strong></p><p>${esc(x.descricao)}</p></details></article>`).join("")}</section>`).join("");
+  $("card-results").innerHTML=`<p class="mobile-result-intro"><strong>Por esfera:</strong> resultados organizados por esfera, com contexto e explicação sob demanda.</p>`+[...groups].map(([esfera,items])=>`<section class="result-group" aria-label="Esfera ${esc(esfera)}"><h3 class="result-group-title">${esc(esfera)} · ${items.length}</h3>${items.map(x=>`<article class="result-strip result-card"><h3><abbr title="${esc(x.nome)}">${esc(x.sigla)}</abbr></h3><p><strong>${esc(x.nome)}</strong></p><p class="result-strip-meta"><span class="badge">${esc(x.tipo)}</span><span class="badge">${esc(x.status)}</span></p><details><summary>Ver contexto e explicação</summary><p><strong>${esc(x.contexto)}</strong></p><p>${esc(x.descricao)}${x.nota_status?` <strong>Nota do status:</strong> ${esc(x.nota_status)}`:""}</p></details></article>`).join("")}</section>`).join("");
 }
 function profileButtons(){
   return Object.entries(PROFILES).map(([key,profile])=>`<li><button type="button" class="profile-option" data-profile="${key}" aria-pressed="${activeProfile===key}"><strong>${esc(profile.name)}</strong><span>${esc(profile.short)} — ${esc(profile.description)}</span></button></li>`).join("");
@@ -685,7 +685,7 @@ function renderProfileSelector(){
 function render(){
   const q=normalize($("search").value);
   filtered=DATA.filter(x=>{
-    const hay=normalize([x.sigla,x.nome,x.tipo,x.esfera,x.contexto,x.descricao,x.status].join(" "));
+    const hay=normalize([x.sigla,x.nome,x.tipo,x.esfera,x.contexto,x.descricao,x.status,x.nota_status].join(" "));
     const profileMatch=!activeProfile||PROFILES[activeProfile].match(x);
     return profileMatch && (!q || hay.includes(q)) && Object.keys(FILTERS).every(key=>matchesFilter(x,key));
   });
@@ -703,7 +703,7 @@ function render(){
     <td data-icone="${iconePara(ICONE_ESFERA,x.esfera)}">${esc(x.esfera)}</td>
     <td>${esc(x.contexto)}</td>
     <td>${esc(x.descricao)}</td>
-    <td data-icone="${iconePara(ICONE_STATUS,x.status)}" class="${/transi|implement/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}</td>
+    <td data-icone="${iconePara(ICONE_STATUS,x.status)}" class="${/transi|implant/i.test(x.status)?'status-transition':/vigente/i.test(x.status)?'status-active':''}">${esc(x.status)}${x.nota_status?` — ${esc(x.nota_status)}`:""}</td>
   </tr>`).join("");
   renderCards();
   renderChips();
@@ -726,8 +726,8 @@ $("filtros").addEventListener("reset",()=>{setTimeout(()=>{
 },0);});
 addEventListener("resize",renderCards);
 $("csv").addEventListener("click",()=>{
-  const cols=["sigla","nome","tipo","esfera","contexto","descricao","status"];
-  const header=["Sigla","Nome","Tipo/Natureza","Esfera","Contexto","Descrição","Status"];
+  const cols=["sigla","nome","tipo","esfera","contexto","descricao","status","nota_status"];
+  const header=["Sigla","Nome","Tipo/Natureza","Esfera","Contexto","Descrição","Status","Nota do status"];
   const quote=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
   const rows=[header.map(quote).join(";"),...filtered.map(x=>cols.map(c=>quote(x[c])).join(";"))];
   const blob=new Blob(["\uFEFF"+rows.join("\n")],{type:"text/csv;charset=utf-8"});

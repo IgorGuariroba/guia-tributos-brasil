@@ -44,7 +44,9 @@ npm run serve           # abre http://localhost:8080
 ## De onde vem o catálogo
 
 `data/tributos.json` é a **fonte da verdade** dos 78 itens (schema em `data/schema.json`:
-campos obrigatórios, `id` único e estável no formato slug). `public/index.html` **não é
+campos obrigatórios, `id` único e estável no formato slug). O campo `status` usa o enum fechado
+`Vigente`, `Em transição`, `Em implantação`, `Varia por ente`, `Não instituído` ou `Histórico`;
+`nota_status` é opcional e preserva qualificadores específicos. `public/index.html` **não é
 escrito à mão** — é gerado por `node audit/build.mjs` a partir de `data/tributos.json` +
 `src/index.template.html`, junto com `public/api/tributos.json` e `public/api/tributos.csv`
 (o mesmo catálogo em JSON e CSV, para consumo por terceiros).
@@ -191,7 +193,7 @@ essa responsabilidade é só do Prettier, para as duas ferramentas nunca se cont
 seleção e confirmação do perfil de interesse, associações visuais dinâmicas por perfil, carga inicial (78 linhas), busca textual, busca sem acento, estado vazio com `role=status`,
 reset do formulário, combobox pesquisável com multisseleção, contextos atômicos, chips removíveis,
 rótulos visíveis, busca na primeira tela, **ordenação acionável por teclado** com `aria-sort`
-exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 7 colunas, 79 linhas),
+exclusivo, skip-link com destino focável, CSV (BOM UTF-8, 8 colunas, 79 linhas),
 `<abbr title>` em todas as siglas, zero recursos externos, console sem erros e quatro
 asserções sobre os ícones (renderização real de pixels, mapeamento completo, natureza
 decorativa e independência do texto em relação a eles).

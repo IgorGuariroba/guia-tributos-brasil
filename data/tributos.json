@@ -167,7 +167,8 @@
     "esfera": "Estadual + Municipal",
     "contexto": "Consumo / Empresa",
     "descricao": "Novo imposto sobre consumo de competência compartilhada entre estados, DF e municípios. Está em implementação na Reforma Tributária.",
-    "status": "Implementação 2026"
+    "status": "Em implantação",
+    "nota_status": "Implementação 2026"
   },
   {
     "id": "is",
@@ -177,7 +178,8 @@
     "esfera": "Federal",
     "contexto": "Consumo / Indústria",
     "descricao": "Novo imposto federal seletivo sobre bens e serviços definidos em lei, voltado especialmente a externalidades negativas à saúde ou ao meio ambiente.",
-    "status": "Implementação"
+    "status": "Em implantação",
+    "nota_status": "Implementação"
   },
   {
     "id": "pis-pasep",
@@ -247,7 +249,8 @@
     "esfera": "Federal",
     "contexto": "Consumo / Empresa",
     "descricao": "Novo tributo federal sobre consumo, criado no âmbito da Reforma Tributária, em implementação a partir de 2026.",
-    "status": "Implementação 2026"
+    "status": "Em implantação",
+    "nota_status": "Implementação 2026"
   },
   {
     "id": "cide",
@@ -307,7 +310,8 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha / Receita",
     "descricao": "Regime de contribuição previdenciária calculada sobre receita bruta em hipóteses legais específicas.",
-    "status": "Vigente / regras específicas"
+    "status": "Vigente",
+    "nota_status": "Regras específicas"
   },
   {
     "id": "rat",
@@ -327,7 +331,8 @@
     "esfera": "Federal",
     "contexto": "Empresa / Folha",
     "descricao": "Denominação tradicional frequentemente associada à contribuição atualmente tratada no contexto do RAT.",
-    "status": "Denominação histórica/comum"
+    "status": "Histórico",
+    "nota_status": "Denominação histórica/comum"
   },
   {
     "id": "salario-educacao",
@@ -507,7 +512,8 @@
     "esfera": "Municipal / DF",
     "contexto": "Imóvel / Serviços públicos",
     "descricao": "Sigla usada por diversos municípios para a contribuição de iluminação pública (COSIP).",
-    "status": "Vigente / nome local"
+    "status": "Vigente",
+    "nota_status": "Nome local"
   },
   {
     "id": "tfe",
@@ -517,7 +523,8 @@
     "esfera": "Municipal",
     "contexto": "Empresa / Licenciamento",
     "descricao": "Taxa municipal encontrada em diversos municípios para fiscalização de estabelecimentos; nome e regras variam localmente.",
-    "status": "Varia por município"
+    "status": "Varia por ente",
+    "nota_status": "Varia por município"
   },
   {
     "id": "tfa",
@@ -527,7 +534,8 @@
     "esfera": "Municipal",
     "contexto": "Empresa / Publicidade",
     "descricao": "Taxa municipal relacionada à fiscalização de anúncios; nomenclatura e regras variam conforme o município.",
-    "status": "Varia por município"
+    "status": "Varia por ente",
+    "nota_status": "Varia por município"
   },
   {
     "id": "trss",
@@ -537,7 +545,8 @@
     "esfera": "Municipal",
     "contexto": "Saúde / Resíduos",
     "descricao": "Taxa municipal associada a serviços públicos específicos de coleta/destinação de resíduos de serviços de saúde, conforme legislação local.",
-    "status": "Varia por município"
+    "status": "Varia por ente",
+    "nota_status": "Varia por município"
   },
   {
     "id": "tff-municipal",
@@ -547,7 +556,8 @@
     "esfera": "Municipal",
     "contexto": "Empresa / Licenciamento",
     "descricao": "Sigla adotada por alguns municípios para fiscalização de funcionamento de estabelecimentos.",
-    "status": "Varia por município"
+    "status": "Varia por ente",
+    "nota_status": "Varia por município"
   },
   {
     "id": "tflf",
@@ -557,7 +567,8 @@
     "esfera": "Municipal",
     "contexto": "Empresa / Licenciamento",
     "descricao": "Taxa municipal de fiscalização de localização e funcionamento, com nomenclatura variável.",
-    "status": "Varia por município"
+    "status": "Varia por ente",
+    "nota_status": "Varia por município"
   },
   {
     "id": "tlp",
@@ -567,7 +578,8 @@
     "esfera": "Municipal",
     "contexto": "Imobiliário / Serviços públicos",
     "descricao": "Denominação utilizada em algumas legislações locais; a validade e a configuração dependem do serviço específico e divisível e da legislação do ente.",
-    "status": "Varia por município"
+    "status": "Varia por ente",
+    "nota_status": "Varia por município"
   },
   {
     "id": "tcr",
@@ -577,7 +589,8 @@
     "esfera": "Municipal",
     "contexto": "Imobiliário / Resíduos",
     "descricao": "Denominação genérica/local para taxa ligada à coleta de resíduos; sigla e regras variam por município.",
-    "status": "Varia por município"
+    "status": "Varia por ente",
+    "nota_status": "Varia por município"
   },
   {
     "id": "tfrm",
@@ -587,7 +600,8 @@
     "esfera": "Estadual",
     "contexto": "Mineração",
     "descricao": "Taxa estadual existente em alguns estados para fiscalização de atividades minerárias, conforme legislação local.",
-    "status": "Varia por estado"
+    "status": "Varia por ente",
+    "nota_status": "Varia por estado"
   },
   {
     "id": "tfa-anvisa",
@@ -607,7 +621,8 @@
     "esfera": "Federal",
     "contexto": "Saúde / Regulação",
     "descricao": "Sigla empregada no contexto de fiscalização sanitária; verificar a denominação usada no ato normativo específico.",
-    "status": "Vigente / uso específico"
+    "status": "Vigente",
+    "nota_status": "Uso específico"
   },
   {
     "id": "tff-federal",
@@ -647,7 +662,8 @@
     "esfera": "Federal",
     "contexto": "Aviação / Regulação",
     "descricao": "Taxa regulatória relacionada à fiscalização da aviação civil, conforme hipóteses legais.",
-    "status": "Vigente / específica"
+    "status": "Vigente",
+    "nota_status": "Uso específico"
   },
   {
     "id": "tffa",
@@ -757,7 +773,8 @@
     "esfera": "Federal",
     "contexto": "Previdência",
     "descricao": "Guia historicamente utilizada para recolhimentos previdenciários em diversas situações. Não é tributo.",
-    "status": "Vigente / uso conforme caso"
+    "status": "Vigente",
+    "nota_status": "Uso conforme caso"
   },
   {
     "id": "gcap",
@@ -777,6 +794,7 @@
     "esfera": "Federal",
     "contexto": "Financeiro / Investimentos",
     "descricao": "Mecanismo de antecipação de IR em determinados fundos de investimento; não é tributo autônomo.",
-    "status": "Vigente conforme fundo"
+    "status": "Vigente",
+    "nota_status": "Conforme fundo"
   }
 ]

@@ -207,7 +207,7 @@ await checar('export CSV gera arquivo com cabeçalho e BOM', async () => {
   for await (const c of stream) conteudo += c;
   if (!conteudo.startsWith('\uFEFF')) throw new Error('CSV sem BOM UTF-8 (quebra no Excel)');
   const primeiraLinha = conteudo.replace('\uFEFF', '').split('\n')[0];
-  igual(primeiraLinha.split(';').length, 7, 'colunas no cabeçalho do CSV');
+  igual(primeiraLinha.split(';').length, 8, 'colunas no cabeçalho do CSV');
   const totalLinhas = conteudo.trim().split('\n').length;
   igual(totalLinhas, TOTAL_ESPERADO + 1, 'linhas no CSV (cabeçalho + itens)');
 });
