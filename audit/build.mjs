@@ -87,6 +87,32 @@ function paraSitemap() {
 `;
 }
 
+function paraJsonLd(dados) {
+  // DefinedTermSet/DefinedTerm: expõe o catálogo como dado estruturado para que
+  // buscadores entendam a página como um glossário de termos, não como texto solto.
+  // @id de cada termo aponta para a URL do site com o id estável do catálogo (o
+  // deep-link por item ainda não existe — fase 2.2 — mas o identificador já é
+  // estável e reaproveitável quando o link funcional existir).
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    '@id': `${SITE_URL}#catalogo`,
+    name: 'Guia de Tributos, Contribuições, Taxas e Encargos do Brasil',
+    description:
+      'Catálogo de tributos, contribuições, taxas e encargos do Brasil: sigla, tipo, esfera, contexto e status na Reforma Tributária.',
+    url: SITE_URL,
+    inLanguage: 'pt-BR',
+    hasDefinedTerm: dados.map(item => ({
+      '@type': 'DefinedTerm',
+      '@id': `${SITE_URL}#${item.id}`,
+      name: item.nome,
+      alternateName: item.sigla,
+      description: item.descricao,
+      inDefinedTermSet: `${SITE_URL}#catalogo`,
+    })),
+  };
+}
+
 function paraCsv(dados) {
   const cols = ['id', 'sigla', 'nome', 'tipo', 'esfera', 'contexto', 'descricao', 'status'];
   const header = [
@@ -124,7 +150,16 @@ async function main() {
     console.error(`✗ src/index.template.html não contém o marcador esperado: ${marcador.trim()}`);
     process.exit(1);
   }
-  const htmlGerado = template.replace(marcador, `const DATA = ${JSON.stringify(dados)};\n`);
+  const marcadorJsonLd = '<!-- __TRIBUTOS_JSONLD__ -->';
+  if (!template.includes(marcadorJsonLd)) {
+    console.error(`✗ src/index.template.html não contém o marcador esperado: ${marcadorJsonLd}`);
+    process.exit(1);
+  }
+  const jsonLd = paraJsonLd(dados);
+  const scriptJsonLd = `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+  const htmlGerado = template
+    .replace(marcador, `const DATA = ${JSON.stringify(dados)};\n`)
+    .replace(marcadorJsonLd, scriptJsonLd);
 
   const apiJson = `${JSON.stringify(dados, null, 2)}\n`;
   const apiCsv = paraCsv(dados);
